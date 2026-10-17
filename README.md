@@ -4,8 +4,9 @@ Recep Tayyip Erdoğan Üniversitesi, Bilgisayar Mühendisliği derslerinin özet
 
 ## Dersler
 
-| Ders | Klasör | Not |
-|------|--------|-----|
-| CEN 105 · Bilgisayar Mühendisliğine Giriş | [cen105-bilgisayar-muhendisligine-giris](cen105-bilgisayar-muhendisligine-giris/) | Week 1–4 görsel kılavuz |
+| Ders | Klasör / dosya | Not |
+|------|----------------|-----|
+| 1. sınıf (CEN 101, 103, 105, 107, 109) | [bilgisayar-muhendisligi-1-sinif](bilgisayar-muhendisligi-1-sinif/RTEU_1_Sinif_Kilavuzu.html) | Tek sayfalık ders seçici kılavuz |
+| CEN 105 · Bilgisayar Mühendisliğine Giriş (önceki sürüm) | [cen105-bilgisayar-muhendisligine-giris](cen105-bilgisayar-muhendisligine-giris/) | Week 1–4 görsel kılavuz |
 
-Yeni ders özetleri, ders adına göre ayrı bir klasörde eklenir.
+Eklenmesi planlanan dersler: CEN 102, 104, 106, 108, 110; Atatürk İlkeleri, Türk Dili, Yabancı Dil, Temel İngilizce.
