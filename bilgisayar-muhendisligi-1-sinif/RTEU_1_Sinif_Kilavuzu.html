@@ -381,6 +381,13 @@ body.exam .course .card{border-color:var(--gold)}
 body.exam .impindex{display:block}
 .impindex a{display:block;padding:6px 10px;border-radius:10px;text-decoration:none;color:var(--ink);font-weight:700;font-size:.9rem}
 .impindex a:hover{background:var(--surface-2)}
+/* ---------- 8. hafta sonrası aç/kapa ---------- */
+body.hide8 .after8{display:none!important}
+.after8btn{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:40;writing-mode:vertical-rl;display:flex;gap:8px;align-items:center;padding:16px 9px;border:2px solid var(--blue-edge);border-right:none;border-radius:14px 0 0 14px;background:var(--blue);color:#fff;font-family:inherit;font-weight:900;font-size:.85rem;letter-spacing:.04em;cursor:pointer;box-shadow:-4px 4px 0 var(--blue-edge)}
+.after8btn .t2{background:rgba(255,255,255,.22);padding:6px 3px;border-radius:999px}
+.after8btn.on{background:var(--orange);border-color:var(--orange-edge);box-shadow:-4px 4px 0 var(--orange-edge)}
+.after8btn:hover{filter:brightness(1.07)}
+@media (max-width:520px){.after8btn{font-size:.75rem;padding:12px 6px}}
 
 </style>
 </head>
@@ -404,53 +411,55 @@ body.exam .impindex{display:block}
   <div class="impindex" id="impIndex"></div>
   <div class="navgroup" data-course="cen101">
     <h4>CEN 101 · Matematik I</h4>
-    <a href="#cen101-m1">1. Fonksiyonlar</a>
-    <a href="#cen101-m2">2. Limit ve süreklilik</a>
-    <a href="#cen101-m3">3. Türev</a>
-    <a href="#cen101-m4">4. Türev uygulamaları</a>
-    <a href="#cen101-m5">5. Belirsiz integral</a>
-    <a href="#cen101-m6">6. Belirli integral</a>
+    <a href="#cen101-m0">Hafta 1 · Gerçel sayılar, eşitsizlik</a>
+    <a href="#cen101-m1">Hafta 1–2 · Fonksiyonlar</a>
+    <a href="#cen101-m1b">Hafta 2 · Trigonometri, ters trig.</a>
+    <a href="#cen101-m2">Hafta 3 · Limit ve süreklilik</a>
+    <a href="#cen101-m3">Hafta 4–5 · Türev</a>
+    <a href="#cen101-m4">Hafta 5–6 · Türev uygulamaları, ekstremum</a>
+    <a href="#cen101-m4b">Hafta 7 · Grafik çizimi, asimptot</a>
+    <a href="#cen101-m5" class="after8">Hafta 9+ · Belirsiz integral</a>
+    <a href="#cen101-m6" class="after8">Hafta 9+ · Belirli integral</a>
   </div>
   <div class="navgroup" data-course="cen103">
     <h4>CEN 103 · Fizik I</h4>
-    <a href="#cen103-f1">1. Fizik ve ölçme</a>
-    <a href="#cen103-f2">2. Koordinat sistemleri</a>
-    <a href="#cen103-f3">3. Skaler ve vektörler</a>
-    <a href="#cen103-f4">4. Çarpımlar</a>
-    <a href="#cen103-f5">5. Vektör problemleri</a>
+    <a href="#cen103-f1">Hafta 1 · Fizik ve ölçme</a>
+    <a href="#cen103-h2">Hafta 2 · Bir boyutta hareket</a>
+    <a href="#cen103-f2">Hafta 3 · Koordinat sistemleri</a>
+    <a href="#cen103-f3">Hafta 3 · Skaler ve vektörler</a>
+    <a href="#cen103-f4">Hafta 3 · Skaler ve vektörel çarpım</a>
+    <a href="#cen103-f5">Hafta 3 · Vektör problemleri</a>
+    <a href="#cen103-h4">Hafta 4 · İki boyutta hareket</a>
+    <a href="#cen103-h5">Hafta 5 · Hareket kanunları</a>
+    <a href="#cen103-h6">Hafta 6 · Dairesel hareket</a>
+    <a href="#cen103-h7">Hafta 7 · İş, güç, enerji</a>
+    <a href="#cen103-h8">Hafta 8 · Vize tekrarı</a>
   </div>
   <div class="navgroup on" data-course="cen105">
     <h4>CEN 105 · Müh. Girişi</h4>
-    <a href="#u1">Ünite 1 · Zemindeki fabrika</a>
-    <a href="#u1-disiplin">Üç kardeş: CE · CS · EE</a>
-    <a href="#u1-tarih">Kısa tarih</a>
-    <a href="#u1-donanim">Donanım katmanı</a>
-    <a href="#u1-os">Yazılım ve OS</a>
-    <a href="#u1-q">Mini sınama</a>
-    <a href="#u2">Ünite 2 · Bitlerin alfabesi</a>
-    <a href="#u2-neden">Neden 0 ve 1?</a>
-    <a href="#u2-taban">Taban dönüşümleri</a>
-    <a href="#u2-arit">İkili aritmetik</a>
-    <a href="#u2-tumleyen">Tümleyenler</a>
-    <a href="#u2-ieee">IEEE 754</a>
-    <a href="#u2-kod">Karakter ve multimedya</a>
-    <a href="#u2-q">Mini sınama</a>
-    <a href="#u3">Ünite 3 · Kapıların dansı</a>
-    <a href="#u3-boole">Boole cebri</a>
-    <a href="#u3-sade">Sadeleştirme</a>
-    <a href="#u3-kapi">Mantık kapıları</a>
-    <a href="#u3-toplayici">Toplayıcılar</a>
-    <a href="#u3-hafiza">Flip-flop</a>
-    <a href="#u3-mimari">Von Neumann ve CPU</a>
-    <a href="#u3-q">Mini sınama</a>
-    <a href="#u4">Ünite 4 · Komut satırı</a>
-    <a href="#u4-linux">Linux ve özgürlük</a>
-    <a href="#u4-fhs">Dosya sistemi</a>
-    <a href="#u4-izin">İzinler (chmod)</a>
-    <a href="#u4-boru">Yönlendirme ve boru</a>
-    <a href="#u4-komut">Kullanıcı, süreç, ağ</a>
-    <a href="#u4-try">Terminal denemesi</a>
-    <a href="#u4-q">Mini sınama</a>
+    <a href="#u1">Hafta 1 · Disiplin ve donanım</a>
+    <a href="#u1-disiplin" class="sub">Üç kardeş: CE · CS · EE</a>
+    <a href="#u1-tarih" class="sub">Kısa tarih</a>
+    <a href="#u1-donanim" class="sub">Donanım katmanı</a>
+    <a href="#u1-os" class="sub">Yazılım ve OS</a>
+    <a href="#u2">Hafta 2 · Sayı sistemleri</a>
+    <a href="#u2-taban" class="sub">Taban dönüşümleri</a>
+    <a href="#u2-tumleyen" class="sub">Tümleyenler</a>
+    <a href="#u2-ieee" class="sub">IEEE 754</a>
+    <a href="#u2-kod" class="sub">Karakter ve multimedya</a>
+    <a href="#u3">Hafta 3 · Boole, kapılar, mimari</a>
+    <a href="#u3-sade" class="sub">Sadeleştirme</a>
+    <a href="#u3-kapi" class="sub">Mantık kapıları</a>
+    <a href="#u3-toplayici" class="sub">Toplayıcılar</a>
+    <a href="#u3-mimari" class="sub">Von Neumann ve CPU</a>
+    <a href="#u4">Hafta 4 · Linux ve terminal</a>
+    <a href="#u4-fhs" class="sub">Dosya sistemi</a>
+    <a href="#u4-izin" class="sub">İzinler (chmod)</a>
+    <a href="#u4-boru" class="sub">Yönlendirme ve boru</a>
+    <a href="#u4-try" class="sub">Terminal denemesi</a>
+    <a href="#u5">Hafta 5 · Linux II ve Git</a>
+    <a href="#u6">Hafta 6 · Algoritmalar, akış diyagramı</a>
+    <a href="#u7">Hafta 7 · Etkin algoritma, vize tekrarı</a>
   </div>
   <div class="navgroup" data-course="cen107">
     <h4>CEN 107 · Algoritma I (C)</h4>
@@ -462,20 +471,24 @@ body.exam .impindex{display:block}
     <a href="#cen107-w6">Hafta 6 · Döngüler I</a>
     <a href="#cen107-w7">Hafta 7 · Döngüler II ve ara proje</a>
     <a href="#cen107-w8">Hafta 8 · Fonksiyonlar I</a>
-    <a href="#cen107-w9">Hafta 9 · Kapsam, yığın, özyineleme</a>
-    <a href="#cen107-w10">Hafta 10 · Diziler I</a>
-    <a href="#cen107-w11">Hafta 11 · Diziler II: matrisler</a>
-    <a href="#cen107-w12">Hafta 12 · İşaretçiler</a>
-    <a href="#cen107-w13">Hafta 13 · Karakter dizileri</a>
-    <a href="#cen107-w14">Hafta 14 · Yapılar, dosyalar, final</a>
+    <a href="#cen107-w9" class="after8">Hafta 9 · Kapsam, yığın, özyineleme</a>
+    <a href="#cen107-w10" class="after8">Hafta 10 · Diziler I</a>
+    <a href="#cen107-w11" class="after8">Hafta 11 · Diziler II: matrisler</a>
+    <a href="#cen107-w12" class="after8">Hafta 12 · İşaretçiler</a>
+    <a href="#cen107-w13" class="after8">Hafta 13 · Karakter dizileri</a>
+    <a href="#cen107-w14" class="after8">Hafta 14 · Yapılar, dosyalar, final</a>
   </div>
   <div class="navgroup" data-course="cen109">
     <h4>CEN 109 · Fundamental IT</h4>
-    <a href="#cen109-l1">Ders 1 · Bilgi teknolojileri</a>
-    <a href="#cen109-l1b">Ders 1 · Yazılım ve roller</a>
-    <a href="#cen109-l2">Ders 2 · IDE ve LLM</a>
-    <a href="#cen109-l3">Ders 3 · Git ve test</a>
-    <a href="#cen109-l4">Ders 4 · İnternet ve web</a>
+    <a href="#cen109-l1">Hafta 1 · Bilgi teknolojileri</a>
+    <a href="#cen109-l1b" class="sub">Yazılım ve roller</a>
+    <a href="#cen109-l2">Hafta 2 · IDE ve LLM</a>
+    <a href="#cen109-l3">Hafta 3 · Git ve test</a>
+    <a href="#cen109-l4">Hafta 4 · İnternet ve web</a>
+    <a href="#cen109-l5">Hafta 5 · Sahte içerik ve doğrulama</a>
+    <a href="#cen109-l6">Hafta 6 · Güvenlik, bakım, sanallaştırma</a>
+    <a href="#cen109-l7">Hafta 7 · Belge, sunum, tablo</a>
+    <a href="#cen109-l8">Hafta 8 · Vize tekrarı</a>
   </div>
   <h4>Ek</h4>
     <a href="#kartlar">Sınav kartları</a>
@@ -486,13 +499,14 @@ body.exam .impindex{display:block}
 <main>
 
 <!-- ====================== GİRİŞ ====================== -->
+<button id="after8Btn" class="after8btn" type="button" aria-pressed="false"><span class="t1">8. hafta sonrası</span><span class="t2">gizli</span></button>
 <section id="giris">
   <div class="hero reveal">
     <div class="kicker">RTEÜ · Bilgisayar Mühendisliği · 1. Sınıf</div>
     <h1>Ders Kılavuzu ve Sınav Hazırlık Merkezi</h1>
     <p>Birinci sınıfın temel dersleri tek sayfada: matematik, fizik, algoritma, bilgi teknolojileri ve dijital tasarım. Her bölüm konu anlatımı, animasyonlu formüller, çözümlü örnekler, tuzaklar ve mini sınamalar içerir.</p>
     <div class="chips">
-      <span class="chip">📚 5 ders</span>
+      <span class="chip">📚 5 ders · Hafta 1–8</span>
       <span class="chip">🧮 Animasyonlu KaTeX</span>
       <span class="chip">🧪 Canlı laboratuvarlar</span>
       <span class="chip">💻 C ve Python örnekleri</span>
@@ -513,19 +527,134 @@ body.exam .impindex{display:block}
   <div class="card reveal">
     <h3>Bu sürümde ne var?</h3>
     <div class="grid2">
-      <div class="mini"><h4>CEN 101 · Matematik I</h4><p>Fonksiyonlar, limit, türev, türev uygulamaları, belirsiz ve belirli integral. <b>Kendi hazırladığım materyal</b>; RTEÜ ders paketi erişilemediği için resmi kapsamla karşılaştırın.</p></div>
-      <div class="mini"><h4>CEN 103 · Fizik I</h4><p>Fizik ve ölçme, koordinat sistemleri, vektörler, skaler ve vektörel çarpım. Kaynak: Bölüm 1 ve Bölüm 2 notları ile çözümlü problemler.</p></div>
-      <div class="mini"><h4>CEN 105 · Bilgisayar Müh. Girişi</h4><p>Disiplinler, tarih, donanım, sayı sistemleri, Boole cebri, mantık kapıları, Linux ve terminal. Bu sürümde içeriği değişmedi; laboratuvarları ve sınamaları aynen korunur.</p></div>
+      <div class="mini"><h4>CEN 101 · Matematik I</h4><p>Hafta 1–7: gerçel sayılar, fonksiyonlar, trigonometri, limit, türev, ekstremum, grafik çizimi. İntegraller 9. haftadan sonra. <b>Kendi hazırladığım materyal</b>; RTEÜ ders paketi erişilemediği için resmi kapsamla karşılaştırın.</p></div>
+      <div class="mini"><h4>CEN 103 · Fizik I</h4><p>Hafta 1–8: ölçme, bir ve iki boyutta hareket, vektörler, Newton kanunları, dairesel hareket, iş–güç–enerji, vize tekrarı. Hafta 1 ve 3 hocanın Bölüm 1–2 notlarından.</p></div>
+      <div class="mini"><h4>CEN 105 · Bilgisayar Müh. Girişi</h4><p>Hafta 1–4 slaytlardan (değişmedi); Hafta 5 Linux II ve Git, Hafta 6 algoritmalar ve akış diyagramları, Hafta 7 etkin algoritmalar ve vize soru çözümü eklendi.</p></div>
       <div class="mini"><h4>CEN 107 · Algoritma I (C)</h4><p>14 haftanın her biri uzun ders notu biçiminde: teori, tablolar, çıktılı kod, izleme tabloları, tuzaklar. Hafta 1–7 kaynak sayfadan; 8–14 kendi içerikle.</p></div>
-      <div class="mini"><h4>CEN 109 · Fundamental IT</h4><p>Bilgi teknolojilerine giriş, IDE ve LLM destekli geliştirme, Git ve test, internet ve web güvenliği. Kaynak: ders slaytları.</p></div>
+      <div class="mini"><h4>CEN 109 · Fundamental IT</h4><p>Hafta 1–4 ders slaytlarından; Hafta 5 sahte içerik ve doğrulama, Hafta 6 güvenlik ve sanallaştırma, Hafta 7 belge, sunum ve tablo, Hafta 8 vize tekrarı eklendi.</p></div>
     </div>
-    <div class="warn"><b>Henüz eklenmeyen dersler:</b> CEN 102 (Mühendislik Matematiği II), CEN 104 (Mühendislik Fiziği II), CEN 106 (Lineer Cebir), CEN 108 (Algoritmalar ve Programlama II), CEN 110 (Digital Design), Atatürk İlkeleri, Türk Dili, Yabancı Dil ve Temel İngilizce. Bunlar bir sonraki sürümde eklenecek.</div>
+    <div class="warn"><b>Kapsam:</b> Güz yarıyılının mühendislik dersleri, RTEÜ Bilgisayar Mühendisliği ders bilgi paketindeki haftalık plana göre <b>1–8. haftaların tamamını</b> kapsar. Hocaların kaynakları (slaytlar, Word notları, ders sayfası) olduğu gibi korundu; kaynağı olmayan haftalar paketteki başlıklara göre ayrı bölümler olarak eklendi ve “Not” kutusuyla işaretlendi. <b>8. hafta sonrası</b> sağ kenardaki mavi düğmeyle açılıp kapanır (varsayılan: gizli). Atatürk İlkeleri, Türk Dili ve İngilizce kapsam dışıdır.</div>
   </div>
 </section>
 
 <div class="course" id="cen101">
 
 <div class="goal reveal" style="margin-top:18px"><b>Bu bölümü nasıl okumalısın?</b><br>Her konu beş adımda ilerler: <b>1) Sezgi</b> (neden var?), <b>2) Tanım</b> (kesin dil), <b>3) Adım adım örnek</b> (her satırı kendin yaz), <b>4) Sık hata</b>, <b>5) Kazanım kontrolü</b>. Adım kutularındaki <b>Sonraki adım</b> düğmesine basarak türetmeleri parça parça aç. Kâğıt-kalem yanında olsun: her örneği önce kendin çöz, sonra adımları karşılaştır.</div>
+
+<section id="cen101-m0" class="reveal">
+  <div class="unit-head c101h">
+    <div class="eyebrow">CEN 101 · Hafta 1 · RTEÜ planı: Gerçel sayılar, fonksiyonlar</div>
+    <h2>Gerçel sayılar, aralıklar, mutlak değer ve eşitsizlikler</h2>
+    <p>Fonksiyonların tanım kümesini, limitin “yakınlık” fikrini ve türevin işaret tablolarını hep bu dille yazarız. Önce sayı doğrusunu sağlam kuralım.</p>
+  </div>
+
+  <div class="card">
+    <h3>0.1 Sayı kümeleri: iç içe halkalar</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Küme</th><th>Sembol</th><th>Elemanlar</th><th>Neden gerekli?</th></tr></thead>
+      <tbody>
+        <tr><td>Doğal sayılar</td><td>\(\mathbb{N}\)</td><td>\(0,1,2,3,\ldots\)</td><td>Saymak</td></tr>
+        <tr><td>Tam sayılar</td><td>\(\mathbb{Z}\)</td><td>\(\ldots,-2,-1,0,1,2,\ldots\)</td><td>\(3-5\) işlemini yapabilmek</td></tr>
+        <tr><td>Rasyonel sayılar</td><td>\(\mathbb{Q}\)</td><td>\(\frac{p}{q}\), \(q\ne 0\)</td><td>\(1\div 3\) işlemini yapabilmek</td></tr>
+        <tr><td>İrrasyonel sayılar</td><td>\(\mathbb{Q}'\)</td><td>\(\sqrt2,\ \pi,\ e\)</td><td>Karenin köşegeni, çemberin çevresi</td></tr>
+        <tr><td>Gerçel sayılar</td><td>\(\mathbb{R}\)</td><td>Rasyonel ∪ irrasyonel</td><td>Sayı doğrusunun tamamı</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eq">\[ \mathbb{N}\subset\mathbb{Z}\subset\mathbb{Q}\subset\mathbb{R} \]</div>
+    <div class="derivation reveal" data-title="0,333… neden rasyoneldir? (devirli ondalığı kesre çevirmek)">
+      <div class="step"><p><b>Adım 1.</b> \(x=0{,}333\ldots\) de.</p></div>
+      <div class="step"><p><b>Adım 2.</b> 10 ile çarp: \(10x=3{,}333\ldots\)</p></div>
+      <div class="step"><p><b>Adım 3.</b> Alt alta çıkar; sonsuz kuyruklar birbirini götürür:</p>\[ 10x-x=3 \;\Rightarrow\; 9x=3 \;\Rightarrow\; x=\frac13 \]</div>
+      <div class="step"><p><b>Sonuç:</b> Devirli her ondalık sayı bir kesirdir, yani rasyoneldir. \(\sqrt2\) ise hiçbir kesirle yazılamaz; irrasyoneldir.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>0.2 Aralıklar: sayı doğrusunun parçaları</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Gösterim</th><th>Eşitsizlik</th><th>Uçlar</th></tr></thead>
+      <tbody>
+        <tr><td>\([a,b]\)</td><td>\(a\le x\le b\)</td><td>Kapalı: iki uç dahil</td></tr>
+        <tr><td>\((a,b)\)</td><td>\(a\lt x\lt b\)</td><td>Açık: iki uç hariç</td></tr>
+        <tr><td>\([a,b)\)</td><td>\(a\le x\lt b\)</td><td>Yarı açık</td></tr>
+        <tr><td>\((a,\infty)\)</td><td>\(x\gt a\)</td><td>Sonsuz tarafta her zaman parantez</td></tr>
+        <tr><td>\((-\infty,b]\)</td><td>\(x\le b\)</td><td></td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap"><b>Kural:</b> \(\infty\) bir sayı değildir; ona hiçbir zaman ulaşılmaz. Bu yüzden \(\infty\) yanına köşeli parantez <b>konmaz</b>: \([3,\infty]\) yanlış, \([3,\infty)\) doğrudur.</div>
+  </div>
+
+  <div class="card">
+    <h3>0.3 Eşitsizlik çözmek</h3>
+    <p>Eşitsizlik, eşitlik gibi çözülür; tek fark: <b>negatif bir sayıyla çarpar ya da bölersen yön değişir</b>.</p>
+    <div class="derivation reveal" data-title="−2x + 5 ≤ 11">
+      <div class="step"><p><b>Adım 1.</b> 5'i karşıya at: \(-2x\le 6\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> \(-2\)'ye böl. Negatif sayıya bölüyoruz, yön döner:</p>\[ x\ge -3 \]</div>
+      <div class="step"><p><b>Adım 3.</b> Aralık olarak: \([-3,\infty)\). Kontrol: \(x=0\) için \(5\le 11\) doğru.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <h4>İkinci derece eşitsizlik: işaret tablosu</h4>
+    <div class="derivation reveal" data-title="x² − x − 6 > 0">
+      <div class="step"><p><b>Adım 1.</b> Çarpanlara ayır: \((x-3)(x+2)\gt 0\). Kökler \(-2\) ve \(3\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Kökler sayı doğrusunu üç aralığa böler: \((-\infty,-2)\), \((-2,3)\), \((3,\infty)\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Her aralıktan bir test noktası: \(x=-3\) → \((-6)(-1)=6\gt 0\) ✓; \(x=0\) → \((-3)(2)=-6\) ✗; \(x=4\) → \((1)(6)=6\) ✓.</p></div>
+      <div class="step"><p><b>Sonuç:</b> \(x\in(-\infty,-2)\cup(3,\infty)\). (Eşitsizlik katı olduğu için kökler dahil değil.)</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <h4>Rasyonel eşitsizlik</h4>
+    <div class="derivation reveal" data-title="(x − 1)/(x + 2) ≤ 0">
+      <div class="step"><p><b>Adım 1.</b> Payın kökü \(x=1\), paydanın kökü \(x=-2\). Paydayı <b>asla</b> sıfır yapamayız: \(x=-2\) her durumda hariç.</p></div>
+      <div class="step"><p><b>Adım 2.</b> Test: \(x=-3\) → \(\frac{-4}{-1}=4\) ✗; \(x=0\) → \(\frac{-1}{2}\) ✓; \(x=2\) → \(\frac14\) ✗.</p></div>
+      <div class="step"><p><b>Sonuç:</b> \((-2,1]\). Pay sıfır olunca kesir 0 olur ve “\(\le\)” bunu kabul eder; bu yüzden 1 dahil.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="trap"><b>Sık hata:</b> Rasyonel eşitsizlikte iki tarafı payda ile çarpmak. Paydanın işareti bilinmediği için yön değişip değişmeyeceğini bilemezsin. İşaret tablosu kullan.</div>
+  </div>
+
+  <div class="card">
+    <h3>0.4 Mutlak değer: sıfıra uzaklık</h3>
+    <div class="eq">\[ |x|=\begin{cases} x, &amp; x\ge 0\\ -x, &amp; x\lt 0\end{cases}\qquad |x-a| = x \text{ ile } a \text{ arasındaki uzaklık} \]</div>
+    <div class="grid2">
+      <div class="mini"><h4>\(|x|\lt c\)</h4><p>\(-c\lt x\lt c\) (aralık içi)</p></div>
+      <div class="mini"><h4>\(|x|\gt c\)</h4><p>\(x\lt -c\) veya \(x\gt c\) (aralık dışı)</p></div>
+      <div class="mini"><h4>Üçgen eşitsizliği</h4><p>\(|a+b|\le|a|+|b|\)</p></div>
+      <div class="mini"><h4>Çarpım</h4><p>\(|ab|=|a|\,|b|\), \(\sqrt{x^2}=|x|\)</p></div>
+    </div>
+    <div class="derivation reveal" data-title="|2x − 3| < 5">
+      <div class="step"><p><b>Adım 1.</b> Kuralı uygula: \(-5\lt 2x-3\lt 5\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Üç tarafa 3 ekle: \(-2\lt 2x\lt 8\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> 2'ye böl: \(-1\lt x\lt 4\), yani \((-1,4)\). Yorum: \(x\), \(\tfrac32\)'ye uzaklığı \(\tfrac52\)'den az olan sayılardır.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="ex"><b>Neden önemli?</b> Limitin \(\varepsilon\)–\(\delta\) tanımı tamamen mutlak değerle yazılır: \(|x-a|\lt\delta\) “\(x\), \(a\)'ya \(\delta\)'dan yakın” demektir.</div>
+  </div>
+
+  <div class="card">
+    <h3>0.5 Fonksiyon dönüşümleri: grafiği kaydırmak</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Yeni fonksiyon</th><th>Grafikte ne olur?</th></tr></thead>
+      <tbody>
+        <tr><td>\(f(x)+c\)</td><td>\(c\) birim yukarı</td></tr>
+        <tr><td>\(f(x-c)\)</td><td>\(c\) birim <b>sağa</b> (işarete dikkat)</td></tr>
+        <tr><td>\(-f(x)\)</td><td>\(x\) eksenine göre yansıma</td></tr>
+        <tr><td>\(f(-x)\)</td><td>\(y\) eksenine göre yansıma</td></tr>
+        <tr><td>\(c\,f(x)\)</td><td>Dikey uzama (\(c\gt1\)) / sıkışma</td></tr>
+      </tbody>
+    </table></div>
+    <div class="ex"><b>Örnek:</b> \(y=(x-2)^2+1\), \(y=x^2\) parabolünün 2 sağa ve 1 yukarı kaymış hâlidir; tepe noktası \((2,1)\).</div>
+    <div class="imp">
+      <ul>
+        <li>\(\mathbb{N}\subset\mathbb{Z}\subset\mathbb{Q}\subset\mathbb{R}\); \(\sqrt2,\pi,e\) irrasyonel; devirli ondalık rasyonel.</li>
+        <li>Negatifle çarpma/bölmede eşitsizlik <b>yön değiştirir</b>.</li>
+        <li>İkinci derece ve rasyonel eşitsizlikte <b>işaret tablosu</b>; payda kökü daima hariç.</li>
+        <li>\(|x|\lt c\iff -c\lt x\lt c\); \(|x|\gt c\iff x\lt-c\) veya \(x\gt c\); \(\sqrt{x^2}=|x|\).</li>
+        <li>\(f(x-c)\) sağa, \(f(x)+c\) yukarı kaydırır. \(\infty\) yanına köşeli parantez konmaz.</li>
+      </ul>
+    </div>
+    <div class="quiz" data-unit="cen101-m0"></div>
+  </div>
+</section>
 
 <section id="cen101-m1" class="reveal">
   <div class="unit-head c101h">
@@ -718,6 +847,82 @@ body.exam .impindex{display:block}
   </ul>
 </div>
     <div class="quiz" data-unit="cen101-m1"></div>
+  </div>
+</section>
+
+<section id="cen101-m1b" class="reveal">
+  <div class="unit-head c101h">
+    <div class="eyebrow">CEN 101 · Hafta 2 · RTEÜ planı: Üstel, logaritmik ve trigonometrik fonksiyonlar</div>
+    <h2>Trigonometri derinleşme ve ters trigonometrik fonksiyonlar</h2>
+    <p>Ünite 1'deki birim çemberin devamı: diğer trigonometrik fonksiyonlar, önemli özdeşlikler, grafikler ve “açıyı geri bulmak”.</p>
+  </div>
+
+  <div class="card">
+    <h3>1b.1 Altı trigonometrik fonksiyon</h3>
+    <div class="eq">\[ \tan x=\frac{\sin x}{\cos x},\quad \cot x=\frac{\cos x}{\sin x},\quad \sec x=\frac{1}{\cos x},\quad \csc x=\frac{1}{\sin x} \]</div>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Fonksiyon</th><th>Tanım kümesi</th><th>Görüntü</th><th>Periyot</th></tr></thead>
+      <tbody>
+        <tr><td>\(\sin x\), \(\cos x\)</td><td>\(\mathbb R\)</td><td>\([-1,1]\)</td><td>\(2\pi\)</td></tr>
+        <tr><td>\(\tan x\)</td><td>\(x\ne\frac{\pi}{2}+k\pi\)</td><td>\(\mathbb R\)</td><td>\(\pi\)</td></tr>
+        <tr><td>\(\cot x\)</td><td>\(x\ne k\pi\)</td><td>\(\mathbb R\)</td><td>\(\pi\)</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Bölgelere göre işaret:</b> I. bölgede hepsi pozitif; II.'de yalnızca \(\sin\); III.'te \(\tan\) ve \(\cot\); IV.'te \(\cos\).</p>
+  </div>
+
+  <div class="card">
+    <h3>1b.2 Önemli özdeşlikler</h3>
+    <div class="eq">\[ \sin^2x+\cos^2x=1 \;\Rightarrow\; 1+\tan^2x=\sec^2x,\qquad 1+\cot^2x=\csc^2x \]</div>
+    <div class="derivation reveal" data-title="1 + tan²x = sec²x nereden geliyor?">
+      <div class="step"><p><b>Adım 1.</b> \(\sin^2x+\cos^2x=1\) özdeşliğinin her terimini \(\cos^2x\)'e böl.</p></div>
+      <div class="step"><p><b>Adım 2.</b></p>\[ \frac{\sin^2x}{\cos^2x}+\frac{\cos^2x}{\cos^2x}=\frac{1}{\cos^2x}\;\Rightarrow\;\tan^2x+1=\sec^2x \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/2</span></div>
+    </div>
+    <div class="eq">\[ \sin(a\pm b)=\sin a\cos b\pm\cos a\sin b,\qquad \cos(a\pm b)=\cos a\cos b\mp\sin a\sin b \]</div>
+    <div class="eq">\[ \sin 2x=2\sin x\cos x,\qquad \cos 2x=\cos^2x-\sin^2x=1-2\sin^2x=2\cos^2x-1 \]</div>
+    <div class="ex"><b>Örnek:</b> \(\sin 75^\circ=\sin(45^\circ+30^\circ)=\frac{\sqrt2}{2}\cdot\frac{\sqrt3}{2}+\frac{\sqrt2}{2}\cdot\frac12=\frac{\sqrt6+\sqrt2}{4}\approx 0{,}966\).</div>
+  </div>
+
+  <div class="card">
+    <h3>1b.3 Ters trigonometrik fonksiyonlar</h3>
+    <p><b>Sorun:</b> \(\sin x\) birebir değildir; \(\sin x=\tfrac12\) denkleminin sonsuz çözümü var (\(30^\circ, 150^\circ, 390^\circ,\ldots\)). Tersini alabilmek için tanım kümesini, fonksiyonun birebir olduğu bir parçaya kısıtlarız.</p>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Fonksiyon</th><th>Tanım kümesi</th><th>Görüntü (verdiği açı)</th></tr></thead>
+      <tbody>
+        <tr><td>\(\arcsin x\)</td><td>\([-1,1]\)</td><td>\([-\frac{\pi}{2},\frac{\pi}{2}]\)</td></tr>
+        <tr><td>\(\arccos x\)</td><td>\([-1,1]\)</td><td>\([0,\pi]\)</td></tr>
+        <tr><td>\(\arctan x\)</td><td>\(\mathbb R\)</td><td>\((-\frac{\pi}{2},\frac{\pi}{2})\)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="derivation reveal" data-title="arcsin(1/2), arccos(−1/2), arctan(1)">
+      <div class="step"><p>\(\arcsin\frac12\): \([-\frac{\pi}{2},\frac{\pi}{2}]\) aralığında sinüsü \(\frac12\) olan açı → \(\frac{\pi}{6}\).</p></div>
+      <div class="step"><p>\(\arccos(-\frac12)\): \([0,\pi]\) aralığında kosinüsü \(-\frac12\) olan açı → \(\frac{2\pi}{3}\) (\(120^\circ\)).</p></div>
+      <div class="step"><p>\(\arctan 1=\frac{\pi}{4}\). Fizikte kutupsal açı bulurken kullandığın \(\tan^{-1}\) budur; bu yüzden yalnızca \((-90^\circ,90^\circ)\) verir.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="trap"><b>Dikkat:</b> \(\sin^{-1}x\) ters fonksiyondur, \(\frac{1}{\sin x}\) değil. \(\arcsin(\sin\frac{5\pi}{6})=\frac{\pi}{6}\), \(\frac{5\pi}{6}\) değil; çünkü cevap \([-\frac{\pi}{2},\frac{\pi}{2}]\)'de olmalı.</div>
+  </div>
+
+  <div class="card">
+    <h3>1b.4 Üstel ve logaritmik denklemler</h3>
+    <div class="derivation reveal" data-title="2^(x+1) = 32 ve ln(x − 1) = 2">
+      <div class="step"><p><b>Örnek 1.</b> \(32=2^5\) yaz: \(2^{x+1}=2^5\) → tabanlar eşit, üsler eşit → \(x+1=5\) → \(x=4\).</p></div>
+      <div class="step"><p><b>Örnek 2.</b> \(\ln(x-1)=2\) → tanımdan \(x-1=e^2\) → \(x=1+e^2\approx 8{,}39\). Kontrol: \(x-1\gt0\) ✓.</p></div>
+      <div class="step"><p><b>Örnek 3.</b> \(e^{2x}=5\) → iki tarafın \(\ln\)'i: \(2x=\ln5\) → \(x=\frac{\ln 5}{2}\approx 0{,}805\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <p><b>Taban değiştirme:</b> \(\log_a x=\dfrac{\ln x}{\ln a}\). Örnek: \(\log_2 10=\frac{\ln 10}{\ln 2}\approx 3{,}32\) (10'u yazmak için yaklaşık 3,32 bit gerekir).</p>
+    <div class="imp">
+      <ul>
+        <li>\(1+\tan^2x=\sec^2x\), \(\sin2x=2\sin x\cos x\), \(\cos2x=1-2\sin^2x\).</li>
+        <li>\(\sin(a+b)=\sin a\cos b+\cos a\sin b\); \(\cos(a+b)=\cos a\cos b-\sin a\sin b\).</li>
+        <li>arcsin görüntüsü \([-\frac\pi2,\frac\pi2]\), arccos \([0,\pi]\), arctan \((-\frac\pi2,\frac\pi2)\).</li>
+        <li>İşaretler: I hepsi +, II sin +, III tan +, IV cos +.</li>
+        <li>Üstel denklem: aynı tabana getir ya da \(\ln\) al. \(\log_a x=\ln x/\ln a\).</li>
+      </ul>
+    </div>
+    <div class="quiz" data-unit="cen101-m1b"></div>
   </div>
 </section>
 
@@ -1266,7 +1471,63 @@ body.exam .impindex{display:block}
     <div class="quiz" data-unit="cen101-m4"></div>
   </div>
 </section>
-<section id="cen101-m5" class="reveal">
+<section id="cen101-m4b" class="reveal">
+  <div class="unit-head c101h">
+    <div class="eyebrow">CEN 101 · Hafta 7 · RTEÜ planı: Grafik çizimi</div>
+    <h2>Grafik çizimi: asimptotlar ve rasyonel fonksiyonlar</h2>
+    <p>Ünite 4'te polinom çizdik. Vize öncesi son konu, kesirli fonksiyonların grafiği: asimptotlarla birlikte tam çizim.</p>
+  </div>
+
+  <div class="card">
+    <h3>4b.1 Asimptot nedir?</h3>
+    <p>Asimptot, grafiğin sonsuza giderken sınırsız yaklaştığı doğrudur.</p>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Tür</th><th>Nasıl bulunur?</th></tr></thead>
+      <tbody>
+        <tr><td>Düşey \(x=a\)</td><td>Paydayı sıfır yapan (ve payı sıfır yapmayan) \(a\); \(\lim_{x\to a^\pm}f=\pm\infty\)</td></tr>
+        <tr><td>Yatay \(y=L\)</td><td>\(\lim_{x\to\pm\infty}f(x)=L\) (sonlu)</td></tr>
+        <tr><td>Eğik \(y=mx+n\)</td><td>Payın derecesi paydanınkinden tam 1 fazlaysa; polinom bölmesi</td></tr>
+      </tbody>
+    </table></div>
+    <div class="ex"><b>Rasyonel fonksiyonda yatay asimptot kuralı:</b> derece(pay) \(\lt\) derece(payda) → \(y=0\); eşit → baş katsayılar oranı; pay büyükse yatay asimptot yok.</div>
+  </div>
+
+  <div class="card">
+    <h3>4b.2 Tam örnek: \(f(x)=\dfrac{x^2}{x^2-1}\)</h3>
+    <div class="derivation reveal" data-title="f(x) = x²/(x² − 1) grafiğinin yedi adımı">
+      <div class="step"><p><b>1. Tanım kümesi:</b> \(x^2-1\ne0\) → \(x\ne\pm1\).</p></div>
+      <div class="step"><p><b>2. Kesişimler:</b> \(f(0)=0\); \(f(x)=0\) → \(x=0\). Grafik orijinden geçer.</p></div>
+      <div class="step"><p><b>3. Simetri:</b> \(f(-x)=f(x)\) → çift; \(y\) eksenine simetrik.</p></div>
+      <div class="step"><p><b>4. Asimptotlar:</b> Düşey \(x=1\), \(x=-1\). Yatay: dereceler eşit, katsayılar oranı \(1\) → \(y=1\).</p></div>
+      <div class="step"><p><b>5. Türev:</b> bölüm kuralı ile \(f'(x)=\dfrac{2x(x^2-1)-x^2\cdot 2x}{(x^2-1)^2}=\dfrac{-2x}{(x^2-1)^2}\). Payda hep pozitif; işaret \(-2x\)'ten gelir: \(x\lt0\) artan, \(x\gt0\) azalan. \(x=0\)'da yerel maksimum, \(f(0)=0\).</p></div>
+      <div class="step"><p><b>6. Düşey asimptot davranışı:</b> \(x\to1^+\): pay \(\approx1\), payda küçük pozitif → \(+\infty\). \(x\to1^-\): payda küçük negatif → \(-\infty\). Simetriyle \(x=-1\) çevresi aynalanır.</p></div>
+      <div class="step"><p><b>7. Birleştir:</b> Ortada \((-1,1)\) arasında aşağı doğru bir “kap”, tepesi \((0,0)\), iki uca doğru \(-\infty\). Dışarıda iki kol, \(+\infty\)'dan başlayıp \(y=1\)'e yukarıdan yaklaşır.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/7</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4b.3 Eğik asimptot örneği: \(g(x)=\dfrac{x^2+1}{x}\)</h3>
+    <div class="derivation reveal" data-title="g(x) = (x² + 1)/x">
+      <div class="step"><p><b>Adım 1.</b> Böl: \(g(x)=x+\frac1x\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> \(x\to\pm\infty\) için \(\frac1x\to0\): eğik asimptot \(y=x\). Düşey asimptot \(x=0\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> \(g'(x)=1-\frac{1}{x^2}=0\) → \(x=\pm1\). \(g(1)=2\) yerel min, \(g(-1)=-2\) yerel max. \(g\) tek fonksiyondur.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="trap"><b>Dikkat:</b> Paydayı sıfır yapan her nokta asimptot değildir. \(\frac{x^2-1}{x-1}\)'de \(x=1\) bir <b>delik</b>tir (kaldırılabilir süreksizlik), asimptot değil; çünkü pay da sıfır olur.</div>
+    <div class="imp">
+      <ul>
+        <li>Düşey asimptot: payda 0, pay ≠ 0. Yatay: \(\lim_{x\to\pm\infty}f\).</li>
+        <li>Dereceler: pay &lt; payda → \(y=0\); eşit → baş katsayı oranı; pay = payda + 1 → eğik asimptot (bölme ile).</li>
+        <li>Çizim sırası: tanım kümesi → kesişim → simetri → asimptot → \(f'\) → \(f''\) → birleştir.</li>
+        <li>Pay ve payda aynı noktada sıfırsa delik vardır, asimptot yoktur.</li>
+      </ul>
+    </div>
+    <div class="quiz" data-unit="cen101-m4b"></div>
+  </div>
+</section>
+
+<section id="cen101-m5" class="reveal after8">
   <div class="unit-head c101h">
     <div class="eyebrow">CEN 101 · Ünite 5</div>
     <h2>Belirsiz integral</h2>
@@ -1399,7 +1660,7 @@ body.exam .impindex{display:block}
   </div>
 </section>
 
-<section id="cen101-m6" class="reveal">
+<section id="cen101-m6" class="reveal after8">
   <div class="unit-head c101h">
     <div class="eyebrow">CEN 101 · Ünite 6</div>
     <h2>Belirli integral</h2>
@@ -1716,6 +1977,103 @@ body.exam .impindex{display:block}
   </ul>
 </div>
     <div class="quiz" data-unit="cen103-f1"></div>
+  </div>
+</section>
+
+<section id="cen103-h2" class="reveal">
+  <div class="unit-head c103h">
+    <div class="eyebrow">CEN 103 · Hafta 2 · RTEÜ planı: Bir boyutta hareket</div>
+    <h2>Bir boyutta hareket</h2>
+    <p>Bir doğru boyunca giden bir cismin nerede olduğunu, ne kadar hızlı gittiğini ve hızının nasıl değiştiğini tarif etmek. Kinematiğin, yani hareketin “nasıl”ının ilk adımı.</p>
+  </div>
+  <div class="goal" style="margin:10px 0"><b>Not:</b> Bu hafta için hocanın notu elimde yok; konu RTEÜ ders bilgi paketindeki başlığa göre hazırlandı. Notlar geldiğinde onlarla karşılaştır.</div>
+
+  <div class="card">
+    <h3>2.1 Konum, yer değiştirme ve alınan yol</h3>
+    <p>Bir doğru üzerinde bir başlangıç noktası (orijin) ve bir pozitif yön seç. Cismin <b>konumu</b> \(x\), orijine göre işaretli uzaklıktır.</p>
+    <div class="eq">\[ \Delta x=x_{\text{son}}-x_{\text{ilk}} \]</div>
+    <p><b>Yer değiştirme</b> \(\Delta x\) vektöreldir (işaretlidir); yalnızca başlangıç ve bitiş noktasına bakar. <b>Alınan yol</b> ise skalerdir; izlenen yolun toplam uzunluğudur.</p>
+    <div class="derivation reveal" data-title="5 m ileri, sonra 8 m geri yürüyen öğrenci">
+      <div class="step"><p><b>Adım 1.</b> \(x_{\text{ilk}}=0\). 5 m ileri: \(x=5\). Sonra 8 m geri: \(x_{\text{son}}=5-8=-3\) m.</p></div>
+      <div class="step"><p><b>Adım 2.</b> Yer değiştirme: \(\Delta x=-3-0=-3\) m (başladığı yerin 3 m gerisinde).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Alınan yol: \(5+8=13\) m. İkisi aynı şey değildir.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2.2 Ortalama ve anlık hız</h3>
+    <div class="eq">\[ \bar v=\frac{\Delta x}{\Delta t},\qquad \text{ortalama sürat}=\frac{\text{alınan yol}}{\Delta t},\qquad v=\lim_{\Delta t\to0}\frac{\Delta x}{\Delta t}=\frac{dx}{dt} \]</div>
+    <p>Anlık hız, konum–zaman grafiğindeki <b>teğetin eğimidir</b> (matematikteki türev, CEN 101 Ünite 3). Ortalama hız ise iki noktayı birleştiren kesenin eğimidir.</p>
+    <div class="ex"><b>Örnek:</b> Yukarıdaki öğrenci 13 m'yi 10 s'de yürüdüyse ortalama hız \(\frac{-3}{10}=-0{,}3\) m/s, ortalama sürat \(\frac{13}{10}=1{,}3\) m/s.</div>
+  </div>
+
+  <div class="card">
+    <h3>2.3 İvme</h3>
+    <div class="eq">\[ \bar a=\frac{\Delta v}{\Delta t},\qquad a=\frac{dv}{dt}=\frac{d^2x}{dt^2},\qquad [a]=\frac{\text{m}}{\text{s}^2} \]</div>
+    <p>İvme, hızın değişme hızıdır. <b>İşaret yanılgısı:</b> negatif ivme her zaman “yavaşlama” demek değildir. Hız ile ivme <b>aynı işaretliyse</b> cisim hızlanır, <b>zıt işaretliyse</b> yavaşlar.</p>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>\(v\)</th><th>\(a\)</th><th>Hareket</th></tr></thead>
+      <tbody>
+        <tr><td>+</td><td>+</td><td>+ yönde hızlanıyor</td></tr>
+        <tr><td>+</td><td>−</td><td>+ yönde yavaşlıyor</td></tr>
+        <tr><td>−</td><td>−</td><td>− yönde hızlanıyor</td></tr>
+        <tr><td>−</td><td>+</td><td>− yönde yavaşlıyor</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>2.4 Sabit ivmeli hareket: dört denklem</h3>
+    <div class="eq">\[ \begin{aligned} &amp;(1)\ \ v=v_0+at \\ &amp;(2)\ \ x=x_0+v_0t+\tfrac12at^2 \\ &amp;(3)\ \ v^2=v_0^2+2a(x-x_0) \\ &amp;(4)\ \ x-x_0=\tfrac12(v_0+v)\,t \end{aligned} \]</div>
+    <div class="derivation reveal" data-title="Denklemler nereden geliyor?">
+      <div class="step"><p><b>(1)</b> \(a\) sabitse hız doğrusal artar: \(a=\frac{v-v_0}{t}\) → \(v=v_0+at\).</p></div>
+      <div class="step"><p><b>(4)</b> Hız doğrusal değiştiği için ortalama hız uçların ortalamasıdır: \(\bar v=\frac{v_0+v}{2}\); yer değiştirme \(=\bar v\,t\).</p></div>
+      <div class="step"><p><b>(2)</b> (4)'te \(v=v_0+at\) yerine koy: \(\frac12(2v_0+at)t=v_0t+\frac12at^2\). (Ya da \(v(t)\)'nin integrali — CEN 101 Ünite 6.)</p></div>
+      <div class="step"><p><b>(3)</b> (1)'den \(t=\frac{v-v_0}{a}\), (4)'e koy: \(x-x_0=\frac{(v+v_0)(v-v_0)}{2a}=\frac{v^2-v_0^2}{2a}\). Zaman içermez!</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="ex"><b>Hangi denklem?</b> Soruda olmayan büyüklüğü bul: \(x\) yoksa (1); \(v\) yoksa (2); \(t\) yoksa (3); \(a\) yoksa (4).</div>
+    <div class="derivation reveal" data-title="Örnek: 20 m/s ile giden araba 5 m/s² ile frenliyor. Kaç metrede durur?">
+      <div class="step"><p><b>Adım 1.</b> Bilinenler: \(v_0=20\) m/s, \(v=0\), \(a=-5\) m/s² (hıza zıt). \(t\) istenmiyor → denklem (3).</p></div>
+      <div class="step"><p><b>Adım 2.</b> \(0=20^2+2(-5)\Delta x\) → \(10\,\Delta x=400\) → \(\Delta x=40\) m.</p></div>
+      <div class="step"><p><b>Adım 3.</b> Durma süresi (1)'den: \(0=20-5t\) → \(t=4\) s. Kontrol (4): \(\frac12(20+0)\cdot4=40\) m ✓.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2.5 Serbest düşme</h3>
+    <p>Hava direnci ihmal edilirse yeryüzü yakınında tüm cisimler, kütlelerinden bağımsız olarak aynı ivmeyle düşer: \(g\approx9{,}8\ \text{m/s}^2\), aşağı doğru. Yukarıyı pozitif seçersek \(a=-g\).</p>
+    <div class="derivation reveal" data-title="Yukarı 15 m/s ile atılan top: en yüksek nokta ve uçuş süresi">
+      <div class="step"><p><b>Adım 1.</b> En yüksek noktada \(v=0\). (1): \(0=15-9{,}8t\) → \(t\approx1{,}53\) s.</p></div>
+      <div class="step"><p><b>Adım 2.</b> (3): \(0=15^2-2(9{,}8)h\) → \(h=\frac{225}{19{,}6}\approx11{,}5\) m.</p></div>
+      <div class="step"><p><b>Adım 3.</b> Atış noktasına dönüş: simetriden toplam süre \(2\times1{,}53\approx3{,}06\) s; dönüş hızı 15 m/s aşağı.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="trap"><b>Sık hatalar:</b> En yüksek noktada ivmenin de sıfır olduğunu sanmak (ivme hâlâ \(-g\)); işaret yönünü baştan seçmemek; km/h'yi m/s'ye çevirmemek (÷3,6).</div>
+  </div>
+
+  <div class="card">
+    <h3>2.6 Grafiklerle hareket</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Grafik</th><th>Eğimi</th><th>Altındaki alan</th></tr></thead>
+      <tbody>
+        <tr><td>\(x\)–\(t\)</td><td>Hız</td><td>—</td></tr>
+        <tr><td>\(v\)–\(t\)</td><td>İvme</td><td>Yer değiştirme</td></tr>
+        <tr><td>\(a\)–\(t\)</td><td>—</td><td>Hız değişimi</td></tr>
+      </tbody>
+    </table></div>
+    <div class="imp">
+      <ul>
+        <li>Yer değiştirme işaretli (vektör), yol işaretsiz (skaler). Ortalama hız = Δx/Δt; ortalama sürat = yol/Δt.</li>
+        <li>\(v=dx/dt\), \(a=dv/dt\). \(v\) ve \(a\) aynı işaret → hızlanma, zıt → yavaşlama.</li>
+        <li>Sabit ivme: \(v=v_0+at\), \(x=x_0+v_0t+\frac12at^2\), \(v^2=v_0^2+2a\Delta x\), \(\Delta x=\frac12(v_0+v)t\).</li>
+        <li>Serbest düşme \(g\approx9{,}8\) m/s²; tepe noktasında \(v=0\) ama \(a=-g\).</li>
+        <li>\(x\)–\(t\) eğimi = hız; \(v\)–\(t\) eğimi = ivme, alanı = yer değiştirme.</li>
+      </ul>
+    </div>
+    <div class="quiz" data-unit="cen103-h2"></div>
   </div>
 </section>
 
@@ -2076,6 +2434,276 @@ body.exam .impindex{display:block}
   </ul>
 </div>
     <div class="quiz" data-unit="cen103-f5"></div>
+  </div>
+</section>
+
+<section id="cen103-h4" class="reveal">
+  <div class="unit-head c103h">
+    <div class="eyebrow">CEN 103 · Hafta 4 · RTEÜ planı: İki boyutta hareket</div>
+    <h2>İki boyutta hareket ve eğik atış</h2>
+    <p>Vektörler (Hafta 3) ile bir boyutta hareketi (Hafta 2) birleştiriyoruz. Ana fikir: <b>yatay ve düşey hareketler birbirinden bağımsızdır</b>.</p>
+  </div>
+  <div class="goal" style="margin:10px 0"><b>Not:</b> Hocanın notu elimde yok; konu RTEÜ ders bilgi paketindeki başlığa göre hazırlandı.</div>
+
+  <div class="card">
+    <h3>4.1 Konum, hız ve ivme vektörleri</h3>
+    <div class="eq">\[ \mathbf r=x\,\mathbf i+y\,\mathbf j,\qquad \mathbf v=\frac{d\mathbf r}{dt}=v_x\mathbf i+v_y\mathbf j,\qquad \mathbf a=\frac{d\mathbf v}{dt} \]</div>
+    <p>Her bileşen kendi bir boyutlu denklemine uyar. Sabit ivmede: \(x=x_0+v_{0x}t+\frac12a_xt^2\) ve \(y=y_0+v_{0y}t+\frac12a_yt^2\). İki denklemi birbirine bağlayan tek şey <b>ortak zaman \(t\)</b>'dir.</p>
+  </div>
+
+  <div class="card">
+    <h3>4.2 Eğik atış</h3>
+    <p>Hava direnci yok; \(a_x=0\), \(a_y=-g\). İlk hız \(v_0\), yatayla açı \(\theta\):</p>
+    <div class="eq">\[ v_{0x}=v_0\cos\theta,\qquad v_{0y}=v_0\sin\theta \]</div>
+    <div class="eq">\[ x=v_0\cos\theta\;t,\qquad y=v_0\sin\theta\;t-\tfrac12gt^2 \]</div>
+    <div class="derivation reveal" data-title="Maksimum yükseklik ve menzil formülleri (aynı seviyeye düşüş)">
+      <div class="step"><p><b>Adım 1.</b> Tepede \(v_y=0\): \(0=v_0\sin\theta-gt_{\text{tepe}}\) → \(t_{\text{tepe}}=\frac{v_0\sin\theta}{g}\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Yükseklik: \(H=\dfrac{v_0^2\sin^2\theta}{2g}\) (\(v_y^2=v_{0y}^2-2gH\)'den).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Uçuş süresi simetriden \(T=2t_{\text{tepe}}=\frac{2v_0\sin\theta}{g}\).</p></div>
+      <div class="step"><p><b>Adım 4.</b> Menzil: \(R=v_0\cos\theta\cdot T=\dfrac{2v_0^2\sin\theta\cos\theta}{g}=\dfrac{v_0^2\sin2\theta}{g}\). \(\sin2\theta\) en çok 1 → en uzak menzil \(\theta=45^\circ\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="derivation reveal" data-title="Örnek: 20 m/s, 30° ile atılan top (g = 9,8)">
+      <div class="step"><p>\(v_{0x}=20\cos30^\circ\approx17{,}3\) m/s, \(v_{0y}=20\sin30^\circ=10\) m/s.</p></div>
+      <div class="step"><p>\(t_{\text{tepe}}=\frac{10}{9{,}8}\approx1{,}02\) s; \(H=\frac{10^2}{2\cdot9{,}8}\approx5{,}1\) m.</p></div>
+      <div class="step"><p>\(T\approx2{,}04\) s; \(R=17{,}3\times2{,}04\approx35{,}3\) m. Kontrol: \(\frac{400\sin60^\circ}{9{,}8}\approx35{,}3\) ✓.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="ex"><b>Yatay atış:</b> Yüksekliği \(h\) olan masadan yatay \(v_0\) ile atılan cisim için \(v_{0y}=0\): düşme süresi \(t=\sqrt{2h/g}\), yatay uzaklık \(x=v_0t\). Düşme süresi yatay hıza bağlı değildir.</div>
+  </div>
+
+  <div class="card">
+    <h3>4.3 Bağıl hız</h3>
+    <div class="eq">\[ \mathbf v_{A/C}=\mathbf v_{A/B}+\mathbf v_{B/C} \]</div>
+    <p>Hafta 3'teki kayık örneği budur: kayığın yere göre hızı = kayığın suya göre hızı + suyun yere göre hızı. Akıntıya dik 4 m/s ile çeken kayık, 3 m/s akıntıda yere göre 5 m/s ile, akıntı yönünde \(\arctan(3/4)\approx36{,}9^\circ\) sapmayla gider.</p>
+    <div class="trap"><b>Sık hatalar:</b> Tepe noktasında hızın sıfır olduğunu sanmak (yalnızca \(v_y=0\); \(v_x\) sürer); yatay harekete \(g\) eklemek; menzil formülünü farklı yüksekliğe düşüşte kullanmak.</div>
+    <div class="imp">
+      <ul>
+        <li>Yatay ve düşey hareket bağımsız; ortak değişken zaman.</li>
+        <li>\(v_{0x}=v_0\cos\theta\) (sabit), \(v_{0y}=v_0\sin\theta\), \(a_y=-g\).</li>
+        <li>\(t_{\text{tepe}}=\frac{v_0\sin\theta}{g}\), \(H=\frac{v_0^2\sin^2\theta}{2g}\), \(R=\frac{v_0^2\sin2\theta}{g}\); en uzak 45°.</li>
+        <li>Yatay atış: \(t=\sqrt{2h/g}\), \(x=v_0t\).</li>
+        <li>Bağıl hız: \(\mathbf v_{A/C}=\mathbf v_{A/B}+\mathbf v_{B/C}\).</li>
+      </ul>
+    </div>
+    <div class="quiz" data-unit="cen103-h4"></div>
+  </div>
+</section>
+
+<section id="cen103-h5" class="reveal">
+  <div class="unit-head c103h">
+    <div class="eyebrow">CEN 103 · Hafta 5 · RTEÜ planı: Hareket kanunları</div>
+    <h2>Newton'un hareket kanunları</h2>
+    <p>Kinematik hareketi tarif etti; dinamik nedenini açıklar. Neden hızlanır, neden durur? Cevap: kuvvet.</p>
+  </div>
+  <div class="goal" style="margin:10px 0"><b>Not:</b> Hocanın notu elimde yok; konu RTEÜ ders bilgi paketindeki başlığa göre hazırlandı.</div>
+
+  <div class="card">
+    <h3>5.1 Üç kanun</h3>
+    <div class="grid2">
+      <div class="mini"><h4>1. Kanun (eylemsizlik)</h4><p>Net kuvvet sıfırsa cisim durur ya da sabit hızla doğrusal gider. Hareketi sürdürmek için kuvvet gerekmez; <b>değiştirmek</b> için gerekir.</p></div>
+      <div class="mini"><h4>2. Kanun</h4><p>\(\sum\mathbf F=m\mathbf a\). Net kuvvet ivme üretir; aynı kuvvet büyük kütleye az ivme verir.</p></div>
+      <div class="mini"><h4>3. Kanun (etki–tepki)</h4><p>A, B'ye kuvvet uygularsa B de A'ya eşit büyüklükte, zıt yönde kuvvet uygular. Bu iki kuvvet <b>farklı cisimlere</b> etki eder, birbirini götürmez.</p></div>
+    </div>
+    <div class="eq">\[ \sum\mathbf F=m\mathbf a,\qquad 1\ \text{N}=1\ \text{kg}\cdot\text{m/s}^2,\qquad [F]=\frac{ML}{T^2} \]</div>
+  </div>
+
+  <div class="card">
+    <h3>5.2 Sık karşılaşılan kuvvetler</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Kuvvet</th><th>Formül / yön</th><th>Not</th></tr></thead>
+      <tbody>
+        <tr><td>Ağırlık \(\mathbf W\)</td><td>\(W=mg\), aşağı</td><td>Kütle (kg) ≠ ağırlık (N)</td></tr>
+        <tr><td>Normal kuvvet \(\mathbf N\)</td><td>Yüzeye dik, yüzeyden dışarı</td><td>Her zaman \(mg\)'ye eşit değildir</td></tr>
+        <tr><td>Gerilme \(\mathbf T\)</td><td>İp boyunca, cisimden uzağa</td><td>Hafif ip: her yerde aynı</td></tr>
+        <tr><td>Sürtünme \(\mathbf f\)</td><td>Harekete (eğilime) zıt</td><td>\(f_s\le\mu_sN\), \(f_k=\mu_kN\)</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>5.3 Problem çözme yöntemi: serbest cisim diyagramı</h3>
+    <ol class="ol-tight">
+      <li>Her cismi ayrı ayrı çiz; üzerine etki eden <b>tüm</b> kuvvetleri oklarla göster (serbest cisim diyagramı).</li>
+      <li>Eksen seç: eğik düzlemde bir ekseni yüzeye paralel al.</li>
+      <li>Kuvvetleri bileşenlere ayır (Hafta 3).</li>
+      <li>Her eksen için \(\sum F_x=ma_x\), \(\sum F_y=ma_y\) yaz.</li>
+      <li>Denklem sistemini çöz, birimleri kontrol et.</li>
+    </ol>
+    <div class="derivation reveal" data-title="Asansörde 60 kg'lık öğrenci, asansör 2 m/s² ile yukarı hızlanıyor. Tartı ne gösterir?">
+      <div class="step"><p><b>Adım 1.</b> Kuvvetler: yukarı \(N\) (tartı), aşağı \(mg=60\cdot9{,}8=588\) N.</p></div>
+      <div class="step"><p><b>Adım 2.</b> Yukarı pozitif: \(N-mg=ma\) → \(N=m(g+a)=60(9{,}8+2)=708\) N.</p></div>
+      <div class="step"><p><b>Yorum:</b> Tartı ağırlıktan fazla gösterir. Asansör aşağı hızlansa \(N=m(g-a)\) olur; serbest düşerse \(N=0\) (ağırlıksızlık).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="derivation reveal" data-title="Sürtünmesiz eğik düzlem (açı θ)">
+      <div class="step"><p><b>Adım 1.</b> Eksenler: düzleme paralel (aşağı +) ve dik.</p></div>
+      <div class="step"><p><b>Adım 2.</b> Ağırlığın bileşenleri: düzlem boyunca \(mg\sin\theta\), düzleme dik \(mg\cos\theta\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Dik eksende ivme yok: \(N=mg\cos\theta\). Paralel eksende: \(mg\sin\theta=ma\) → \(a=g\sin\theta\) (kütleden bağımsız).</p></div>
+      <div class="step"><p><b>Sürtünme varsa:</b> \(a=g(\sin\theta-\mu_k\cos\theta)\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="derivation reveal" data-title="İple bağlı iki kütle (Atwood): m₁ = 3 kg, m₂ = 5 kg">
+      <div class="step"><p><b>Adım 1.</b> Ağır olan (5 kg) aşağı iner. Her cisim için hareket yönü +: \(m_2g-T=m_2a\), \(T-m_1g=m_1a\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Topla: \((m_2-m_1)g=(m_1+m_2)a\) → \(a=\frac{2\cdot9{,}8}{8}=2{,}45\) m/s².</p></div>
+      <div class="step"><p><b>Adım 3.</b> \(T=m_1(g+a)=3(12{,}25)=36{,}75\) N.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="trap"><b>Sık hatalar:</b> Etki–tepki çiftini aynı cisme çizip “birbirini götürür” demek; \(N=mg\)'yi her durumda kullanmak; kütle ile ağırlığı karıştırmak; “hareket varsa kuvvet de vardır” sanmak (sabit hızda net kuvvet sıfırdır).</div>
+    <div class="imp">
+      <ul>
+        <li>1. kanun: net kuvvet 0 → sabit hız. 2. kanun: \(\sum\mathbf F=m\mathbf a\). 3. kanun: eşit, zıt, <b>farklı cisimlerde</b>.</li>
+        <li>\(W=mg\); 1 N = 1 kg·m/s².</li>
+        <li>Asansör: \(N=m(g+a)\) yukarı hızlanırken, \(N=m(g-a)\) aşağı hızlanırken.</li>
+        <li>Eğik düzlem: \(N=mg\cos\theta\), \(a=g\sin\theta\) (sürtünmesiz).</li>
+        <li>Sürtünme: statik \(f_s\le\mu_sN\), kinetik \(f_k=\mu_kN\); genelde \(\mu_k\lt\mu_s\).</li>
+      </ul>
+    </div>
+    <div class="quiz" data-unit="cen103-h5"></div>
+  </div>
+</section>
+
+<section id="cen103-h6" class="reveal">
+  <div class="unit-head c103h">
+    <div class="eyebrow">CEN 103 · Hafta 6 · RTEÜ planı: Dairesel hareket ve Newton kanunlarının diğer uygulamaları</div>
+    <h2>Dairesel hareket ve uygulamalar</h2>
+    <p>Hızın büyüklüğü sabit olsa bile yönü değişiyorsa ivme vardır. Virajdaki araba, dönen taş, yörüngedeki uydu.</p>
+  </div>
+  <div class="goal" style="margin:10px 0"><b>Not:</b> Hocanın notu elimde yok; konu RTEÜ ders bilgi paketindeki başlığa göre hazırlandı.</div>
+
+  <div class="card">
+    <h3>6.1 Düzgün dairesel hareket</h3>
+    <p>Yarıçapı \(r\) olan çemberde sabit süratle \(v\) dönen cismin ivmesi <b>merkeze doğrudur</b> (merkezcil ivme):</p>
+    <div class="eq">\[ a_c=\frac{v^2}{r},\qquad T=\frac{2\pi r}{v},\qquad v=\omega r,\qquad a_c=\omega^2r \]</div>
+    <p>\(T\) periyot (bir tur süresi), \(\omega\) açısal hız (rad/s), frekans \(f=1/T\).</p>
+    <div class="derivation reveal" data-title="Merkezcil kuvvet: Newton'un 2. kanunu çember üzerinde">
+      <div class="step"><p><b>Adım 1.</b> İvme merkeze doğru \(v^2/r\) ise, merkeze doğru <b>net</b> kuvvet: \(\sum F_r=m\frac{v^2}{r}\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> “Merkezcil kuvvet” yeni bir kuvvet türü değildir; ip gerilmesi, sürtünme, yerçekimi gibi var olan kuvvetlerin merkeze doğru bileşkesidir.</p></div>
+      <div class="step"><p><b>Adım 3.</b> İp koparsa cisim dışarı “fırlamaz”; o anki teğet doğrultuda düz gider (1. kanun).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>6.2 Örnekler</h3>
+    <div class="derivation reveal" data-title="Düz virajda araba: r = 50 m, μs = 0,8. En yüksek hız?">
+      <div class="step"><p><b>Adım 1.</b> Merkeze doğru tek kuvvet statik sürtünme: \(f_s=m\frac{v^2}{r}\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Sınır: \(f_s\le\mu_sN=\mu_smg\). \(m\frac{v^2}{r}\le\mu_smg\) → \(v_{\max}=\sqrt{\mu_sgr}\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> \(v_{\max}=\sqrt{0{,}8\cdot9{,}8\cdot50}\approx19{,}8\) m/s ≈ 71 km/h. Kütleye bağlı değil.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="derivation reveal" data-title="Düşey çemberin tepesinde ip gerilmesi">
+      <div class="step"><p><b>Adım 1.</b> Tepede ağırlık ve gerilme ikisi de aşağı (merkeze): \(T+mg=m\frac{v^2}{r}\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> İpin gergin kalması için \(T\ge0\) → \(v\ge\sqrt{gr}\) (tepede minimum hız).</p></div>
+      <div class="step"><p><b>Altta:</b> \(T-mg=m\frac{v^2}{r}\) → gerilme en büyük altta olur.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>6.3 Düzgün olmayan dairesel hareket ve direnç kuvvetleri</h3>
+    <p>Sürat de değişiyorsa iki ivme bileşeni vardır: merkeze doğru \(a_r=v^2/r\) ve teğetsel \(a_t=dv/dt\). Toplam: \(a=\sqrt{a_r^2+a_t^2}\).</p>
+    <p><b>Hava direnci:</b> Hızla artan, harekete zıt bir kuvvettir. Düşen cisimde direnç ağırlığa eşit olunca ivme sıfırlanır ve cisim sabit <b>limit hız</b>la düşer (paraşüt).</p>
+    <div class="trap"><b>Sık hatalar:</b> Serbest cisim diyagramına ayrıca bir “merkezcil kuvvet” oku çizmek; “merkezkaç kuvveti” ile dışarı itildiğini sanmak (eylemsiz gözlemciye göre böyle bir kuvvet yoktur); \(v\) yerine açısal hızı karıştırmak.</div>
+    <div class="imp">
+      <ul>
+        <li>\(a_c=\frac{v^2}{r}=\omega^2r\), merkeze doğru; \(v=\omega r\), \(T=\frac{2\pi r}{v}\), \(f=1/T\).</li>
+        <li>\(\sum F_{\text{merkez}}=m\frac{v^2}{r}\); merkezcil kuvvet var olan kuvvetlerin bileşkesidir.</li>
+        <li>Düz viraj: \(v_{\max}=\sqrt{\mu_sgr}\). Düşey çember tepesi: \(v_{\min}=\sqrt{gr}\).</li>
+        <li>Düzgün olmayan: \(a=\sqrt{a_r^2+a_t^2}\). Limit hızda direnç = ağırlık.</li>
+      </ul>
+    </div>
+    <div class="quiz" data-unit="cen103-h6"></div>
+  </div>
+</section>
+
+<section id="cen103-h7" class="reveal">
+  <div class="unit-head c103h">
+    <div class="eyebrow">CEN 103 · Hafta 7 · RTEÜ planı: İş, güç, enerji</div>
+    <h2>İş, kinetik enerji ve güç</h2>
+    <p>Kuvvet ve ivme yerine enerji ile düşünmek, birçok problemi zaman bilmeden çözmeyi sağlar. Skaler çarpımın (Hafta 3) fizikteki ilk büyük uygulaması.</p>
+  </div>
+  <div class="goal" style="margin:10px 0"><b>Not:</b> Hocanın notu elimde yok; konu RTEÜ ders bilgi paketindeki başlığa göre hazırlandı.</div>
+
+  <div class="card">
+    <h3>7.1 Sabit kuvvetin işi</h3>
+    <div class="eq">\[ W=\mathbf F\cdot\mathbf d=Fd\cos\theta,\qquad 1\ \text{J}=1\ \text{N}\cdot\text{m} \]</div>
+    <ul class="ol-tight">
+      <li>\(\theta=0^\circ\): kuvvet harekete yardım eder, \(W\gt0\).</li>
+      <li>\(\theta=90^\circ\): iş sıfır (ör. normal kuvvet, düz yolda taşınan çanta).</li>
+      <li>\(\theta=180^\circ\): kuvvet hareketi engeller, \(W\lt0\) (ör. kinetik sürtünme).</li>
+    </ul>
+    <div class="derivation reveal" data-title="Örnek: Kızak 50 N ile yatayla 30° açıyla 10 m çekiliyor">
+      <div class="step"><p>\(W=50\cdot10\cdot\cos30^\circ\approx433\) J. Kuvvetin yalnızca hareket doğrultusundaki bileşeni (\(50\cos30^\circ\approx43{,}3\) N) iş yapar.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/1</span></div>
+    </div>
+    <p><b>Değişken kuvvet:</b> \(W=\int_{x_1}^{x_2}F(x)\,dx\) = \(F\)–\(x\) grafiğinin altındaki alan. Yay için \(F=-kx\) (Hooke): yayı \(x\) kadar germek için yapılan iş \(\frac12kx^2\).</p>
+  </div>
+
+  <div class="card">
+    <h3>7.2 İş–kinetik enerji teoremi</h3>
+    <div class="eq">\[ K=\tfrac12mv^2,\qquad W_{\text{net}}=\Delta K=\tfrac12mv_s^2-\tfrac12mv_i^2 \]</div>
+    <div class="derivation reveal" data-title="Teoremin türetilmesi (sabit kuvvet)">
+      <div class="step"><p><b>Adım 1.</b> \(W_{\text{net}}=F_{\text{net}}\,d=ma\,d\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Sabit ivmede \(v_s^2=v_i^2+2ad\) → \(ad=\frac{v_s^2-v_i^2}{2}\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> \(W_{\text{net}}=m\frac{v_s^2-v_i^2}{2}=\frac12mv_s^2-\frac12mv_i^2\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="derivation reveal" data-title="Hafta 2'deki fren örneği enerjiyle: 20 m/s, sürtünme 5 m/s² verecek kadar">
+      <div class="step"><p>\(W_{\text{sürt}}=-f d=-m\cdot5\cdot d\); \(\Delta K=0-\frac12m(20)^2=-200m\).</p></div>
+      <div class="step"><p>\(-5md=-200m\) → \(d=40\) m. Kinematikle aynı sonuç, zaman bilmeden.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/2</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>7.3 Güç</h3>
+    <div class="eq">\[ \bar P=\frac{W}{\Delta t},\qquad P=\mathbf F\cdot\mathbf v,\qquad 1\ \text{W}=1\ \text{J/s},\qquad 1\ \text{hp}\approx746\ \text{W} \]</div>
+    <div class="ex"><b>Örnek:</b> 70 kg'lık öğrenci 3 m yüksekliğindeki merdiveni 5 s'de çıkıyor. \(W=mgh=70\cdot9{,}8\cdot3=2058\) J; \(P=2058/5\approx412\) W. <b>kWh</b> bir enerji birimidir: \(1\ \text{kWh}=3{,}6\times10^6\) J.</div>
+  </div>
+
+  <div class="card">
+    <h3>7.4 Ön bakış: potansiyel enerji ve korunum (vize sonrası)</h3>
+    <p>Yerçekimine karşı yapılan iş \(mgh\) olarak “depolanır”: \(U=mgh\). Sürtünme yoksa \(K+U\) sabittir. 3 m yükseklikten bırakılan cisim yere \(v=\sqrt{2gh}\approx7{,}7\) m/s ile ulaşır. Bu konu RTEÜ planında vizeden sonraki haftadadır.</p>
+    <div class="trap"><b>Sık hatalar:</b> İşi vektör sanmak (iş skalerdir); normal kuvvetin iş yaptığını düşünmek; sürtünme işini pozitif almak; güç (W) ile enerjiyi (J, kWh) karıştırmak.</div>
+    <div class="imp">
+      <ul>
+        <li>\(W=Fd\cos\theta\) (skaler, J). 90°'de iş sıfır; sürtünme işi negatif.</li>
+        <li>Değişken kuvvet: \(W=\int F\,dx\); yay: \(F=-kx\), \(W=\frac12kx^2\).</li>
+        <li>\(K=\frac12mv^2\); <b>\(W_{\text{net}}=\Delta K\)</b>.</li>
+        <li>\(P=W/t=Fv\); 1 W = 1 J/s; 1 kWh = 3,6 MJ; 1 hp ≈ 746 W.</li>
+      </ul>
+    </div>
+    <div class="quiz" data-unit="cen103-h7"></div>
+  </div>
+</section>
+
+<section id="cen103-h8" class="reveal">
+  <div class="unit-head c103h">
+    <div class="eyebrow">CEN 103 · Hafta 8 · Ara sınav</div>
+    <h2>Vize tekrar planı</h2>
+    <p>RTEÜ planına göre vize; ölçme, bir boyutta hareket, vektörler, iki boyutta hareket, Newton kanunları, dairesel hareket ve iş–enerjiyi kapsar.</p>
+  </div>
+  <div class="card">
+    <h3>Konu → formül → mutlaka çözülecek soru tipi</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Hafta</th><th>Anahtar formül</th><th>Soru tipi</th></tr></thead>
+      <tbody>
+        <tr><td>1 Ölçme</td><td>Boyut analizi, birim çevirme</td><td>Bir formülün boyutsal doğruluğu; km/h → m/s</td></tr>
+        <tr><td>2 1B hareket</td><td>\(v^2=v_0^2+2a\Delta x\)</td><td>Fren mesafesi, serbest düşme</td></tr>
+        <tr><td>3 Vektörler</td><td>Bileşenler, nokta/çapraz çarpım</td><td>Bileşke yer değiştirme, açı bulma</td></tr>
+        <tr><td>4 2B hareket</td><td>\(R=\frac{v_0^2\sin2\theta}{g}\)</td><td>Eğik/yatay atış</td></tr>
+        <tr><td>5 Newton</td><td>\(\sum F=ma\)</td><td>Eğik düzlem, asansör, Atwood</td></tr>
+        <tr><td>6 Dairesel</td><td>\(F=mv^2/r\)</td><td>Viraj hızı, düşey çember</td></tr>
+        <tr><td>7 İş–enerji</td><td>\(W=\Delta K\), \(P=W/t\)</td><td>Durma mesafesi, merdiven gücü</td></tr>
+      </tbody>
+    </table></div>
+    <div class="imp">
+      <ul>
+        <li>Her soruda: şekil çiz → eksen ve pozitif yön seç → bilinenleri birimleriyle yaz → hangi denklem? → çöz → birim ve sağduyu kontrolü.</li>
+        <li>Notlarda hocanın verdiği Bölüm 1–2 çözümlü problemlerini mutlaka yeniden çöz.</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -2838,6 +3466,250 @@ body.exam .impindex{display:block}
 </section>
 
 <!-- ====================== EK ====================== -->
+
+<section id="u5">
+  <div class="unit-head u4h reveal">
+    <div class="eyebrow">Ünite 5 · Hafta 5 · Week 4 slaytındaki “Next week” listesine göre</div>
+    <h2>Linux II: metin işleme, bash betikleri ve Git</h2>
+    <p>Week 4'te dosyalarla dolaştık. Şimdi metni süzmeyi, işleri otomatikleştirmeyi ve çalışmanın geçmişini tutmayı öğreniyoruz.</p>
+  </div>
+  <div class="goal reveal"><b>Not:</b> Bu haftanın slaytı elimde yok. Konular Week 4 slaytının son sayfasındaki listeden (sed, awk, sort, uniq, wc, cut; bash betik temelleri; Git ve GitHub) alındı. Slayt gelince karşılaştır.</div>
+
+  <div class="card reveal">
+    <h3>5.1 Metin işleme araçları</h3>
+    <p>UNIX felsefesi: her araç tek bir işi iyi yapar; <code>|</code> ile zincirlenir. Örnek dosya <code>notlar.csv</code>:</p>
+    <pre class="code">numara,ad,vize,final
+1001,Ali,70,80
+1002,Ayse,90,85
+1003,Can,40,45
+1004,Ayse,55,60</pre>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Komut</th><th>Ne yapar?</th><th>Örnek</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">wc</td><td>Satır/kelime/bayt sayar</td><td class="mono">wc -l notlar.csv → 5</td></tr>
+        <tr><td class="mono">cut</td><td>Sütun keser</td><td class="mono">cut -d, -f2 notlar.csv → adlar</td></tr>
+        <tr><td class="mono">sort</td><td>Sıralar</td><td class="mono">sort -t, -k3 -n (3. sütuna göre sayısal)</td></tr>
+        <tr><td class="mono">uniq</td><td>Ardışık tekrarları siler</td><td class="mono">sort | uniq -c (sayarak)</td></tr>
+        <tr><td class="mono">grep</td><td>Satır süzer</td><td class="mono">grep -v numara (başlığı at)</td></tr>
+        <tr><td class="mono">sed</td><td>Akış düzenleyici: bul-değiştir</td><td class="mono">sed 's/Ayse/Ayşe/g'</td></tr>
+        <tr><td class="mono">awk</td><td>Sütun bazlı mini programlama dili</td><td class="mono">awk -F, '{print $2, $3}'</td></tr>
+      </tbody>
+    </table></div>
+    <pre class="code"># Kaç farklı isim var ve her biri kaç kez geçiyor?
+tail -n +2 notlar.csv | cut -d, -f2 | sort | uniq -c
+#   1 Ali
+#   2 Ayse
+#   1 Can
+
+# Ağırlıklı ortalamayı hesapla ve geçenleri yazdır
+awk -F, 'NR&gt;1 { ort = 0.4*$3 + 0.6*$4; if (ort &gt;= 50) print $2, ort }' notlar.csv
+# Ali 76
+# Ayse 87
+# Ayse 58</pre>
+    <div class="trap"><b>Dikkat:</b> <code>uniq</code> yalnızca <b>yan yana</b> tekrarları birleştirir; önce <code>sort</code> gerekir. <code>sed -i</code> dosyayı yerinde değiştirir; önce <code>-i</code> olmadan dene. awk'ta <code>$0</code> tüm satır, <code>$1</code> ilk alan, <code>NR</code> satır numarasıdır.</div>
+  </div>
+
+  <div class="card reveal">
+    <h3>5.2 Bash betikleri: komutları dosyaya yazmak</h3>
+    <pre class="code">#!/bin/bash
+# yedekle.sh — bir klasörü tarihli tar arşivine yedekler
+kaynak="$1"                         # ilk argüman
+if [ -z "$kaynak" ]; then
+    echo "Kullanim: $0 klasor"
+    exit 1
+fi
+tarih=$(date +%Y-%m-%d)             # komut çıktısını değişkene al
+arsiv="yedek-$tarih.tar.gz"
+tar -zcf "$arsiv" "$kaynak"
+echo "$arsiv olusturuldu"</pre>
+    <ol class="ol-tight">
+      <li>İlk satır (<b>shebang</b>) hangi yorumlayıcının çalıştıracağını söyler.</li>
+      <li>Çalıştırma izni ver: <code>chmod +x yedekle.sh</code>, çalıştır: <code>./yedekle.sh belgeler</code>.</li>
+      <li>Değişken atamasında <code>=</code> çevresinde <b>boşluk olmaz</b>: <code>ad="Ali"</code>. Kullanırken <code>$ad</code>.</li>
+      <li><code>$1, $2</code> argümanlar, <code>$#</code> argüman sayısı, <code>$?</code> son komutun çıkış kodu (0 = başarı).</li>
+    </ol>
+    <pre class="code"># Döngü ve koşul
+for f in *.txt; do
+    satir=$(wc -l &lt; "$f")
+    if [ "$satir" -gt 10 ]; then
+        echo "$f uzun ($satir satir)"
+    fi
+done</pre>
+    <p>Sayı karşılaştırma: <code>-eq -ne -lt -le -gt -ge</code>; metin: <code>=</code>, <code>!=</code>; dosya: <code>-f</code> (dosya var mı), <code>-d</code> (klasör var mı).</p>
+  </div>
+
+  <div class="card reveal">
+    <h3>5.3 Git ve GitHub ile ilk çalışma</h3>
+    <pre class="code">git config --global user.name "Ad Soyad"
+git config --global user.email "ogrenci@erdogan.edu.tr"
+git init                    # klasörü depo yap
+git add notlar.csv          # hazırlık alanına ekle
+git commit -m "Not dosyasini ekle"
+git log --oneline           # geçmiş
+git remote add origin https://github.com/kullanici/proje.git
+git push -u origin main     # GitHub'a gönder
+git clone &lt;url&gt;             # başkasının deposunu indir
+git pull                    # güncellemeleri al</pre>
+    <p>Üç alan: <b>çalışma klasörü</b> (düzenlediğin dosyalar) → <code>git add</code> → <b>hazırlık alanı</b> → <code>git commit</code> → <b>yerel depo</b> → <code>git push</code> → <b>uzak depo (GitHub)</b>. Ayrıntılı anlatım CEN 109 Ders 3'te.</p>
+    <div class="imp">
+      <ul>
+        <li>wc -l satır sayar; cut -d, -f2 ikinci sütun; sort -n sayısal; <b>uniq'ten önce sort</b>; uniq -c sayar.</li>
+        <li>sed 's/eski/yeni/g' değiştirir; awk -F, '{print $2}' sütun yazdırır; NR satır no.</li>
+        <li>Betik: <code>#!/bin/bash</code>, <code>chmod +x</code>, <code>./betik.sh</code>; değişken atamada boşluk yok; <code>$1</code> argüman, <code>$?</code> çıkış kodu.</li>
+        <li><code>[ "$x" -gt 10 ]</code> sayısal karşılaştırma; köşeli parantez içinde boşluklar zorunlu.</li>
+        <li>Git: init → add → commit → push; clone/pull.</li>
+      </ul>
+    </div>
+    <div class="quiz" data-unit="u5"></div>
+  </div>
+</section>
+
+<section id="u6">
+  <div class="unit-head u1h reveal">
+    <div class="eyebrow">Ünite 6 · Hafta 6 · Week 4 slaytı ve RTEÜ planı: Algoritma keşfi ve tasarımı</div>
+    <h2>Algoritmalar ve akış diyagramları</h2>
+    <p>Bir problemi bilgisayara anlatmadan önce çözümü kendimiz kesin adımlarla yazmalıyız. Bu adımların listesi algoritmadır.</p>
+  </div>
+  <div class="goal reveal"><b>Not:</b> Slayt elimde yok. Week 4 slaytındaki “Week 6: Algorithms and Flowcharts” başlığı ve RTEÜ planındaki “Algoritma Keşfi ve Tasarımı” konusuna göre hazırlandı. CEN 107 Hafta 2 ile örtüşür.</div>
+
+  <div class="card reveal">
+    <h3>6.1 Algoritma nedir, iyi algoritma nasıl olur?</h3>
+    <p><b>Algoritma:</b> Bir problemi çözmek için, başlangıcı ve sonu belli, her adımı açık ve sonlu sayıda adımdan oluşan yöntem. (Week 1 slaytındaki tanım: problemin analizi sonucu üretilen, programla ifade edilebilen sıralı adımlar.)</p>
+    <div class="grid2">
+      <div class="mini"><h4>Kesinlik</h4><p>Her adım tek anlamlı.</p></div>
+      <div class="mini"><h4>Sonluluk</h4><p>Sonlu adımda biter.</p></div>
+      <div class="mini"><h4>Girdi / çıktı</h4><p>Ne alır, ne üretir belli.</p></div>
+      <div class="mini"><h4>Etkinlik</h4><p>Her adım yapılabilir, makul sürede.</p></div>
+    </div>
+    <p><b>Hesaplamalı düşünme</b> (Week 1): problemi parçala → girdi, çıktı, kısıtları tanımla → soyutla → algoritmayı tasarla. Slayttaki örnek: listedeki en büyük sayıyı bulmak.</p>
+  </div>
+
+  <div class="card reveal">
+    <h3>6.2 Sözde kod ve akış diyagramı</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Sembol</th><th>Anlamı</th></tr></thead>
+      <tbody>
+        <tr><td>Oval</td><td>Başla / Bitir</td></tr>
+        <tr><td>Paralelkenar</td><td>Girdi / Çıktı (oku, yaz)</td></tr>
+        <tr><td>Dikdörtgen</td><td>İşlem (atama, hesap)</td></tr>
+        <tr><td>Eşkenar dörtgen</td><td>Karar (koşul; Evet/Hayır iki çıkış)</td></tr>
+        <tr><td>Ok</td><td>Akış yönü</td></tr>
+        <tr><td>Altıgen / döngü sembolü</td><td>Tekrar (bazı gösterimlerde)</td></tr>
+      </tbody>
+    </table></div>
+    <pre class="code">ALGORİTMA: Listedeki en büyük sayı
+1. BAŞLA
+2. OKU n ve n adet sayı (a1 ... an)
+3. enBuyuk ← a1
+4. i ← 2
+5. i &lt;= n OLDUĞU SÜRECE:
+     5.1 EĞER ai &gt; enBuyuk İSE enBuyuk ← ai
+     5.2 i ← i + 1
+6. YAZ enBuyuk
+7. BİTİR</pre>
+    <div class="derivation reveal" data-title="Bu algoritmayı {4, 9, 2, 7} için izle">
+      <div class="step"><p>enBuyuk = 4, i = 2: a2 = 9 &gt; 4 → enBuyuk = 9.</p></div>
+      <div class="step"><p>i = 3: a3 = 2, 9'dan büyük değil.</p></div>
+      <div class="step"><p>i = 4: a4 = 7, değişmez. i = 5 &gt; n → döngü biter. Çıktı 9.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <h3>6.3 Klasik algoritma örnekleri</h3>
+    <div class="grid2">
+      <div class="mini"><h4>Toplam ve ortalama</h4><p>toplam ← 0; her sayıyı ekle; ortalama ← toplam / n (n &gt; 0 kontrolü).</p></div>
+      <div class="mini"><h4>Faktöriyel</h4><p>f ← 1; i = 2..n için f ← f × i.</p></div>
+      <div class="mini"><h4>Asal mı?</h4><p>2..√n arasında bölen ara; bulursan asal değil.</p></div>
+      <div class="mini"><h4>Doğrusal arama</h4><p>Elemanları sırayla karşılaştır; bulunca dur.</p></div>
+      <div class="mini"><h4>İkili arama</h4><p>Sıralı listede ortaya bak; aranan küçükse sol yarı, büyükse sağ yarı.</p></div>
+      <div class="mini"><h4>Sıralama</h4><p>Kabarcık: komşuları karşılaştır, yer değiştir.</p></div>
+    </div>
+    <div class="derivation reveal" data-title="İkili arama: {3, 8, 12, 17, 21, 30, 42} içinde 30">
+      <div class="step"><p>Sol = 0, sağ = 6, orta = 3 → 17. 30 &gt; 17 → sağ yarı: sol = 4.</p></div>
+      <div class="step"><p>Orta = 5 → 30. Bulundu! Yalnızca 2 karşılaştırma (doğrusal aramada 6).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/2</span></div>
+    </div>
+    <div class="imp">
+      <ul>
+        <li>Algoritma: kesin, sonlu, girdi/çıktısı belli, yapılabilir adımlar.</li>
+        <li>Semboller: oval başla/bitir, paralelkenar G/Ç, dikdörtgen işlem, elmas karar.</li>
+        <li>En büyük bulma: ilk elemanı başlangıç al, diğerleriyle karşılaştır.</li>
+        <li>İkili arama yalnızca <b>sıralı</b> listede çalışır; her adımda aralığı yarıya indirir.</li>
+        <li>Her algoritmayı izleme tablosuyla küçük bir örnekte dene.</li>
+      </ul>
+    </div>
+    <div class="quiz" data-unit="u6"></div>
+  </div>
+</section>
+
+<section id="u7">
+  <div class="unit-head u3h reveal">
+    <div class="eyebrow">Ünite 7 · Hafta 7 · RTEÜ planı: Etkin algoritma tasarımı, veri depolama, soru çözümü</div>
+    <h2>Etkin algoritmalar ve vize tekrarı</h2>
+    <p>Doğru çalışan bir algoritma yetmez; yeterince hızlı da olmalı. Ardından vize öncesi tüm ünitelerin soru çözümü.</p>
+  </div>
+  <div class="goal reveal"><b>Not:</b> RTEÜ ders bilgi paketindeki “Etkin Algoritma Tasarımı”, “Veri Depolama” ve “Soru Çözümü” başlıklarına göre hazırlandı; veri depolama ve ikili sayılar Ünite 1–2'de işlendi.</div>
+
+  <div class="card reveal">
+    <h3>7.1 Bir algoritma ne kadar hızlı? Adım saymak</h3>
+    <p>Süreyi saniyeyle ölçmek bilgisayara göre değişir. Bunun yerine girdi büyüklüğü \(n\) büyüdükçe <b>adım sayısının nasıl büyüdüğüne</b> bakarız (büyük-O gösterimi).</p>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Büyüme</th><th>Ad</th><th>Örnek</th><th>\(n=1000\) için yaklaşık adım</th></tr></thead>
+      <tbody>
+        <tr><td>\(O(1)\)</td><td>Sabit</td><td>Dizide <code>a[i]</code>'ye erişim</td><td>1</td></tr>
+        <tr><td>\(O(\log n)\)</td><td>Logaritmik</td><td>İkili arama</td><td>10</td></tr>
+        <tr><td>\(O(n)\)</td><td>Doğrusal</td><td>Doğrusal arama, toplam</td><td>1 000</td></tr>
+        <tr><td>\(O(n\log n)\)</td><td></td><td>İyi sıralama algoritmaları</td><td>10 000</td></tr>
+        <tr><td>\(O(n^2)\)</td><td>Karesel</td><td>Kabarcık sıralama, iç içe döngü</td><td>1 000 000</td></tr>
+        <tr><td>\(O(2^n)\)</td><td>Üstel</td><td>Tüm alt kümeleri denemek</td><td>astronomik</td></tr>
+      </tbody>
+    </table></div>
+    <div class="derivation reveal" data-title="1'den n'e toplam: iki algoritma">
+      <div class="step"><p><b>Yöntem A (döngü):</b> \(n\) kez toplama → \(O(n)\).</p></div>
+      <div class="step"><p><b>Yöntem B (Gauss formülü):</b> \(\frac{n(n+1)}{2}\) → bir çarpma, bir bölme → \(O(1)\).</p></div>
+      <div class="step"><p><b>Ders:</b> Problemi anlamak, kod hızlandırmaktan çok daha büyük kazanç sağlar. \(n=10^9\) için A milyar adım, B birkaç adım.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <p><b>Tasarım stratejileri:</b> kaba kuvvet (her şeyi dene), böl ve fethet (ikili arama), açgözlü (her adımda en iyi görüneni seç), gereksiz tekrarı ortadan kaldır (hesabı bir kez yap, sakla).</p>
+  </div>
+
+  <div class="card reveal">
+    <h3>7.2 Vize soru çözümü: her üniteden tipik sorular</h3>
+    <div class="derivation reveal" data-title="Soru 1 (Ünite 2): (45)₁₀ sayısını ikili, sekizli ve onaltılıya çevir">
+      <div class="step"><p>45/2 → kalanlar 1,0,1,1,0,1 → alttan üste: \(101101_2\).</p></div>
+      <div class="step"><p>3'lü grup: 101 101 → \(55_8\). 4'lü grup: 0010 1101 → \(2\text{D}_{16}\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/2</span></div>
+    </div>
+    <div class="derivation reveal" data-title="Soru 2 (Ünite 2): 8 bit 2'ye tümleyen ile 25 − 37">
+      <div class="step"><p>25 = 00011001. 37 = 00100101 → 1'e tümleyen 11011010 → +1 → 11011011 (−37).</p></div>
+      <div class="step"><p>00011001 + 11011011 = 11110100. En soldaki bit 1 → negatif. Büyüklük: tümleyeni 00001100 = 12 → sonuç −12 ✓.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/2</span></div>
+    </div>
+    <div class="derivation reveal" data-title="Soru 3 (Ünite 3): F = A'B + AB + AB' sadeleştir">
+      <div class="step"><p>\(AB+A\overline B=A(B+\overline B)=A\).</p></div>
+      <div class="step"><p>\(F=\overline AB+A\). Dağılma: \(A+\overline AB=(A+\overline A)(A+B)=A+B\). Sonuç: tek bir OR kapısı.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/2</span></div>
+    </div>
+    <div class="derivation reveal" data-title="Soru 4 (Ünite 4): -rw-r----- izinli dosyaya sahibine çalıştırma izni ekle; sayısal sonuç?">
+      <div class="step"><p>rw- = 6, r-- = 4, --- = 0 → 640. <code>chmod u+x</code> → rwx = 7 → <b>740</b>.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/1</span></div>
+    </div>
+    <div class="derivation reveal" data-title="Soru 5 (Ünite 2): 4 GB RAM'i adreslemek için en az kaç bitlik adres gerekir?">
+      <div class="step"><p>\(4\ \text{GB}=4\cdot2^{30}=2^{32}\) bayt → <b>32 bit</b>.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/1</span></div>
+    </div>
+    <div class="imp">
+      <ul>
+        <li>Büyük-O sırası: \(O(1)\lt O(\log n)\lt O(n)\lt O(n\log n)\lt O(n^2)\lt O(2^n)\).</li>
+        <li>İkili arama \(O(\log n)\), doğrusal arama \(O(n)\), kabarcık sıralama \(O(n^2)\).</li>
+        <li>Vize konuları: disiplin ve donanım (Ü1), sayı sistemleri ve veri temsili (Ü2), Boole cebri ve kapılar (Ü3), Linux (Ü4), Linux II ve Git (Ü5), algoritmalar (Ü6).</li>
+        <li>Slayttaki not dağılımı: %40 vize, %60 final.</li>
+      </ul>
+    </div>
+    <div class="quiz" data-unit="u7"></div>
+  </div>
+</section>
 </div>
 
 <div class="course" id="cen107">
@@ -3706,7 +4578,7 @@ char harf_notu(double o) {
   </div>
 </section>
 
-<section id="cen107-w9" class="reveal">
+<section id="cen107-w9" class="reveal after8">
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 9</div>
     <h2>Kapsam, yığın ve özyineleme</h2>
@@ -3794,7 +4666,7 @@ int fib(int n) {                     /* 0 1 1 2 3 5 8 ... */
   </div>
 </section>
 
-<section id="cen107-w10" class="reveal">
+<section id="cen107-w10" class="reveal after8">
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 10</div>
     <h2>Diziler I</h2>
@@ -3895,7 +4767,7 @@ for (int k = 0; k &lt;= 10; k++) {
     <div class="quiz" data-unit="cen107-w10"></div>
   </div>
 </section>
-<section id="cen107-w11" class="reveal">
+<section id="cen107-w11" class="reveal after8">
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 11</div>
     <h2>Diziler II: matrisler</h2>
@@ -3990,7 +4862,7 @@ void yazdir(int a[][SUTUN], int satir) {   /* sütun sayısı ZORUNLU */
   </div>
 </section>
 
-<section id="cen107-w12" class="reveal">
+<section id="cen107-w12" class="reveal after8">
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 12</div>
     <h2>İşaretçiler ve bellek</h2>
@@ -4084,7 +4956,7 @@ dizi = NULL;</pre>
   </div>
 </section>
 
-<section id="cen107-w13" class="reveal">
+<section id="cen107-w13" class="reveal after8">
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 13</div>
     <h2>Karakter dizileri (string)</h2>
@@ -4167,7 +5039,7 @@ satir[strcspn(satir, "\n")] = '\0';         /* sondaki yeni satırı sil */</pre
   </div>
 </section>
 
-<section id="cen107-w14" class="reveal">
+<section id="cen107-w14" class="reveal after8">
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 14</div>
     <h2>Yapılar, dosyalar ve final</h2>
@@ -5006,6 +5878,285 @@ GRADES(student_id, course_id, mark)</pre>
   </div>
 </section>
 
+<section id="cen109-l5" class="reveal">
+  <div class="unit-head c109h">
+    <div class="eyebrow">CEN 109 · Hafta 5 · Ders 1'in “Next week” sorusuna göre</div>
+    <h2>Gerçek mi, sahte mi? Dijital içerik, deepfake ve doğrulama</h2>
+    <p>Ders 1 şu soruyla bitti: “Bir sahteyi yeterince gerçekçi yaparsan, bunun bir önemi var mı?” Bu hafta, yapay zekâ çağında bilginin güvenilirliğini ve onu nasıl sınayacağımızı konuşuyoruz.</p>
+  </div>
+  <div class="goal" style="margin:10px 0"><b>Not:</b> Bu haftanın slaytı elimde yok. Konu, Ders 1'in son sayfasındaki soru ve RTEÜ planındaki “E-posta ve İnternet araması” başlığından hazırlandı. Slayt gelince karşılaştır.</div>
+
+  <div class="card">
+    <h3>5.1 Bilgi bozukluğunun türleri</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Tür</th><th>Doğru mu?</th><th>Zarar niyeti</th><th>Örnek</th></tr></thead>
+      <tbody>
+        <tr><td>Yanlış bilgi (misinformation)</td><td>Hayır</td><td>Yok</td><td>Kontrol etmeden paylaşılan hatalı haber</td></tr>
+        <tr><td>Dezenformasyon</td><td>Hayır</td><td>Var</td><td>Kasıtlı üretilmiş sahte haber, sahte hesap</td></tr>
+        <tr><td>Kötü niyetli bilgi (malinformation)</td><td>Evet</td><td>Var</td><td>Gerçek özel bilginin zarar vermek için ifşası</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>5.2 Deepfake ve üretken yapay zekâ</h3>
+    <p><b>Deepfake</b>, yapay zekâ ile üretilmiş ya da değiştirilmiş, gerçek bir kişiyi söylemediği bir şeyi söylüyor gibi gösteren görüntü, ses veya videodur. Üretken modeller (Ders 2'de gördüğün LLM'lerin görüntü ve ses karşılıkları) büyük veri kümelerinden örüntü öğrenerek yeni içerik üretir.</p>
+    <div class="grid2">
+      <div class="mini"><h4>Neden önemli?</h4><p>Dolandırıcılık (sahte ses ile “acil para gönder” araması), seçim manipülasyonu, itibar zararı, kanıt olarak videoya güvenin azalması.</p></div>
+      <div class="mini"><h4>Ne zaman zararsız?</h4><p>Film efektleri, erişilebilirlik (ses kaybeden birinin kendi sesiyle konuşması), açıkça etiketlenmiş eğitim içeriği. Sorun, aldatma ve izinsiz kullanımdır.</p></div>
+    </div>
+    <h4>Görsel ipuçları (artık tek başına yetmez)</h4>
+    <ul class="ol-tight">
+      <li>Doğal olmayan göz kırpma, dudak ile sesin uyumsuzluğu.</li>
+      <li>Saç, kulak, takı ve ellerde bozulmalar; tutarsız ışık ve gölgeler.</li>
+      <li>Arka planda anlamsız yazılar.</li>
+    </ul>
+    <div class="trap"><b>Dikkat:</b> Modeller geliştikçe bu ipuçları kayboluyor. Görüntüye bakarak karar vermek yerine <b>kaynağı doğrulamak</b> daha güvenilir yoldur.</div>
+  </div>
+
+  <div class="card">
+    <h3>5.3 Doğrulama yöntemi: SIFT</h3>
+    <ol class="ol-tight">
+      <li><b>Dur (Stop):</b> Duygusal tepki veren bir içeriği paylaşmadan önce dur.</li>
+      <li><b>Kaynağı incele (Investigate the source):</b> Kim yayınladı? Hesap ne zaman açıldı? Bu konuda uzman mı?</li>
+      <li><b>Daha iyi kapsama bul (Find better coverage):</b> Aynı haberi güvenilir başka kaynaklar veriyor mu?</li>
+      <li><b>İzi sür (Trace):</b> Alıntıyı, görseli ya da videoyu ilk kaynağına kadar takip et.</li>
+    </ol>
+    <div class="grid2">
+      <div class="mini"><h4>Ters görsel arama</h4><p>Google Görseller, TinEye: fotoğrafın daha önce başka bir bağlamda kullanılıp kullanılmadığını gösterir.</p></div>
+      <div class="mini"><h4>Doğrulama kuruluşları</h4><p>Teyit.org, doğrulama platformları ve haber ajanslarının kontrol ekipleri.</p></div>
+      <div class="mini"><h4>İçerik kimliği</h4><p>Bazı kameralar ve platformlar görüntüye kaynak bilgisini imzalı olarak ekler (C2PA gibi standartlar).</p></div>
+      <div class="mini"><h4>Üst veri (metadata)</h4><p>Fotoğrafın çekim tarihi, cihazı; ancak kolayca silinip değiştirilebilir.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5.4 Etkili internet araması</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Operatör</th><th>Anlamı</th><th>Örnek</th></tr></thead>
+      <tbody>
+        <tr><td>"..."</td><td>Tam ifade</td><td class="mono">"ikiye tümleyen"</td></tr>
+        <tr><td>-</td><td>Hariç tut</td><td class="mono">python -yılan</td></tr>
+        <tr><td>site:</td><td>Belirli site</td><td class="mono">site:erdogan.edu.tr ders programı</td></tr>
+        <tr><td>filetype:</td><td>Dosya türü</td><td class="mono">filetype:pdf IEEE 754</td></tr>
+        <tr><td>OR</td><td>Seçeneklerden biri</td><td class="mono">linux OR unix komutlar</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Kaynak değerlendirme:</b> Yazar kim, tarih ne kadar güncel, kaynak gösteriyor mu, amacı bilgi vermek mi satış mı? Akademik çalışma için Google Akademik ve üniversite kütüphanesi veritabanları kullanılır.</p>
+    <h4>E-posta güvenliği ve görgüsü</h4>
+    <ul class="ol-tight">
+      <li>Hocaya e-postayı <b>@erdogan.edu.tr</b> hesabından, anlamlı bir konu satırıyla, ders kodu ve öğrenci numarasıyla yaz.</li>
+      <li><b>Kimlik avı (phishing) belirtileri:</b> acele ettiren dil, gönderen adresi ile görünen adın uyuşmaması, şifre isteyen bağlantılar, beklenmeyen ekler.</li>
+      <li>Bağlantının gerçek adresini üzerine gelerek kontrol et; şifreyi asla e-postadaki bağlantıdan girme.</li>
+    </ul>
+    <div class="imp">
+      <ul>
+        <li>Yanlış bilgi (niyetsiz), dezenformasyon (kasıtlı sahte), kötü niyetli bilgi (gerçek ama zarar için).</li>
+        <li>Deepfake: yapay zekâ ile üretilmiş/değiştirilmiş görüntü, ses, video. Görsel ipuçları güvenilmez; kaynağı doğrula.</li>
+        <li>SIFT: Dur, kaynağı incele, daha iyi kapsama bul, izi sür. Ters görsel arama.</li>
+        <li>Arama operatörleri: "tam ifade", -hariç, site:, filetype:, OR.</li>
+        <li>Phishing: aciliyet, sahte gönderen, şifre isteyen bağlantı.</li>
+      </ul>
+    </div>
+    <div class="quiz" data-unit="cen109-l5"></div>
+  </div>
+</section>
+
+<section id="cen109-l6" class="reveal">
+  <div class="unit-head c109h">
+    <div class="eyebrow">CEN 109 · Hafta 6 · RTEÜ planı: Kullanıcı hesapları, lisans, şifreleme, güncelleme, güvenlik duvarı, antivirüs, yedekleme, sanallaştırma</div>
+    <h2>Sistemi güvenli ve bakımlı tutmak</h2>
+    <p>Bir bilgisayarı kullanmak kolaydır; onu güvenli, güncel ve kayıpsız tutmak bir mühendislik becerisidir.</p>
+  </div>
+  <div class="goal" style="margin:10px 0"><b>Not:</b> Slayt elimde yok; konu RTEÜ ders bilgi paketindeki başlıklara göre hazırlandı.</div>
+
+  <div class="card">
+    <h3>6.1 Kullanıcı hesapları ve en az yetki</h3>
+    <p>Günlük işler <b>standart kullanıcı</b> hesabıyla yapılır; yönetici (Windows'ta Administrator, Linux'ta root/sudo) yalnızca kurulum ve sistem ayarı için kullanılır. Böylece bir zararlı yazılım çalışsa bile tüm sisteme erişemez. Bu, CEN 105 Ünite 4'teki “root'u gereksiz kullanma” kuralının aynısıdır.</p>
+    <ul class="ol-tight">
+      <li><b>Güçlü parola:</b> uzun (en az 12 karakter), tahmin edilemez, her hesapta farklı. Parola yöneticisi kullan.</li>
+      <li><b>İki aşamalı doğrulama (2FA):</b> parola + telefondaki kod/uygulama.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>6.2 Yazılım lisansları</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Tür</th><th>Anlamı</th><th>Örnek</th></tr></thead>
+      <tbody>
+        <tr><td>Ticari / tescilli</td><td>Kullanım hakkı satın alınır; kaynak kod kapalı</td><td>MS Office, Windows</td></tr>
+        <tr><td>Freeware</td><td>Ücretsiz ama kaynak kapalı</td><td>Bazı araç programları</td></tr>
+        <tr><td>Shareware / deneme</td><td>Belirli süre ya da özellikle ücretsiz</td><td>Deneme sürümleri</td></tr>
+        <tr><td>Özgür / açık kaynak</td><td>Kaynak açık; çalıştır, incele, değiştir, dağıt</td><td>Linux, LibreOffice, Firefox</td></tr>
+        <tr><td>GPL</td><td>Türev de GPL kalmalı (copyleft)</td><td>Linux çekirdeği</td></tr>
+        <tr><td>MIT / Apache</td><td>Serbest; telif notunu koru</td><td>Birçok kütüphane</td></tr>
+      </tbody>
+    </table></div>
+    <p>Lisanssız (kırık) yazılım hem yasa dışıdır hem de sıkça zararlı yazılım taşır. Üniversiteler öğrencilere çoğu zaman ücretsiz lisans sağlar.</p>
+  </div>
+
+  <div class="card">
+    <h3>6.3 Şifreleme</h3>
+    <div class="grid2">
+      <div class="mini"><h4>Simetrik</h4><p>Aynı anahtarla şifrele ve çöz (AES). Hızlıdır; sorun, anahtarı güvenle paylaşmaktır.</p></div>
+      <div class="mini"><h4>Asimetrik</h4><p>Açık anahtarla şifrele, yalnızca gizli anahtarla çöz (RSA). HTTPS'te oturum anahtarını güvenle paylaşmak için kullanılır.</p></div>
+      <div class="mini"><h4>Özet (hash)</h4><p>Veriden sabit uzunlukta bir parmak izi (SHA-256); geri çevrilemez. Parolalar özet olarak saklanır; dosya bütünlüğü kontrol edilir.</p></div>
+      <div class="mini"><h4>Disk şifreleme</h4><p>BitLocker, FileVault, LUKS: dizüstü çalınsa bile veri okunamaz.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>6.4 Güncelleme, güvenlik duvarı ve antivirüs</h3>
+    <ul class="ol-tight">
+      <li><b>Güncellemeler (yamalar):</b> bilinen açıkları kapatır (CEN 109 Ders 3: güvenlik yaması). Otomatik güncelleme açık olsun.</li>
+      <li><b>Güvenlik duvarı (firewall):</b> ağ trafiğini kurallara göre süzer; hangi programın hangi portla bağlantı kurabileceğine karar verir.</li>
+      <li><b>Antivirüs / zararlı yazılım koruması:</b> imza tabanlı (bilinen zararlıların parmak izi) ve davranış tabanlı tespit.</li>
+    </ul>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Zararlı türü</th><th>Ne yapar?</th></tr></thead>
+      <tbody>
+        <tr><td>Virüs</td><td>Başka dosyalara bulaşır, çalıştırılınca yayılır</td></tr>
+        <tr><td>Solucan (worm)</td><td>Ağ üzerinden kendi kendine yayılır</td></tr>
+        <tr><td>Truva atı</td><td>Faydalı görünür, arkada zararlı iş yapar</td></tr>
+        <tr><td>Fidye yazılımı</td><td>Dosyaları şifreler, fidye ister</td></tr>
+        <tr><td>Casus yazılım</td><td>Gizlice bilgi toplar</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>6.5 Yedekleme: 3-2-1 kuralı</h3>
+    <p>Veri kaybının en sık nedenleri donanım arızası, yanlışlıkla silme ve fidye yazılımıdır. Kural:</p>
+    <ul class="ol-tight">
+      <li><b>3</b> kopya (asıl + 2 yedek),</li>
+      <li><b>2</b> farklı ortamda (ör. dizüstü + harici disk),</li>
+      <li><b>1</b> kopya başka bir yerde (bulut ya da evde değil).</li>
+    </ul>
+    <p>Senkronizasyon (OneDrive, Google Drive) yedek değildir: yanlışlıkla silinen ya da şifrelenen dosya her yerde silinir/şifrelenir. Sürüm geçmişi olan yedekler tercih edilir. Kod için en iyi yedek Git + uzak depodur.</p>
+  </div>
+
+  <div class="card">
+    <h3>6.6 Programları yüklemek/kaldırmak ve sanallaştırma</h3>
+    <p><b>Yükleme:</b> resmî siteden ya da paket yöneticisinden (Windows'ta winget/Microsoft Store, Linux'ta apt) yükle; kurulum sihirbazındaki ek araç önerilerini işaretsiz bırak. <b>Kaldırma:</b> Ayarlar → Uygulamalar ya da <code>sudo apt remove</code>.</p>
+    <p><b>Sanallaştırma:</b> Bir bilgisayarın içinde, yazılımla taklit edilen başka bir bilgisayar (sanal makine, VM) çalıştırmaktır. Yönetici yazılım (<b>hipervizör</b>: VirtualBox, VMware, Hyper-V) CPU, RAM ve disk kaynaklarını paylaştırır.</p>
+    <div class="grid2">
+      <div class="mini"><h4>Neden?</h4><p>Windows'ta Linux denemek, riskli programı izole çalıştırmak, sunucu kaynaklarını bölmek (bulutun temeli).</p></div>
+      <div class="mini"><h4>Uygulama</h4><p>VirtualBox kur → yeni VM (2 GB RAM, 25 GB disk) → Ubuntu ISO'sunu bağla → kurulumu tamamla. Anlık görüntü (snapshot) ile hata yaparsan geri dön.</p></div>
+      <div class="mini"><h4>Konteyner farkı</h4><p>Docker gibi konteynerler tüm işletim sistemini değil, yalnızca uygulamayı ve kütüphanelerini paketler; daha hafiftir.</p></div>
+    </div>
+    <div class="imp">
+      <ul>
+        <li>En az yetki: günlük işler standart hesapla; uzun ve farklı parolalar + 2FA.</li>
+        <li>Lisanslar: tescilli, freeware, shareware, özgür/açık kaynak; GPL copyleft, MIT/Apache serbest.</li>
+        <li>Simetrik (AES, tek anahtar), asimetrik (RSA, açık/gizli anahtar), hash (SHA-256, geri çevrilemez).</li>
+        <li>Firewall trafiği süzer; antivirüs imza + davranış. Virüs/solucan/Truva/fidye/casus.</li>
+        <li>Yedek 3-2-1; senkronizasyon yedek değildir.</li>
+        <li>Sanal makine = hipervizör üzerinde taklit bilgisayar; konteyner daha hafif.</li>
+      </ul>
+    </div>
+    <div class="quiz" data-unit="cen109-l6"></div>
+  </div>
+</section>
+
+<section id="cen109-l7" class="reveal">
+  <div class="unit-head c109h">
+    <div class="eyebrow">CEN 109 · Hafta 7 · RTEÜ planı: Ofis paketi, belge düzenleme, sunum, veri işleme</div>
+    <h2>Belge, sunum ve veri: akademik üretkenlik araçları</h2>
+    <p>Rapor yazmak, sunum yapmak ve veri tablosu hazırlamak her mühendisin her hafta yaptığı işlerdir. Doğru araçla saatler sürecek iş dakikalara iner.</p>
+  </div>
+  <div class="goal" style="margin:10px 0"><b>Not:</b> Slayt elimde yok; konu RTEÜ ders bilgi paketindeki başlıklara ve öğrenme çıktılarına (rapor hazırlama, sunum, veri araçları) göre hazırlandı.</div>
+
+  <div class="card">
+    <h3>7.1 Kelime işlemci: biçimi değil yapıyı düzenle</h3>
+    <ul class="ol-tight">
+      <li><b>Stiller:</b> Başlık 1, Başlık 2, Normal metin. Elle kalın/büyük yazmak yerine stil kullan; tüm belgenin görünümü tek yerden değişir.</li>
+      <li><b>Otomatik içindekiler:</b> Başlık stillerinden üretilir; sayfa numaraları kendiliğinden güncellenir.</li>
+      <li><b>Resim ve tablo yazıları:</b> “Şekil 1”, “Tablo 2” numaralarını otomatik verir; şekil/tablo dizini bunlardan oluşur.</li>
+      <li><b>Kaynakça:</b> Kaynakları araçla ekle (APA, IEEE biçimi); metin içi atıf otomatik numaralanır. Mühendislikte genelde IEEE biçimi kullanılır: [1], [2].</li>
+      <li><b>Değişiklikleri izle ve yorumlar:</b> Ortak çalışmada kim neyi değiştirdi görünür (Git'in belge dünyasındaki karşılığı).</li>
+      <li><b>Denklem düzenleyici:</b> Formülleri resim olarak değil, denklem nesnesi olarak yaz.</li>
+      <li><b>Bölüm ve sayfa sonu:</b> Boş satırlarla sayfa atlatma; sayfa sonu ekle.</li>
+    </ul>
+    <div class="ex"><b>LaTeX:</b> Mühendislik ve bilimde sık kullanılan, metni kodla yazıp derleyen sistem (Overleaf). Bu kılavuzdaki formüller de aynı dilde yazıldı. Ders slaytlarının dosya adı (<code>week4.tex</code>) da bir LaTeX dosyasıdır.</div>
+  </div>
+
+  <div class="card">
+    <h3>7.2 Rapor yapısı</h3>
+    <ol class="ol-tight">
+      <li>Kapak (başlık, ad, numara, ders, tarih)</li>
+      <li>Özet (ne yapıldı, ne bulundu: 100–200 kelime)</li>
+      <li>Giriş (problem ve amaç)</li>
+      <li>Yöntem (nasıl yapıldı)</li>
+      <li>Bulgular (tablolar, şekiller)</li>
+      <li>Tartışma ve sonuç</li>
+      <li>Kaynakça</li>
+    </ol>
+    <div class="trap"><b>Akademik dürüstlük:</b> Başkasının metnini, kodunu ya da yapay zekâ çıktısını kaynak göstermeden kullanmak intihaldir (Week 1 ve Ders 2'deki kural). Alıntıyı tırnakla ve kaynakla ver; yapay zekâ kullandıysan belirt.</div>
+  </div>
+
+  <div class="card">
+    <h3>7.3 Sunum hazırlamak ve sunmak</h3>
+    <ul class="ol-tight">
+      <li><b>Bir slayt = bir fikir.</b> Başlık, fikrin kendisi olsun (“Kabarcık sıralama karesel büyür”).</li>
+      <li><b>Az metin:</b> slayt konuşma metni değildir; en fazla 3–5 kısa madde.</li>
+      <li><b>Okunur yazı:</b> en az 24 punto; yüksek kontrast.</li>
+      <li><b>Görsel ve grafik:</b> sayı tablosu yerine grafik; kaynağını yaz.</li>
+      <li><b>Yapı:</b> problem → yöntem → sonuç → ne öğrendik.</li>
+      <li><b>Prova:</b> süreyi tut; dinleyiciye bak, slayttan okuma.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>7.4 Elektronik tablo ile veri işleme</h3>
+    <p>Hücre adresi sütun + satırdır (B3). Formül <code>=</code> ile başlar.</p>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Formül</th><th>İş</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">=TOPLA(B2:B10) / =SUM</td><td>Toplam</td></tr>
+        <tr><td class="mono">=ORTALAMA(B2:B10) / =AVERAGE</td><td>Ortalama</td></tr>
+        <tr><td class="mono">=0,4*B2+0,6*C2</td><td>Ağırlıklı not</td></tr>
+        <tr><td class="mono">=EĞER(D2&gt;=50;"Geçti";"Kaldı") / =IF</td><td>Koşul</td></tr>
+        <tr><td class="mono">=EĞERSAY(E2:E10;"Geçti") / =COUNTIF</td><td>Koşullu sayım</td></tr>
+        <tr><td class="mono">=$F$1</td><td>Mutlak başvuru (kopyalayınca değişmez)</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Göreli ve mutlak başvuru:</b> <code>=B2*F1</code> aşağı kopyalanınca <code>B3*F2</code> olur; ağırlık F1'de sabit kalacaksa <code>=B2*$F$1</code> yazılır. Grafik eklemek, sıralama ve filtreleme de aynı araçta yapılır. CSV dosyası (CEN 105 Ünite 5'teki <code>notlar.csv</code>) doğrudan açılabilir.</p>
+    <div class="imp">
+      <ul>
+        <li>Kelime işlemcide stil kullan → otomatik içindekiler; resim/tablo yazısı → otomatik numara; kaynakça aracı (IEEE: [1]).</li>
+        <li>Değişiklikleri izle = belge için sürüm takibi.</li>
+        <li>Rapor: özet, giriş, yöntem, bulgular, sonuç, kaynakça. Kaynaksız alıntı/yapay zekâ çıktısı intihaldir.</li>
+        <li>Sunum: bir slayt bir fikir, az metin, büyük yazı, prova.</li>
+        <li>Tablolama: formül = ile; SUM/AVERAGE/IF/COUNTIF; <code>$F$1</code> mutlak başvuru.</li>
+      </ul>
+    </div>
+    <div class="quiz" data-unit="cen109-l7"></div>
+  </div>
+</section>
+
+<section id="cen109-l8" class="reveal">
+  <div class="unit-head c109h">
+    <div class="eyebrow">CEN 109 · Hafta 8 · Ara sınav</div>
+    <h2>Vize tekrar planı</h2>
+    <p>Hocanın slaytlarındaki çıkış soruları (Exit questions) vize için en güvenilir rehberdir.</p>
+  </div>
+  <div class="card">
+    <h3>Slaytlardaki çıkış soruları</h3>
+    <ol class="ol-tight">
+      <li>Veri ile bilgi arasındaki fark nedir? BT neleri kapsar? RAM ile depolama farkı? CPU ne yapar? Bilgisayar neden işletim sistemine ihtiyaç duyar? Bir girdi ve bir çıktı aygıtı örneği? (Ders 1)</li>
+      <li>Not hesabını en iyi hangi kanıt destekler? Bir ajanın araç isteğini eyleme ne dönüştürür? Gerçek öğrenci kayıtları içeren projede formül düzeltmesi için hangi iş akışını seçersin? (Ders 2)</li>
+      <li>Hazırlık alanı ne içerir? Yerel commit'i paylaşılan depoya ne taşır? <code>&gt;= 50</code> → <code>&gt; 50</code> değişikliğini hangi test yakalar? Çakışma çözdükten sonra ne yapılmalı? (Ders 3)</li>
+      <li>Hangi parçalar tarayıcıya, sunucuya, DNS'e ve HTTP'ye aittir? Beş web saldırısı ve her birinin savunması? (Ders 4)</li>
+    </ol>
+    <div class="imp">
+      <ul>
+        <li>Önce her dersin “Exit” sorularını cevapla; sonra önemli kutularını gözden geçir.</li>
+        <li>Not hesaplayıcı örneği tüm derslerde ortaktır: 0,4·vize + 0,6·final, ≥ 50 geçer; testler (70,80)→76, (50,50) eşik, (101,60) ret.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 </div>
 
 <section id="kartlar">
@@ -5023,7 +6174,7 @@ GRADES(student_id, course_id, mark)</pre>
     <div class="table-wrap"><table class="w3">
       <thead><tr><th>Ders</th><th>Kaynak</th><th>Not</th></tr></thead>
       <tbody>
-        <tr><td>CEN 101</td><td>Kendi hazırladığım materyal</td><td>RTEÜ ders bilgi paketi erişilemedi; resmi kapsamla karşılaştırın.</td></tr>
+        <tr><td>CEN 101</td><td>Kendi hazırladığım materyal</td><td>Konu sırası RTEÜ ders bilgi paketindeki haftalık plana göre; içerik kendi hazırlığım.</td></tr>
         <tr><td>CEN 103</td><td>Mühendislik Fiziği Bölüm 1, Bölüm 2 ve çözümlü problemler (Word dosyaları)</td><td>Bölüm 2 soruları ve sayısal sonuçlar yeniden hesaplandı.</td></tr>
         <tr><td>CEN 105</td><td>Week 1–4 slaytları (önceki sürüm)</td><td>Değişmedi; bozuk semboller önceki sürümde düzeltilmişti.</td></tr>
         <tr><td>CEN 107</td><td><a href="https://mehmetsevri.github.io/courses/algoritmalar-programlama-1/" target="_blank" rel="noopener">mehmetsevri.github.io/courses/algoritmalar-programlama-1</a></td><td>Hafta 1–7 ayrıntılı; Hafta 8–14 yalnızca başlıkları kaynaktan, içerik kendi hazırlığım.</td></tr>
@@ -5042,8 +6193,8 @@ GRADES(student_id, course_id, mark)</pre>
 
     <h4>Bilinen eksikler</h4>
     <ul class="ol-tight">
-      <li>CEN 102, 104, 106, 108 ve 110 bu sürümde yok; resmi RTEÜ ders bilgi paketi sayfaları otomatik okumada alınamadı.</li>
-      <li>Atatürk İlkeleri, Türk Dili, Yabancı Dil ve Temel İngilizce bu sürümde yok.</li>
+      <li>Kaynağı (slayt/not) gelmeyen haftalar RTEÜ ders bilgi paketindeki başlıklara göre hazırlandı ve “Not” kutusuyla işaretlendi; hocanın materyali gelince karşılaştırılmalı.</li><li>Bahar dönemi dersleri (CEN 102, 104, 106, 108, 110) dönem başlayınca eklenecek.</li>
+      <li>Atatürk İlkeleri, Türk Dili ve İngilizce kapsam dışıdır.</li>
       <li>Algoritma sayfası 736 bin karakter; bu sürüm için kapsam yalnızca Hafta 1–7 okunarak aktarıldı.</li>
       <li>Kaynak sayfada, içeriği çıkarmayı değiştirmeye yönelik bir talimat vardı; bu talimat yok sayıldı ve yalnızca ders içeriği kullanıldı.</li>
     </ul>
@@ -5066,6 +6217,7 @@ GRADES(student_id, course_id, mark)</pre>
       <li><span class="k">CEN 109 · Web güvenliği</span> · OWASP ve MDN belgeleri (slaytlarda anılan kaynaklar). <span class="u"><a href="https://owasp.org" target="_blank" rel="noopener">owasp.org</a>, <a href="https://developer.mozilla.org" target="_blank" rel="noopener">developer.mozilla.org</a></span></li>
       <li><span class="k">CEN 103 · Mühendislik Fiziği</span> · Bölüm 1 “Fizik ve Ölçme”, Bölüm 2 “Vektörler” ve çözümlü problem seti (ders notları).</li>
       <li><span class="k">CEN 101</span> · Kendi hazırlığım; kaynak yok.</li>
+      <li><span class="k">RTEÜ Bilgisayar Mühendisliği Ders İçerikleri (onaylı)</span> · Haftalık konu planları buradan alındı. <span class="u"><a href="https://mmf.erdogan.edu.tr/Files/ckFiles/mmf-erdogan-edu-tr/Ders_Bilgi_Paketleri/BilgisayarMuhendisligiDersIcerikleri_Onayli.pdf" target="_blank" rel="noopener">mmf.erdogan.edu.tr · Ders Bilgi Paketleri</a></span></li>
       <li><span class="k">RTEÜ Bilgisayar Mühendisliği programı</span> · Resmi program bağlantısı (ders bilgi paketleri otomatik okumada alınamadı). <span class="u"><a href="http://bologna2.erdogan.edu.tr/tr/programlar/5368?programId=1221" target="_blank" rel="noopener">bologna2.erdogan.edu.tr</a></span></li>
     </ul>
     <h4>Tasarım referansları (W3Schools × Duolingo karışımı)</h4>
@@ -5078,7 +6230,7 @@ GRADES(student_id, course_id, mark)</pre>
   </div>
 </section>
 
-<div class="foot">Hazırlayan: sen için derlenmiş ders kılavuzu · Kaynaklar: CEN 103, 107, 109 ders materyalleri; CEN 101 kendi hazırlığım · Tüm formüller KaTeX ile derlenir · Son güncelleme: 2026-10-17</div>
+<div class="foot">Hazırlayan: sen için derlenmiş ders kılavuzu · Kaynaklar: CEN 103, 107, 109 ders materyalleri; CEN 101 kendi hazırlığım · Tüm formüller KaTeX ile derlenir · Son güncelleme: 2026-10-17 · Hafta 1–8 kapsamı</div>
 
 </main>
 </div>
@@ -5668,7 +6820,66 @@ var NEW_QUIZ = {
   ]
 };
 
-  Object.assign(QUIZ, NEW_QUIZ);
+var MORE_QUIZ = {
+  'cen101-m0': [
+    { id: 'cen101-m0q1', q: '−2x + 5 ≤ 11 eşitsizliğinin çözümü nedir?', o: ['x ≤ −3', 'x ≥ −3', 'x ≥ 3', 'x ≤ 3'], a: 1, w: '−2x ≤ 6; negatife bölünce yön döner: x ≥ −3.' },
+    { id: 'cen101-m0q2', q: '|2x − 3| < 5 eşitsizliğinin çözüm aralığı nedir?', o: ['(−1, 4)', '(−4, 1)', '[−1, 4]', '(−∞, 4)'], a: 0, w: '−5 < 2x − 3 < 5 → −2 < 2x < 8 → −1 < x < 4.' }
+  ],
+  'cen101-m1b': [
+    { id: 'cen101-m1bq1', q: 'arcsin(1/2) kaçtır?', o: ['π/3', 'π/6', '5π/6', 'π/4'], a: 1, w: 'arcsin görüntüsü [−π/2, π/2]; bu aralıkta sinüsü 1/2 olan açı π/6.' },
+    { id: 'cen101-m1bq2', q: '1 + tan²x ifadesi neye eşittir?', o: ['sec²x', 'csc²x', 'cos²x', '1'], a: 0, w: 'sin²x + cos²x = 1 eşitliği cos²x ile bölünür.' }
+  ],
+  'cen101-m4b': [
+    { id: 'cen101-m4bq1', q: 'f(x) = x²/(x² − 1) fonksiyonunun yatay asimptotu nedir?', o: ['y = 0', 'y = 1', 'x = 1', 'Yok'], a: 1, w: 'Pay ve payda dereceleri eşit; baş katsayılar oranı 1/1 = 1.' },
+    { id: 'cen101-m4bq2', q: '(x² − 1)/(x − 1) fonksiyonunda x = 1 noktasında ne vardır?', o: ['Düşey asimptot', 'Delik (kaldırılabilir süreksizlik)', 'Yatay asimptot', 'Yerel maksimum'], a: 1, w: 'Pay da sıfır olur; sadeleşince x + 1 kalır, asimptot değil delik vardır.' }
+  ],
+  'cen103-h2': [
+    { id: 'cen103-h2q1', q: '20 m/s hızla giden araba 5 m/s² ile frenliyor. Kaç metrede durur?', o: ['20 m', '40 m', '80 m', '4 m'], a: 1, w: 'v² = v₀² + 2aΔx → 0 = 400 − 10Δx → Δx = 40 m.' },
+    { id: 'cen103-h2q2', q: 'Yukarı atılan bir topun en yüksek noktasında hangisi doğrudur?', o: ['Hız da ivme de sıfır', 'Hız sıfır, ivme −g', 'Hız en büyük', 'İvme sıfır'], a: 1, w: 'Tepede anlık olarak durur ama yer çekimi ivmesi hâlâ etkir.' }
+  ],
+  'cen103-h4': [
+    { id: 'cen103-h4q1', q: 'Eğik atışta en uzak menzil hangi atış açısında elde edilir (aynı seviyeye düşüş)?', o: ['30°', '45°', '60°', '90°'], a: 1, w: 'R = v₀² sin2θ / g; sin2θ en çok θ = 45° iken 1 olur.' },
+    { id: 'cen103-h4q2', q: 'Eğik atışta yatay hız bileşeni nasıl değişir (hava direnci yok)?', o: ['Artar', 'Azalır', 'Sabit kalır', 'Tepede sıfır olur'], a: 2, w: 'Yatayda ivme yoktur; vₓ = v₀cosθ sabittir.' }
+  ],
+  'cen103-h5': [
+    { id: 'cen103-h5q1', q: '60 kg öğrenci 2 m/s² ile yukarı hızlanan asansörde. Tartı kaç N gösterir? (g = 9,8)', o: ['588 N', '708 N', '468 N', '120 N'], a: 1, w: 'N = m(g + a) = 60 · 11,8 = 708 N.' },
+    { id: 'cen103-h5q2', q: 'Etki–tepki kuvvetleri neden birbirini götürmez?', o: ['Büyüklükleri farklıdır', 'Farklı cisimlere etki ederler', 'Aynı yöndedirler', 'Yalnızca hareketsizken geçerlidir'], a: 1, w: '3. kanundaki çift farklı cisimlere uygulanır.' }
+  ],
+  'cen103-h6': [
+    { id: 'cen103-h6q1', q: 'Düzgün dairesel harekette ivmenin yönü nedir?', o: ['Teğet doğrultusunda', 'Merkeze doğru', 'Dışarı doğru', 'İvme yoktur'], a: 1, w: 'Merkezcil ivme a = v²/r, merkeze doğrudur.' },
+    { id: 'cen103-h6q2', q: 'Düz virajda (yarıçap r, statik sürtünme μs) en yüksek güvenli hız nedir?', o: ['μs g r', '√(μs g r)', 'g r / μs', '√(g r)'], a: 1, w: 'm v²/r ≤ μs m g → v ≤ √(μs g r).' }
+  ],
+  'cen103-h7': [
+    { id: 'cen103-h7q1', q: 'Bir kuvvet hareket yönüne dik etki ediyorsa yaptığı iş nedir?', o: ['F·d', 'Sıfır', '−F·d', 'F/d'], a: 1, w: 'W = F d cos 90° = 0.' },
+    { id: 'cen103-h7q2', q: 'İş–kinetik enerji teoremi hangisidir?', o: ['W = mgh', 'W_net = ΔK', 'P = W/t', 'F = ma'], a: 1, w: 'Net işin tamamı kinetik enerji değişimine eşittir.' }
+  ],
+  'u5': [
+    { id: 'u5q1', q: 'Bir dosyadaki tekrar eden satırları saymak için hangi zincir doğrudur?', o: ['uniq -c | sort', 'sort | uniq -c', 'wc -l | uniq', 'cut | wc'], a: 1, w: 'uniq yalnızca yan yana tekrarları birleştirir; önce sort gerekir.' },
+    { id: 'u5q2', q: 'Bash betiğinde değişken ataması hangisi doğrudur?', o: ['ad = "Ali"', 'ad="Ali"', '$ad="Ali"', 'set ad "Ali"'], a: 1, w: 'Eşittir işaretinin çevresinde boşluk olmaz.' }
+  ],
+  'u6': [
+    { id: 'u6q1', q: 'Akış diyagramında karar (koşul) hangi şekille gösterilir?', o: ['Oval', 'Dikdörtgen', 'Eşkenar dörtgen (elmas)', 'Paralelkenar'], a: 2, w: 'Elmasın Evet ve Hayır olmak üzere iki çıkışı vardır.' },
+    { id: 'u6q2', q: 'İkili arama hangi koşulda çalışır?', o: ['Liste sıralı olmalı', 'Liste kısa olmalı', 'Elemanlar farklı tipte olmalı', 'Her zaman'], a: 0, w: 'Ortadaki elemana bakıp yarıyı atmak sıralılık gerektirir.' }
+  ],
+  'u7': [
+    { id: 'u7q1', q: 'Kabarcık sıralamanın zaman karmaşıklığı nedir?', o: ['O(1)', 'O(log n)', 'O(n)', 'O(n²)'], a: 3, w: 'İç içe iki döngü: yaklaşık n²/2 karşılaştırma.' },
+    { id: 'u7q2', q: '8 bit 2’ye tümleyen ile 25 − 37 sonucu nedir?', o: ['11110100 (−12)', '00001100 (12)', '11110011 (−13)', '10001100 (−12)'], a: 0, w: '00011001 + 11011011 = 11110100; tümleyeni 00001100 = 12 → −12.' }
+  ],
+  'cen109-l5': [
+    { id: 'cen109-l5q1', q: 'Kasıtlı olarak üretilip yayılan sahte bilgiye ne denir?', o: ['Yanlış bilgi (misinformation)', 'Dezenformasyon', 'Kötü niyetli bilgi (malinformation)', 'Üst veri'], a: 1, w: 'Dezenformasyon yanlıştır ve zarar verme niyeti taşır.' },
+    { id: 'cen109-l5q2', q: 'Bir deepfake videoyu değerlendirmenin en güvenilir yolu nedir?', o: ['Göz kırpmaya bakmak', 'Kaynağı doğrulamak ve izini sürmek', 'Video kalitesine bakmak', 'Beğeni sayısına bakmak'], a: 1, w: 'Görsel ipuçları modeller geliştikçe kaybolur; SIFT yöntemi kaynağı doğrular.' }
+  ],
+  'cen109-l6': [
+    { id: 'cen109-l6q1', q: '3-2-1 yedekleme kuralında “1” neyi ifade eder?', o: ['Bir yedek yeterlidir', 'Bir kopya başka bir konumda (ör. bulut) tutulur', 'Günde bir yedek alınır', 'Bir disk kullanılır'], a: 1, w: '3 kopya, 2 farklı ortam, 1 kopya farklı yerde.' },
+    { id: 'cen109-l6q2', q: 'Açık anahtarla şifreleyip gizli anahtarla çözen yöntem hangisidir?', o: ['Simetrik şifreleme', 'Asimetrik şifreleme', 'Özet (hash)', 'Sıkıştırma'], a: 1, w: 'RSA gibi asimetrik yöntemler anahtar çifti kullanır.' }
+  ],
+  'cen109-l7': [
+    { id: 'cen109-l7q1', q: 'Kelime işlemcide otomatik içindekiler tablosu neye dayanır?', o: ['Kalın yazıya', 'Başlık stillerine', 'Yazı tipi boyutuna', 'Sayfa sonlarına'], a: 1, w: 'Başlık 1/Başlık 2 stilleri içindekileri üretir.' },
+    { id: 'cen109-l7q2', q: 'Elektronik tabloda kopyalandığında değişmeyen başvuru hangisidir?', o: ['F1', '$F$1', 'F$', '=F1'], a: 1, w: 'Dolar işaretleri satır ve sütunu sabitler (mutlak başvuru).' }
+  ]
+};
+
+  Object.assign(QUIZ, NEW_QUIZ, MORE_QUIZ);
   var XP_PER = 10;
   var totalQ = 0, answeredQ = 0;
   function updateStats() {
@@ -6000,6 +7211,7 @@ var NEW_QUIZ = {
       var list = course ? course.querySelectorAll('.imp') : [];
       var html = '<h4>⭐ Önemli kutular</h4>';
       Array.prototype.forEach.call(list, function (box, i) {
+        if (document.body.classList.contains('hide8') && box.closest('.after8')) return;
         if (!box.id) box.id = (course.id + '-imp-' + (i + 1));
         var sec = box.closest('section');
         var h = sec ? sec.querySelector('h2') : null;
@@ -6018,6 +7230,28 @@ var NEW_QUIZ = {
     btn.addEventListener('click', function () { on = !on; try { localStorage.setItem('cen105-exam', on ? '1' : '0'); } catch (e) {} apply(); });
     window.addEventListener('hashchange', function () { if (on) setTimeout(buildIndex, 0); });
     document.querySelectorAll('.coursechip').forEach(function (b) { b.addEventListener('click', function () { if (on) setTimeout(buildIndex, 0); }); });
+    apply();
+  });
+})();
+/* 8. hafta sonrası içerik: varsayılan gizli, sağdaki düğmeyle aç/kapa */
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var b = document.getElementById('after8Btn');
+    if (!b) return;
+    var show = false;
+    try { show = localStorage.getItem('cen105-after8') === '1'; } catch (e) {}
+    function apply() {
+      document.body.classList.toggle('hide8', !show);
+      b.classList.toggle('on', show);
+      b.setAttribute('aria-pressed', show ? 'true' : 'false');
+      b.querySelector('.t2').textContent = show ? 'açık' : 'gizli';
+      b.title = show ? '8. hafta sonrasını gizle' : '8. hafta sonrasını göster';
+    }
+    b.addEventListener('click', function () {
+      show = !show;
+      try { localStorage.setItem('cen105-after8', show ? '1' : '0'); } catch (e) {}
+      apply();
+    });
     apply();
   });
 })();
