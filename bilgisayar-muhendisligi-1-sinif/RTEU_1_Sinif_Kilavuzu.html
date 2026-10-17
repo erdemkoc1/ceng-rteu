@@ -508,48 +508,186 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
 
 <div class="course" id="cen101">
 
-<div class="goal reveal" style="margin-top:18px"><b>Ders bilgisi</b><br>CEN 101 · Mühendislik Matematiği I. Konular: fonksiyonlar, limit ve süreklilik, türev, türev uygulamaları, belirsiz ve belirli integral. Bu bölüm kaynak olarak RTEÜ ders bilgi paketine değil, <b>kendi hazırladığım ders materyaline</b> dayanır; resmi kapsam için bölüm ders planıyla karşılaştırın.</div>
+<div class="goal reveal" style="margin-top:18px"><b>Bu bölümü nasıl okumalısın?</b><br>Her konu beş adımda ilerler: <b>1) Sezgi</b> (neden var?), <b>2) Tanım</b> (kesin dil), <b>3) Adım adım örnek</b> (her satırı kendin yaz), <b>4) Sık hata</b>, <b>5) Kazanım kontrolü</b>. Adım kutularındaki <b>Sonraki adım</b> düğmesine basarak türetmeleri parça parça aç. Kâğıt-kalem yanında olsun: her örneği önce kendin çöz, sonra adımları karşılaştır.</div>
 
 <section id="cen101-m1" class="reveal">
   <div class="unit-head c101h">
     <div class="eyebrow">CEN 101 · Ünite 1</div>
     <h2>Fonksiyonlar</h2>
-    <p>Her türev ve integral bir fonksiyonla başlar. Tanım kümesi, görüntü kümesi ve grafik okumayı sağlam kurmak en büyük kazanımdır.</p>
+    <p>Matematiğin dili fonksiyondur. Türevi ve integrali anlamak için önce “bir girdi, bir çıktı” fikrini kusursuz kurmalısın.</p>
   </div>
 
   <div class="card">
-    <h3>1.1 Fonksiyon nedir?</h3>
-    <p>Bir <b>f</b> fonksiyonu, tanım kümesindeki her <i>x</i> değerine tek bir <i>f(x)</i> değeri atar. Tanım kümesi (domain) girdilerin, görüntü kümesi (range) çıktıların kümesidir. Kural: bir <i>x</i> değeri için birden fazla <i>y</i> varsa, bu bir fonksiyon değildir (düşey doğru testi).</p>
-    <div class="eq">\[ f(x)=\sqrt{4-x^{2}} \quad\Rightarrow\quad 4-x^{2}\ge 0 \quad\Rightarrow\quad -2\le x\le 2 \]</div>
-    <div class="eq">\[ g(x)=\frac{1}{x-3} \quad\Rightarrow\quad \text{tanım kümesi } \mathbb{R}\setminus\{3\} \]</div>
-    <p>Kesirde paydanın, karekök içinde ise negatif olmayan ifadenin, logaritmada pozitif ifadenin koşulunu yazın. Bu üç kural tanım kümesinin neredeyse tamamını belirler.</p>
-  </div>
-
-  <div class="card">
-    <h3>1.2 Bileşke ve ters fonksiyon</h3>
-    <p>Bileşke <span class="keyterm">(f \circ g)(x) = f(g(x))</span> ile yazılır. Ters fonksiyon <span class="keyterm">f^{-1}</span> ise her çıktıyı kendi girdisine geri götürür: <span class="keyterm">f(f^{-1}(x)) = x</span>.</p>
-    <div class="ex"><b>Örnek:</b> \(f(x)=3x-6\) için \(f^{-1}\) bulun. \(y=3x-6\) yazılır, \(x\) yalnız bırakılır: \(x=\frac{y+6}{3}\). Sonuç: \(f^{-1}(x)=\frac{x+6}{3}\).</div>
-    <div class="ex"><b>Örnek:</b> \(f(x)=x^{2}+1\), \(g(x)=x-1\) ise \((f\circ g)(x)=(x-1)^{2}+1\) ve \((f\circ g)(2)=2\).</div>
-    <div class="trap"><b>Sık hata:</b> \(f(g(x))\) ile \(g(f(x))\) genellikle farklıdır. Sıra değişince sonuç değişir.</div>
-  </div>
-
-  <div class="card">
-    <h3>1.3 Temel fonksiyon aileleri</h3>
+    <h3>1.1 Sezgi: fonksiyon bir makinedir</h3>
+    <p>Bir makine düşün. Bir yandan bir sayı koyuyorsun (girdi). Makine içinde sabit bir kural uygular. Diğer yandan tek bir sayı çıkıyor (çıktı). Kural her seferinde aynıdır; değişen yalnızca girdidir.</p>
+    <p>Matematikte bu makinenin adı <b>f</b>, kuralı <b>f(x)</b> ile yazılır. Örneğin kural “önce ikiyle çarp, sonra bir ekle” ise:</p>
+    <div class="eq">\[ f(x)=2x+1 \]</div>
+    <p>Şimdi tek tek deneyelim. Adım adım:</p>
+    <div class="derivation reveal" data-title="f(3) nasıl bulunur?">
+      <div class="step"><p><b>Adım 1.</b> Girdi olarak \(x=3\) koy. Kuralda \(x\) yerine \(3\) yazılır.</p>\[ f(3)=2\cdot 3+1 \]</div>
+      <div class="step"><p><b>Adım 2.</b> Önce çarpma yapılır (işlem önceliği).</p>\[ f(3)=6+1 \]</div>
+      <div class="step"><p><b>Adım 3.</b> Son olarak toplama.</p>\[ f(3)=7 \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <p>Aynı işlemi \(x=0\), \(x=1\), \(x=-2\) için tekrarla. Her girdi için tek bir sonuç çıkar: işte bu “fonksiyon” olmanın özüdür.</p>
     <div class="table-wrap"><table class="w3">
-      <thead><tr><th>Fonksiyon</th><th>Temel özellik</th><th>Mühendislikte kullanımı</th></tr></thead>
+      <thead><tr><th>\(x\)</th><th>\(f(x)=2x+1\)</th></tr></thead>
       <tbody>
-        <tr><td>Doğrusal \(ax+b\)</td><td>Sabit eğim \(a\)</td><td>Kalibrasyon, sabit hız</td></tr>
-        <tr><td>Polinom</td><td>Derece, kökler</td><td>Yaklaşım, sistem modeli</td></tr>
-        <tr><td>Üstel \(e^{x}\), \(a^{x}\)</td><td>Her zaman pozitif, büyüme/sönüm</td><td>RC devresi, bozunma</td></tr>
-        <tr><td>Logaritma \(\ln x\)</td><td>Üstelin tersi, \(x>0\)</td><td>Ölçek dönüşümü, dB</td></tr>
-        <tr><td>Trigonometrik</td><td>Periyodik, \(\sin^{2}+\cos^{2}=1\)</td><td>Dalgalar, AC devreler</td></tr>
+        <tr><td>\(-2\)</td><td>\(-3\)</td></tr>
+        <tr><td>\(0\)</td><td>\(1\)</td></tr>
+        <tr><td>\(1\)</td><td>\(3\)</td></tr>
+        <tr><td>\(3\)</td><td>\(7\)</td></tr>
       </tbody>
     </table></div>
-    <div class="eq">\[ \ln(ab)=\ln a+\ln b, \qquad \ln(a^{k})=k\ln a, \qquad e^{\ln x}=x \]</div>
   </div>
 
   <div class="card">
-    <h3>Mini sınama · Ünite 1</h3>
+    <h3>1.2 Tanım: kesin dil</h3>
+    <p>Bir fonksiyon, bir <b>A kümesinden</b> bir <b>B kümesine</b> giden bir kuraldır. Öyle ki A’daki her elemana B’de <b>tam bir</b> eleman karşılık gelir. Bunu \(f:A\to B\) diye yazarız.</p>
+    <div class="ex"><b>Üç kelime, üç görev:</b>
+      <ul class="ol-tight">
+        <li><b>Tanım kümesi (domain):</b> girdiye izin verilen tüm değerler.</li>
+        <li><b>Değer kümesi / görüntü kümesi (range):</b> kuralın gerçekten ürettiği tüm çıktılar.</li>
+        <li><b>Kural:</b> girdiden çıktıya giden formül.</li>
+      </ul>
+    </div>
+    <p>Dikkat: Tanım kümesi “kuralın anlamlı olduğu yerler” ile belirlenir; görüntü kümesi ise kuralın ne ürettiğine bakılarak bulunur. İkisi aynı şey değildir.</p>
+  </div>
+
+  <div class="card">
+    <h3>1.3 Bir ilişki fonksiyon mudur? Düşey doğru testi</h3>
+    <p>Bir grafiğin fonksiyon olup olmadığını anlamanın kolay bir yolu vardır. Grafiğe dikey (düşey) bir çizgi çiz. Çizgi grafiği <b>en fazla bir kez</b> kesiyorsa fonksiyondur. İki ya da daha fazla noktada kesiyorsa, aynı girdiye iki çıktı düşüyor demektir; fonksiyon değildir.</p>
+    <div class="derivation reveal" data-title="x² + y² = 1 bir fonksiyon mu?">
+      <div class="step"><p><b>Adım 1.</b> Girdi olarak \(x=0\) seçelim. Denklemde yerine koyarsak:</p>\[ 0^2+y^2=1 \;\Rightarrow\; y^2=1 \]</div>
+      <div class="step"><p><b>Adım 2.</b> Bu denklemin iki çözümü var: \(y=1\) ve \(y=-1\).</p>\[ y=1 \quad\text{veya}\quad y=-1 \]</div>
+      <div class="step"><p><b>Adım 3.</b> Aynı \(x=0\) girdisi iki farklı çıktı veriyor. Demek ki bu bir fonksiyon değil. (Çember ise iki parça halinde fonksiyonlara ayrılabilir: \(y=\sqrt{1-x^2}\) ve \(y=-\sqrt{1-x^2}\).)</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>1.4 Tanım kümesini bulmak: üç yasak</h3>
+    <p>Matematikte bazı işlemler her sayıyla yapılamaz. Tanım kümesini bulurken üç yasağa bakarsın:</p>
+    <div class="grid2">
+      <div class="mini"><h4>Yasak 1: Sıfıra bölme</h4><p>Payda sıfır olamaz. \(\frac{1}{x-3}\) için \(x=3\) yasak.</p></div>
+      <div class="mini"><h4>Yasak 2: Negatif karekök</h4><p>\(\sqrt{\text{ifade}}\) için ifade \(\ge 0\) olmalı.</p></div>
+      <div class="mini"><h4>Yasak 3: Logaritma</h4><p>\(\ln(\text{ifade})\) için ifade \(>0\) olmalı (sıfır da yasak).</p></div>
+    </div>
+    <div class="derivation reveal" data-title="f(x)=√(4−x²) için tanım kümesi">
+      <div class="step"><p><b>Adım 1.</b> Karekök içi negatif olamaz. Koşulu yaz.</p>\[ 4-x^2\ge 0 \]</div>
+      <div class="step"><p><b>Adım 2.</b> Terimleri taşı: \(x^2\) tarafını sağa al.</p>\[ 4\ge x^2 \quad\text{(yani)}\quad x^2\le 4 \]</div>
+      <div class="step"><p><b>Adım 3.</b> Karekök alırken mutlak değere dikkat et: \(x^2\le 4\) demek \(|x|\le 2\) demektir.</p>\[ |x|\le 2 \]</div>
+      <div class="step"><p><b>Adım 4.</b> Mutlak değeri aralığa çevir.</p>\[ -2\le x\le 2 \quad\Rightarrow\quad \text{tanım kümesi } [-2,2] \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="derivation reveal" data-title="g(x)=1/(x²−x−6) için tanım kümesi">
+      <div class="step"><p><b>Adım 1.</b> Payda sıfır olamaz: \(x^2-x-6\ne 0\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Paydayı çarpanlarına ayır. İki sayı bul: çarpımı \(-6\), toplamı \(-1\). Bu sayılar \(-3\) ve \(2\).</p>\[ x^2-x-6=(x-3)(x+2) \]</div>
+      <div class="step"><p><b>Adım 3.</b> Çarpım sıfır olursa paydadaki çarpanlardan en az biri sıfır olur. Yani \(x=3\) veya \(x=-2\) yasak.</p></div>
+      <div class="step"><p><b>Adım 4.</b> Tanım kümesi: gerçek sayıların bu iki değer dışındaki tümü.</p>\[ \mathbb{R}\setminus\{-2,\,3\} \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="trap"><b>Sık hata:</b> \(x^2-x-6\)’yı çarpanlarına ayırmadan “payda hiç sıfır olmaz” diye düşünmek. Önce çarpanlara ayır, sonra yasak değerleri oku.</div>
+  </div>
+
+  <div class="card">
+    <h3>1.5 Grafikten ve formülden simetri</h3>
+    <p><b>Çift fonksiyon:</b> \(f(-x)=f(x)\). Grafik \(y\) ekseninde yansıma simetrisine sahiptir (örnek: \(x^2\)).<br><b>Tek fonksiyon:</b> \(f(-x)=-f(x)\). Grafik orijin etrafında simetriktir (örnek: \(x^3\)).</p>
+    <div class="derivation reveal" data-title="f(x)=x⁴−2x² çift mi, tek mi?">
+      <div class="step"><p><b>Adım 1.</b> \(x\) yerine \(-x\) yaz.</p>\[ f(-x)=(-x)^4-2(-x)^2 \]</div>
+      <div class="step"><p><b>Adım 2.</b> Çift kuvvetlerde işaret kalmaz: \((-x)^4=x^4\) ve \((-x)^2=x^2\).</p>\[ f(-x)=x^4-2x^2 \]</div>
+      <div class="step"><p><b>Adım 3.</b> Orijinal \(f(x)\) ile karşılaştır: \(f(-x)=f(x)\). Yani fonksiyon çifttir.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>1.6 Bileşke fonksiyon: bir makineyi diğerinin çıktısına bağlamak</h3>
+    <p><b>Sezgi:</b> Birinci makinenin çıktısını ikinci makineye girdi olarak ver. Bu yeni bir makinedir. Yazılışı: \((f\circ g)(x)=f\big(g(x)\big)\). Önce \(g\) uygulanır, sonra \(f\).</p>
+    <div class="derivation reveal" data-title="f(x)=x²+1, g(x)=x−1 için f∘g ve g∘f">
+      <div class="step"><p><b>Adım 1.</b> \((f\circ g)(x)\): önce \(g\) uygulanır. \(g(x)=x-1\) olduğu için içeri \(x-1\) yazılır.</p>\[ (f\circ g)(x)=f(x-1) \]</div>
+      <div class="step"><p><b>Adım 2.</b> \(f\) kuralında \(x\) yerine \((x-1)\) koy.</p>\[ f(x-1)=(x-1)^2+1 \]</div>
+      <div class="step"><p><b>Adım 3.</b> Açılımı yap: \((x-1)^2=x^2-2x+1\).</p>\[ (f\circ g)(x)=x^2-2x+2 \]</div>
+      <div class="step"><p><b>Adım 4.</b> Şimdi ters sırayı dene: \((g\circ f)(x)=g\big(f(x)\big)=g(x^2+1)\).</p>\[ g(x^2+1)=(x^2+1)-1=x^2 \]</div>
+      <div class="step"><p><b>Adım 5.</b> Karşılaştır: \(x^2-2x+2\) ile \(x^2\) aynı değil. Bileşke sırası önemlidir: \(f\circ g\ne g\circ f\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>1.7 Ters fonksiyon: makineyi geri sarmak</h3>
+    <p><b>Sezgi:</b> Bir makine \(x=3\)’ü \(7\)’ye çeviriyorsa, ters makine \(7\)’yi \(3\)’e çevirmelidir. Ters fonksiyon \(f^{-1}\) tam bunu yapar: \(f^{-1}(f(x))=x\).</p>
+    <p><b>Koşul:</b> Ters fonksiyonun var olması için her çıktının <i>tek bir</i> girdiden gelmesi gerekir (birebir). Yatay doğru testi bunu kontrol eder: yatay bir çizgi grafiği en fazla bir kez kesmelidir.</p>
+    <div class="derivation reveal" data-title="f(x)=3x−6 için ters fonksiyon">
+      <div class="step"><p><b>Adım 1.</b> Çıktıya \(y\) de: \(y=f(x)\).</p>\[ y=3x-6 \]</div>
+      <div class="step"><p><b>Adım 2.</b> \(x\)’i yalnız bırak. Önce \(6\) ekle.</p>\[ y+6=3x \]</div>
+      <div class="step"><p><b>Adım 3.</b> Sonra \(3\)’e böl.</p>\[ x=\frac{y+6}{3} \]</div>
+      <div class="step"><p><b>Adım 4.</b> Geleneksel olarak girdi \(x\), çıktı \(y\) olsun: değişkenleri yer değiştir.</p>\[ f^{-1}(x)=\frac{x+6}{3} \]</div>
+      <div class="step"><p><b>Adım 5.</b> Kontrol: \(f\big(f^{-1}(x)\big)=3\cdot\frac{x+6}{3}-6=x+6-6=x\). Doğru.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
+    </div>
+    <div class="ex"><b>Birebir olmayan örnek:</b> \(f(x)=x^2\) tüm reel sayılarda birebir değildir (\(f(2)=f(-2)=4\)). Ters almak için tanım kümesini \(x\ge 0\) ile sınırlarız; o zaman \(f^{-1}(x)=\sqrt{x}\) olur.</div>
+    <div class="trap"><b>Sık hata:</b> \(f^{-1}(x)\) ile \(\dfrac{1}{f(x)}\) aynı şey değildir. Üssündeki \(-1\), ters fonksiyon anlamındadır; kesirdeki \(-1\) değildir.</div>
+  </div>
+
+  <div class="card">
+    <h3>1.8 Temel fonksiyon aileleri: tek tek ve nedenleriyle</h3>
+    <h4>a) Polinomlar</h4>
+    <p>\(p(x)=a_nx^n+\cdots+a_1x+a_0\). Tanım kümesi tüm reel sayılardır. En büyük üs \(n\) derecesidir. Derece 1 ise doğru, derece 2 ise parabol.</p>
+    <h4>b) Rasyonel fonksiyonlar</h4>
+    <p>İki polinomun oranı: \(\frac{p(x)}{q(x)}\). Tanım kümesi, \(q(x)=0\) yapan değerler çıkarılarak bulunur.</p>
+    <h4>c) Üstel fonksiyon: \(a^x\)</h4>
+    <p>\(a>0\), \(a\ne 1\). Üstel fonksiyon her zaman pozitiftir. Büyüme ve sönümü anlatır: bir kapasitörün boşalması, bir bakterinin çoğalması. Özel bir taban vardır: \(e\approx 2{,}718\).</p>
+    <div class="eq">\[ a^{x+y}=a^x a^y, \qquad a^{xy}=(a^x)^y, \qquad a^{0}=1 \]</div>
+    <h4>d) Logaritma: üstelin tersi</h4>
+    <p><b>Tanım:</b> \(\log_a x = y\) ancak ve ancak \(a^y=x\). Yani logaritma “hangi üssü almalıyım?” sorusunun cevabıdır.</p>
+    <div class="derivation reveal" data-title="log(ab) = log a + log b kuralının türetilmesi">
+      <div class="step"><p><b>Adım 1.</b> \(u=\log_a x\) ve \(v=\log_a y\) diyelim. Tanıma göre bu demektir:</p>\[ a^u=x,\qquad a^v=y \]</div>
+      <div class="step"><p><b>Adım 2.</b> Çarpımı yaz: \(xy=a^u\cdot a^v\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Üs kuralı: \(a^u a^v=a^{u+v}\). Yani \(xy=a^{u+v}\).</p></div>
+      <div class="step"><p><b>Adım 4.</b> Tanımı tersten oku: \(\log_a(xy)=u+v\). Yani \(\log_a(xy)=\log_a x+\log_a y\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="eq">\[ \log_a(xy)=\log_a x+\log_a y,\qquad \log_a(x^k)=k\log_a x,\qquad \log_a(1)=0 \]</div>
+    <p><b>Doğal logaritma:</b> \(\ln x=\log_e x\). \(e^{\ln x}=x\) ve \(\ln(e^x)=x\).</p>
+    <h4>e) Trigonometri: birim çemberden</h4>
+    <p>Merkezi orijin ve yarıçapı \(1\) olan çembere <b>birim çember</b> denir. Bir açı \(\theta\) için çember üzerindeki noktanın koordinatları:</p>
+    <div class="eq">\[ \cos\theta = x \text{-koordinatı},\qquad \sin\theta = y \text{-koordinatı},\qquad \tan\theta=\frac{\sin\theta}{\cos\theta} \]</div>
+    <div class="derivation reveal" data-title="sin²θ + cos²θ = 1 neden doğru?">
+      <div class="step"><p><b>Adım 1.</b> Çemberin üzerindeki her nokta \((x,y)\) için yarıçap \(1\)’dir. Pisagor’u yaz.</p>\[ x^2+y^2=1^2 \]</div>
+      <div class="step"><p><b>Adım 2.</b> Birim çemberde \(x=\cos\theta\), \(y=\sin\theta\) yerine koy.</p>\[ \cos^2\theta+\sin^2\theta=1 \]</div>
+      <div class="step"><p><b>Adım 3.</b> Yorum: bu özdeşlik, herhangi bir açı için geçerlidir. Trigonometride en çok kullanılan eşitliklerden biridir.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <h4>f) Radyan: açının doğal ölçüsü</h4>
+    <p>Bir açının radyan değeri, birim çember üzerinde o açının karşısındaki yay uzunluğudur. Çemberin çevresi \(2\pi\) olduğu için tam dönüş \(2\pi\) radyandır, yani \(360^\circ=2\pi\) rad.</p>
+    <div class="derivation reveal" data-title="30° kaç radyandır?">
+      <div class="step"><p><b>Adım 1.</b> Temel eşitlik: \(180^\circ=\pi\) rad.</p></div>
+      <div class="step"><p><b>Adım 2.</b> Bir derece değeri \(\frac{\pi}{180}\) radyandır. Bu yüzden \(30^\circ\) için:</p>\[ 30^\circ=30\cdot\frac{\pi}{180}=\frac{\pi}{6}\text{ rad} \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/2</span></div>
+    </div>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Açı (derece)</th><th>Radyan</th><th>\(\sin\)</th><th>\(\cos\)</th></tr></thead>
+      <tbody>
+        <tr><td>\(0^\circ\)</td><td>\(0\)</td><td>\(0\)</td><td>\(1\)</td></tr>
+        <tr><td>\(30^\circ\)</td><td>\(\pi/6\)</td><td>\(1/2\)</td><td>\(\sqrt{3}/2\)</td></tr>
+        <tr><td>\(45^\circ\)</td><td>\(\pi/4\)</td><td>\(\sqrt{2}/2\)</td><td>\(\sqrt{2}/2\)</td></tr>
+        <tr><td>\(60^\circ\)</td><td>\(\pi/3\)</td><td>\(\sqrt{3}/2\)</td><td>\(1/2\)</td></tr>
+        <tr><td>\(90^\circ\)</td><td>\(\pi/2\)</td><td>\(1\)</td><td>\(0\)</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>Kazanım kontrolü · Ünite 1</h3>
+    <ul class="ol-tight">
+      <li>Bir ilişkinin fonksiyon olup olmadığını düşey doğru testiyle söyleyebiliyor musun?</li>
+      <li>Tanım kümesini üç yasağa bakarak bulabiliyor musun (sıfıra bölme, karekök, logaritma)?</li>
+      <li>\(f\circ g\) ile \(g\circ f\) arasındaki farkı bir örnekle gösterebiliyor musun?</li>
+      <li>Doğrusal bir fonksiyonun ters fonksiyonunu adım adım bulup kontrol edebiliyor musun?</li>
+      <li>\(\log_a(xy)=\log_a x+\log_a y\) eşitliğini tanımdan türetebiliyor musun?</li>
+      <li>\(\sin^2\theta+\cos^2\theta=1\) ve \(30^\circ=\pi/6\) rad ilişkilerini açıklayabiliyor musun?</li>
+    </ul>
     <div class="quiz" data-unit="cen101-m1"></div>
   </div>
 </section>
@@ -558,65 +696,343 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
   <div class="unit-head c101h">
     <div class="eyebrow">CEN 101 · Ünite 2</div>
     <h2>Limit ve süreklilik</h2>
-    <p>Limit, bir fonksiyonun bir noktaya “yaklaşırken” nereye gittiğini söyler. Değer o noktada tanımlı olmak zorunda değildir.</p>
+    <p>Limit, bir noktaya “yaklaşırken” nereye gidildiğini söyler. Fonksiyon o noktada tanımsız olsa bile limit var olabilir. Türevin temeli budur.</p>
   </div>
 
   <div class="card">
-    <h3>2.1 Limit kavramı</h3>
-    <div class="eq">\[ \lim_{x\to a} f(x)=L \]</div>
-    <p>Sezgisel anlamı: \(x\), \(a\)'ya çok yaklaştığında \(f(x)\) de \(L\)'ye çok yaklaşır. Soldan ve sağdan limitler eşitse limit vardır.</p>
-    <div class="eq">\[ \lim_{x\to a^{-}} f(x)=\lim_{x\to a^{+}} f(x)=L \;\Leftrightarrow\; \lim_{x\to a} f(x)=L \]</div>
-    <p>Limit kuralları: toplamın limiti toplamın limitidir, çarpım ve bölüm için de benzer kurallar geçerlidir (payda sıfıra gitmiyorsa).</p>
+    <h3>2.1 Sezgi: değere değil, yaklaşıma bak</h3>
+    <p>Şu fonksiyonu düşün:</p>
+    <div class="eq">\[ f(x)=\frac{x^2-4}{x-2} \]</div>
+    <p>\(x=2\) yazarsan payda \(0\) olur; fonksiyon orada tanımsızdır. Ama \(x\) değeri \(2\)’ye <i>yaklaştıkça</i> ne oluyor? Tablo yapalım:</p>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>\(x\) (soldan)</th><th>\(f(x)\)</th><th>\(x\) (sağdan)</th><th>\(f(x)\)</th></tr></thead>
+      <tbody>
+        <tr><td>\(1.9\)</td><td>\(3.9\)</td><td>\(2.1\)</td><td>\(4.1\)</td></tr>
+        <tr><td>\(1.99\)</td><td>\(3.99\)</td><td>\(2.01\)</td><td>\(4.01\)</td></tr>
+        <tr><td>\(1.999\)</td><td>\(3.999\)</td><td>\(2.001\)</td><td>\(4.001\)</td></tr>
+      </tbody>
+    </table></div>
+    <p>Her iki taraftan da değerler \(4\)’e yaklaşıyor. Bunu şöyle kanıtlarız: pay \(x^2-4=(x-2)(x+2)\) olduğu için \(x\ne 2\) iken:</p>
+    <div class="derivation reveal" data-title="(x²−4)/(x−2) sadeleşmesi">
+      <div class="step"><p><b>Adım 1.</b> Payı çarpanlarına ayır (iki kare farkı).</p>\[ x^2-4=(x-2)(x+2) \]</div>
+      <div class="step"><p><b>Adım 2.</b> Paya ve paydaya ortak \((x-2)\) var. \(x\ne 2\) olduğu için sadeleştirebiliriz.</p>\[ f(x)=\frac{(x-2)(x+2)}{x-2}=x+2 \quad (x\ne 2) \]</div>
+      <div class="step"><p><b>Adım 3.</b> Artık \(x\to 2\) için \(x+2\)’ye bakarız. Doğrudan yerine koyunca \(2+2=4\) çıkar.</p>\[ \lim_{x\to 2}f(x)=4 \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="trap"><b>Önemli ayrım:</b> \(\lim_{x\to 2}f(x)=4\) demek, \(f(2)=4\) demek <i>değildir</i>. Limit yalnızca yaklaşımı tarif eder. Burada \(f(2)\) tanımsızdır.</div>
   </div>
 
   <div class="card">
-    <h3>2.2 Belirsizlikler ve çözüm yolları</h3>
-    <div class="ex"><b>Örnek 1 (0/0):</b> \(\lim_{x\to 2}\frac{x^{2}-4}{x-2}=\lim_{x\to 2}(x+2)=4\). Pay çarpanlara ayrılıp sadeleştirilir.</div>
-    <div class="ex"><b>Örnek 2 (\(\infty/\infty\)):</b> \(\lim_{x\to\infty}\frac{3x^{2}+1}{x^{2}-5}=3\). Pay ve paydadaki en büyük kuvvet ile bölünür.</div>
-    <div class="eq">\[ \lim_{x\to 0}\frac{\sin x}{x}=1 \qquad\qquad \lim_{n\to\infty}\left(1+\frac{1}{n}\right)^{n}=e \]</div>
-    <div class="trap"><b>Dikkat:</b> \(\frac{0}{0}\) bir sonuç değil, belirsizliktir. Bu durumda sadeleştirme, eşlenik ile çarpma ya da L'Hôpital (Ünite 4) gerekir.</div>
+    <h3>2.2 Tanım: soldan, sağdan ve iki yönün birleşimi</h3>
+    <p>\(\lim_{x\to a} f(x)=L\) yazmak, \(x\) \(a\)’ya <b>her iki yönden</b> yaklaşırken \(f(x)\) değerinin \(L\)’ye yaklaşması demektir. İki yönlü limitin var olması için iki tek taraflı limit eşit olmalıdır:</p>
+    <div class="eq">\[ \lim_{x\to a}f(x)=L \quad\Longleftrightarrow\quad \lim_{x\to a^{-}}f(x)=L \;\text{ ve }\; \lim_{x\to a^{+}}f(x)=L \]</div>
+    <div class="derivation reveal" data-title="Parçalı fonksiyonda limit var mı?">
+      <div class="step"><p><b>Durum.</b> \(f(x)=x\) (eğer \(x<1\) ise) ve \(f(x)=x+1\) (eğer \(x\ge 1\) ise). \(x=1\) noktasındaki limit var mı?</p></div>
+      <div class="step"><p><b>Adım 1.</b> Soldan: \(x\to 1^{-}\) için \(x<1\) kuralı geçerli: \(f(x)=x\to 1\).</p>\[ \lim_{x\to 1^{-}}f(x)=1 \]</div>
+      <div class="step"><p><b>Adım 2.</b> Sağdan: \(x\to 1^{+}\) için \(x\ge 1\) kuralı geçerli: \(f(x)=x+1\to 2\).</p>\[ \lim_{x\to 1^{+}}f(x)=2 \]</div>
+      <div class="step"><p><b>Adım 3.</b> İki tek taraflı limit eşit değil (\(1\ne 2\)). Demek ki \(\lim_{x\to 1}f(x)\) <b>yoktur</b>.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
   </div>
 
   <div class="card">
-    <h3>2.3 Süreklilik</h3>
-    <p>\(f\), \(a\) noktasında süreklidir ancak ve ancak üç koşul sağlanır: \(f(a)\) tanımlı, \(\lim_{x\to a}f(x)\) var ve ikisi eşit.</p>
-    <p><b>Ara değer teoremi:</b> \(f\) kapalı bir \([a,b]\) aralığında sürekliyse ve \(f(a)\), \(f(b)\) ters işaretliyse, aralıkta bir kökü vardır. Bu, mühendislikte kök bulma yöntemlerinin temelidir.</p>
+    <h3>2.3 Epsilon–delta: limitin kesin tanımı (adım adım)</h3>
+    <p><b>Sezgi:</b> Bir mühendis şöyle der: “Çıktının hedef değere en fazla \(\varepsilon\) (epsilon) kadar sapmasını istiyorum. Bunu sağlamak için girdiyi hedef noktaya en fazla hangi \(\delta\) (delta) kadar yaklaştırmalıyım?” Limit tanımı bu mühendislik sorusunun matematiksel halidir.</p>
+    <div class="eq">\[ \lim_{x\to a}f(x)=L \;\iff\; \forall\,\varepsilon>0\;\exists\,\delta>0:\ 0<|x-a|<\delta \;\Rightarrow\; |f(x)-L|<\varepsilon \]</div>
+    <p>Bunu okumak için dilimize çevir: “Her \(\varepsilon>0\) için öyle bir \(\delta>0\) bulabiliyorsam ki, \(a\)’ya \(\delta\)’dan yakın ama \(a\)’nın kendisi olmayan her \(x\) için \(f(x)\), \(L\)’ye \(\varepsilon\)’dan yakın olsun.”</p>
+    <div class="derivation reveal" data-title="lim (x→2) (3x+1) = 7 kesin olarak gösterilsin">
+      <div class="step"><p><b>Adım 1.</b> Hedef: \(L=7\). Bir \(\varepsilon>0\) seç. (Herkes için geçerli olmalı, ama bir tane örnek seçmek yeterli değil. Genel \(\varepsilon\) ile çalışırız.)</p></div>
+      <div class="step"><p><b>Adım 2.</b> Çıktının sapmasını yaz ve sadeleştir:</p>\[ |f(x)-7|=|3x+1-7|=|3x-6|=3|x-2| \]</div>
+      <div class="step"><p><b>Adım 3.</b> Bu sapmanın \(\varepsilon\)’dan küçük olmasını istiyoruz:</p>\[ 3|x-2|<\varepsilon \quad\Longleftrightarrow\quad |x-2|<\frac{\varepsilon}{3} \]</div>
+      <div class="step"><p><b>Adım 4.</b> Girdi tarafındaki sapma \(|x-2|\) için sınırı \(\delta\) olarak seç:</p>\[ \delta=\frac{\varepsilon}{3} \]</div>
+      <div class="step"><p><b>Adım 5.</b> Kontrol: \(0<|x-2|<\delta=\frac{\varepsilon}{3}\) ise \(|f(x)-7|=3|x-2|<3\cdot\frac{\varepsilon}{3}=\varepsilon\). Tanım sağlandı. Demek ki \(\lim_{x\to 2}(3x+1)=7\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
+    </div>
+    <div class="trap"><b>Sık hata:</b> \(\varepsilon\)–\(\delta\)’yı tek bir sayı denemesiyle kanıtlamak. Kanıt, <i>her</i> \(\varepsilon\) için çalışan bir \(\delta\) formülü bulmaktır. Burada \(\delta=\varepsilon/3\) bu işi görür.</div>
+  </div>
+
+  <div class="card">
+    <h3>2.4 Limit kuralları: toplam, çarpım, bölüm</h3>
+    <p>Limitin varlığı biliniyorsa şu kurallar geçerlidir (\(\lim f=L\), \(\lim g=M\) iken):</p>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Kural</th><th>Formül</th><th>Koşul</th></tr></thead>
+      <tbody>
+        <tr><td>Toplam</td><td>\(\lim(f+g)=L+M\)</td><td>—</td></tr>
+        <tr><td>Sabit çarpanı</td><td>\(\lim(cf)=cL\)</td><td>—</td></tr>
+        <tr><td>Çarpım</td><td>\(\lim(fg)=LM\)</td><td>—</td></tr>
+        <tr><td>Bölüm</td><td>\(\lim\frac{f}{g}=\frac{L}{M}\)</td><td>\(M\ne 0\)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="derivation reveal" data-title="lim (x→1) (x²+3x) hesabı">
+      <div class="step"><p><b>Adım 1.</b> Toplam kuralı ile ayır.</p>\[ \lim_{x\to 1}(x^2+3x)=\lim_{x\to 1}x^2+\lim_{x\to 1}3x \]</div>
+      <div class="step"><p><b>Adım 2.</b> Sabit çarpanı dışarı al: \(\lim 3x=3\lim x\). Temel limitlerden \(\lim_{x\to 1}x=1\), \(\lim_{x\to 1}x^2=1\).</p>\[ =1+3\cdot 1 \]</div>
+      <div class="step"><p><b>Adım 3.</b> Sonuç:</p>\[ =4 \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <p><b>Pratik sonuç:</b> Polinomlar ve kesirler, paydası sıfır olmayan noktalarda, doğrudan yerine koyarak limitlerini verir. Belirsizlik ancak payda da sıfır olduğunda ortaya çıkar.</p>
+  </div>
+
+  <div class="card">
+    <h3>2.5 Belirsiz biçimler: 0/0 ve ∞/∞</h3>
+    <p>Yerine koyunca \(\frac{0}{0}\) çıkarsa bu bir cevap değildir; bir <b>belirsizliktir</b>. İki standart çözüm vardır: <b>sadeleştirme</b> ve <b>eşlenikle çarpma</b>.</p>
+    <div class="derivation reveal" data-title="0/0 belirsizliğinde eşlenik yöntemi: lim (x→0) (√(x+4)−2)/x">
+      <div class="step"><p><b>Adım 1.</b> Yerine koy: pay \(\sqrt{4}-2=0\), payda \(0\). Yani \(\frac{0}{0}\) belirsizliği.</p></div>
+      <div class="step"><p><b>Adım 2.</b> Payın eşleniğini (aynı ifade, ortadaki işaret ters) hem payla hem paydayla çarp. Eşlenik \(\sqrt{x+4}+2\).</p>\[ \frac{\sqrt{x+4}-2}{x}\cdot\frac{\sqrt{x+4}+2}{\sqrt{x+4}+2} \]</div>
+      <div class="step"><p><b>Adım 3.</b> Paydaki \((a-b)(a+b)=a^2-b^2\) özdeşliğini kullan: payda \((x+4)-4=x\).</p>\[ =\frac{(x+4)-4}{x\,(\sqrt{x+4}+2)}=\frac{x}{x\,(\sqrt{x+4}+2)} \]</div>
+      <div class="step"><p><b>Adım 4.</b> \(x\ne 0\) olduğu için \(x\) sadeleşir.</p>\[ =\frac{1}{\sqrt{x+4}+2} \]</div>
+      <div class="step"><p><b>Adım 5.</b> Artık \(x\to 0\) için yerine koyabiliriz: \(\frac{1}{\sqrt{4}+2}=\frac{1}{4}\).</p>\[ \lim_{x\to 0}\frac{\sqrt{x+4}-2}{x}=\frac{1}{4} \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
+    </div>
+    <div class="derivation reveal" data-title="∞/∞ belirsizliği: lim (x→∞) (3x²+1)/(x²−5)">
+      <div class="step"><p><b>Adım 1.</b> Pay ve paydanın en büyük kuvveti \(x^2\)’dir. Hepsini \(x^2\) ile böl.</p>\[ \frac{3x^2+1}{x^2-5}=\frac{\frac{3x^2}{x^2}+\frac{1}{x^2}}{\frac{x^2}{x^2}-\frac{5}{x^2}} \]</div>
+      <div class="step"><p><b>Adım 2.</b> Sadeleştir:</p>\[ =\frac{3+\frac{1}{x^2}}{1-\frac{5}{x^2}} \]</div>
+      <div class="step"><p><b>Adım 3.</b> \(x\to\infty\) iken \(\frac{1}{x^2}\to 0\) ve \(\frac{5}{x^2}\to 0\).</p>\[ \lim_{x\to\infty}\frac{3+\frac{1}{x^2}}{1-\frac{5}{x^2}}=\frac{3+0}{1-0}=3 \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="ex"><b>Kural özeti:</b> \(x\to\infty\) iken \(\frac{1}{x^n}\to 0\) (\(n>0\)). Pay ve paydanın en büyük üssü ile bölmek, ∞/∞ belirsizliğini çözer.</div>
+  </div>
+
+  <div class="card">
+    <h3>2.6 Önemli limit: \(\dfrac{\sin x}{x}\to 1\) neden doğru?</h3>
+    <p>Bu limit türevde çok kullanılacak. Yerine koyunca \(\frac{0}{0}\) çıkar; sadeleştirme de işe yaramaz. Çözüm geometrik bir “sıkıştırma” argümanıdır.</p>
+    <div class="derivation reveal" data-title="sin x / x → 1 (0 < x < π/2 için)">
+      <div class="step"><p><b>Adım 1.</b> Birim çemberde \(0&lt;x<\frac{\pi}{2}\) açısını al. Üç alan karşılaştır: \(\triangle\text{OAB}\) (yükseklik \(\sin x\)), sektör OAB (yay \(x\)), \(\triangle\text{OAT}\) (dik kenar \(\tan x\)).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Alanlar sırası: küçük üçgen < sektör < büyük üçgen. Alanlar \(\frac{1}{2}\sin x<\frac{1}{2}x<\frac{1}{2}\tan x\).</p>\[ \sin x&lt;x<\tan x \]</div>
+      <div class="step"><p><b>Adım 3.</b> Her tarafı \(\sin x>0\) ile böl (bölme yönü değişmez çünkü pozitif):</p>\[ 1<\frac{x}{\sin x}<\frac{1}{\cos x} \]</div>
+      <div class="step"><p><b>Adım 4.</b> Hepsini ters çevir (ters çevirince eşitsizlik yön değiştirir):</p>\[ \cos x<\frac{\sin x}{x}<1 \]</div>
+      <div class="step"><p><b>Adım 5.</b> \(x\to 0\) iken \(\cos x\to 1\) ve \(1\) sabittir. Aradaki ifade iki taraf arasında sıkışır: \(\lim_{x\to 0}\frac{\sin x}{x}=1\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
+    </div>
+    <p>Bu limit, birkaç bölümden sonra türev formüllerinin (\((\sin x)'=\cos x\)) temelini oluşturacak.</p>
+  </div>
+
+  <div class="card">
+    <h3>2.7 Süreklilik: “kalemi kaldırmadan çizebilmek”</h3>
+    <p><b>Sezgi:</b> Grafiği çizerken kalemini kâğıttan kaldırmıyorsan fonksiyon o aralıkta süreklidir. Bunu matematiksel olarak üç koşulla söyleriz.</p>
+    <div class="eq">\[ f \text{ sürekli } a \text{ noktasında } \iff \begin{cases} f(a)\text{ tanımlı}\\ \lim_{x\to a}f(x)\text{ var}\\ \lim_{x\to a}f(x)=f(a) \end{cases} \]</div>
+    <div class="derivation reveal" data-title="f(x)=(x²−1)/(x−1) süreklilik kontrolü (x=1 için)">
+      <div class="step"><p><b>Adım 1.</b> \(f(1)\) tanımlı mı? Yerine koy: \(\frac{0}{0}\). Tanımlı değil! Ama süreklilik için yalnızca \(f(a)\)’nın tanımlı olması şart; burada \(f\) tanımsız olduğu için sürekli değildir. Yine de limite bakalım.</p></div>
+      <div class="step"><p><b>Adım 2.</b> Sadeleştir: \(\frac{x^2-1}{x-1}=\frac{(x-1)(x+1)}{x-1}=x+1\) (\(x\ne 1\)). Limit: \(\lim_{x\to 1}(x+1)=2\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Şimdi \(f(1)\) değerini kendimiz tanımlayalım: \(f(1)=2\) yaparsak üç koşul da sağlanır: tanımlı, limit var, eşit. Fonksiyon artık sürekli olur. Bu tür durumlara <b>kaldırılabilir süreksizlik</b> denir.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Süreksizlik türü</th><th>Ne olur?</th><th>Örnek</th></tr></thead>
+      <tbody>
+        <tr><td>Kaldırılabilir</td><td>Limit var ama \(f(a)\) yanlış ya da tanımsız</td><td>\((x^2-1)/(x-1)\) at \(x=1\)</td></tr>
+        <tr><td>Sıçrama</td><td>Soldan ve sağdan limitler farklı</td><td>Parçalı fonksiyon (2.2)</td></tr>
+        <tr><td>Sonsuz</td><td>Limit sonsuza gider</td><td>\(\frac{1}{x}\) at \(x=0\)</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>2.8 Ara değer teoremi: köklerin varlığını kanıtlamak</h3>
+    <p><b>Teorem (sezgisel):</b> \(f\) kapalı bir \([a,b]\) aralığında sürekli olsun. \(f(a)\) ile \(f(b)\) ters işaretliyse, \((a,b)\) aralığında \(f(c)=0\) olan en az bir \(c\) vardır.</p>
+    <p><b>Neden doğru?</b> Sürekli bir eğri, bir taraftan öbür tarafa geçerken kalemi kaldırmadan \(x\)-eksenini kesmek zorundadır.</p>
+    <div class="derivation reveal" data-title="x³ − x − 1 = 0 denkleminin bir kökü var mı?">
+      <div class="step"><p><b>Adım 1.</b> \(f(x)=x^3-x-1\) bir polinomdur; her yerde süreklidir.</p></div>
+      <div class="step"><p><b>Adım 2.</b> \(x=1\) ve \(x=2\) için değerlere bak:</p>\[ f(1)=1-1-1=-1<0,\qquad f(2)=8-2-1=5>0 \]</div>
+      <div class="step"><p><b>Adım 3.</b> İşaret değişti. Ara değer teoremine göre \((1,2)\) aralığında \(f(c)=0\) olan bir \(c\) vardır. Yani denklemin bir kökü vardır.</p></div>
+      <div class="step"><p><b>Adım 4.</b> Mühendislik notu: Teorem kökün varlığını söyler, değerini söylemez. Değeri bulmak için aralığı ikiye bölen ikiye bölme (bisection) ya da Newton yöntemi (Ünite 4) kullanılır.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Kazanım kontrolü · Ünite 2</h3>
+    <ul class="ol-tight">
+      <li>Bir limitin soldan ve sağdan eşit olması gerektiğini örnekle açıklayabiliyor musun?</li>
+      <li>\(\lim_{x\to 2}(3x+1)=7\) için \(\varepsilon\)–\(\delta\) kanıtını \(\delta=\varepsilon/3\) ile adım adım yazabiliyor musun?</li>
+      <li>\(0/0\) belirsizliğini sadeleştirme ve eşlenikle çözebiliyor musun?</li>
+      <li>\(\sin x/x\to 1\) limitini geometrik sıkıştırma ile açıklayabiliyor musun?</li>
+      <li>Süreklilik için üç koşulu sayabilir ve kaldırılabilir süreksizliği tanımlayabilir misin?</li>
+      <li>Ara değer teoremi ile bir denklemin kökünün varlığını kanıtlayabiliyor musun?</li>
+    </ul>
     <div class="quiz" data-unit="cen101-m2"></div>
   </div>
 </section>
-
 <section id="cen101-m3" class="reveal">
   <div class="unit-head c101h">
     <div class="eyebrow">CEN 101 · Ünite 3</div>
     <h2>Türev</h2>
-    <p>Türev, anlık değişim hızıdır: eğim, hız, büyüme oranı.</p>
+    <p>Türev, bir şeyin ne kadar hızlı değiştiğini ölçer. Eğimi, hızı, büyüme oranını ve hassasiyeti aynı araçla yakalarsın.</p>
   </div>
 
   <div class="card">
-    <h3>3.1 Tanım ve geometrik anlam</h3>
-    <div class="eq">\[ f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h} \]</div>
-    <p>Grafikte bu, \(x\) noktasındaki teğetin eğimidir. Konum fonksiyonunun türevi hızdır; hızın türevi ivmedir.</p>
-  </div>
-
-  <div class="card">
-    <h3>3.2 Türev kuralları</h3>
+    <h3>3.1 Sezgi: ortalama hızdan anlık hıza</h3>
+    <p>Bir cismin konumu zamana bağlı olsun: \(s(t)=t^2\) (metre, saniye cinsinden). \(t=2\) anındaki hızı nasıl buluruz?</p>
+    <p><b>Fikir:</b> İki an arasındaki <i>ortalama</i> hız kolay hesaplanır: konum farkı bölü zaman farkı. Zaman farkını giderek küçültürsek bu ortalama, <i>anlık</i> hıza yaklaşır.</p>
+    <div class="derivation reveal" data-title="t=2 anındaki hız: ortalamalardan limite">
+      <div class="step"><p><b>Adım 1.</b> \(t=2\) ile \(t=2+h\) arasındaki ortalama hız. Konum farkı bölü zaman farkı:</p>\[ \bar v=\frac{s(2+h)-s(2)}{(2+h)-2}=\frac{s(2+h)-s(2)}{h} \]</div>
+      <div class="step"><p><b>Adım 2.</b> \(s(2+h)=(2+h)^2=4+4h+h^2\) ve \(s(2)=4\). Farkı al:</p>\[ s(2+h)-s(2)=4h+h^2 \]</div>
+      <div class="step"><p><b>Adım 3.</b> \(h\)’ye böl (\(h\ne 0\)):</p>\[ \bar v=\frac{4h+h^2}{h}=4+h \]</div>
+      <div class="step"><p><b>Adım 4.</b> \(h\) sıfıra giderken ortalama hız \(4\)’e gider. Bu, \(t=2\) anındaki <b>anlık hız</b>dır:</p>\[ v(2)=\lim_{h\to 0}(4+h)=4\ \text{m/s} \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
     <div class="table-wrap"><table class="w3">
-      <thead><tr><th>Kural</th><th>Formül</th></tr></thead>
+      <thead><tr><th>\(h\)</th><th>Ortalama hız \(4+h\)</th></tr></thead>
       <tbody>
-        <tr><td>Kuvvet</td><td>\((x^{n})'=n x^{n-1}\)</td></tr>
-        <tr><td>Çarpım</td><td>\((uv)'=u'v+uv'\)</td></tr>
-        <tr><td>Bölüm</td><td>\(\left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^{2}}\)</td></tr>
-        <tr><td>Zincir</td><td>\((f(g(x)))'=f'(g(x))\,g'(x)\)</td></tr>
-        <tr><td>Temel</td><td>\((\sin x)'=\cos x,\ (e^{x})'=e^{x},\ (\ln x)'=\frac{1}{x}\)</td></tr>
+        <tr><td>\(1\)</td><td>\(5\)</td></tr>
+        <tr><td>\(0{,}1\)</td><td>\(4{,}1\)</td></tr>
+        <tr><td>\(0{,}01\)</td><td>\(4{,}01\)</td></tr>
+        <tr><td>\(\to 0\)</td><td>\(\to 4\)</td></tr>
       </tbody>
     </table></div>
-    <div class="ex"><b>Örnek:</b> \(y=\sin(3x^{2})\) için \(y'=\cos(3x^{2})\cdot 6x=6x\cos(3x^{2})\). Dış fonksiyonun türevi, iç fonksiyonun türevi ile çarpılır.</div>
-    <div class="ex"><b>Örnek (örtük):</b> \(x^{2}+y^{2}=25\). Her iki tarafın \(x\)'e göre türevi: \(2x+2y\,y'=0\), buradan \(y'=-\frac{x}{y}\).</div>
   </div>
 
   <div class="card">
-    <h3>3.3 Yüksek mertebe türev</h3>
-    <p>\(f''\) (ikinci türev), \(f'\)'nin türevidir. Konum-zaman örneğinde \(s''(t)\) ivmedir. İkinci türev, eğrinin bükeylik yönünü de söyler (Ünite 4).</p>
+    <h3>3.2 Tanım: türev bir limittir</h3>
+    <p>Genel bir fonksiyon \(f\) ve bir nokta \(x\) için, \(x\)’ten \(x+h\)’ye giden iki noktanın (grafikte bir kesen doğrusunun) eğimi:</p>
+    <div class="eq">\[ \frac{f(x+h)-f(x)}{h} \]</div>
+    <p>Bu, <b>kesen</b> (secant) doğrusunun eğimidir. \(h\to 0\) yaparsak iki nokta birleşir ve kesen <b>teğet</b> (tangent) doğrusuna döner. Teğetin eğimi, türevdir:</p>
+    <div class="eq">\[ f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h} \]</div>
+    <p><b>Gösterimler:</b> \(f'(x)\), \(\frac{dy}{dx}\), \(\frac{d}{dx}f(x)\) ve \(Df(x)\) hepsi aynı şeyi anlatır: \(x\)’e göre türev.</p>
+    <div class="trap"><b>Sık hata:</b> \(f'(x)\) ile \(f(x)/x\) farklı şeylerdir. Türev bir <i>değişim oranıdır</i>, bir bölümü değil.</div>
+  </div>
+
+  <div class="card">
+    <h3>3.3 İlk türevleri elle türetmek</h3>
+    <p>Tanımı kullanarak üç temel türevi kendi elimizle çıkaralım. Her seferinde aynı üç hamle: <b>farkı al, \(h\)’ye böl, \(h\to 0\)</b>.</p>
+    <div class="derivation reveal" data-title="(x²)′ = 2x">
+      <div class="step"><p><b>Adım 1.</b> Tanımı yaz.</p>\[ f'(x)=\lim_{h\to 0}\frac{(x+h)^2-x^2}{h} \]</div>
+      <div class="step"><p><b>Adım 2.</b> Parantezi aç. \((x+h)^2=x^2+2xh+h^2\).</p>\[ (x+h)^2-x^2=2xh+h^2 \]</div>
+      <div class="step"><p><b>Adım 3.</b> \(h\)’ye böl: her terim \(h\) içeriyor, sadeleşir.</p>\[ \frac{2xh+h^2}{h}=2x+h \]</div>
+      <div class="step"><p><b>Adım 4.</b> \(h\to 0\) al.</p>\[ f'(x)=\lim_{h\to 0}(2x+h)=2x \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="derivation reveal" data-title="(x³)′ = 3x²">
+      <div class="step"><p><b>Adım 1.</b> Küpü aç: \((x+h)^3=x^3+3x^2h+3xh^2+h^3\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Fark ve bölme:</p>\[ \frac{(x+h)^3-x^3}{h}=\frac{3x^2h+3xh^2+h^3}{h}=3x^2+3xh+h^2 \]</div>
+      <div class="step"><p><b>Adım 3.</b> \(h\to 0\): \(3xh\to 0\) ve \(h^2\to 0\). Kalan \(3x^2\).</p>\[ (x^3)'=3x^2 \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="derivation reveal" data-title="(√x)′ = 1/(2√x)">
+      <div class="step"><p><b>Adım 1.</b> Tanım: \(\frac{\sqrt{x+h}-\sqrt{x}}{h}\). Pay ve payda \(0\)’a giderken belirsiz; eşlenikle çarpalım.</p>\[ \frac{\sqrt{x+h}-\sqrt{x}}{h}\cdot\frac{\sqrt{x+h}+\sqrt{x}}{\sqrt{x+h}+\sqrt{x}} \]</div>
+      <div class="step"><p><b>Adım 2.</b> Payda \((x+h)-x=h\) olur.</p>\[ =\frac{h}{h\,(\sqrt{x+h}+\sqrt{x})}=\frac{1}{\sqrt{x+h}+\sqrt{x}} \]</div>
+      <div class="step"><p><b>Adım 3.</b> \(h\to 0\): \(\sqrt{x+h}\to\sqrt{x}\).</p>\[ \frac{1}{\sqrt{x}+\sqrt{x}}=\frac{1}{2\sqrt{x}} \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="ex"><b>Genel desen:</b> \((x^n)'=n\,x^{n-1}\). \(n=2\) ve \(n=3\) için yukarıda gördük; \(n=1/2\) için \(\frac{1}{2}x^{-1/2}=\frac{1}{2\sqrt x}\) ile aynı sonucu verir.</div>
+  </div>
+
+  <div class="card">
+    <h3>3.4 Türev kuralları ve ispatları</h3>
+    <div class="eq">\[ (cf)'=cf',\qquad (f+g)'=f'+g' \]</div>
+    <p>Bu iki kural, limitin toplam ve sabit çarpan kurallarından (Ünite 2) doğrudan gelir.</p>
+    <h4>Çarpım kuralı: \((fg)'=f'g+fg'\)</h4>
+    <div class="derivation reveal" data-title="Çarpım kuralının ispatı">
+      <div class="step"><p><b>Adım 1.</b> Tanım ve fark:</p>\[ \frac{f(x+h)g(x+h)-f(x)g(x)}{h} \]</div>
+      <div class="step"><p><b>Adım 2.</b> Bir ara terim ekleyip çıkar: \(f(x+h)g(x)\). Toplam değişmez.</p>\[ =\frac{f(x+h)g(x+h)-f(x+h)g(x)+f(x+h)g(x)-f(x)g(x)}{h} \]</div>
+      <div class="step"><p><b>Adım 3.</b> Gruplandır:</p>\[ = f(x+h)\cdot\frac{g(x+h)-g(x)}{h}+g(x)\cdot\frac{f(x+h)-f(x)}{h} \]</div>
+      <div class="step"><p><b>Adım 4.</b> \(h\to 0\): \(f(x+h)\to f(x)\) (çünkü \(f\) türevlenebilirse süreklidir). İki bölüm \(g'(x)\) ve \(f'(x)\)’e gider.</p>\[ (fg)'(x)=f(x)g'(x)+g(x)f'(x) \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <p><b>Örnek:</b> \(y=x^2\sin x\). \(f=x^2\), \(g=\sin x\): \(y'=2x\sin x+x^2\cos x\).</p>
+    <h4>Bölüm kuralı: \(\left(\dfrac{f}{g}\right)'=\dfrac{f'g-fg'}{g^2}\)</h4>
+    <div class="derivation reveal" data-title="Bölüm kuralı, çarpım kuralından">
+      <div class="step"><p><b>Adım 1.</b> Önce \(\frac{1}{g}\)’nin türevi. Tanımdan:</p>\[ \frac{\frac{1}{g(x+h)}-\frac{1}{g(x)}}{h}=\frac{g(x)-g(x+h)}{h\,g(x)\,g(x+h)} \]</div>
+      <div class="step"><p><b>Adım 2.</b> \(h\to 0\): pay \(-g'(x)\)’e, payda \(g(x)^2\)’ye gider.</p>\[ \left(\frac{1}{g}\right)'=-\frac{g'}{g^2} \]</div>
+      <div class="step"><p><b>Adım 3.</b> \(\frac{f}{g}=f\cdot\frac{1}{g}\) yaz ve çarpım kuralını uygula:</p>\[ \left(\frac{f}{g}\right)'=f'\cdot\frac{1}{g}+f\cdot\left(-\frac{g'}{g^2}\right)=\frac{f'g-fg'}{g^2} \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3.5 Zincir kuralı: iç içe fonksiyonlar</h3>
+    <p><b>Sezgi (dişliler):</b> Bir dişli çarkı \(u\)’yu \(x\)’in fonksiyonu olarak döndürüyor, sonra başka bir çark \(y\)’yi \(u\)’nun fonksiyonu olarak döndürüyor. Toplam dönüş hızı, iki dişli oranının <b>çarpımıdır</b>:</p>
+    <div class="eq">\[ \frac{dy}{dx}=\frac{dy}{du}\cdot\frac{du}{dx} \]</div>
+    <div class="derivation reveal" data-title="y = (x²+1)¹⁰ için dy/dx">
+      <div class="step"><p><b>Adım 1.</b> İç fonksiyonu adlandır: \(u=x^2+1\). Dış fonksiyon: \(y=u^{10}\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Dış türev (\(u\)’ya göre): \(\frac{dy}{du}=10u^{9}\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> İç türev (\(x\)’e göre): \(\frac{du}{dx}=2x\).</p></div>
+      <div class="step"><p><b>Adım 4.</b> Çarp ve \(u\)’yu geri yaz:</p>\[ \frac{dy}{dx}=10u^9\cdot 2x=20x\,(x^2+1)^9 \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="trap"><b>Sık hata:</b> \((x^2+1)^{10}\)’u \(10(x^2+1)^9\) yapıp iç türevi (\(2x\)) unutmak. Dış türevi aldıktan sonra iç fonksiyonun türevini <i>mutlaka</i> çarp.</div>
+  </div>
+
+  <div class="card">
+    <h3>3.6 Trigonometrik türevler: \((\sin x)'=\cos x\)</h3>
+    <div class="derivation reveal" data-title="(sin x)′ ispatı (önceki ünitedeki limitleri kullanarak)">
+      <div class="step"><p><b>Adım 1.</b> Toplam açı formülü: \(\sin(x+h)=\sin x\cos h+\cos x\sin h\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Fark ve bölme. \(\sin x\)’i ortak al:</p>\[ \frac{\sin(x+h)-\sin x}{h}=\sin x\cdot\frac{\cos h-1}{h}+\cos x\cdot\frac{\sin h}{h} \]</div>
+      <div class="step"><p><b>Adım 3.</b> İki limit biliniyor: \(\frac{\sin h}{h}\to 1\) (Ünite 2) ve \(\frac{\cos h-1}{h}\to 0\) (bunu birim çemberde \(1-\cos h\) ile \(h\)’yi karşılaştırarak gösterebilirsin).</p></div>
+      <div class="step"><p><b>Adım 4.</b> Limitleri yerine koy:</p>\[ (\sin x)'=\sin x\cdot 0+\cos x\cdot 1=\cos x \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="derivation reveal" data-title="(cos x)′ = −sin x">
+      <div class="step"><p><b>Adım 1.</b> \(\cos(x+h)=\cos x\cos h-\sin x\sin h\). Farkı al:</p>\[ \cos(x+h)-\cos x=\cos x(\cos h-1)-\sin x\sin h \]</div>
+      <div class="step"><p><b>Adım 2.</b> \(h\)’ye böl ve \(h\to 0\) al. \(\frac{\cos h-1}{h}\to 0\), \(\frac{\sin h}{h}\to 1\):</p>\[ (\cos x)'=\cos x\cdot 0-\sin x\cdot 1=-\sin x \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/2</span></div>
+    </div>
+    <div class="ex"><b>Kullanım:</b> \(y=\sin(3x^2)\) için zincir kuralıyla \(y'=\cos(3x^2)\cdot 6x=6x\cos(3x^2)\). Dış fonksiyonun türevi (\(\cos\)), iç fonksiyon olduğu gibi kalarak yazılır; sonra iç türev (\(6x\)) çarpılır.</div>
+  </div>
+
+  <div class="card">
+    <h3>3.7 Üstel ve logaritmik türevler</h3>
+    <p><b>Doğal taban \(e\)’nin tanımı:</b> \(e\), \(\lim_{h\to 0}\frac{e^h-1}{h}=1\) olacak şekilde seçilen tabandır. Bu seçim türevi sade tutar.</p>
+    <div class="derivation reveal" data-title="(eˣ)′ = eˣ">
+      <div class="step"><p><b>Adım 1.</b> Üs kuralı: \(e^{x+h}=e^x e^h\). Farkı al:</p>\[ \frac{e^{x+h}-e^x}{h}=e^x\cdot\frac{e^h-1}{h} \]</div>
+      <div class="step"><p><b>Adım 2.</b> \(h\to 0\): \(\frac{e^h-1}{h}\to 1\) (tanım gereği).</p>\[ (e^x)'=e^x\cdot 1=e^x \]</div>
+      <div class="step"><p><b>Yorum:</b> \(e^x\) fonksiyonu, kendi eğimine eşittir. Büyüme ve sönüm modellerinin neden bu kadar yaygın olduğunun nedeni budur.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="derivation reveal" data-title="(ln x)′ = 1/x (örtük türevle)">
+      <div class="step"><p><b>Adım 1.</b> \(y=\ln x\) diyelim. Tanımdan \(e^y=x\) olur (logaritma ile üs birbirini geri alır).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Her iki tarafın \(x\)’e göre türevini al. Sol tarafta zincir kuralı var: \(\frac{d}{dx}e^y=e^y\cdot y'\).</p>\[ e^y\,y'=1 \]</div>
+      <div class="step"><p><b>Adım 3.</b> \(y'\)’yi yalnız bırak ve \(e^y=x\) yerine koy:</p>\[ y'=\frac{1}{e^y}=\frac{1}{x} \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3.8 Örtük türev: \(y\)’yi açıkça yazamadığında</h3>
+    <p>Bazen \(y\), \(x\) cinsinden açıkça yazılamaz: \(x^2+y^2=25\) bir çemberdir ve iki değerlidir. Yine de eğimi bulabiliriz. Fikir: her iki tarafı \(x\)’e göre türetiriz ve \(y\)’yi \(x\)’in fonksiyonu sayarız.</p>
+    <div class="derivation reveal" data-title="x² + y² = 25 eğrisinin eğimi">
+      <div class="step"><p><b>Adım 1.</b> Her iki tarafın \(x\)’e göre türevini al:</p>\[ \frac{d}{dx}(x^2)+\frac{d}{dx}(y^2)=\frac{d}{dx}(25) \]</div>
+      <div class="step"><p><b>Adım 2.</b> \(\frac{d}{dx}(y^2)\) için zincir kuralı: \(2y\cdot y'\).</p>\[ 2x+2y\,y'=0 \]</div>
+      <div class="step"><p><b>Adım 3.</b> \(y'\)’yi yalnız bırak:</p>\[ y'=-\frac{x}{y} \]</div>
+      <div class="step"><p><b>Adım 4.</b> Örnek nokta \((3,4)\) (çemberde, çünkü \(9+16=25\)): eğim \(-\frac{3}{4}\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3.9 Yüksek mertebe türevler: konum, hız, ivme</h3>
+    <p>Türevin türevi \(f''\) (ikinci türev) yazılır. Fizikte bu zincir çok önemlidir:</p>
+    <div class="eq">\[ s(t)\ \xrightarrow{\ \frac{d}{dt}\ }\ v(t)=s'(t)\ \xrightarrow{\ \frac{d}{dt}\ }\ a(t)=v'(t)=s''(t) \]</div>
+    <div class="derivation reveal" data-title="s(t) = t³ − 6t² + 9t için hız, ivme ve durma anları">
+      <div class="step"><p><b>Adım 1.</b> Hızı bul (her terimi ayrı türet):</p>\[ v(t)=3t^2-12t+9 \]</div>
+      <div class="step"><p><b>Adım 2.</b> Durma anları: \(v(t)=0\) çöz. \(3t^2-12t+9=3(t^2-4t+3)=3(t-1)(t-3)=0\).</p>\[ t=1\ \text{ve}\ t=3 \]</div>
+      <div class="step"><p><b>Adım 3.</b> İvmeyi bul: \(a(t)=v'(t)=6t-12\).</p></div>
+      <div class="step"><p><b>Adım 4.</b> \(t=1\) anında ivme \(a(1)=-6\) (yavaşlıyor, çünkü negatif). \(t=3\) anında \(a(3)=6\) (hızlanıyor, çünkü pozitif).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3.10 Doğrusal yaklaşım: türevle hesap makinesi</h3>
+    <p>Teğet doğrusu, eğrinin yakınında iyi bir yaklaşımdır. Bu yüzden \(f(x+h)\approx f(x)+f'(x)\,h\) kullanılabilir. Küçük \(h\) için hata küçüktür.</p>
+    <div class="derivation reveal" data-title="√4,1 değerini türevle tahmin etmek">
+      <div class="step"><p><b>Adım 1.</b> \(f(x)=\sqrt{x}\), \(x=4\), \(h=0{,}1\) seç. \(f(4)=2\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> \(f'(x)=\frac{1}{2\sqrt{x}}\), dolayısıyla \(f'(4)=\frac{1}{4}\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Yaklaşım:</p>\[ \sqrt{4{,}1}\approx 2+\frac{1}{4}\cdot 0{,}1=2{,}025 \]</div>
+      <div class="step"><p><b>Adım 4.</b> Karşılaştır: hesap makinesi \(2{,}02485\) verir. Hata yaklaşık \(0{,}00015\). Mühendislikte böyle yaklaşımlar hızlı tahminler için çok değerlidir.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Kazanım kontrolü · Ünite 3</h3>
+    <ul class="ol-tight">
+      <li>Ortalama hızdan anlık hıza geçişi, kesen–teğet ilişkisiyle açıklayabiliyor musun?</li>
+      <li>\((x^2)'=2x\) ve \((x^3)'=3x^2\)’yi tanımdan, adım adım türetebiliyor musun?</li>
+      <li>Çarpım ve bölüm kurallarının ispatında hangi ara terimin eklendiğini söyleyebiliyor musun?</li>
+      <li>Zincir kuralını iç ve dış fonksiyon ayrımıyla uygulayabiliyor musun?</li>
+      <li>\((\sin x)'=\cos x\) ve \((\ln x)'=1/x\) formüllerinin nereden geldiğini açıklayabiliyor musun?</li>
+      <li>Örtük türev ile \(dy/dx\)’i \(y\)’yi açıkça yazmadan bulabiliyor musun?</li>
+    </ul>
     <div class="quiz" data-unit="cen101-m3"></div>
   </div>
 </section>
@@ -625,64 +1041,287 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
   <div class="unit-head c101h">
     <div class="eyebrow">CEN 101 · Ünite 4</div>
     <h2>Türevin uygulamaları</h2>
-    <p>Artan/azalan aralıklar, ekstremumlar, optimizasyon ve belirsizlik çözümü.</p>
+    <p>Türevle bir eğrinin nerede arttığını, nerede tepe ya da çukur yaptığını, nasıl büküldüğünü ve en iyi değerini bulursun.</p>
   </div>
 
   <div class="card">
-    <h3>4.1 Artan, azalan ve ekstremum</h3>
-    <p>\(f'(x)>0\) ise \(f\) artandır; \(f'(x)<0\) ise azalandır. Kritik noktalar \(f'(x)=0\) (veya tanımsız) olan noktalardır. İkinci türev testi: \(f''>0\) ise yerel minimum, \(f''<0\) ise yerel maksimumdur.</p>
-    <div class="ex"><b>Örnek:</b> \(f(x)=x^{3}-3x\). \(f'(x)=3x^{2}-3=0\) ise \(x=\pm 1\). \(f''(x)=6x\): \(f''(1)=6>0\), yerel minimum \(f(1)=-2\); \(f''(-1)=-6<0\), yerel maksimum \(f(-1)=2\).</div>
+    <h3>4.1 Artan ve azalan: işaret tablosu</h3>
+    <p><b>Sezgi:</b> Eğri yükseliyorsa teğetin eğimi pozitiftir; alçalıyorsa negatiftir. Bu yüzden \(f'\)’nin işareti, \(f\)’nin davranışını söyler:</p>
+    <div class="eq">\[ f'(x)>0 \Rightarrow f\text{ artan},\qquad f'(x)<0 \Rightarrow f\text{ azalan} \]</div>
+    <div class="derivation reveal" data-title="f(x)=x³ − 3x: artan ve azalan aralıklar">
+      <div class="step"><p><b>Adım 1.</b> Türevi al ve çarpanlarına ayır:</p>\[ f'(x)=3x^2-3=3(x-1)(x+1) \]</div>
+      <div class="step"><p><b>Adım 2.</b> Sıfır olduğu yerleri bul: \(x=-1\) ve \(x=1\). Bunlar \(\mathbb{R}\)’yi üç aralığa böler.</p></div>
+      <div class="step"><p><b>Adım 3.</b> Her aralıktan bir test noktası seç ve \(f'\) işaretine bak:</p>\[ x=-2:\ f'(-2)=3\cdot 3=9>0 \]\[ x=0:\ f'(0)=-3<0 \]\[ x=2:\ f'(2)=9>0 \]</div>
+      <div class="step"><p><b>Adım 4.</b> Sonuç: \(f\) \((-\infty,-1]\) ve \([1,\infty)\)’da artan, \([-1,1]\)’de azalan.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="trap"><b>Dikkat:</b> \(f'(x)=0\) olan noktalar “işaret değişebilir” diye aranır; ama her sıfır işaret değiştirmez. Test noktası kullanarak işaretin <i>gerçekten</i> değiştiğini kontrol et.</div>
   </div>
 
   <div class="card">
-    <h3>4.2 Optimizasyon</h3>
-    <p>Problem: toplam uzunluğu 40 m olan bir tel ile en büyük alanlı dikdörtgeni çevirmek. Kenarlar \(x\) ve \(y\) olsun. Çevre \(2x+2y=40\), yani \(y=20-x\). Alan \(A(x)=x(20-x)=20x-x^{2}\). \(A'(x)=20-2x=0\) ise \(x=10\), \(A=100\,\text{m}^{2}\). Kare en iyi çözümdür.</p>
-    <div class="trap"><b>Adımlar:</b> Hedef fonksiyonu yazın, kısıtı kullanarak tek değişkene indirgeyin, türev alıp kritik noktaları bulun, sınırları ve ikinci türevi kontrol edin.</div>
+    <h3>4.2 Yerel maksimum ve minimum (ekstremum)</h3>
+    <p>Bir noktada \(f'\) işaret değiştiriyorsa, orada yerel bir tepe ya da çukur vardır:</p>
+    <ul class="ol-tight">
+      <li><b>+ → −</b> (artandan azalana geçiş): yerel maksimum.</li>
+      <li><b>− → +</b> (azalandan artana geçiş): yerel minimum.</li>
+    </ul>
+    <div class="derivation reveal" data-title="x³ − 3x için tepe ve çukur değerleri">
+      <div class="step"><p><b>Adım 1.</b> \(x=-1\)’de \(f'\) işareti \(+\)’dan \(-\)’ye geçiyor (\(f'(-2)>0\), \(f'(0)<0\)). Yerel maksimum.</p>\[ f(-1)=(-1)^3-3(-1)=-1+3=2 \]</div>
+      <div class="step"><p><b>Adım 2.</b> \(x=1\)’de \(f'\) \(-\)’den \(+\)’ya geçiyor. Yerel minimum.</p>\[ f(1)=1-3=-2 \]</div>
+      <div class="step"><p><b>Adım 3.</b> İkinci türev testi ile kontrol: \(f''(x)=6x\). \(f''(-1)=-6<0\) (maksimum), \(f''(1)=6>0\) (minimum). Sonuçlar uyuşur.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
   </div>
 
   <div class="card">
-    <h3>4.3 L'Hôpital kuralı</h3>
-    <p>Limit \(\frac{0}{0}\) veya \(\frac{\infty}{\infty}\) biçimindeyse ve türevler mevcutsa:</p>
+    <h3>4.3 Bükeylik: eğri nasıl bükülüyor?</h3>
+    <p><b>Sezgi:</b> İki eğri de yükselebilir ama biri yukarı “gülümser”, diğeri aşağı “somurtur”. Bunu \(f''\) söyler:</p>
+    <div class="eq">\[ f''(x)>0 \Rightarrow \text{yukarı bükey (çukur)},\qquad f''(x)<0 \Rightarrow \text{aşağı bükey (tümsek)} \]</div>
+    <p><b>Büküm noktası:</b> Bükeylik işaretini değiştirdiği nokta. Orada \(f''=0\) olur (ama her \(f''=0\) büküm noktası değildir; işaretin değişmesi gerekir).</p>
+    <div class="derivation reveal" data-title="f(x)=x³ − 3x için bükeylik ve büküm noktası">
+      <div class="step"><p><b>Adım 1.</b> İkinci türev: \(f''(x)=6x\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Sıfır: \(6x=0\) yani \(x=0\). Sol tarafta \(x<0\) için \(f''<0\), sağda \(x>0\) için \(f''>0\). İşaret değişiyor.</p></div>
+      <div class="step"><p><b>Adım 3.</b> Büküm noktası \(x=0\), \(f(0)=0\). Yani \((0,0)\) noktası. Eğri burada aşağı bükeyden yukarı bükeye geçer.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4.4 Eğri çizmenin sistemli yolu (yedi adım)</h3>
+    <p>Bir fonksiyonun grafiğini bilgisiz çizmek yerine şu sırayla ilerle. Her adım bir soruya cevap verir.</p>
+    <ol class="ol-tight">
+      <li><b>Tanım kümesi:</b> Nerede tanımlı?</li>
+      <li><b>Eksen kesişimleri:</b> \(x=0\) için \(f(0)\), \(f(x)=0\) için kökler.</li>
+      <li><b>Simetri:</b> \(f(-x)=f(x)\) (çift) ya da \(f(-x)=-f(x)\) (tek) mi?</li>
+      <li><b>Asimptotlar:</b> Dikey (payda sıfır) ve yatay (\(x\to\pm\infty\) davranışı).</li>
+      <li><b>Artan/azalan:</b> \(f'\) işaret tablosu ve ekstremumlar.</li>
+      <li><b>Bükeylik:</b> \(f''\) işaret tablosu ve büküm noktaları.</li>
+      <li><b>Birleştir:</b> Tabloyu bir eğride birleştir.</li>
+    </ol>
+    <div class="derivation reveal" data-title="f(x)=x³ − 3x eğrisinin tam tablosu">
+      <div class="step"><p><b>Adım 1–2.</b> Tanım kümesi \(\mathbb{R}\). \(x=0\): \(f=0\). \(f(x)=0\): \(x(x^2-3)=0\), yani \(x=0\), \(x=\pm\sqrt3\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> \(f(-x)=-x^3+3x=-f(x)\). Tek fonksiyon: orijin etrafında simetrik.</p></div>
+      <div class="step"><p><b>Adım 4.</b> Polinom: asimptot yok. \(x\to\infty\) için \(f\to\infty\), \(x\to-\infty\) için \(f\to-\infty\).</p></div>
+      <div class="step"><p><b>Adım 5–6.</b> Maksimum \((-1,\,2)\), minimum \((1,\,-2)\), büküm \((0,\,0)\).</p></div>
+      <div class="step"><p><b>Adım 7.</b> Birleştir: sol uçtan yükselir, \((-1,2)\)’de tepe yapar, \((0,0)\)’dan geçer, \((1,-2)\)’de çukur yapar, sonra yükselir.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4.5 Optimizasyon: en büyüğü bulmak için altı adım</h3>
+    <p>Mühendislikte sık karşılaşılan soru: “En az malzemeyle en büyük hacim”, “En kısa yol”, “En düşük maliyet”. Yöntem her zaman aynıdır:</p>
+    <ol class="ol-tight">
+      <li><b>Değişkenleri adlandır</b> ve hedefi (en büyük ya da en küçük) belirle.</li>
+      <li><b>Hedef fonksiyonu yaz.</b></li>
+      <li><b>Kısıtı kullan</b>: bir değişkeni diğeriyle ifade et, tek değişkenli fonksiyon elde et.</li>
+      <li><b>Türevi al</b> ve kritik noktaları bul (\(f'=0\)).</li>
+      <li><b>Uç noktaları ve kritik noktaları karşılaştır</b> (kapalı aralıkta).</li>
+      <li><b>Yanıtı birimleriyle yaz</b> ve kontrol et.</li>
+    </ol>
+    <div class="derivation reveal" data-title="40 m tel ile en büyük alanlı dikdörtgen">
+      <div class="step"><p><b>Adım 1.</b> Kenarlar \(x\) ve \(y\) (metre). Hedef: alan \(A=xy\) en büyük.</p></div>
+      <div class="step"><p><b>Adım 2.</b> Hedef fonksiyon: \(A=xy\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Kısıt: çevre \(2x+2y=40\), yani \(y=20-x\). Hedefe yerine koy:</p>\[ A(x)=x(20-x)=20x-x^2,\qquad 0\le x\le 20 \]</div>
+      <div class="step"><p><b>Adım 4.</b> Türev: \(A'(x)=20-2x\). Sıfır: \(x=10\).</p></div>
+      <div class="step"><p><b>Adım 5.</b> Uç noktalar \(x=0\) ve \(x=20\) için \(A=0\). Kritik nokta \(x=10\) için \(A=100\). En büyük: \(x=y=10\) m, yani kare, \(A=100\ \text{m}^2\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
+    </div>
+    <div class="derivation reveal" data-title="Açık kutu: 12 × 12 cm kartondan en büyük hacim">
+      <div class="step"><p><b>Adım 1.</b> Köşelerden \(x\) cm kare kes, kenarları kat. Taban kenarı \(12-2x\), yükseklik \(x\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Hacim: \(V(x)=x(12-2x)^2\), \(0&lt;x<6\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Açıp türevi al:</p>\[ V(x)=4x^3-48x^2+144x \Rightarrow V'(x)=12x^2-96x+144=12(x-2)(x-6) \]</div>
+      <div class="step"><p><b>Adım 4.</b> \(V'=0\): \(x=2\) veya \(x=6\). Aralık \((0,6)\) olduğu için \(x=6\) elenir (orada \(V=0\)). Yalnızca \(x=2\) kalır.</p></div>
+      <div class="step"><p><b>Adım 5.</b> \(V(2)=2\cdot(12-4)^2=2\cdot 64=128\ \text{cm}^3\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4.6 Rolle ve ortalama değer teoremi: türevin “sert” bilgisi</h3>
+    <p><b>Rolle teoremi:</b> \(f\) kapalı \([a,b]\)’de sürekli, \((a,b)\)’de türevlenebilir ve \(f(a)=f(b)\) ise, \(f'(c)=0\) olan en az bir \(c\in(a,b)\) vardır.</p>
+    <p><b>Sezgi:</b> Aynı yükseklikten başlayıp bitiren bir yolda, hiç yatay olmadan gidip gelmek imkânsızdır. Bir yerde mutlaka yatay teğet vardır.</p>
+    <div class="derivation reveal" data-title="Rolle örneği: f(x)=x²−4 on [−2, 2]">
+      <div class="step"><p><b>Adım 1.</b> Kontrol: \(f(-2)=0\) ve \(f(2)=0\). Eşit.</p></div>
+      <div class="step"><p><b>Adım 2.</b> Türev: \(f'(x)=2x\). Sıfır: \(c=0\in(-2,2)\). Teorem doğrulandı.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/2</span></div>
+    </div>
+    <p><b>Ortalama değer teoremi (OVT):</b> \(f\) aynı koşullarla, \(f(b)-f(a)=f'(c)(b-a)\) olan bir \(c\) vardır. Geometrik anlamı: uçları birleştiren kesen doğrusunun eğimine eşit eğimde bir teğet vardır.</p>
+    <div class="derivation reveal" data-title="f(x)=x² on [1, 3] için OVT noktası">
+      <div class="step"><p><b>Adım 1.</b> Kesenin eğimi: \(\frac{f(3)-f(1)}{3-1}=\frac{9-1}{2}=4\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> \(f'(c)=2c\) bu eğime eşit olmalı: \(2c=4\), yani \(c=2\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> \(c=2\in(1,3)\). Teorem sağlandı.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4.7 L’Hôpital kuralı: 0/0 ve ∞/∞ için</h3>
+    <p><b>Kural:</b> \(\lim_{x\to a}\frac{f(x)}{g(x)}\) belirsiz biçimde (\(\frac{0}{0}\) ya da \(\frac{\infty}{\infty}\)) ise ve türevler uygunsa:</p>
     <div class="eq">\[ \lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a}\frac{f'(x)}{g'(x)} \]</div>
-    <div class="ex"><b>Örnek:</b> \(\lim_{x\to 0}\frac{\sin x}{x}\) için pay ve payda türevlenirse \(\lim_{x\to 0}\frac{\cos x}{1}=1\).</div>
+    <p><b>Sezgi:</b> Yakından bakınca iki fonksiyon da \(a\) civarında doğrusal gibi davranır. Oranları, eğimlerinin oranıdır.</p>
+    <div class="derivation reveal" data-title="lim (x→0) (eˣ − 1 − x)/x² (iki kez uygulama)">
+      <div class="step"><p><b>Adım 1.</b> Yerine koy: pay \(e^0-1-0=0\), payda \(0\). Belirsiz: \(\frac{0}{0}\). Kural uygulanabilir.</p></div>
+      <div class="step"><p><b>Adım 2.</b> Pay ve paydayı türevle: \(\frac{e^x-1}{2x}\).</p>\[ \lim_{x\to 0}\frac{e^x-1-x}{x^2}=\lim_{x\to 0}\frac{e^x-1}{2x} \]</div>
+      <div class="step"><p><b>Adım 3.</b> Yine yerine koy: \(\frac{0}{0}\). Kuralı bir kez daha uygula.</p>\[ =\lim_{x\to 0}\frac{e^x}{2}=\frac{1}{2} \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="trap"><b>Dikkat:</b> L’Hôpital yalnızca belirsiz biçimlerde kullanılır. \(\frac{3}{0}\) gibi bir biçimde kural uygulanmaz; limit sonsuzdur (işaretine bakarak). Ayrıca her adımda yeniden belirsiz biçim olup olmadığını kontrol et.</div>
   </div>
 
   <div class="card">
-    <h3>4.4 Newton yöntemi (kök bulma)</h3>
-    <p>\(f(x)=0\) denkleminin kökü için iterasyon:</p>
-    <div class="eq">\[ x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)} \]</div>
-    <p>Başlangıç değeri köke yakınsa yöntem çok hızlı yakınsar. Ara değer teoremi ile önce kökün bulunduğu aralık tespit edilir.</p>
+    <h3>4.8 Newton yöntemi: kökü tahmin edip düzeltmek</h3>
+    <p><b>Problem:</b> \(f(x)=0\) denkleminin kökünü bir başlangıç değerinden başlayarak yaklaşık bulmak. <b>Sezgi:</b> Mevcut tahmin noktasında eğriye teğet çiz; teğetin \(x\)-eksenini kestiği yeri bir sonraki tahmin olarak al.</p>
+    <div class="derivation reveal" data-title="Newton formülünün türetilmesi">
+      <div class="step"><p><b>Adım 1.</b> \(x_n\) noktasında teğet doğrusunun denklemi: \(y=f(x_n)+f'(x_n)(x-x_n)\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Teğetin \(x\)-eksenini kestiği yerde \(y=0\) olmalı:</p>\[ 0=f(x_n)+f'(x_n)(x-x_n) \]</div>
+      <div class="step"><p><b>Adım 3.</b> \(x\)’i çöz:</p>\[ x=x_n-\frac{f(x_n)}{f'(x_n)} \]</div>
+      <div class="step"><p><b>Adım 4.</b> Bu yeni değer \(x_{n+1}\)’dir. Tekrarla:</p>\[ x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)} \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="derivation reveal" data-title="√2 için Newton: f(x) = x² − 2, x₀ = 1">
+      <div class="step"><p><b>Adım 1.</b> \(f(x)=x^2-2\), \(f'(x)=2x\). Formül: \(x_{n+1}=x_n-\frac{x_n^2-2}{2x_n}\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> \(x_0=1\): \(x_1=1-\frac{1-2}{2}=1+\frac{1}{2}=1{,}5\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> \(x_1=1{,}5\): \(x_2=1{,}5-\frac{2{,}25-2}{3}=1{,}5-0{,}08333=1{,}416667\).</p></div>
+      <div class="step"><p><b>Adım 4.</b> \(x_2\): \(x_3=1{,}416667-\frac{2{,}006944-2}{2{,}833333}=1{,}414216\). Gerçek \(\sqrt2=1{,}414214\). Üç adımda yaklaşık beş ondalık basamak doğru.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="trap"><b>Dikkat:</b> Başlangıç değeri kökten uzaksa Newton yöntemi ıraksayabilir. \(f'(x_n)=0\) olursa formül tanımsızdır. Ara değer teoremi ile kökün bulunduğu aralığı önceden kontrol et.</div>
+  </div>
+
+  <div class="card">
+    <h3>Kazanım kontrolü · Ünite 4</h3>
+    <ul class="ol-tight">
+      <li>\(f'\) işaret tablosuyla artan ve azalan aralıkları bulabiliyor musun?</li>
+      <li>Ekstremum noktasını hem işaret değişimiyle hem ikinci türevle doğrulayabiliyor musun?</li>
+      <li>Bir eğrinin bükeyliğini ve büküm noktasını \(f''\) ile bulabiliyor musun?</li>
+      <li>Optimizasyon sorusunda altı adımı sırayla uygulayabiliyor musun?</li>
+      <li>Rolle ve ortalama değer teoremini bir örnekle gösterebiliyor musun?</li>
+      <li>L’Hôpital kuralını yalnızca belirsiz biçimde kullanabiliyor musun?</li>
+      <li>Newton formülünü teğet doğrusundan türetebiliyor musun?</li>
+    </ul>
     <div class="quiz" data-unit="cen101-m4"></div>
   </div>
 </section>
-
 <section id="cen101-m5" class="reveal">
   <div class="unit-head c101h">
     <div class="eyebrow">CEN 101 · Ünite 5</div>
     <h2>Belirsiz integral</h2>
-    <p>Türevin tersi: bir fonksiyonun hangi fonksiyonun türevi olduğunu bulmak.</p>
+    <p>İntegral, türevin tersidir. “Hangi fonksiyonun türevi bu?” sorusunu çözmeyi öğrenirsin.</p>
   </div>
 
   <div class="card">
-    <h3>5.1 Tanım ve temel integraller</h3>
-    <div class="eq">\[ \int f(x)\,dx=F(x)+C \quad\Leftrightarrow\quad F'(x)=f(x) \]</div>
+    <h3>5.1 Sezgi: türevi geri sarmak</h3>
+    <p>Bir soru düşün: “Türevi \(2x\) olan fonksiyon nedir?” Bir an düşünürsen \(x^2\) akla gelir, çünkü \((x^2)'=2x\). Ama bir cevap yeterli mi?</p>
+    <div class="derivation reveal" data-title="Türevi 2x olan tüm fonksiyonlar">
+      <div class="step"><p><b>Adım 1.</b> \(F(x)=x^2\) bir çözüm. Şimdi \(G(x)=x^2+7\) diyelim. Türevi:</p>\[ G'(x)=2x+0=2x \]</div>
+      <div class="step"><p><b>Adım 2.</b> \(G\) da bir çözüm! Demek ki sabit eklemek türevi değiştirmez. Sabitin türevi \(0\)’dır.</p></div>
+      <div class="step"><p><b>Adım 3.</b> Sonuç: \(x^2+C\) biçimindeki tüm fonksiyonlar çözümdür. Buradaki \(C\), bir <b>keyfi sabittir</b>.</p>\[ \int 2x\,dx=x^2+C \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <p><b>Neden \(+C\)?</b> İki fonksiyonun türevi aynıysa farkları sabittir. Bunu şöyle kanıtlarız: \(F'=G'\) ise \((F-G)'=0\). Türevi sıfır olan bir fonksiyon sabit olmak zorundadır (ortalama değer teoremi bunu garanti eder).</p>
+  </div>
+
+  <div class="card">
+    <h3>5.2 Tanım ve gösterim</h3>
+    <div class="eq">\[ \int f(x)\,dx=F(x)+C \quad\Longleftrightarrow\quad F'(x)=f(x) \]</div>
+    <p>Parçaları tek tek adlandıralım:</p>
     <div class="table-wrap"><table class="w3">
-      <thead><tr><th>İntegral</th><th>Sonuç</th></tr></thead>
+      <thead><tr><th>Parça</th><th>Adı</th><th>Anlamı</th></tr></thead>
       <tbody>
-        <tr><td>\(\int x^{n}\,dx\), \(n\ne -1\)</td><td>\(\frac{x^{n+1}}{n+1}+C\)</td></tr>
-        <tr><td>\(\int \frac{1}{x}\,dx\)</td><td>\(\ln|x|+C\)</td></tr>
-        <tr><td>\(\int e^{x}\,dx\)</td><td>\(e^{x}+C\)</td></tr>
-        <tr><td>\(\int \cos x\,dx\)</td><td>\(\sin x+C\)</td></tr>
-        <tr><td>\(\int \sin x\,dx\)</td><td>\(-\cos x+C\)</td></tr>
+        <tr><td>\(\int\)</td><td>İntegral işareti</td><td>“Topla/geri sar” komutu</td></tr>
+        <tr><td>\(f(x)\)</td><td>İntegrand</td><td>Geri sarılacak fonksiyon</td></tr>
+        <tr><td>\(dx\)</td><td>Diferansiyel</td><td>Hangi değişkene göre olduğunu gösterir</td></tr>
+        <tr><td>\(F(x)+C\)</td><td>Genel çözüm</td><td>Tüm antitürevler</td></tr>
       </tbody>
     </table></div>
   </div>
 
   <div class="card">
-    <h3>5.2 Değişken değiştirme ve kısmi integrasyon</h3>
-    <div class="ex"><b>Değişken değiştirme:</b> \(\int 2x\,(x^{2}+1)^{3}\,dx\). \(u=x^{2}+1\), \(du=2x\,dx\). Sonuç \(\int u^{3}\,du=\frac{u^{4}}{4}+C=\frac{(x^{2}+1)^{4}}{4}+C\).</div>
-    <div class="ex"><b>Kısmi integrasyon:</b> \(\int u\,dv=uv-\int v\,du\). \(\int x e^{x}\,dx\) için \(u=x\), \(dv=e^{x}dx\): sonuç \(xe^{x}-e^{x}+C\).</div>
-    <div class="trap"><b>Dikkat:</b> İntegralde \(+C\) unutulmaz. Değişken değiştirirken \(dx\) ifadesini de dönüştürmek zorunludur.</div>
+    <h3>5.3 Temel integraller: türevden tersine</h3>
+    <p>Her temel integrali, türevini alarak doğrulayabilirsin. Doğrulama, öğrenmenin en güvenilir yoludur.</p>
+    <div class="derivation reveal" data-title="∫ xⁿ dx = xⁿ⁺¹/(n+1) + C (n ≠ −1)">
+      <div class="step"><p><b>Adım 1.</b> Tahmin et: üssü bir artır, yeni üsle bölümü yap.</p>\[ F(x)=\frac{x^{n+1}}{n+1} \]</div>
+      <div class="step"><p><b>Adım 2.</b> Doğrula: \(F'(x)\) hesapla. Üs kuralı:</p>\[ F'(x)=\frac{(n+1)x^{n}}{n+1}=x^n \]</div>
+      <div class="step"><p><b>Adım 3.</b> Sonuç: \(\int x^n\,dx=\dfrac{x^{n+1}}{n+1}+C\). Paydada \(n+1=0\) yani \(n=-1\) olursa formül bozulur; bu durum ayrıca ele alınır.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>İntegral</th><th>Sonuç</th><th>Doğrulama ipucu</th></tr></thead>
+      <tbody>
+        <tr><td>\(\int x^n\,dx\), \(n\ne -1\)</td><td>\(\frac{x^{n+1}}{n+1}+C\)</td><td>Üssü artır, böl</td></tr>
+        <tr><td>\(\int \frac{1}{x}\,dx\)</td><td>\(\ln|x|+C\)</td><td>\((\ln|x|)'=\frac{1}{x}\) (Ünite 3)</td></tr>
+        <tr><td>\(\int e^x\,dx\)</td><td>\(e^x+C\)</td><td>\((e^x)'=e^x\)</td></tr>
+        <tr><td>\(\int \cos x\,dx\)</td><td>\(\sin x+C\)</td><td>\((\sin x)'=\cos x\)</td></tr>
+        <tr><td>\(\int \sin x\,dx\)</td><td>\(-\cos x+C\)</td><td>\((-\cos x)'=\sin x\)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap"><b>Dikkat:</b> \(\int\frac{1}{x}dx=\ln x\) yazmak eksik bir cevaptır. Doğrusu \(\ln|x|+C\): \(x<0\) için de çalışması gerekir.</div>
+  </div>
+
+  <div class="card">
+    <h3>5.4 Lineerlik: toplamı ve sabiti ayrı ayrı integre et</h3>
+    <div class="eq">\[ \int\big(af(x)+bg(x)\big)\,dx=a\int f(x)\,dx+b\int g(x)\,dx \]</div>
+    <div class="derivation reveal" data-title="∫(3x² − 4x + 5) dx, terim terim">
+      <div class="step"><p><b>Adım 1.</b> Toplamı terimlere ayır:</p>\[ \int 3x^2\,dx-\int 4x\,dx+\int 5\,dx \]</div>
+      <div class="step"><p><b>Adım 2.</b> Sabitleri dışarı al ve her terimi integre et:</p>\[ 3\cdot\frac{x^3}{3}-4\cdot\frac{x^2}{2}+5x \]</div>
+      <div class="step"><p><b>Adım 3.</b> Sadeleştir ve \(C\) ekle:</p>\[ \int(3x^2-4x+5)\,dx=x^3-2x^2+5x+C \]</div>
+      <div class="step"><p><b>Adım 4.</b> Kontrol: \((x^3-2x^2+5x)'=3x^2-4x+5\). Doğru.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5.5 Değişken değiştirme: iç fonksiyonu tek harfe indirmek</h3>
+    <p><b>Sezgi:</b> Zincir kuralını tersine çevirirsin. Zincir kuralında iç türev bir çarpan olarak girer. İntegralde bu çarpanı bulup değiştirmen gerekir.</p>
+    <div class="derivation reveal" data-title="∫ 2x(x²+1)³ dx">
+      <div class="step"><p><b>Adım 1.</b> İç fonksiyonu seç: \(u=x^2+1\). Türevini al: \(du=2x\,dx\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> İntegralde \(2x\,dx\) tam olarak \(du\)’ya karşılık geliyor. \((x^2+1)^3\) ise \(u^3\).</p>\[ \int 2x(x^2+1)^3\,dx=\int u^3\,du \]</div>
+      <div class="step"><p><b>Adım 3.</b> Temel integral:</p>\[ \int u^3\,du=\frac{u^4}{4}+C \]</div>
+      <div class="step"><p><b>Adım 4.</b> \(u\)’yu geri yaz:</p>\[ \frac{(x^2+1)^4}{4}+C \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="derivation reveal" data-title="∫ cos(3x) dx">
+      <div class="step"><p><b>Adım 1.</b> \(u=3x\), \(du=3\,dx\), yani \(dx=\frac{du}{3}\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Yerine koy:</p>\[ \int\cos(3x)\,dx=\int\cos u\cdot\frac{du}{3}=\frac{1}{3}\int\cos u\,du \]</div>
+      <div class="step"><p><b>Adım 3.</b> \(\int\cos u\,du=\sin u+C\). \(u\)’yu geri yaz:</p>\[ \frac{1}{3}\sin(3x)+C \]</div>
+      <div class="step"><p><b>Adım 4.</b> Kontrol: \(\left(\frac{1}{3}\sin 3x\right)'=\frac{1}{3}\cdot\cos 3x\cdot 3=\cos 3x\). Doğru.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="trap"><b>Sık hata:</b> \(dx\)’i değiştirmeyi unutmak. \(\int\cos(3x)dx\) içinde \(3\) çarpanı kalırsa cevap yanlış olur.</div>
+  </div>
+
+  <div class="card">
+    <h3>5.6 Kısmi integrasyon: çarpım kuralının tersi</h3>
+    <p><b>Sezgi:</b> Çarpımların integrali, çarpım kuralının tersinden çıkar. Çarpım kuralı: \((uv)'=u'v+uv'\).</p>
+    <div class="derivation reveal" data-title="Kısmi integrasyon formülünün türetilmesi">
+      <div class="step"><p><b>Adım 1.</b> Çarpım kuralı:</p>\[ (uv)'=u'v+uv' \]</div>
+      <div class="step"><p><b>Adım 2.</b> İki tarafın integralini al:</p>\[ uv=\int u'v\,dx+\int uv'\,dx \]</div>
+      <div class="step"><p><b>Adım 3.</b> İstediğimiz terimi yalnız bırak:</p>\[ \int uv'\,dx=uv-\int u'v\,dx \]</div>
+      <div class="step"><p><b>Adım 4.</b> Akılda kalıcı biçim: \(\displaystyle\int u\,dv=uv-\int v\,du\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="derivation reveal" data-title="∫ x eˣ dx">
+      <div class="step"><p><b>Adım 1.</b> Seçim: \(u=x\) (türevi sadeleşir), \(dv=e^x\,dx\) (integrali kolay).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Türevler ve integraller: \(du=dx\), \(v=e^x\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Formülü uygula:</p>\[ \int xe^x\,dx=x e^x-\int e^x\,dx \]</div>
+      <div class="step"><p><b>Adım 4.</b> Kalan integral kolay: \(\int e^x dx=e^x\).</p>\[ \int xe^x\,dx=xe^x-e^x+C \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="derivation reveal" data-title="∫ x ln x dx">
+      <div class="step"><p><b>Adım 1.</b> Seçim: \(u=\ln x\) (türevi \(1/x\) daha basit), \(dv=x\,dx\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> \(du=\frac{dx}{x}\), \(v=\frac{x^2}{2}\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Formül:</p>\[ \int x\ln x\,dx=\frac{x^2}{2}\ln x-\int\frac{x^2}{2}\cdot\frac{1}{x}\,dx \]</div>
+      <div class="step"><p><b>Adım 4.</b> Kalan integral \(\int\frac{x}{2}dx=\frac{x^2}{4}\). Sonuç:</p>\[ \int x\ln x\,dx=\frac{x^2}{2}\ln x-\frac{x^2}{4}+C \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="ex"><b>Seçim kuralı:</b> \(u\) olarak türevi basitleşen fonksiyonu (ör. \(\ln x\), \(x\), \(x^2\) gibi polinomlar), \(dv\) olarak integrali kolay olan kısmı seç. \(\ln x\) ve polinom çarpımlarında genelde işe yarar.</div>
+  </div>
+
+  <div class="card">
+    <h3>5.7 İntegrali doğrulamanın yolu</h3>
+    <p>Her integral sonucunu türevle kontrol et. İşin \(C\) dışında her zaman türevi alınarak test edilebilir.</p>
+    <div class="trap"><b>Üç klasik hata:</b> (1) \(+C\)’yi unutmak. (2) Değişken değiştirmede \(dx\)’i çevirmemek. (3) Kısmi integrasyonda \(u\) ve \(dv\)’yi karıştırıp, işi daha da zorlaştırmak.</div>
     <div class="quiz" data-unit="cen101-m5"></div>
   </div>
 </section>
@@ -691,25 +1330,108 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
   <div class="unit-head c101h">
     <div class="eyebrow">CEN 101 · Ünite 6</div>
     <h2>Belirli integral</h2>
-    <p>Alan, toplam ve birikim: integralin geometrik ve fiziksel anlamı.</p>
+    <p>Alan, toplam, birikim: integralin geometrik anlamı. Bir eğrinin altındaki alanı nasıl hesaplarız?</p>
   </div>
 
   <div class="card">
-    <h3>6.1 Riemann toplamı ve tanım</h3>
-    <p>Aralık \(n\) parçaya bölünür, her parçada seçilen değerle dikdörtgen alanları toplanır. Parça sayısı sonsuza giderken limit belirli integralin değeridir:</p>
-    <div class="eq">\[ \int_{a}^{b} f(x)\,dx=\lim_{n\to\infty}\sum_{i=1}^{n} f(x_i^{*})\,\Delta x \]</div>
+    <h3>6.1 Sezgi: alanı dikdörtgenlerle doldurmak</h3>
+    <p>Düzgün olmayan bir eğrinin altındaki alanı doğrudan hesaplayamazsın. Ama onu çok ince dikdörtgenlerle yaklaşabilirsin. Dikdörtgen sayısını artırdıkça yaklaşım iyileşir. Sonsuza giderken yaklaşım tam alanı verir.</p>
   </div>
 
   <div class="card">
-    <h3>6.2 Analizin temel teoremi</h3>
-    <div class="eq">\[ \int_{a}^{b} f(x)\,dx = F(b)-F(a), \qquad F'=f \]</div>
-    <div class="ex"><b>Örnek:</b> \(\int_{0}^{2} x^{2}\,dx=\left[\frac{x^{3}}{3}\right]_{0}^{2}=\frac{8}{3}\).</div>
-    <div class="ex"><b>Alan:</b> \(y=x\) ve \(y=x^{2}\) arasında \([0,1]\) aralığındaki alan \(\int_{0}^{1}(x-x^{2})\,dx=\frac{1}{2}-\frac{1}{3}=\frac{1}{6}\).</div>
-    <div class="trap"><b>Dikkat:</b> Alan hesabında hangi eğrinin üstte olduğunu kontrol edin. Alan negatif olamaz; işaret hatası sonucu bozar.</div>
+    <h3>6.2 Riemann toplamı: tanım adım adım</h3>
+    <p>\([a,b]\) aralığını \(n\) eşit parçaya böl. Her parçanın genişliği:</p>
+    <div class="eq">\[ \Delta x=\frac{b-a}{n},\qquad x_i=a+i\,\Delta x\quad (i=0,1,\ldots,n) \]</div>
+    <p>Her parçanın üstünde bir dikdörtgen kur, yüksekliği \(f(x_i)\) (sağ uç). Dikdörtgenlerin toplam alanı:</p>
+    <div class="eq">\[ S_n=\sum_{i=1}^{n} f(x_i)\,\Delta x \]</div>
+    <p>\(n\to\infty\) limiti (varsa) belirli integraldir:</p>
+    <div class="eq">\[ \int_a^b f(x)\,dx=\lim_{n\to\infty}\sum_{i=1}^{n} f(x_i)\,\Delta x \]</div>
   </div>
 
   <div class="card">
-    <h3>Mini sınama · Ünite 6</h3>
+    <h3>6.3 Tam örnek: ∫₀¹ x² dx = 1/3 (kendi elinle)</h3>
+    <div class="derivation reveal" data-title="Riemann toplamıyla ∫₀¹ x² dx">
+      <div class="step"><p><b>Adım 1.</b> Aralık \([0,1]\): \(a=0\), \(b=1\). Parça genişliği \(\Delta x=\frac{1}{n}\). Sağ uçlar \(x_i=\frac{i}{n}\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Toplamı yaz:</p>\[ S_n=\sum_{i=1}^{n}\left(\frac{i}{n}\right)^2\cdot\frac{1}{n}=\frac{1}{n^3}\sum_{i=1}^{n} i^2 \]</div>
+      <div class="step"><p><b>Adım 3.</b> Kare toplamı formülü (ayrıca kanıtlanabilir):</p>\[ \sum_{i=1}^{n} i^2=\frac{n(n+1)(2n+1)}{6} \]</div>
+      <div class="step"><p><b>Adım 4.</b> Yerine koy ve sadeleştir:</p>\[ S_n=\frac{n(n+1)(2n+1)}{6n^3}=\frac{(n+1)(2n+1)}{6n^2}=\frac{2n^2+3n+1}{6n^2} \]</div>
+      <div class="step"><p><b>Adım 5.</b> \(n\to\infty\): \(\frac{3n}{6n^2}\) ve \(\frac{1}{6n^2}\) sıfıra gider. Kalan:</p>\[ \lim_{n\to\infty}S_n=\frac{2}{6}=\frac{1}{3} \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
+    </div>
+    <p><b>Yorum:</b> Bu, en basit sonsuz toplamla bile bir alan hesabının yapılabildiğini gösterir. Ama her integral için bu yol çok uzun. Bu yüzden bir sonraki kavram işimizi kolaylaştırır.</p>
+  </div>
+
+  <div class="card">
+    <h3>6.4 Analizin temel teoremi: türev ile integral birbirinin tersi</h3>
+    <p><b>Teorem:</b> \(f\) \([a,b]\)’de sürekliyse ve \(F' = f\) ise:</p>
+    <div class="eq">\[ \int_a^b f(x)\,dx=F(b)-F(a) \]</div>
+    <p><b>Neden?</b> Tanım gereği \(F(b)-F(a)\), \(F\)’nin \(a\)’dan \(b\)’ye değişimidir. Her küçük parçanın değişimi \(f\)’nin \(\Delta x\) ile çarpımıdır (sezgisel ama doğru). Toplarsan \(\int f\) çıkar.</p>
+    <div class="derivation reveal" data-title="∫₀² x² dx = [x³/3]₀² hesabı">
+      <div class="step"><p><b>Adım 1.</b> Antitürev bul: \(F(x)=\frac{x^3}{3}\) (çünkü \(F'=x^2\)).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Sınırları yerine koy: \(F(2)-F(0)\).</p>\[ \left[\frac{x^3}{3}\right]_0^2=\frac{8}{3}-\frac{0}{3}=\frac{8}{3} \]</div>
+      <div class="step"><p><b>Adım 3.</b> Yorum: \(y=x^2\), \(x=0\) ile \(x=2\) arasındaki alan \(\frac{8}{3}\) birim karedir.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="trap"><b>Sık hata:</b> Belirli integralde \(+C\) yazmak gereksizdir; \(C\) iki sınırdan çıkar. Ayrıca \(F(a)-F(b)\) ile \(F(b)-F(a)\) işaretleri karıştırılmamalı.</div>
+  </div>
+
+  <div class="card">
+    <h3>6.5 Belirli integralin özellikleri</h3>
+    <div class="grid2">
+      <div class="mini"><h4>Ters sınır</h4><p>\(\int_a^b f=-\int_b^a f\). Sınırlar yer değiştirince işaret değişir.</p></div>
+      <div class="mini"><h4>Aynı sınır</h4><p>\(\int_a^a f=0\). Genişliği sıfır olan aralığın alanı sıfırdır.</p></div>
+      <div class="mini"><h4>Parçalama</h4><p>\(\int_a^c f=\int_a^b f+\int_b^c f\) (\(a&lt;b&lt;c\)).</p></div>
+      <div class="mini"><h4>Lineerlik</h4><p>\(\int(af+bg)=a\int f+b\int g\).</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>6.6 Alan hesabı: iki eğri arasında</h3>
+    <p><b>Kural:</b> Eğrilerin hangisinin üstte olduğunu bil. İki eğri arasındaki alan, <i>üstteki eksi alttaki</i> farkın integrali:</p>
+    <div class="eq">\[ A=\int_a^b\big(f_{\text{üst}}(x)-f_{\text{alt}}(x)\big)\,dx \]</div>
+    <div class="derivation reveal" data-title="y = x ile y = x² arasındaki alan (0 ≤ x ≤ 1)">
+      <div class="step"><p><b>Adım 1.</b> Kesişim noktalarını bul: \(x=x^2\Rightarrow x^2-x=0\Rightarrow x(x-1)=0\). Yani \(x=0\) ve \(x=1\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Hangisi üstte? \(x=\frac12\) için \(x=0{,}5\), \(x^2=0{,}25\). Demek ki \(y=x\) üstte.</p></div>
+      <div class="step"><p><b>Adım 3.</b> Fark ve integral:</p>\[ A=\int_0^1 (x-x^2)\,dx=\left[\frac{x^2}{2}-\frac{x^3}{3}\right]_0^1 \]</div>
+      <div class="step"><p><b>Adım 4.</b> Hesapla:</p>\[ \left(\frac12-\frac13\right)-(0-0)=\frac{1}{6} \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>6.7 Ortalama değer</h3>
+    <p>Bir fonksiyonun \([a,b]\) üzerindeki ortalama değeri:</p>
+    <div class="eq">\[ f_{\text{ort}}=\frac{1}{b-a}\int_a^b f(x)\,dx \]</div>
+    <div class="derivation reveal" data-title="f(x)=x² için [0, 3] üzerinde ortalama">
+      <div class="step"><p><b>Adım 1.</b> İntegral: \(\int_0^3 x^2\,dx=\left[\frac{x^3}{3}\right]_0^3=9\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Böl: \(\frac{9}{3-0}=3\). Ortalama değer \(3\)’tür.</p></div>
+      <div class="step"><p><b>Yorum:</b> \(x^2\) bu aralıkta \(0\)’dan \(9\)’a çıkar; ortalaması \(3\) gibi bir değerdir. Ortalama değer teoremi bu değerin eğri üzerinde bir noktada gerçekleştiğini söyler.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>6.8 Mühendislikten bir uygulama: hızdan yer değiştirmeye</h3>
+    <p>Hız \(v(t)\) biliniyorsa, \([t_1,t_2]\) aralığında alınan yol (yer değiştirme) hız eğrisinin altındaki alandır:</p>
+    <div class="derivation reveal" data-title="v(t) = 3t² m/s ise 0–2 s arasında kat edilen yol">
+      <div class="step"><p><b>Adım 1.</b> Yol = hız integrali: \(s=\int_0^2 v(t)\,dt\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Yerine koy: \(\int_0^2 3t^2\,dt\). Antitürev: \(t^3\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Sınırlar: \([t^3]_0^2=8-0=8\). Yani \(s=8\) m.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="trap"><b>Dikkat:</b> Hız işaret değiştirirse \(\int v\,dt\) yer değiştirmeyi (işaretli), \(\int |v|\,dt\) ise kat edilen toplam yolu verir. Bu iki kavram karışık yapılırsa cevap değişir.</div>
+  </div>
+
+  <div class="card">
+    <h3>Kazanım kontrolü · Ünite 5 ve 6</h3>
+    <ul class="ol-tight">
+      <li>\(+C\)’nin neden gerektiğini türevle açıklayabiliyor musun?</li>
+      <li>Değişken değiştirmeyi \(du\) ile birlikte, adım adım yapabiliyor musun?</li>
+      <li>Kısmi integrasyonu çarpım kuralından türetebiliyor musun?</li>
+      <li>\(\int_0^1 x^2\,dx=\frac13\)’ü Riemann toplamı ile kendin hesaplayabiliyor musun?</li>
+      <li>Analizin temel teoremini kullanarak belirli integrali hesaplayabiliyor musun?</li>
+      <li>İki eğri arasındaki alanı, hangisinin üstte olduğunu kontrol ederek bulabiliyor musun?</li>
+    </ul>
     <div class="quiz" data-unit="cen101-m6"></div>
   </div>
 </section>
@@ -718,44 +1440,187 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
 
 <div class="course" id="cen103">
 
-<div class="goal reveal" style="margin-top:18px"><b>Kaynak</b><br>Mühendislik Fiziği ders notları: Bölüm 1 “Fizik ve Ölçme”, Bölüm 2 “Vektörler” ve çözümlü problem seti (Bölüm 2 soruları). Konular bu kaynaklara göre sıralandı; metindeki bariz baskı hataları düzeltilerek aktarıldı (aşağıdaki notlara bakın).</div>
+<div class="goal reveal" style="margin-top:18px"><b>Bu bölümü nasıl okumalısın?</b><br>Fizikte her kavram üç soruya cevap verir: <b>Ne ölçüyor?</b> (tanım), <b>Nasıl hesaplanıyor?</b> (adım adım), <b>Neden önemli?</b> (fiziksel anlam). Bu bölümde her formülün nereden geldiğini de göstereceğim; ezber yerine anlama hedefliyoruz. Kaynak: Mühendislik Fiziği notları (Bölüm 1 ve 2) ve çözümlü problemler; açıklamalar ve ara adımlar bu kılavuzda eklenmiştir.</div>
 
 <section id="cen103-f1" class="reveal">
   <div class="unit-head c103h">
     <div class="eyebrow">CEN 103 · Ünite 1 · Bölüm 1</div>
     <h2>Fizik ve ölçme</h2>
-    <p>Fiziği ölçerek anlarız. Ölçümü birim olmadan anlamak mümkün değildir; birimlerin ve boyutların dilini öğrenmek her mühendislik dersinin ilk adımıdır.</p>
+    <p>Fizik, doğanın davranışını ölçerek ve sayılarla anlatmaya çalışır. Ölçümün dilini (birim, boyut, belirsizlik) öğrenmeden fizik yapılamaz.</p>
   </div>
 
   <div class="card">
-    <h3>1.1 Temel büyüklükler ve SI birimleri</h3>
-    <p>Mekanikte üç temel büyüklük vardır: <b>uzunluk</b> (L), <b>zaman</b> (T) ve <b>kütle</b> (M). Uluslararası birim sistemi (SI) bunlara ek olarak sıcaklık (kelvin), elektrik akımı (amper), ışık şiddeti (kandela) ve madde miktarı (mol) birimlerini tanımlar.</p>
+    <h3>1.1 Fizik nedir ve nasıl yapılır?</h3>
+    <p>Fizik, evrenin neden böyle davrandığını anlamaya çalışan bir bilimdir. Bir taşı bıraktığında düşer; düşerken hızı artar; bu artış bir kurala uyar. Fizikçinin işi bu kuralı bulmak ve sınamaktır.</p>
+    <p><b>Bilimsel yöntemin beş adımı:</b></p>
+    <ol class="ol-tight">
+      <li><b>Gözlem:</b> Bir olayı dikkatle izlemek. (Taş düşüyor.)</li>
+      <li><b>Soru:</b> Bunu açıklayan bir kural var mı? (Hız neye bağlı?)</li>
+      <li><b>Hipotez:</b> Tahmini bir kural öner. (Hız, düşme süresiyle orantılı olabilir.)</li>
+      <li><b>Deney:</b> Ölç, tekrar et, veriyi topla.</li>
+      <li><b>Sonuç:</b> Veri hipotezi destekliyor mu? Değilse hipotezi düzelt.</li>
+    </ol>
+    <div class="ex"><b>Neden önemli?</b> Ölçüm olmadan hipotez sınanamaz. Ölçüm olmadan “bence” ile “kanıtlandı” arasındaki fark kaybolur.</div>
+  </div>
+
+  <div class="card">
+    <h3>1.2 Ölçüm: sayı ve birim</h3>
+    <p>Bir büyüklük ölçüldüğünde iki şey söylenir: <b>sayısal değer</b> ve <b>birim</b>. Birim olmadan sayı anlamsızdır.</p>
+    <div class="derivation reveal" data-title="Bir kalem ölçümü: 15 cm nedir?">
+      <div class="step"><p><b>Adım 1.</b> Ölçüm sonucu iki parçadır: sayı \(15\), birim \(\text{cm}\) (santimetre).</p>\[ \ell = 15\ \text{cm} \]</div>
+      <div class="step"><p><b>Adım 2.</b> Birimi değiştirirsen sayı da değişir ama büyüklük aynı kalır. \(1\ \text{cm}=0{,}01\ \text{m}\) olduğundan:</p>\[ \ell=15\times 0{,}01\ \text{m}=0{,}15\ \text{m} \]</div>
+      <div class="step"><p><b>Adım 3.</b> Yorum: Kalemin uzunluğu değişmedi; yalnızca dili değişti. Bu yüzden fizikte <i>her sonucun yanında birimi yazılır</i>.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="trap"><b>Kural:</b> Birimsiz sayı, yalnızca iki birimsiz büyüklüğün oranı olduğunda (ör. yüzde, açı oranı) anlamlıdır. Diğer durumlarda birimi yazmadan cevabı vermiş sayılmazsın.</div>
+  </div>
+
+  <div class="card">
+    <h3>1.3 Temel büyüklükler ve SI birimleri</h3>
+    <p>Dünyada herkesin aynı dili konuşması için bir birim sistemi gerekir. Modern dünya bu iş için <b>SI</b> (Uluslararası Birimler Sistemi) kullanır. SI’nin yedi temel büyüklüğü vardır; diğer tüm birimler bunlardan türetilir.</p>
     <div class="table-wrap"><table class="w3">
-      <thead><tr><th>Büyüklük</th><th>SI birimi</th><th>CGS birimi</th><th>Tanım</th></tr></thead>
+      <thead><tr><th>Büyüklük</th><th>SI birimi</th><th>Sembol</th><th>Boyut sembolü</th></tr></thead>
       <tbody>
-        <tr><td>Uzunluk</td><td>metre (m)</td><td>santimetre (cm)</td><td>Işığın boşlukta \(1/299\,792\,458\) saniyede aldığı yol</td></tr>
-        <tr><td>Kütle</td><td>kilogram (kg)</td><td>gram (g)</td><td>Kaynağın anlattığı eski tanım: platin-iridyum silindirin kütlesi. 2019'dan beri Planck sabiti ile tanımlanır</td></tr>
-        <tr><td>Zaman</td><td>saniye (s)</td><td>saniye (s)</td><td>Sezyum-133 atomunun \(9\,192\,631\,770\) titreşim süresi</td></tr>
+        <tr><td>Uzunluk</td><td>metre</td><td>m</td><td>\(L\)</td></tr>
+        <tr><td>Kütle</td><td>kilogram</td><td>kg</td><td>\(M\)</td></tr>
+        <tr><td>Zaman</td><td>saniye</td><td>s</td><td>\(T\)</td></tr>
+        <tr><td>Elektrik akımı</td><td>amper</td><td>A</td><td>\(I\)</td></tr>
+        <tr><td>Sıcaklık</td><td>kelvin</td><td>K</td><td>\(\Theta\)</td></tr>
+        <tr><td>Madde miktarı</td><td>mol</td><td>mol</td><td>\(N\)</td></tr>
+        <tr><td>Işık şiddeti</td><td>kandela</td><td>cd</td><td>\(J\)</td></tr>
       </tbody>
     </table></div>
-    <div class="trap"><b>Not:</b> Kaynaktaki metre tanımında \(1/229\,792\,458\) yazıyor; doğru değer \(1/299\,792\,458\) saniyedir. Işık hızı \(c=299\,792\,458\) m/s olduğu için bu tanım oradan gelir.</div>
-    <div class="eq">\[ c=299\,792\,458\ \text{m/s} \approx 3\times 10^{8}\ \text{m/s} \]</div>
+    <p>Mekanikte (hareketin fiziği) yalnızca üç boyut gerekir: \(L\), \(M\), \(T\). Bu yüzden ilk derslerde bu üçü ana karakterdir.</p>
+    <h4>Tanımlar: neye dayanıyor?</h4>
+    <div class="grid2">
+      <div class="mini"><h4>Metre</h4><p>Işığın boşlukta \(1/299\,792\,458\) saniyede aldığı yol. Bu tanım ışık hızını tam olarak \(299\,792\,458\) m/s yapar.</p></div>
+      <div class="mini"><h4>Saniye</h4><p>Sezyum-133 atomunun belirli bir titreşim türünün \(9\,192\,631\,770\) kez tekrarlanma süresi.</p></div>
+      <div class="mini"><h4>Kilogram</h4><p>Kaynakta eski tanımı (platin-iridyum silindir) anlatılır. 2019’dan beri Planck sabiti ile tanımlanır; bu, ölçümü bir nesneye değil bir doğa sabitine bağlar.</p></div>
+    </div>
+    <div class="trap"><b>Kaynak düzeltmesi:</b> Ders metninde metre tanımı \(1/229\,792\,458\) yazıyor; doğrusu \(1/299\,792\,458\) saniyedir.</div>
   </div>
 
   <div class="card">
-    <h3>1.2 Yoğunluk ve atomik kütle</h3>
+    <h3>1.4 Önekler: 10’un kuvvetleriyle çalışmak</h3>
+    <p>Fizikte sayılar çok büyük ya da çok küçük olur: bir elektronun kütlesi \(9{,}11\times 10^{-31}\) kg. Bu yüzden önekler kullanılır:</p>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Önek</th><th>Sembol</th><th>Çarpan</th><th>Örnek</th></tr></thead>
+      <tbody>
+        <tr><td>kilo</td><td>k</td><td>\(10^3\)</td><td>1 km = 1000 m</td></tr>
+        <tr><td>mega</td><td>M</td><td>\(10^6\)</td><td>1 MW = \(10^6\) W</td></tr>
+        <tr><td>giga</td><td>G</td><td>\(10^9\)</td><td>1 GHz = \(10^9\) Hz</td></tr>
+        <tr><td>mili</td><td>m</td><td>\(10^{-3}\)</td><td>1 mm = 0,001 m</td></tr>
+        <tr><td>mikro</td><td>µ</td><td>\(10^{-6}\)</td><td>1 µs = \(10^{-6}\) s</td></tr>
+        <tr><td>nano</td><td>n</td><td>\(10^{-9}\)</td><td>1 nm = \(10^{-9}\) m</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>1.5 Birim dönüşümleri: üç örnek, tüm adımlarıyla</h3>
+    <div class="derivation reveal" data-title="72 km/h kaç m/s eder?">
+      <div class="step"><p><b>Adım 1.</b> Hangi birimleri değiştirmemiz gerekiyor? Kilometreyi metreye, saati saniyeye.</p></div>
+      <div class="step"><p><b>Adım 2.</b> \(1\ \text{km}=1000\ \text{m}\) ve \(1\ \text{h}=3600\ \text{s}\) kullan:</p>\[ 72\ \frac{\text{km}}{\text{h}}=72\cdot\frac{1000\ \text{m}}{3600\ \text{s}} \]</div>
+      <div class="step"><p><b>Adım 3.</b> Sayıları ve birimleri ayrı ayrı hesapla:</p>\[ =\frac{72\,000}{3600}\ \frac{\text{m}}{\text{s}}=20\ \frac{\text{m}}{\text{s}} \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="derivation reveal" data-title="2,5 cm² kaç m² eder? (karesel dönüşüm tuzağı)">
+      <div class="step"><p><b>Adım 1.</b> \(1\ \text{cm}=0{,}01\ \text{m}\) olduğu için \(1\ \text{cm}^2=(0{,}01)^2\ \text{m}^2\). Karesi alınır!</p>\[ 1\ \text{cm}^2=10^{-4}\ \text{m}^2 \]</div>
+      <div class="step"><p><b>Adım 2.</b> Dönüşüm yap:</p>\[ 2{,}5\ \text{cm}^2=2{,}5\times 10^{-4}\ \text{m}^2 \]</div>
+      <div class="step"><p><b>Yorum:</b> \(2{,}5\times 0{,}01\) yazmak en yaygın hatadır. Üs varsa, dönüşüm çarpanının da üssü alınmalıdır.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/2</span></div>
+    </div>
+    <div class="derivation reveal" data-title="1 g/cm³ kaç kg/m³ eder?">
+      <div class="step"><p><b>Adım 1.</b> Kütle: \(1\ \text{g}=10^{-3}\ \text{kg}\). Hacim: \(1\ \text{cm}^3=(10^{-2}\ \text{m})^3=10^{-6}\ \text{m}^3\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Yoğunluk birimini çevir:</p>\[ 1\ \frac{\text{g}}{\text{cm}^3}=\frac{10^{-3}\ \text{kg}}{10^{-6}\ \text{m}^3}=10^{3}\ \frac{\text{kg}}{\text{m}^3} \]</div>
+      <div class="step"><p><b>Yorum:</b> Su yaklaşık \(1000\ \text{kg/m}^3\)’tür. Bu dönüşümü bildiğin için su ile demir arasındaki farkı kafanda kurabilirsin.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>1.6 Bilimsel gösterim ve önemli rakamlar</h3>
+    <p><b>Bilimsel gösterim:</b> Sayıyı \(1\le a<10\) olacak biçimde \(a\times 10^n\) yazarız. Örnek: \(0{,}00045=4{,}5\times 10^{-4}\). Adım adım: virgülü sağa doğru \(4\) basamak kaydırırsın, \(4{,}5\) olur, \(n=-4\).</p>
+    <p><b>Önemli rakamlar:</b> Ölçümün ne kadar kesin olduğunu gösteren rakamlardır. Bir sayıdaki önemli rakamları sayma kuralları:</p>
+    <ol class="ol-tight">
+      <li>Sıfırdan farklı her rakam önemlidir. (\(452\): 3 önemli rakam.)</li>
+      <li>İki sıfırdan farklı rakam arasındaki sıfırlar önemlidir. (\(1002\): 4.)</li>
+      <li>Başta gelen sıfırlar önemli değildir; sadece ölçeği gösterirler. (\(0{,}00450\)’deki ilk üç sıfır önemsiz.)</li>
+      <li>Ondalık nokta varsa sondaki sıfırlar önemlidir. (\(4{,}500\): 4 önemli rakam.)</li>
+    </ol>
+    <div class="derivation reveal" data-title="0,00450 kaç önemli rakam içerir?">
+      <div class="step"><p><b>Adım 1.</b> Başta gelen sıfırlar (\(0\), \(0\), \(0\)) sayılmaz. Kalan: \(4\), \(5\), \(0\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Sondaki sıfır ondalık nokta sonrasında olduğu için önemlidir.</p></div>
+      <div class="step"><p><b>Sonuç:</b> 3 önemli rakam (\(4\), \(5\), \(0\)).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="derivation reveal" data-title="Çarpma sonucunu kaç rakamla yazacağız? 2,5 × 3,14159">
+      <div class="step"><p><b>Adım 1.</b> Ham sonuç: \(2{,}5\times 3{,}14159=7{,}853975\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Kural: çarpma ve bölmede sonuç, girdilerdeki en az önemli rakam sayısı kadar rakamla yazılır. \(2{,}5\) iki önemli rakam içerir.</p></div>
+      <div class="step"><p><b>Adım 3.</b> \(7{,}853975\)’i iki önemli rakama yuvarla: \(7{,}9\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>1.7 Ölçüm belirsizliği: hiçbir ölçüm kesin değildir</h3>
+    <p>Bir cetvelle \(12{,}3\) cm ölçtün. Cetvelin en küçük bölümü \(0{,}1\) cm ise, gerçek değer \(12{,}3\pm 0{,}1\) cm civarındadır. Bunu iki şekilde ifade ederiz:</p>
+    <div class="eq">\[ \text{mutlak hata}=\Delta\ell=0{,}1\ \text{cm}\qquad\text{bağıl hata}=\frac{\Delta\ell}{\ell}=\frac{0{,}1}{12{,}3}\approx 0{,}0081\approx 0{,}81\% \]</div>
+    <div class="ex"><b>Yorum:</b> Bağıl hata, ölçümün “kaç yüzde kesin” olduğunu söyler. Büyük değerlerin mutlak hatası büyük olabilir ama bağıl hatası küçük olabilir; ikisini ayırt etmek gerekir.</div>
+  </div>
+
+  <div class="card">
+    <h3>1.8 Yoğunluk: madde ile hacim arasındaki ilişki</h3>
     <div class="eq">\[ \rho=\frac{m}{V} \]</div>
-    <p>Demirin yoğunluğu yaklaşık \(7{,}86\ \text{g/cm}^{3}\)'tür; yani \(1\ \text{cm}^{3}\) demir \(7{,}86\) g kütleye sahiptir. Altın gibi yoğun metaller ile hava arasındaki fark, atom kütlelerinin ve dizilişlerinin farkından gelir.</p>
-    <p>Karbon-12'nin kütlesi tam olarak \(12\) atomik kütle birimi (\(u\)) kabul edilir; \(1\,u=1{,}6605402\times 10^{-27}\) kg. Bir molün içinde \(N_A=6{,}02\times 10^{23}\) atom bulunur (Avogadro sayısı). Bu yüzden tek bir atomun kütlesi:</p>
-    <div class="eq">\[ m_{\text{atom}}=\frac{\text{atom ağırlığı (g/mol)}}{N_A} \quad\Rightarrow\quad m_{\text{Al}}=\frac{27}{6{,}02\times 10^{23}}\approx 4{,}5\times 10^{-23}\ \text{g} \]</div>
-    <div class="ex"><b>Yorum:</b> Protonun kütlesi \(\approx 1{,}0073\,u\), nötronunki \(\approx 1{,}0087\,u\). Atomun neredeyse tüm kütlesi çekirdekte toplanır.</div>
+    <p>\(\rho\) (ro) yoğunluk, \(m\) kütle, \(V\) hacimdir. Aynı hacimde iki maddenin kütlesi farklıysa yoğunlukları farklıdır.</p>
+    <div class="derivation reveal" data-title="Demirden 2 cm kenarlı küpün kütlesi">
+      <div class="step"><p><b>Adım 1.</b> Hacim: \(V=a^3=(2\ \text{cm})^3=8\ \text{cm}^3\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Demirin yoğunluğu \(\rho=7{,}86\ \text{g/cm}^3\). Kütle \(m=\rho V\) (\(\rho=m/V\) denkleminin çevrilmiş hâli):</p>\[ m=7{,}86\cdot 8=62{,}88\ \text{g} \]</div>
+      <div class="step"><p><b>Adım 3.</b> Birim kontrolü: \(\text{g/cm}^3\cdot\text{cm}^3=\text{g}\). Birimler doğru.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
   </div>
 
   <div class="card">
-    <h3>1.3 Boyut analizi</h3>
-    <p>Bir fiziksel büyüklüğün <b>boyutu</b> köşeli parantezle gösterilir: uzunluk \([L]\), kütle \([M]\), zaman \([T]\). Hız \([v]=L/T\), ivme \([a]=L/T^{2}\), hacim \([V]=L^{3}\).</p>
-    <div class="ex"><b>Örnek:</b> Sabit ivmeyle durgun halden hareket eden bir cisim için \(x=\tfrac{1}{2}at^{2}\) bağıntısını kontrol edelim. Sol taraf \([x]=L\). Sağ taraf \([a][t^{2}]=\frac{L}{T^{2}}\cdot T^{2}=L\). İki taraf eşit olduğu için bağıntı boyutsal olarak doğrudur.</div>
-    <div class="trap"><b>Kural:</b> Boyut analizi yalnızca doğruluğu <i>kontrol</i> eder; sayısal katsayıyı (ör. \(\tfrac{1}{2}\)) bulamaz. Bir denklem boyutsal olarak yanlışsa kesinlikle hatalıdır; doğruysa büyük olasılıkla doğrudur.</div>
+    <h3>1.9 Atomik kütle ve Avogadro sayısı</h3>
+    <p>Bir atomun kütlesi çok küçüktür; gram cinsinden değil, <b>atomik kütle birimi</b> (u) ile düşünürüz. Karbon-12 atomunun kütlesi tam olarak \(12\ u\) kabul edilir; \(1\ u=1{,}6605\times 10^{-27}\) kg.</p>
+    <p>Bir mol, \(N_A=6{,}02\times 10^{23}\) tane parçacık demektir (Avogadro sayısı). Buradan bir atomun gram cinsinden kütlesi:</p>
+    <div class="derivation reveal" data-title="Bir alüminyum atomunun kütlesi">
+      <div class="step"><p><b>Adım 1.</b> Alüminyumun mol kütlesi: \(27\ \text{g/mol}\). Yani \(6{,}02\times 10^{23}\) atomun toplam kütlesi \(27\) g.</p></div>
+      <div class="step"><p><b>Adım 2.</b> Bir atomun kütlesi: toplamı atom sayısına böl.</p>\[ m_{\text{atom}}=\frac{27\ \text{g}}{6{,}02\times 10^{23}}\approx 4{,}5\times 10^{-23}\ \text{g} \]</div>
+      <div class="step"><p><b>Adım 3.</b> Yorum: Bir yaprağın sayısını bile sayamayacağın küçüklükte bir kütle. Ama mol kavramı bu sayıları yönetilebilir kılar.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <p><b>Proton ve nötron:</b> Protonun kütlesi \(\approx 1{,}0073\ u\), nötronun \(\approx 1{,}0087\ u\). Atomun neredeyse tüm kütlesi, çekirdekte bulunan bu iki parçacıktan gelir; elektronlar çok hafiftir.</p>
+  </div>
+
+  <div class="card">
+    <h3>1.10 Boyut analizi: bir denklemin doğruluğunu hızlıca kontrol etmek</h3>
+    <p><b>Boyut</b>, bir büyüklüğün temel birimler cinsinden yapısıdır. Köşeli parantez ile gösterilir: \([v]\) hızın boyutu.</p>
+    <div class="grid2">
+      <div class="mini"><h4>Hız</h4><p>\([v]=\dfrac{L}{T}\)</p></div>
+      <div class="mini"><h4>İvme</h4><p>\([a]=\dfrac{L}{T^2}\)</p></div>
+      <div class="mini"><h4>Kuvvet</h4><p>\([F]=[m][a]=M\cdot\dfrac{L}{T^2}\)</p></div>
+    </div>
+    <p><b>Üç kural:</b></p>
+    <ol class="ol-tight">
+      <li>Toplanan (veya çıkarılan) büyüklüklerin boyutu aynı olmalıdır.</li>
+      <li>Eşitliğin iki tarafının boyutu aynı olmalıdır.</li>
+      <li>Üstel, logaritmik ve trigonometrik fonksiyonların içi boyutsuz olmalıdır.</li>
+    </ol>
+    <div class="derivation reveal" data-title="x = ½ a t² bağıntısı doğru mu?">
+      <div class="step"><p><b>Adım 1.</b> Sol taraf: \([x]=L\) (konum).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Sağ taraf: \(\tfrac12\) boyutsuz. \([a]\cdot[t]^2=\dfrac{L}{T^2}\cdot T^2=L\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> İki taraf eşit (\(L=L\)). Bağıntı boyutsal olarak doğru. (\(\tfrac12\) sayısını boyut analizi bulamaz; onu deneyle ya da türetmeyle buluruz.)</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="derivation reveal" data-title="x = v t² bağıntısı doğru mu? (yanlış örnek)">
+      <div class="step"><p><b>Adım 1.</b> Sol taraf: \([x]=L\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Sağ taraf: \([v][t]^2=\dfrac{L}{T}\cdot T^2=L\cdot T\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> \(L\ne LT\). Bağıntı yanlış. Bu hızlı kontrolle, sınavda bir formülü saniyeler içinde eleyebilirsin.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="trap"><b>Sınırı bil:</b> Boyut analizi yanlış formülü yakalar, ama doğru formüldeki sayısal katsayıyı (ör. \(\tfrac12\), \(2\pi\)) bulamaz. Doğrusu ise yalnızca “boyutça uyumlu” olduğunu söyler.</div>
     <div class="quiz" data-unit="cen103-f1"></div>
   </div>
 </section>
@@ -764,53 +1629,202 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
   <div class="unit-head c103h">
     <div class="eyebrow">CEN 103 · Ünite 2 · Bölüm 2</div>
     <h2>Koordinat sistemleri</h2>
-    <p>Bir noktanın yerini tanımlamak için kartezyen (dik) ya da kutupsal koordinatlar kullanılır.</p>
+    <p>Bir cismin yerini tarif etmek için bir referans noktası ve eksenler gerekir. İki temel sistem vardır: kartezyen (dik) ve kutupsal.</p>
   </div>
 
   <div class="card">
-    <h3>2.1 Kartezyen ve kutupsal koordinatlar</h3>
-    <p>Kartezyen koordinatlarda nokta \((x,y)\) ile verilir. Kutupsal koordinatlarda ise orijine uzaklık \(r\) ve pozitif \(x\)-ekseninden saat yönünün tersine ölçülen açı \(\theta\) kullanılır.</p>
-    <div class="eq">\[ x=r\cos\theta,\qquad y=r\sin\theta,\qquad r=\sqrt{x^{2}+y^{2}},\qquad \tan\theta=\frac{y}{x} \]</div>
-    <div class="trap"><b>Açı tuzağı:</b> \(\tan^{-1}\) yalnızca \(-90^{\circ}\) ile \(90^{\circ}\) arası değer verir. Nokta ikinci veya üçüncü bölgedeyse açıyı \(180^{\circ}\) ekleyerek ya da çıkararak düzeltin.</div>
+    <h3>2.1 Konum: “nerede?” sorusu</h3>
+    <p>Bir haritada bir nokta bulmak için iki bilgi gerekir: doğuya ne kadar, kuzeye ne kadar. Fizikte de aynı mantık var. Sabit bir nokta seçersin, bu noktaya <b>orijin</b> \(O\) dersin, sonra eksenleri çizersin.</p>
+    <p><b>Kartezyen (dik) koordinat:</b> Yatay eksen \(x\), dikey eksen \(y\). Bir nokta \((x,y)\) ile yazılır: önce \(x\), sonra \(y\).</p>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Bölge</th><th>\(x\) işareti</th><th>\(y\) işareti</th><th>Örnek nokta</th></tr></thead>
+      <tbody>
+        <tr><td>I</td><td>+</td><td>+</td><td>\((2,3)\)</td></tr>
+        <tr><td>II</td><td>−</td><td>+</td><td>\((-3,5)\)</td></tr>
+        <tr><td>III</td><td>−</td><td>−</td><td>\((-1,-4)\)</td></tr>
+        <tr><td>IV</td><td>+</td><td>−</td><td>\((2,-4)\)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap"><b>Sıra önemlidir:</b> \((2,-4)\) ile \((-4,2)\) farklı noktalardır. Koordinat her zaman önce \(x\), sonra \(y\) yazılır.</div>
   </div>
 
   <div class="card">
-    <h3>2.2 Çözümlü problemler</h3>
-    <div class="ex"><b>Problem 1:</b> \(xy\) düzleminde iki nokta \((2,-4)\) ve \((-3,3)\) (birim: m). Aralarındaki uzaklık \(d=\sqrt{(2+3)^{2}+(-4-3)^{2}}=\sqrt{74}\approx 8{,}6\) m. Kutupsal koordinatlar: \((2,-4)\) için \(r=\sqrt{20}\approx 4{,}47\) m, \(\theta=\tan^{-1}(-2)\approx -63{,}4^{\circ}=296{,}6^{\circ}\) (4. bölge). \((-3,3)\) için \(r=\sqrt{18}\approx 4{,}24\) m, \(\theta=135^{\circ}\) (2. bölge).</div>
-    <div class="ex"><b>Problem 2:</b> \((-3,5)\) m noktasının kutupsal koordinatları: \(r=\sqrt{34}\approx 5{,}83\) m, \(\cos\theta=-3/5{,}83\approx -0{,}514\), \(\theta\approx 120{,}97^{\circ}\).</div>
-    <div class="ex"><b>Problem 3:</b> \(r=5{,}5\) m, \(\theta=240^{\circ}\) ise \(x=5{,}5\cos 240^{\circ}=-2{,}75\) m, \(y=5{,}5\sin 240^{\circ}\approx -4{,}763\) m.</div>
+    <h3>2.2 Kutupsal koordinat: “ne kadar uzakta ve hangi yönde?”</h3>
+    <p>Bazı problemlerde (dönen bir tekerlek, bir radar, bir sarkaç) doğal soru “orijinden ne kadar uzak ve hangi açıda?” olur. Bunun için kutupsal koordinat \((r,\theta)\) kullanılır:</p>
+    <ul class="ol-tight">
+      <li><b>\(r\):</b> orijine uzaklık (her zaman \(\ge 0\)).</li>
+      <li><b>\(\theta\):</b> pozitif \(x\)-ekseninden <i>saat yönünün tersine</i> ölçülen açı.</li>
+    </ul>
+    <div class="derivation reveal" data-title="Kartezyenden kutupsala: r, x, y ilişkisi (sıfırdan)">
+      <div class="step"><p><b>Adım 1.</b> Noktayı \((x,y)\) al ve orijinden noktaya bir doğru çiz (uzunluk \(r\)). Noktadan \(x\)-eksenine dik bir çizgi indir. Dik bir üçgen oluşur: dik kenarlar \(x\) ve \(y\), hipotenüs \(r\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Pisagor: uzunluk karesi toplamı.</p>\[ r^2=x^2+y^2 \quad\Rightarrow\quad r=\sqrt{x^2+y^2} \]</div>
+      <div class="step"><p><b>Adım 3.</b> Açı \(\theta\) için karşı ve komşu kenarlar: \(\cos\theta=\dfrac{x}{r}\), \(\sin\theta=\dfrac{y}{r}\).</p></div>
+      <div class="step"><p><b>Adım 4.</b> Her iki tarafı \(r\) ile çarp: \(x=r\cos\theta\), \(y=r\sin\theta\).</p>\[ x=r\cos\theta,\qquad y=r\sin\theta \]</div>
+      <div class="step"><p><b>Adım 5.</b> Oranı al: \(\dfrac{y}{x}=\dfrac{r\sin\theta}{r\cos\theta}=\tan\theta\), yani \(\tan\theta=\dfrac{y}{x}\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
+    </div>
+    <div class="eq">\[ x=r\cos\theta,\quad y=r\sin\theta,\quad r=\sqrt{x^2+y^2},\quad \tan\theta=\frac{y}{x} \]</div>
+  </div>
+
+  <div class="card">
+    <h3>2.3 Açı bulurken bölgeye dikkat et</h3>
+    <p>Hesap makinesinin \(\tan^{-1}\) fonksiyonu yalnızca \(-90^\circ\) ile \(90^\circ\) arasındaki değerleri verir. Ama bir nokta ikinci ya da üçüncü bölgedeyse açı farklıdır. Bu yüzden bölgeye bakarak düzeltirsin.</p>
+    <div class="derivation reveal" data-title="(−3, 5) noktasının kutupsal koordinatları">
+      <div class="step"><p><b>Adım 1.</b> Uzaklık:</p>\[ r=\sqrt{(-3)^2+5^2}=\sqrt{34}\approx 5{,}83\ \text{m} \]</div>
+      <div class="step"><p><b>Adım 2.</b> Ham açı: \(\tan^{-1}\!\left(\dfrac{5}{-3}\right)=\tan^{-1}(-1{,}667)\approx -59{,}04^\circ\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Nokta \(x<0\), \(y>0\): ikinci bölgede. Hesap makinesinin açısı dördüncü bölgeye aittir; \(180^\circ\) ekle:</p>\[ \theta\approx -59{,}04^\circ+180^\circ=120{,}96^\circ \]</div>
+      <div class="step"><p><b>Adım 4.</b> Kontrol: \(\cos\theta=\frac{x}{r}=\frac{-3}{5{,}83}\approx -0{,}514\). \(\cos(120{,}96^\circ)\approx -0{,}514\). Doğru. (Kaynak metinde \(120{,}97^\circ\) yazıyor; küçük bir yuvarlama farkı.)</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="trap"><b>Kural:</b> Kutupsal açıyı, iki şeyi kontrol ederek bul: (1) \(\tan^{-1}\) değeri, (2) noktanın hangi bölgede olduğu. Bölgeye göre \(0\) veya \(180^\circ\) eklemek gerekebilir.</div>
+  </div>
+
+  <div class="card">
+    <h3>2.4 Çözümlü problem 1: iki noktanın uzaklığı ve kutupsal dönüşüm</h3>
+    <div class="derivation reveal" data-title="(2, −4) ve (−3, 3) noktaları: uzaklık ve kutupsal koordinatlar">
+      <div class="step"><p><b>Adım 1.</b> İki nokta arasındaki uzaklık: farkların karelerinin toplamının karekökü.</p>\[ d=\sqrt{(2-(-3))^2+(-4-3)^2}=\sqrt{5^2+(-7)^2}=\sqrt{74}\approx 8{,}6\ \text{m} \]</div>
+      <div class="step"><p><b>Adım 2.</b> \((2,-4)\) noktasının kutupsali. \(r=\sqrt{4+16}=\sqrt{20}\approx 4{,}47\) m. Ham açı \(\tan^{-1}(-2)\approx -63{,}4^\circ\). Nokta dördüncü bölgede; \(360^\circ\) ekle: \(\theta\approx 296{,}6^\circ\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> \((-3,3)\) noktasının kutupsali. \(r=\sqrt{9+9}=\sqrt{18}\approx 4{,}24\) m. Ham açı \(\tan^{-1}(-1)=-45^\circ\). Nokta ikinci bölgede; \(180^\circ\) ekle: \(\theta=135^\circ\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2.5 Çözümlü problem 3: kutupsaldan kartezyene</h3>
+    <div class="derivation reveal" data-title="r = 5,5 m, θ = 240° ise (x, y) nedir?">
+      <div class="step"><p><b>Adım 1.</b> \(x=r\cos\theta=5{,}5\cos 240^\circ\). \(\cos 240^\circ=-\tfrac12\) (üçüncü bölgede kosinüs negatif, \(60^\circ\) referans açısı).</p>\[ x=5{,}5\cdot\left(-\tfrac12\right)=-2{,}75\ \text{m} \]</div>
+      <div class="step"><p><b>Adım 2.</b> \(y=r\sin\theta=5{,}5\sin 240^\circ\). \(\sin 240^\circ=-\tfrac{\sqrt3}{2}\approx -0{,}866\).</p>\[ y=5{,}5\cdot(-0{,}866)\approx -4{,}763\ \text{m} \]</div>
+      <div class="step"><p><b>Adım 3.</b> Sonuç: \((x,y)\approx(-2{,}75,\ -4{,}76)\) m. Üçüncü bölgede, iki koordinat da negatif. Doğru.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
     <div class="quiz" data-unit="cen103-f2"></div>
   </div>
 </section>
-
 <section id="cen103-f3" class="reveal">
   <div class="unit-head c103h">
     <div class="eyebrow">CEN 103 · Ünite 3 · Bölüm 2</div>
     <h2>Skaler ve vektörler</h2>
-    <p>Sıcaklık bir sayıyken, yer değiştirme bir yön de taşır. Mühendislikte kuvvet, hız ve elektrik alan vektörel büyüklüklerdir.</p>
+    <p>Bazı büyüklükler yalnızca “ne kadar”ı söyler; bazıları ayrıca “hangi yöne” olduğunu da söyler. Bu ayrım, fizikte her hesabı değiştirir.</p>
   </div>
 
   <div class="card">
-    <h3>3.1 Skaler mi, vektör mü?</h3>
-    <p><b>Skaler:</b> sadece büyüklük ve birim (sıcaklık 21 °C, kütle 300 g, hacim 200 cm³).<br><b>Vektör:</b> büyüklük, birim, doğrultu ve yön (hız 120 m/s doğuya, kuvvet 25 dyn yukarıya, elektrik alan 35 V/m).</p>
-    <p>Gösterim: kalın harf \(\mathbf{A}\) veya harf üzerinde ok. Büyüklük \(|\mathbf{A}|=A\).</p>
+    <h3>3.1 Sezgi: yön neden önemli?</h3>
+    <p>Bir nehirde kürek çekiyorsun. Kayığın kendi hızı \(4\ \text{m/s}\), akıntının hızı \(3\ \text{m/s}\). Kayık hangi hızla ilerler? Cevap, <b>yöne</b> bağlı:</p>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Durum</th><th>Hesap</th><th>Sonuç</th></tr></thead>
+      <tbody>
+        <tr><td>Akıntıyla aynı yönde</td><td>\(4+3\)</td><td>\(7\ \text{m/s}\)</td></tr>
+        <tr><td>Akıntıya karşı</td><td>\(4-3\)</td><td>\(1\ \text{m/s}\)</td></tr>
+        <tr><td>Akıntıya dik</td><td>\(\sqrt{4^2+3^2}\)</td><td>\(5\ \text{m/s}\)</td></tr>
+      </tbody>
+    </table></div>
+    <p>Üçüncü durumda sonuç \(4+3=7\) değildir. Çünkü hızlar <i>doğrultularıyla birlikte</i> toplanır. İşte vektör kavramı bu gerçeğin adıdır.</p>
+    <div class="trap"><b>Sık hata:</b> Büyüklükleri doğrudan toplamak. Vektörler, yönleri de hesaba katılarak toplanır.</div>
   </div>
 
   <div class="card">
-    <h3>3.2 Toplama ve çıkarma</h3>
-    <p><b>Üçgen yöntemi:</b> \(\mathbf{B}\) vektörünün başlangıcı \(\mathbf{A}\)'nın ucuna konur; bileşke, \(\mathbf{A}\)'nın başından \(\mathbf{B}\)'nin ucuna çizilen vektördür. <b>Paralelkenar yöntemi:</b> iki vektör aynı başlangıç noktasından çizilir, bileşke kenarların köşegenidir.</p>
-    <div class="eq">\[ \mathbf{A}+\mathbf{B}=\mathbf{B}+\mathbf{A},\qquad \mathbf{A}+(\mathbf{B}+\mathbf{C})=(\mathbf{A}+\mathbf{B})+\mathbf{C},\qquad \mathbf{A}-\mathbf{B}=\mathbf{A}+(-\mathbf{B}) \]</div>
-    <p>Pozitif \(m\) skaleri ile çarpım \(m\mathbf{A}\), \(\mathbf{A}\) ile aynı yönde, büyüklüğü \(m\) kat olan vektördür; \(m<0\) ise yön tersine döner.</p>
-    <div class="trap"><b>Dikkat:</b> Vektör toplanırken yalnızca büyüklükleri toplamak yanlıştır. Yön ve açı mutlaka hesaba katılmalıdır.</div>
+    <h3>3.2 Skaler ve vektör: tanım</h3>
+    <div class="grid2">
+      <div class="mini"><h4>Skaler</h4><p>Yalnızca büyüklük ve birim. Örnekler: sıcaklık \(21\ ^\circ\text{C}\), hacim \(200\ \text{cm}^3\), kütle \(300\ \text{g}\), yoğunluk \(5\ \text{g/cm}^3\). Aritmetik kurallar aynen geçerlidir.</p></div>
+      <div class="mini"><h4>Vektör</h4><p>Büyüklük, birim, <b>doğrultu</b> ve <b>yön</b>. Örnekler: hız \(120\ \text{m/s}\) doğuya, kuvvet \(25\ \text{dyn}\) yukarıya, elektrik alan \(35\ \text{V/m}\) sağa.</p></div>
+    </div>
+    <p><b>Gösterim:</b> Kalın harf \(\mathbf{A}\) veya harfin üstünde ok \(\vec A\). Büyüklüğü \(|\mathbf{A}|=A\) ile gösterilir; büyüklük her zaman pozitif bir sayıdır.</p>
+    <div class="derivation reveal" data-title="Hangisi vektördür? Üç örnek">
+      <div class="step"><p><b>Adım 1.</b> Sıcaklık, \(21\ ^\circ\text{C}\): yön sorusu yok. <b>Skaler.</b></p></div>
+      <div class="step"><p><b>Adım 2.</b> Yer değiştirme, \(15\ \text{m}\) batıya: yön var. <b>Vektör.</b></p></div>
+      <div class="step"><p><b>Adım 3.</b> Hız büyüklüğü (sürat), \(15\ \text{m/s}\): yön belirtilmemiş. <b>Skaler.</b> (Yönü de eklenince hız vektör olur.)</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="ex"><b>Önemli ayrım:</b> Sürat (speed) skalerdir; hız (velocity) vektördür. Bir arabanın \(90\ \text{km/h}\) hızla gitmesi sürattir; \(90\ \text{km/h}\) kuzeye gitmesi hızdır.</div>
   </div>
 
   <div class="card">
-    <h3>3.3 Bileşenler ve birim vektörler</h3>
-    <p>\(\mathbf{A}\), eksenler üzerindeki dik bileşenlerinin toplamıdır: \(\mathbf{A}=A_x\,\mathbf{i}+A_y\,\mathbf{j}\). \(\mathbf{i},\mathbf{j},\mathbf{k}\) birim vektörlerdir (büyüklükleri 1).</p>
-    <div class="eq">\[ A_x=A\cos\theta,\quad A_y=A\sin\theta,\quad |\mathbf{A}|=\sqrt{A_x^{2}+A_y^{2}},\quad \tan\theta=\frac{A_y}{A_x} \]</div>
-    <p>Toplama bileşen bazında yapılır: \(\mathbf{R}=\mathbf{A}+\mathbf{B}=(A_x+B_x)\mathbf{i}+(A_y+B_y)\mathbf{j}\). Üç boyutta aynı mantık \(\mathbf{k}\) bileşeniyle genişler.</p>
-    <div class="ex"><b>Mağara problemi (2.22):</b> Girişten 75 m kuzey, 250 m doğu, doğuyla 30° yapan kuzeydoğu yönünde 125 m ve güneye 150 m. Bileşenler: \(x=250+125\cos30^{\circ}=358{,}25\) m, \(y=75+125\sin30^{\circ}-150=-12{,}5\) m. Bileşke uzaklık \(d=\sqrt{358{,}25^{2}+12{,}5^{2}}\approx 358{,}46\) m.</div>
-    <div class="ex"><b>Örnek (2.30):</b> \(\mathbf{A}=\mathbf{i}+3\mathbf{j}\), \(\mathbf{B}=2\mathbf{i}-\mathbf{j}\), \(\mathbf{C}=3\mathbf{i}+5\mathbf{j}\). Toplam \(\mathbf{R}=6\mathbf{i}+7\mathbf{j}\); büyüklük \(\sqrt{85}\approx 9{,}22\); yön \(\tan\theta=7/6\), \(\theta\approx 49{,}4^{\circ}\).</div>
+    <h3>3.3 Grafik toplama: uç uca ekleme</h3>
+    <p><b>Yöntem (üçgen / uç uca):</b> İkinci vektörün kuyruğunu, birinci vektörün ucuna koy. Birinci vektörün kuyruğundan ikinci vektörün ucuna çizilen yeni ok, bileşkedir.</p>
+    <div class="derivation reveal" data-title="A = 3 m doğuya, B = 4 m kuzeye: bileşke R = A + B">
+      <div class="step"><p><b>Adım 1.</b> Ölçek seç: \(1\ \text{cm}=1\ \text{m}\) gibi. \(A\)’yı 3 cm yatay çiz (doğu).</p></div>
+      <div class="step"><p><b>Adım 2.</b> \(B\)’yi \(A\)’nın ucundan başlat: 4 cm dikey çiz (kuzey).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Bileşke, \(A\)’nın başından \(B\)’nin ucuna giden oktur. Ölçerek bulabilirsin: uzunluk \(5\) cm, yani \(5\ \text{m}\).</p></div>
+      <div class="step"><p><b>Adım 4.</b> Pisagor ile kesin değer: \(R=\sqrt{3^2+4^2}=5\ \text{m}\). Yön: \(\tan\phi=\dfrac{4}{3}\), \(\phi\approx 53{,}1^\circ\) (doğudan kuzeye).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <p><b>Paralelkenar yöntemi:</b> İki vektörü aynı başlangıç noktasından çiz, bu iki kenarla bir paralelkenar tamamla. Bileşke, o noktadan çıkan köşegendir. Sonuç üçgen yöntemiyle aynıdır (paralelkenarın yarısı, üçgendir).</p>
+    <div class="derivation reveal" data-title="Toplamanın değişme ve birleşme özellikleri (neden doğru?)">
+      <div class="step"><p><b>Değişme:</b> \(\mathbf{A}+\mathbf{B}=\mathbf{B}+\mathbf{A}\). Neden? Paralelkenarın iki kenarı, sırası ne olursa olsun aynı köşegeni verir.</p></div>
+      <div class="step"><p><b>Birleşme:</b> \(\mathbf{A}+(\mathbf{B}+\mathbf{C})=(\mathbf{A}+\mathbf{B})+\mathbf{C}\). Üç vektörü uç uca eklersen başlangıç ve bitiş noktaları aynı kalır; parantez yerini değiştirmek çizimi değiştirmez.</p></div>
+      <div class="step"><p><b>Genelleme:</b> Dört vektör için \(\mathbf{R}=\mathbf{A}+\mathbf{B}+\mathbf{C}+\mathbf{D}\), ilk vektörün kuyruğundan son vektörün ucuna çizilen oktur; ara çizimler bu bileşkeyi etkilemez.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3.4 Ters vektör, çıkarma ve skaler çarpım</h3>
+    <p><b>Ters vektör \(-\mathbf{A}\):</b> aynı büyüklükte, zıt yönde. Tanım: \(\mathbf{A}+(-\mathbf{A})=\mathbf{0}\).</p>
+    <p><b>Çıkarma:</b> \(\mathbf{A}-\mathbf{B}=\mathbf{A}+(-\mathbf{B})\). Yani çıkarmayı, ters vektörü eklemek olarak düşünürsün.</p>
+    <div class="derivation reveal" data-title="A = 3 m doğuya, B = 3 m kuzeye: A − B">
+      <div class="step"><p><b>Adım 1.</b> Bileşenlerle yaz: \(\mathbf{A}=(3,0)\), \(\mathbf{B}=(0,3)\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> \(-\mathbf{B}=(0,-3)\) (güneye 3 m).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Topla: \(\mathbf{A}-\mathbf{B}=(3+0,\ 0-3)=(3,-3)\).</p></div>
+      <div class="step"><p><b>Adım 4.</b> Büyüklük \(\sqrt{9+9}=\sqrt{18}\approx 4{,}24\) m. Yön: doğudan \(45^\circ\) güneye.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <p><b>Skaler çarpım \(m\mathbf{A}\):</b> \(m>0\) ise aynı yönde, büyüklük \(m\) katı. \(m<0\) ise ters yönde. \(m=0\) ise sıfır vektör.</p>
+  </div>
+
+  <div class="card">
+    <h3>3.5 Bileşenler: bir vektörü iki dik parçaya ayırmak</h3>
+    <p>Bir vektörü eksenler üzerindeki dik izdüşümlerine ayırmak, hesabı çok kolaylaştırır. Bu izdüşümlere <b>bileşen</b> denir.</p>
+    <div class="derivation reveal" data-title="Büyüklük A ve yön θ ile verilen vektörün bileşenleri">
+      <div class="step"><p><b>Adım 1.</b> \(\mathbf{A}\)’yı pozitif \(x\)-ekseniyle \(\theta\) açısı yapacak şekilde çiz, başlangıcı orijine koy.</p></div>
+      <div class="step"><p><b>Adım 2.</b> Ucundan \(x\)-eksenine ve \(y\)-eksenine dik çizgiler indir. Dik üçgenin hipotenüsü \(A\)’dır.</p></div>
+      <div class="step"><p><b>Adım 3.</b> Açıdan oranlar: \(\cos\theta=\dfrac{A_x}{A}\) ve \(\sin\theta=\dfrac{A_y}{A}\).</p></div>
+      <div class="step"><p><b>Adım 4.</b> Çarp:</p>\[ A_x=A\cos\theta,\qquad A_y=A\sin\theta \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="derivation reveal" data-title="A = 10 birim, θ = 30° için bileşenler">
+      <div class="step"><p><b>Adım 1.</b> \(A_x=10\cos30^\circ=10\cdot 0{,}866=8{,}66\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> \(A_y=10\sin30^\circ=10\cdot 0{,}5=5\).</p></div>
+      <div class="step"><p><b>Kontrol:</b> \(\sqrt{8{,}66^2+5^2}=\sqrt{75+25}=\sqrt{100}=10\). Büyüklük korundu.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <p><b>Ters yön:</b> Bileşenlerden büyüklük ve açı bulunur:</p>
+    <div class="eq">\[ A=\sqrt{A_x^2+A_y^2},\qquad \tan\theta=\frac{A_y}{A_x}\quad(\text{bölgeye göre }\theta\text{ düzeltilir}) \]</div>
+  </div>
+
+  <div class="card">
+    <h3>3.6 Birim vektörler: \(\mathbf{i}\), \(\mathbf{j}\), \(\mathbf{k}\)</h3>
+    <p>Birim vektör, büyüklüğü \(1\) olan ve bir eksen doğrultusunu gösteren vektördür. \(\mathbf{i}\) \(x\)-ekseninin, \(\mathbf{j}\) \(y\)-ekseninin, \(\mathbf{k}\) \(z\)-ekseninin yönündedir.</p>
+    <div class="derivation reveal" data-title="Bileşen gösteriminin türetilmesi">
+      <div class="step"><p><b>Adım 1.</b> \(A_x\) bileşeni, \(x\) doğrultusunda uzunluğu \(|A_x|\) olan bir vektördür. Bunu birim vektörle yaz: \(A_x\,\mathbf{i}\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Benzer şekilde \(A_y\,\mathbf{j}\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Dik bileşenlerin toplamı vektörün kendisidir:</p>\[ \mathbf{A}=A_x\,\mathbf{i}+A_y\,\mathbf{j}\qquad (\text{3B: } +A_z\,\mathbf{k}) \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3.7 Bileşenlerle toplama: çözümlü örnek, her satırıyla</h3>
+    <div class="derivation reveal" data-title="A = i + 3j, B = 2i − j, C = 3i + 5j. Toplam R ve büyüklük, yön">
+      <div class="step"><p><b>Adım 1.</b> Üç vektörü bileşen bazında yaz: \(\mathbf{A}=(1,3)\), \(\mathbf{B}=(2,-1)\), \(\mathbf{C}=(3,5)\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Her bileşeni ayrı ayrı topla. \(x\)-bileşen: \(1+2+3=6\). \(y\)-bileşen: \(3+(-1)+5=7\).</p>\[ \mathbf{R}=6\mathbf{i}+7\mathbf{j} \]</div>
+      <div class="step"><p><b>Adım 3.</b> Büyüklük:</p>\[ R=\sqrt{6^2+7^2}=\sqrt{85}\approx 9{,}22 \]</div>
+      <div class="step"><p><b>Adım 4.</b> Yön (ilk bölgede, ek düzeltme gerekmez):</p>\[ \tan\theta=\frac{7}{6}\approx 1{,}167\quad\Rightarrow\quad \theta\approx 49{,}4^\circ \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3.8 Mağara problemi: adım adım yer değiştirme</h3>
+    <p>Bir mağaraya giren biri şu yolu izler: 75 m kuzeye, 250 m doğuya, doğuyla \(30^\circ\) yapan kuzeydoğu yönünde 125 m, sonra 150 m güneye. Girişten bileşke yer değiştirme nedir?</p>
+    <div class="derivation reveal" data-title="Mağara problemi: her yer değiştirmeyi bileşenlere ayır">
+      <div class="step"><p><b>Adım 1.</b> Yönleri eksenlere çevir: kuzey \(+y\), doğu \(+x\), güney \(-y\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Her yer değiştirmenin bileşenleri:</p>\[ \mathbf{d}_1=(0,\ 75),\qquad \mathbf{d}_2=(250,\ 0) \]\[ \mathbf{d}_3=(125\cos30^\circ,\ 125\sin30^\circ)=(108{,}25,\ 62{,}5),\qquad \mathbf{d}_4=(0,\ -150) \]</div>
+      <div class="step"><p><b>Adım 3.</b> \(x\)-bileşenlerini topla: \(0+250+108{,}25+0=358{,}25\) m.</p></div>
+      <div class="step"><p><b>Adım 4.</b> \(y\)-bileşenlerini topla: \(75+0+62{,}5-150=-12{,}5\) m (negatif: güney).</p></div>
+      <div class="step"><p><b>Adım 5.</b> Bileşke büyüklük: \(d=\sqrt{358{,}25^2+(-12{,}5)^2}\approx 358{,}46\) m. Yön: doğudan yaklaşık \(2^\circ\) güneye.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
+    </div>
+    <div class="trap"><b>Dikkat:</b> “Doğuyla \(30^\circ\)” ifadesi, açının doğu ekseninden ölçüldüğü anlamına gelir. Bileşenler \(\cos\) ile doğuya, \(\sin\) ile kuzeye verilir. Açı kuzeyden ölçülüyorsa bileşenler yer değiştirir.</div>
     <div class="quiz" data-unit="cen103-f3"></div>
   </div>
 </section>
@@ -819,24 +1833,86 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
   <div class="unit-head c103h">
     <div class="eyebrow">CEN 103 · Ünite 4 · Bölüm 2</div>
     <h2>Skaler ve vektörel çarpım</h2>
-    <p>İki vektörü çarpmanın iki farklı yolu vardır: biri bir sayı, diğeri yeni bir vektör üretir.</p>
+    <p>İki vektörü çarpmanın iki farklı yolu vardır: biri bir <b>sayı</b> verir, diğeri yeni bir <b>vektör</b> verir. Hangisinin ne zaman gerektiğini anlamak fiziğin kalbidir.</p>
   </div>
 
   <div class="card">
-    <h3>4.1 Skaler (nokta) çarpım</h3>
-    <div class="eq">\[ \mathbf{A}\cdot\mathbf{B}=AB\cos\theta=A_xB_x+A_yB_y+A_zB_z \]</div>
-    <p>Sonuç bir skaler'dir. \(\mathbf{A}\cdot\mathbf{B}\), \(\mathbf{B}\)'nin \(\mathbf{A}\) doğrultusundaki izdüşümü ile \(A\)'nın çarpımıdır. \(\mathbf{i}\cdot\mathbf{i}=1\), \(\mathbf{i}\cdot\mathbf{j}=0\). Dik vektörlerin nokta çarpımı sıfırdır.</p>
-    <div class="ex"><b>Örnek:</b> \(\mathbf{A}=2\mathbf{i}+3\mathbf{j}\), \(\mathbf{B}=\mathbf{i}-\mathbf{j}\). \(\mathbf{A}\cdot\mathbf{B}=2\cdot 1+3\cdot(-1)=-1\). Negatif değer açının \(90^{\circ}\)'den büyük olduğunu gösterir.</div>
+    <h3>4.1 Motivasyon: iş nedir?</h3>
+    <p>Bir kutuyu yerde kaydırıyorsun. Kuvvet ile yerdeğiştirme aynı yönde değilse, yalnızca kuvvetin yerdeğiştirme doğrultusundaki kısmı işe katkı yapar. Bu tam olarak bir <b>nokta çarpım</b> sorusudur. (İş \(W=\mathbf{F}\cdot\mathbf{d}\) biçiminde yazılır; enerji konusuna geldiğinde bu bağlantıyı kullanacağız. Şimdi matematiği kuruyoruz.)</p>
   </div>
 
   <div class="card">
-    <h3>4.2 Vektörel (çapraz) çarpım</h3>
+    <h3>4.2 Skaler (nokta) çarpım: tanım ve sezgi</h3>
+    <div class="eq">\[ \mathbf{A}\cdot\mathbf{B}=AB\cos\theta \]</div>
+    <p>Sonuç bir <b>skalerdir</b> (sayı). \(\theta\), iki vektörün başlangıçları birleştirildiğinde aralarındaki açıdır.</p>
+    <div class="derivation reveal" data-title="Nokta çarpımın izdüşüm yorumu">
+      <div class="step"><p><b>Adım 1.</b> \(\mathbf{B}\)’nin \(\mathbf{A}\) doğrultusundaki izdüşümü, \(B\cos\theta\)’dır. (Dik üçgende komşu kenar.)</p></div>
+      <div class="step"><p><b>Adım 2.</b> Nokta çarpım, \(\mathbf{A}\)’nın büyüklüğünü bu izdüşümle çarpmaktır:</p>\[ \mathbf{A}\cdot\mathbf{B}=A\cdot(B\cos\theta)=AB\cos\theta \]</div>
+      <div class="step"><p><b>Yorum:</b> \(\cos\theta>0\) ise (açı \(90^\circ\)’den küçük) sonuç pozitif. \(\cos\theta<0\) ise (açı \(90^\circ\)’den büyük) sonuç negatif. Dik ise (\(\cos 90^\circ=0\)) sonuç sıfır.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="eq">\[ \mathbf{A}\cdot\mathbf{B}=\mathbf{B}\cdot\mathbf{A},\qquad \mathbf{A}\cdot(\mathbf{B}+\mathbf{C})=\mathbf{A}\cdot\mathbf{B}+\mathbf{A}\cdot\mathbf{C},\qquad \mathbf{A}\cdot\mathbf{A}=A^2 \]</div>
+  </div>
+
+  <div class="card">
+    <h3>4.3 Bileşen formülü: nereden çıkıyor?</h3>
+    <p>Birim vektörlerin özel ilişkileri vardır: \(\mathbf{i}\cdot\mathbf{i}=\mathbf{j}\cdot\mathbf{j}=\mathbf{k}\cdot\mathbf{k}=1\) (kendileriyle, \(\theta=0\)), \(\mathbf{i}\cdot\mathbf{j}=\mathbf{i}\cdot\mathbf{k}=\mathbf{j}\cdot\mathbf{k}=0\) (birbirine dik).</p>
+    <div class="derivation reveal" data-title="A·B = A_xB_x + A_yB_y + A_zB_z">
+      <div class="step"><p><b>Adım 1.</b> Vektörleri birim vektörlerle yaz:</p>\[ \mathbf{A}=A_x\mathbf{i}+A_y\mathbf{j}+A_z\mathbf{k},\qquad \mathbf{B}=B_x\mathbf{i}+B_y\mathbf{j}+B_z\mathbf{k} \]</div>
+      <div class="step"><p><b>Adım 2.</b> Nokta çarpımı dağıt: her terim her terimle çarpılır (dokuz çarpım).</p>\[ \mathbf{A}\cdot\mathbf{B}=A_xB_x(\mathbf{i}\cdot\mathbf{i})+A_xB_y(\mathbf{i}\cdot\mathbf{j})+\cdots \]</div>
+      <div class="step"><p><b>Adım 3.</b> Birbirine dik olanlar sıfır eder. Sadece \(\mathbf{i}\cdot\mathbf{i}\), \(\mathbf{j}\cdot\mathbf{j}\), \(\mathbf{k}\cdot\mathbf{k}\) kalır (her biri 1):</p>\[ \mathbf{A}\cdot\mathbf{B}=A_xB_x+A_yB_y+A_zB_z \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="derivation reveal" data-title="Açı bulmak: (1,0) ile (1,1) arasındaki açı">
+      <div class="step"><p><b>Adım 1.</b> Nokta çarpım: \(\mathbf{A}\cdot\mathbf{B}=1\cdot 1+0\cdot 1=1\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Büyüklükler: \(|\mathbf{A}|=1\), \(|\mathbf{B}|=\sqrt2\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> \(\cos\theta=\dfrac{\mathbf{A}\cdot\mathbf{B}}{AB}=\dfrac{1}{\sqrt2}\), yani \(\theta=45^\circ\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4.4 Vektörel (çapraz) çarpım: büyüklük ve alan</h3>
     <div class="eq">\[ \mathbf{A}\times\mathbf{B}=\mathbf{C},\qquad |\mathbf{C}|=AB\sin\theta \]</div>
-    <p>Sonuç bir vektördür; doğrultusu \(\mathbf{A}\) ve \(\mathbf{B}\)'nin düzlemine diktir, yönü <b>sağ el kuralıyla</b> bulunur. \(|\mathbf{C}|\), iki vektörün oluşturduğu paralelkenarın alanına eşittir.</p>
-    <div class="eq">\[ \mathbf{A}\times\mathbf{B}=(A_yB_z-A_zB_y)\mathbf{i}+(A_zB_x-A_xB_z)\mathbf{j}+(A_xB_y-A_yB_x)\mathbf{k} \]</div>
-    <div class="eq">\[ \mathbf{i}\times\mathbf{j}=\mathbf{k},\quad \mathbf{j}\times\mathbf{k}=\mathbf{i},\quad \mathbf{k}\times\mathbf{i}=\mathbf{j},\qquad \mathbf{B}\times\mathbf{A}=-(\mathbf{A}\times\mathbf{B}) \]</div>
-    <div class="trap"><b>Dikkat:</b> Çapraz çarpımda sıra önemlidir; değişme özelliği yoktur. Paralel vektörlerin çapraz çarpımı sıfırdır.</div>
-    <div class="ex"><b>Örnek:</b> \(\mathbf{A}=2\mathbf{i}+3\mathbf{j}\), \(\mathbf{B}=\mathbf{i}-\mathbf{j}\) için \(z\)-bileşen \(A_xB_y-A_yB_x=2(-1)-3(1)=-5\). Yani \(\mathbf{A}\times\mathbf{B}=-5\mathbf{k}\).</div>
+    <div class="derivation reveal" data-title="|A × B| neden paralelkenarın alanıdır?">
+      <div class="step"><p><b>Adım 1.</b> İki vektörle bir paralelkenar kur. Tabanı \(A\) (vektör \(\mathbf{A}\)).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Yüksekliği, \(\mathbf{B}\)’nin \(\mathbf{A}\)’ya dik bileşeni: \(B\sin\theta\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Alan = taban × yükseklik:</p>\[ \text{Alan}=A\cdot B\sin\theta \]</div>
+      <div class="step"><p><b>Adım 4.</b> Çapraz çarpımın büyüklüğü de tam olarak bu alandır: \(|\mathbf{A}\times\mathbf{B}|=AB\sin\theta\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <h4>Yön: sağ el kuralı</h4>
+    <div class="derivation reveal" data-title="Sağ el kuralıyla yönü bul">
+      <div class="step"><p><b>Adım 1.</b> Sağ elini aç. Dört parmağını \(\mathbf{A}\)’nın yönünde tut.</p></div>
+      <div class="step"><p><b>Adım 2.</b> Parmaklarını \(\mathbf{B}\) yönüne, küçük açıyla (\(\theta\)) kıvır.</p></div>
+      <div class="step"><p><b>Adım 3.</b> Başparmağın gösterdiği yön, \(\mathbf{A}\times\mathbf{B}\)’nin yönüdür.</p></div>
+      <div class="step"><p><b>Adım 4.</b> Ters sıralama (\(\mathbf{B}\times\mathbf{A}\)) başparmağı ters çevirir: \(\mathbf{B}\times\mathbf{A}=-(\mathbf{A}\times\mathbf{B})\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="derivation reveal" data-title="i × j neden k?">
+      <div class="step"><p><b>Adım 1.</b> Büyüklük: \(|\mathbf{i}\times\mathbf{j}|=1\cdot1\cdot\sin 90^\circ=1\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> Yön: sağ el kuralı. \(\mathbf{i}\) (x) ve \(\mathbf{j}\) (y), düzlemde. Başparmak \(z\) yönüne, yani \(\mathbf{k}\)’ya bakar.</p></div>
+      <div class="step"><p><b>Adım 3.</b> Döngüsel düzen: \(\mathbf{i}\times\mathbf{j}=\mathbf{k}\), \(\mathbf{j}\times\mathbf{k}=\mathbf{i}\), \(\mathbf{k}\times\mathbf{i}=\mathbf{j}\). Ters döngüde işaret değişir.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4.5 Bileşen formülü: determinantın kaynağı</h3>
+    <div class="derivation reveal" data-title="A × B açılımı (her terim bir çarpım)">
+      <div class="step"><p><b>Adım 1.</b> Vektörleri birim vektörlerle yaz ve çapraz çarpımı dağıt. Dokuz terim çıkar.</p></div>
+      <div class="step"><p><b>Adım 2.</b> Birim vektör çarpımlarını bilinen tablodan yerleştir: \(\mathbf{i}\times\mathbf{i}=\mathbf{0}\) (paralel), \(\mathbf{i}\times\mathbf{j}=\mathbf{k}\), \(\mathbf{i}\times\mathbf{k}=-\mathbf{j}\), \(\mathbf{j}\times\mathbf{i}=-\mathbf{k}\), \(\mathbf{j}\times\mathbf{k}=\mathbf{i}\), \(\mathbf{k}\times\mathbf{i}=\mathbf{j}\), \(\mathbf{k}\times\mathbf{j}=-\mathbf{i}\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Her bileşenin katsayısını topla. \(\mathbf{i}\) için: \(A_yB_z-A_zB_y\). \(\mathbf{j}\) için: \(A_zB_x-A_xB_z\). \(\mathbf{k}\) için: \(A_xB_y-A_yB_x\).</p></div>
+      <div class="step"><p><b>Adım 4.</b> Sonuç:</p>\[ \mathbf{A}\times\mathbf{B}=(A_yB_z-A_zB_y)\mathbf{i}+(A_zB_x-A_xB_z)\mathbf{j}+(A_xB_y-A_yB_x)\mathbf{k} \]</div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <div class="derivation reveal" data-title="A = (2, 3, 0), B = (1, −1, 0) için A × B">
+      <div class="step"><p><b>Adım 1.</b> Tüm \(z\)-bileşenler sıfır, dolayısıyla \(\mathbf{i}\) ve \(\mathbf{j}\) katsayıları sıfır olur.</p></div>
+      <div class="step"><p><b>Adım 2.</b> \(\mathbf{k}\) katsayısı: \(A_xB_y-A_yB_x=2\cdot(-1)-3\cdot 1=-5\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> Sonuç: \(\mathbf{A}\times\mathbf{B}=-5\mathbf{k}\). Büyüklük \(5\), yön \(-z\) (kâğıdın içine). Kontrol: \(AB\sin\theta\) ile aynı büyüklük çıkar.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <div class="trap"><b>Sık hata:</b> Çapraz çarpımı skaler çarpım gibi değişmeli sanmak. \(\mathbf{A}\times\mathbf{B}=-(\mathbf{B}\times\mathbf{A})\): sıra değişirse işaret değişir.</div>
     <div class="quiz" data-unit="cen103-f4"></div>
   </div>
 </section>
@@ -844,18 +1920,38 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
 <section id="cen103-f5" class="reveal">
   <div class="unit-head c103h">
     <div class="eyebrow">CEN 103 · Ünite 5 · Problem seti</div>
-    <h2>Vektör problemleri</h2>
-    <p>Sınav tarzı problemler: grafik toplama, bileşen çözümü, çarpım uygulamaları.</p>
+    <h2>Vektör problemlerini çözmek: yöntem</h2>
+    <p>Bir problemi çözerken hangi adımları izleyeceğini bilirsen, her yeni problemde aynı düzenle ilerlersin.</p>
   </div>
   <div class="card">
-    <h3>Çalışma önerisi</h3>
+    <h3>5.1 Altı adımlık yöntem</h3>
     <ol class="ol-tight">
-      <li><b>Problem 15:</b> Büyüklükleri 3 m olan \(\mathbf{A}\) ve \(\mathbf{B}\) yer değiştirme vektörleri için \(\mathbf{A}+\mathbf{B}\), \(\mathbf{A}-\mathbf{B}\), \(\mathbf{A}-2\mathbf{B}\) ve \(\mathbf{B}-\mathbf{A}\) vektörlerini önce çizim, sonra bileşen yöntemiyle hesaplayın.</li>
-      <li><b>Mağara (2.22):</b> Yukarıdaki çözümü, her adımı yazarak tekrar edin; bileşen işaretlerine dikkat edin.</li>
-      <li><b>Örnek 2.43 ve 2.52:</b> Negatif bileşenli vektörlerde açıyı hangi bölgede olduğunuza göre yeniden hesaplayın.</li>
-      <li><b>Örnek 11.7 ve 11.12:</b> Çapraz çarpımla alan ve yönü hesaplayın.</li>
+      <li><b>Problemi çiz:</b> Yönleri ve açıları bir kâğıda işaretle. Çizim yanlış olursa hesap da yanlış olur.</li>
+      <li><b>Koordinat sistemini seç:</b> Eksenleri, hesabı kolaylaştıracak şekilde yerleştir (ör. bir vektörü \(x\)-eksenine hizala).</li>
+      <li><b>Her vektörü bileşenlerine ayır:</b> \(\cos\) ve \(\sin\) ile.</li>
+      <li><b>Bileşenleri ayrı ayrı topla</b> (veya çıkar).</li>
+      <li><b>Büyüklük ve yön bul:</b> Pisagor ve \(\tan^{-1}\), bölgeye göre düzeltme.</li>
+      <li><b>Sağduyu kontrolü:</b> Bileşke, bileşenlerin toplamından büyük olamaz; birimler doğru mu?</li>
     </ol>
-    <div class="warn"><b>Kaynak notu:</b> Bölüm 2 soru dosyasındaki çözümlü örneklerin bazı sayısal sonuçları PDF'ten okunurken bozuk çıktı. Bu sayfadaki değerler yeniden hesaplanarak doğrulanmıştır.</div>
+    <div class="derivation reveal" data-title="Problem 15: iki vektör (3 m), A + B, A − B, A − 2B ve B − A">
+      <div class="step"><p><b>Adım 1.</b> Kaynak metinde şekil var; figürü bilmeden sayısal bir cevap vermek doğru olmaz. O yüzden önce bir varsayım yapıyoruz (şekle göre değiştir): \(\mathbf{A}=(3,0)\), \(\mathbf{B}=(0,3)\).</p></div>
+      <div class="step"><p><b>Adım 2.</b> \(\mathbf{A}+\mathbf{B}=(3,3)\), büyüklük \(\approx 4{,}24\).</p></div>
+      <div class="step"><p><b>Adım 3.</b> \(\mathbf{A}-\mathbf{B}=(3,-3)\), büyüklük \(\approx 4{,}24\).</p></div>
+      <div class="step"><p><b>Adım 4.</b> \(\mathbf{A}-2\mathbf{B}=(3,-6)\), büyüklük \(\sqrt{45}\approx 6{,}71\). \(\mathbf{B}-\mathbf{A}=(-3,3)\), büyüklük \(\approx 4{,}24\).</p></div>
+      <div class="step"><p><b>Adım 5.</b> Gerçek şekilde yönler farklıysa aynı adımları bileşenlerle yeniden yap: sayılar değişir, yöntem değişmez.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5.2 Çalışma önerileri</h3>
+    <ul class="ol-tight">
+      <li><b>Mağara problemi:</b> 3.8 bölümündeki adımları, bileşen tablosu yaparak kendin tekrarla.</li>
+      <li><b>Negatif bileşenli vektörler:</b> Açıyı hangi bölgede olduğuna göre yeniden hesapla (ikinci ve üçüncü bölgede \(\tan^{-1}\) düzeltmesi).</li>
+      <li><b>Çapraz çarpım:</b> Alan ve yön problemlerinde sağ el kuralını kâğıda çizerek uygula.</li>
+    </ul>
+    <div class="warn"><b>Kaynak notu:</b> Bölüm 2 soru dosyasındaki bazı sayısal değerler PDF’ten okunurken bozuk çıktı. Bu sayfadaki tüm değerler yeniden hesaplanarak kontrol edildi.</div>
+    <div class="quiz" data-unit="cen103-f5"></div>
   </div>
 </section>
 
@@ -3083,6 +4179,10 @@ var NEW_QUIZ = {
   'cen103-f4': [
     { id: 'cen103-f4q1', q: 'A = (1, 0) ve B = (0, 1) için A·B kaçtır?', o: ['0', '1', 'i', '−1'], a: 0, w: 'Dik vektörlerin nokta çarpımı sıfırdır.' },
     { id: 'cen103-f4q2', q: 'i × j sonucu hangisidir?', o: ['k', '−k', 'j', 'i'], a: 0, w: 'Sağ el kuralı: i × j = k.' }
+  ],
+  'cen103-f5': [
+    { id: 'cen103-f5q1', q: 'A = (6, 8) ve B = (−2, 1) ise A + B vektörü nedir?', o: ['(4, 9)', '(8, 9)', '(4, 7)', '(−4, 9)'], a: 0, w: 'Bileşen bazında toplanır: (6 − 2, 8 + 1) = (4, 9).' },
+    { id: 'cen103-f5q2', q: 'Bir bileşke vektörün büyüklüğü için hangisi her zaman doğru bir kontroldür?', o: ['Bileşke, bileşenlerin toplamından büyük olabilir', '|A + B| her zaman |A| + |B|’ye eşittir', '|A + B| en fazla |A| + |B| olabilir', 'Birimler önemsizdir'], a: 2, w: 'Üçgen eşitsizliği: |A + B| ≤ |A| + |B|.' }
   ],
   'cen107-w1': [
     { id: 'cen107-w1q1', q: '“undefined reference” hatası derleme zincirinin hangi aşamasında görülür?', o: ['Ön işleme', 'Derleme', 'Bağlama (linking)', 'Ön işleme ve derleme'], a: 2, w: 'Tanımlanmamış bir fonksiyon bağlayıcı aşamasında bulunamaz.' },
