@@ -366,6 +366,21 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
 .ex{background:var(--surface);border:2px dashed var(--line);border-radius:16px;padding:12px 16px;margin:12px 0}
 .ex b:first-child{color:var(--blue-edge)}
 .ol-tight li{margin:4px 0}
+/* ---------- sınav için önemli kutuları ve sınav modu ---------- */
+.imp{position:relative;border-radius:16px;padding:14px 16px 12px;margin:14px 0;background:linear-gradient(135deg,#fff8db,#fff3c4);border:2px solid var(--gold);border-bottom-width:5px;border-bottom-color:var(--gold-edge);color:#3b2d00}
+[data-theme="dark"] .imp,:root:not([data-theme="light"]) .imp{background:linear-gradient(135deg,#3a3010,#2e270d);color:#ffefb8}
+.imp::before{content:"⭐ SINAV İÇİN ÖNEMLİ";display:inline-block;font-weight:900;font-size:.72rem;letter-spacing:.12em;background:var(--gold);color:#3b2d00;padding:3px 10px;border-radius:999px;margin-bottom:8px}
+.imp ul{margin:4px 0 0;padding-left:20px}
+.imp li{margin:4px 0}
+.imp .katex{color:inherit}
+body.exam .course .card>*:not(.imp):not(h3):not(.quiz),body.exam .course .goal,body.exam .course .unit-head p{opacity:.22;transition:opacity .3s}
+body.exam .course .imp{box-shadow:0 0 0 4px rgba(255,200,0,.45);transform:scale(1.01)}
+body.exam .course .card{border-color:var(--gold)}
+#examBtn.on{background:var(--gold);color:#3b2d00;border-color:var(--gold)}
+.impindex{display:none}
+body.exam .impindex{display:block}
+.impindex a{display:block;padding:6px 10px;border-radius:10px;text-decoration:none;color:var(--ink);font-weight:700;font-size:.9rem}
+.impindex a:hover{background:var(--surface-2)}
 
 </style>
 </head>
@@ -377,6 +392,7 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
   <div class="grow"></div>
   <span class="chip streak" title="Üst üste çalışılan gün"><span aria-hidden="true">🔥</span><span id="streakNum">1</span><span class="lbl">gün</span></span>
   <span class="chip xp" title="Kazanılan XP"><span aria-hidden="true">⚡</span><span id="xpNum">0</span><span class="lbl">XP</span></span>
+  <button class="iconbtn" id="examBtn" type="button">⭐ Sınav modu</button>
   <button class="iconbtn" id="themeBtn" aria-label="Temayı değiştir">🌙</button>
   <div class="progressbar" id="progressBar"></div>
 </header>
@@ -385,6 +401,7 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
 <aside class="sidebar" id="sidebar">
   <h4>Başlangıç</h4>
     <a href="#giris">Ders seçici</a>
+  <div class="impindex" id="impIndex"></div>
   <div class="navgroup" data-course="cen101">
     <h4>CEN 101 · Matematik I</h4>
     <a href="#cen101-m1">1. Fonksiyonlar</a>
@@ -491,7 +508,7 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
     <button class="coursechip" data-go="cen107" data-first="cen107-w1" type="button"><b>CEN 107</b><span>Algoritma ve Programlama I</span></button>
     <button class="coursechip" data-go="cen109" data-first="cen109-l1" type="button"><b>CEN 109</b><span>Fundamental IT</span></button>
   </div>
-  <p class="src-note">Seçtiğiniz dersin bölümleri ve kenar menüsü açılır. Yan menüden doğrudan bir konuya da gidebilirsiniz.</p>
+  <p class="src-note">Seçtiğiniz dersin bölümleri ve kenar menüsü açılır. Sınavdan önce üst çubuktaki <b>⭐ Sınav modu</b> düğmesine bas: altın renkli “Sınav için önemli” kutuları öne çıkar, geri kalan metin soluklaşır ve kenar menüsünde önemli kutuların dizini belirir.</p>
 
   <div class="card reveal">
     <h3>Bu sürümde ne var?</h3>
@@ -499,7 +516,7 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
       <div class="mini"><h4>CEN 101 · Matematik I</h4><p>Fonksiyonlar, limit, türev, türev uygulamaları, belirsiz ve belirli integral. <b>Kendi hazırladığım materyal</b>; RTEÜ ders paketi erişilemediği için resmi kapsamla karşılaştırın.</p></div>
       <div class="mini"><h4>CEN 103 · Fizik I</h4><p>Fizik ve ölçme, koordinat sistemleri, vektörler, skaler ve vektörel çarpım. Kaynak: Bölüm 1 ve Bölüm 2 notları ile çözümlü problemler.</p></div>
       <div class="mini"><h4>CEN 105 · Bilgisayar Müh. Girişi</h4><p>Disiplinler, tarih, donanım, sayı sistemleri, Boole cebri, mantık kapıları, Linux ve terminal. Bu sürümde içeriği değişmedi; laboratuvarları ve sınamaları aynen korunur.</p></div>
-      <div class="mini"><h4>CEN 107 · Algoritma I (C)</h4><p>14 hafta: değişkenler, karar yapıları, döngüler, fonksiyonlar, diziler, işaretçiler, yapılar ve dosyalar. Hafta 1–7 kaynak sayfadan; 8–14 kendi içerikle.</p></div>
+      <div class="mini"><h4>CEN 107 · Algoritma I (C)</h4><p>14 haftanın her biri uzun ders notu biçiminde: teori, tablolar, çıktılı kod, izleme tabloları, tuzaklar. Hafta 1–7 kaynak sayfadan; 8–14 kendi içerikle.</p></div>
       <div class="mini"><h4>CEN 109 · Fundamental IT</h4><p>Bilgi teknolojilerine giriş, IDE ve LLM destekli geliştirme, Git ve test, internet ve web güvenliği. Kaynak: ders slaytları.</p></div>
     </div>
     <div class="warn"><b>Henüz eklenmeyen dersler:</b> CEN 102 (Mühendislik Matematiği II), CEN 104 (Mühendislik Fiziği II), CEN 106 (Lineer Cebir), CEN 108 (Algoritmalar ve Programlama II), CEN 110 (Digital Design), Atatürk İlkeleri, Türk Dili, Yabancı Dil ve Temel İngilizce. Bunlar bir sonraki sürümde eklenecek.</div>
@@ -688,6 +705,18 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
       <li>\(\log_a(xy)=\log_a x+\log_a y\) eşitliğini tanımdan türetebiliyor musun?</li>
       <li>\(\sin^2\theta+\cos^2\theta=1\) ve \(30^\circ=\pi/6\) rad ilişkilerini açıklayabiliyor musun?</li>
     </ul>
+    <div class="imp">
+  <ul>
+    <li><b>Fonksiyon:</b> her girdiye <b>tek</b> çıktı. Düşey doğru testi grafiği en fazla bir kez kesmeli.</li>
+    <li><b>Tanım kümesi üç yasak:</b> payda \(\ne 0\), karekök içi \(\ge 0\), logaritma içi \(\gt 0\).</li>
+    <li><b>Bileşke:</b> \((f\circ g)(x)=f(g(x))\); önce \(g\). Genelde \(f\circ g\ne g\circ f\).</li>
+    <li><b>Ters fonksiyon adımları:</b> \(y=f(x)\) yaz → \(x\)'i yalnız bırak → değişkenleri değiştir → \(f(f^{-1}(x))=x\) ile kontrol et. Birebir olmalı (yatay doğru testi).</li>
+    <li>\(f^{-1}(x)\ne \dfrac{1}{f(x)}\).</li>
+    <li><b>Logaritma:</b> \(\log_a x=y\iff a^y=x\); \(\log(ab)=\log a+\log b\); \(\log(a^k)=k\log a\); \(\ln e^x=x\).</li>
+    <li><b>Trigonometri:</b> \(\sin^2\theta+\cos^2\theta=1\); \(180^\circ=\pi\) rad; \(\sin 30^\circ=\tfrac12\), \(\cos 60^\circ=\tfrac12\), \(\sin 45^\circ=\cos 45^\circ=\tfrac{\sqrt2}{2}\).</li>
+    <li><b>Çift/tek:</b> \(f(-x)=f(x)\) çift (y eksenine simetrik), \(f(-x)=-f(x)\) tek (orijine simetrik).</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen101-m1"></div>
   </div>
 </section>
@@ -811,7 +840,7 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
     <p><b>Sezgi:</b> Grafiği çizerken kalemini kâğıttan kaldırmıyorsan fonksiyon o aralıkta süreklidir. Bunu matematiksel olarak üç koşulla söyleriz.</p>
     <div class="eq">\[ f \text{ sürekli } a \text{ noktasında } \iff \begin{cases} f(a)\text{ tanımlı}\\ \lim_{x\to a}f(x)\text{ var}\\ \lim_{x\to a}f(x)=f(a) \end{cases} \]</div>
     <div class="derivation reveal" data-title="f(x)=(x²−1)/(x−1) süreklilik kontrolü (x=1 için)">
-      <div class="step"><p><b>Adım 1.</b> \(f(1)\) tanımlı mı? Yerine koy: \(\frac{0}{0}\). Tanımlı değil! Ama süreklilik için yalnızca \(f(a)\)’nın tanımlı olması şart; burada \(f\) tanımsız olduğu için sürekli değildir. Yine de limite bakalım.</p></div>
+      <div class="step"><p><b>Adım 1.</b> \(f(1)\) tanımlı mı? Yerine koyunca \(\frac{0}{0}\) çıkar, yani \(f(1)\) <b>tanımsızdır</b>. Birinci koşul sağlanmadığı için fonksiyon \(x=1\)'de sürekli <b>değildir</b>. Şimdi limitin var olup olmadığına bakalım.</p></div>
       <div class="step"><p><b>Adım 2.</b> Sadeleştir: \(\frac{x^2-1}{x-1}=\frac{(x-1)(x+1)}{x-1}=x+1\) (\(x\ne 1\)). Limit: \(\lim_{x\to 1}(x+1)=2\).</p></div>
       <div class="step"><p><b>Adım 3.</b> Şimdi \(f(1)\) değerini kendimiz tanımlayalım: \(f(1)=2\) yaparsak üç koşul da sağlanır: tanımlı, limit var, eşit. Fonksiyon artık sürekli olur. Bu tür durumlara <b>kaldırılabilir süreksizlik</b> denir.</p></div>
       <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
@@ -819,9 +848,9 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
     <div class="table-wrap"><table class="w3">
       <thead><tr><th>Süreksizlik türü</th><th>Ne olur?</th><th>Örnek</th></tr></thead>
       <tbody>
-        <tr><td>Kaldırılabilir</td><td>Limit var ama \(f(a)\) yanlış ya da tanımsız</td><td>\((x^2-1)/(x-1)\) at \(x=1\)</td></tr>
+        <tr><td>Kaldırılabilir</td><td>Limit var ama \(f(a)\) yanlış ya da tanımsız</td><td>\((x^2-1)/(x-1)\), \(x=1\) noktasında</td></tr>
         <tr><td>Sıçrama</td><td>Soldan ve sağdan limitler farklı</td><td>Parçalı fonksiyon (2.2)</td></tr>
-        <tr><td>Sonsuz</td><td>Limit sonsuza gider</td><td>\(\frac{1}{x}\) at \(x=0\)</td></tr>
+        <tr><td>Sonsuz</td><td>Limit sonsuza gider</td><td>\(\frac{1}{x}\), \(x=0\) noktasında</td></tr>
       </tbody>
     </table></div>
   </div>
@@ -849,6 +878,18 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
       <li>Süreklilik için üç koşulu sayabilir ve kaldırılabilir süreksizliği tanımlayabilir misin?</li>
       <li>Ara değer teoremi ile bir denklemin kökünün varlığını kanıtlayabiliyor musun?</li>
     </ul>
+    <div class="imp">
+  <ul>
+    <li>Limit, <b>yaklaşımdır</b>; \(f(a)\) değeri olmak zorunda değildir.</li>
+    <li>İki yönlü limit var \(\iff\) soldan limit = sağdan limit.</li>
+    <li><b>\(\varepsilon\)–\(\delta\) kalıbı:</b> \(|f(x)-L|\) ifadesini \(k\,|x-a|\) biçimine getir, \(\delta=\varepsilon/k\) seç.</li>
+    <li><b>0/0:</b> çarpanlara ayır ya da eşlenikle çarp. <b>∞/∞:</b> en büyük kuvvete böl.</li>
+    <li>Polinom oranında \(x\to\infty\): dereceler eşitse sonuç <b>baş katsayıların oranı</b>; pay küçükse 0; pay büyükse ±∞.</li>
+    <li>\(\displaystyle\lim_{x\to 0}\frac{\sin x}{x}=1\), \(\displaystyle\lim_{n\to\infty}\left(1+\frac1n\right)^n=e\).</li>
+    <li><b>Süreklilik üç koşul:</b> \(f(a)\) tanımlı, limit var, ikisi eşit.</li>
+    <li><b>Ara değer teoremi:</b> sürekli \(f\) için \(f(a)\cdot f(b)\lt 0\) ise \((a,b)\)'de kök vardır.</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen101-m2"></div>
   </div>
 </section>
@@ -1033,6 +1074,17 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
       <li>\((\sin x)'=\cos x\) ve \((\ln x)'=1/x\) formüllerinin nereden geldiğini açıklayabiliyor musun?</li>
       <li>Örtük türev ile \(dy/dx\)’i \(y\)’yi açıkça yazmadan bulabiliyor musun?</li>
     </ul>
+    <div class="imp">
+  <ul>
+    <li><b>Tanım:</b> \(f'(x)=\displaystyle\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}\) = teğetin eğimi = anlık değişim hızı.</li>
+    <li>\((x^n)'=nx^{n-1}\), \((\sqrt x)'=\dfrac{1}{2\sqrt x}\), \((e^x)'=e^x\), \((\ln x)'=\dfrac1x\), \((\sin x)'=\cos x\), \((\cos x)'=-\sin x\), \((\tan x)'=\dfrac{1}{\cos^2 x}\).</li>
+    <li><b>Çarpım:</b> \((uv)'=u'v+uv'\). <b>Bölüm:</b> \(\left(\dfrac uv\right)'=\dfrac{u'v-uv'}{v^2}\).</li>
+    <li><b>Zincir:</b> \(\dfrac{dy}{dx}=\dfrac{dy}{du}\cdot\dfrac{du}{dx}\). Dış türev × iç türev; iç türevi unutma.</li>
+    <li><b>Örtük türev:</b> \(y\)'li her terimin türevine \(y'\) çarpanı gelir.</li>
+    <li>Konum → hız → ivme: \(v=s'\), \(a=v'=s''\).</li>
+    <li>Doğrusal yaklaşım: \(f(x+h)\approx f(x)+f'(x)h\).</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen101-m3"></div>
   </div>
 </section>
@@ -1200,6 +1252,17 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
       <li>L’Hôpital kuralını yalnızca belirsiz biçimde kullanabiliyor musun?</li>
       <li>Newton formülünü teğet doğrusundan türetebiliyor musun?</li>
     </ul>
+    <div class="imp">
+  <ul>
+    <li>\(f'\gt 0\) artan, \(f'\lt 0\) azalan. Kritik nokta: \(f'=0\) ya da tanımsız.</li>
+    <li>\(f'\) işareti <b>+ → −</b>: yerel max; <b>− → +</b>: yerel min. İkinci türev testi: \(f''\gt 0\) min, \(f''\lt 0\) max.</li>
+    <li>\(f''\gt 0\) yukarı bükey, \(f''\lt 0\) aşağı bükey. Büküm noktasında \(f''\) <b>işaret değiştirir</b>.</li>
+    <li><b>Optimizasyon:</b> hedef fonksiyon → kısıtla tek değişkene indir → türev = 0 → <b>uç noktaları da kontrol et</b>.</li>
+    <li><b>Rolle:</b> \(f(a)=f(b)\Rightarrow\exists c:\ f'(c)=0\). <b>OVT:</b> \(f'(c)=\dfrac{f(b)-f(a)}{b-a}\).</li>
+    <li><b>L'Hôpital</b> yalnızca 0/0 ve ∞/∞'da: \(\lim\frac fg=\lim\frac{f'}{g'}\) (bölüm kuralı <b>değil</b>, ayrı ayrı türev).</li>
+    <li><b>Newton:</b> \(x_{n+1}=x_n-\dfrac{f(x_n)}{f'(x_n)}\).</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen101-m4"></div>
   </div>
 </section>
@@ -1320,8 +1383,18 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
 
   <div class="card">
     <h3>5.7 İntegrali doğrulamanın yolu</h3>
-    <p>Her integral sonucunu türevle kontrol et. İşin \(C\) dışında her zaman türevi alınarak test edilebilir.</p>
+    <p>Her integral sonucunu türevle kontrol et. Bulduğun \(F(x)\)'in türevini al; integrandı (\(f(x)\)) geri veriyorsa sonuç doğrudur.</p>
     <div class="trap"><b>Üç klasik hata:</b> (1) \(+C\)’yi unutmak. (2) Değişken değiştirmede \(dx\)’i çevirmemek. (3) Kısmi integrasyonda \(u\) ve \(dv\)’yi karıştırıp, işi daha da zorlaştırmak.</div>
+    <div class="imp">
+  <ul>
+    <li>\(\int f\,dx=F+C\iff F'=f\). <b>+C</b> unutulmaz.</li>
+    <li>\(\int x^n dx=\dfrac{x^{n+1}}{n+1}+C\ (n\ne-1)\), \(\int\frac1x dx=\ln|x|+C\), \(\int e^x dx=e^x+C\), \(\int\cos x\,dx=\sin x+C\), \(\int\sin x\,dx=-\cos x+C\).</li>
+    <li>\(\int e^{ax}dx=\frac1a e^{ax}+C\), \(\int\cos(ax)dx=\frac1a\sin(ax)+C\).</li>
+    <li><b>Değişken değiştirme:</b> \(u\)'yu seç, \(du\)'yu hesapla, <b>\(dx\)'i de çevir</b>, sonunda \(u\)'yu geri yaz.</li>
+    <li><b>Kısmi:</b> \(\int u\,dv=uv-\int v\,du\). \(u\) için öncelik sırası (LİATE): <b>L</b>ogaritma, <b>İ</b>ters trig, <b>A</b>ritmetik (polinom), <b>T</b>rigonometrik, <b>E</b>ksponansiyel.</li>
+    <li>Her sonucu türev alarak doğrula.</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen101-m5"></div>
   </div>
 </section>
@@ -1432,6 +1505,16 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
       <li>Analizin temel teoremini kullanarak belirli integrali hesaplayabiliyor musun?</li>
       <li>İki eğri arasındaki alanı, hangisinin üstte olduğunu kontrol ederek bulabiliyor musun?</li>
     </ul>
+    <div class="imp">
+  <ul>
+    <li><b>Riemann:</b> \(\Delta x=\frac{b-a}{n}\), \(x_i=a+i\Delta x\), \(\int_a^b f=\lim\sum f(x_i)\Delta x\).</li>
+    <li>\(\sum i=\frac{n(n+1)}{2}\), \(\sum i^2=\frac{n(n+1)(2n+1)}{6}\).</li>
+    <li><b>Temel teorem:</b> \(\int_a^b f\,dx=F(b)-F(a)\); ayrıca \(\dfrac{d}{dx}\int_a^x f(t)\,dt=f(x)\).</li>
+    <li>\(\int_a^b=-\int_b^a\), \(\int_a^a=0\), \(\int_a^c=\int_a^b+\int_b^c\).</li>
+    <li><b>Alan:</b> \(\int(\text{üst}-\text{alt})\,dx\); önce kesişimleri bul, hangisinin üstte olduğunu test noktasıyla kontrol et.</li>
+    <li><b>Ortalama değer:</b> \(\frac{1}{b-a}\int_a^b f\,dx\). <b>Yol:</b> \(\int v\,dt\).</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen101-m6"></div>
   </div>
 </section>
@@ -1621,6 +1704,17 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
       <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
     </div>
     <div class="trap"><b>Sınırı bil:</b> Boyut analizi yanlış formülü yakalar, ama doğru formüldeki sayısal katsayıyı (ör. \(\tfrac12\), \(2\pi\)) bulamaz. Doğrusu ise yalnızca “boyutça uyumlu” olduğunu söyler.</div>
+    <div class="imp">
+  <ul>
+    <li>Ölçüm = <b>sayı + birim</b>. SI temel birimleri: m, kg, s, A, K, mol, cd. Mekanikte boyutlar \(L,M,T\).</li>
+    <li>Metre: ışığın \(1/299\,792\,458\) s'de aldığı yol. Saniye: Cs-133'ün \(9\,192\,631\,770\) titreşimi.</li>
+    <li>Önekler: k \(10^3\), M \(10^6\), G \(10^9\), m \(10^{-3}\), µ \(10^{-6}\), n \(10^{-9}\).</li>
+    <li><b>Karesel/kübik dönüşüm:</b> \(1\,\text{cm}^2=10^{-4}\,\text{m}^2\), \(1\,\text{cm}^3=10^{-6}\,\text{m}^3\). \(1\,\text{g/cm}^3=1000\,\text{kg/m}^3\). \(72\,\text{km/h}=20\,\text{m/s}\) (÷3,6).</li>
+    <li>Önemli rakamlar: baştaki sıfırlar sayılmaz; ondalıktan sonraki sondaki sıfırlar sayılır. Çarpma/bölmede en az önemli rakama göre yuvarla.</li>
+    <li>\(\rho=m/V\). \(m_{\text{atom}}=\dfrac{\text{mol kütlesi}}{N_A}\), \(N_A=6{,}02\times10^{23}\).</li>
+    <li><b>Boyut analizi:</b> \([v]=L/T\), \([a]=L/T^2\), \([F]=ML/T^2\). Toplanan terimler ve eşitliğin iki yanı aynı boyutta olmalı; katsayıyı bulamaz.</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen103-f1"></div>
   </div>
 </section>
@@ -1697,6 +1791,14 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
       <div class="step"><p><b>Adım 3.</b> Sonuç: \((x,y)\approx(-2{,}75,\ -4{,}76)\) m. Üçüncü bölgede, iki koordinat da negatif. Doğru.</p></div>
       <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
     </div>
+    <div class="imp">
+  <ul>
+    <li>\(x=r\cos\theta\), \(y=r\sin\theta\), \(r=\sqrt{x^2+y^2}\), \(\tan\theta=y/x\).</li>
+    <li><b>Bölge düzeltmesi:</b> II. ve III. bölgede \(\tan^{-1}\) sonucuna \(180^\circ\) ekle; IV. bölgede pozitif açı için \(360^\circ\) ekle.</li>
+    <li>İki nokta arası uzaklık: \(d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\).</li>
+    <li>Özel değerler: \(\cos240^\circ=-\tfrac12\), \(\sin240^\circ=-\tfrac{\sqrt3}{2}\), \(\cos120^\circ=-\tfrac12\), \(\sin120^\circ=\tfrac{\sqrt3}{2}\).</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen103-f2"></div>
   </div>
 </section>
@@ -1825,6 +1927,15 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
       <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
     </div>
     <div class="trap"><b>Dikkat:</b> “Doğuyla \(30^\circ\)” ifadesi, açının doğu ekseninden ölçüldüğü anlamına gelir. Bileşenler \(\cos\) ile doğuya, \(\sin\) ile kuzeye verilir. Açı kuzeyden ölçülüyorsa bileşenler yer değiştirir.</div>
+    <div class="imp">
+  <ul>
+    <li>Skaler: büyüklük + birim. Vektör: büyüklük + birim + <b>doğrultu ve yön</b>. Sürat skaler, hız vektör.</li>
+    <li>Vektörler <b>bileşen bazında</b> toplanır; büyüklükler doğrudan toplanmaz.</li>
+    <li>\(A_x=A\cos\theta\), \(A_y=A\sin\theta\) (açı \(+x\) ekseninden ölçülürse). Açı başka eksenden ölçülürse sin/cos yer değiştirir.</li>
+    <li>\(\mathbf A-\mathbf B=\mathbf A+(-\mathbf B)\). \(\mathbf A+\mathbf B=\mathbf B+\mathbf A\).</li>
+    <li>Üçgen eşitsizliği: \(|\mathbf A+\mathbf B|\le|\mathbf A|+|\mathbf B|\).</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen103-f3"></div>
   </div>
 </section>
@@ -1913,6 +2024,14 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
       <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
     </div>
     <div class="trap"><b>Sık hata:</b> Çapraz çarpımı skaler çarpım gibi değişmeli sanmak. \(\mathbf{A}\times\mathbf{B}=-(\mathbf{B}\times\mathbf{A})\): sıra değişirse işaret değişir.</div>
+    <div class="imp">
+  <ul>
+    <li>\(\mathbf A\cdot\mathbf B=AB\cos\theta=A_xB_x+A_yB_y+A_zB_z\) → <b>skaler</b>. Dikse 0. \(\cos\theta=\dfrac{\mathbf A\cdot\mathbf B}{AB}\).</li>
+    <li>\(|\mathbf A\times\mathbf B|=AB\sin\theta\) = paralelkenar alanı → <b>vektör</b>, düzleme dik, sağ el kuralı. Paralelse 0.</li>
+    <li>\(\mathbf i\times\mathbf j=\mathbf k\), \(\mathbf j\times\mathbf k=\mathbf i\), \(\mathbf k\times\mathbf i=\mathbf j\); ters sırada eksi. \(\mathbf i\cdot\mathbf i=1\), \(\mathbf i\cdot\mathbf j=0\).</li>
+    <li>\(\mathbf A\times\mathbf B=(A_yB_z-A_zB_y)\mathbf i+(A_zB_x-A_xB_z)\mathbf j+(A_xB_y-A_yB_x)\mathbf k\); \(\mathbf B\times\mathbf A=-\mathbf A\times\mathbf B\).</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen103-f4"></div>
   </div>
 </section>
@@ -1951,6 +2070,11 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
       <li><b>Çapraz çarpım:</b> Alan ve yön problemlerinde sağ el kuralını kâğıda çizerek uygula.</li>
     </ul>
     <div class="warn"><b>Kaynak notu:</b> Bölüm 2 soru dosyasındaki bazı sayısal değerler PDF’ten okunurken bozuk çıktı. Bu sayfadaki tüm değerler yeniden hesaplanarak kontrol edildi.</div>
+    <div class="imp">
+  <ul>
+    <li>Çiz → eksen seç → bileşenlere ayır → bileşenleri topla → büyüklük ve yön → sağduyu kontrolü (birim, bölge, üçgen eşitsizliği).</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen103-f5"></div>
   </div>
 </section>
@@ -2108,6 +2232,16 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
   <div class="card reveal" id="u1-q">
     <h3>Mini sınama · Ünite 1</h3>
     <p>Her soruyu cevapla, “Kontrol et”e bas. Yanlış cevap bir ceza değil, bir ipucudur.</p>
+    <div class="imp">
+  <ul>
+    <li>CE = donanım + yazılım kesişimi; EE fiziksel sinyal, CS algoritma/teori.</li>
+    <li>Tarih: ENIAC 1946 (vakum tüpü), Intel 4004 1971 (ilk ticari mikroişlemci, 2 300 transistör).</li>
+    <li>CPU = ALU + Kontrol Birimi + Yazmaçlar; getir–çöz–çalıştır döngüsü.</li>
+    <li>RAM <b>uçucu</b>, ROM <b>kalıcı</b> (ROM, PROM, EPROM, EEPROM, Flash). SSD: NAND flash, hareketli parça yok; HDD: manyetik, dönen plaka.</li>
+    <li>1 bayt = 8 bit; 1 KB = 1024 B. 0 V = mantık 0, 5 V/3,3 V = mantık 1.</li>
+    <li>Değerlendirme: %40 vize + %60 final. Etkili istem: bağlam + kısıt + beklenen çıktı.</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="u1"></div>
   </div>
 </section>
@@ -2291,6 +2425,16 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
 
   <div class="card reveal" id="u2-q">
     <h3>Mini sınama · Ünite 2</h3>
+    <div class="imp">
+  <ul>
+    <li>İkili→onlu: basamak × \(2^i\). Onlu→ikili: 2'ye böl, kalanları <b>alttan üste</b> oku. Kesir: 2 ile çarp, tam kısımları <b>üstten alta</b> oku.</li>
+    <li>Sekizli = 3'lü grup, onaltılı = 4'lü grup (sağdan). \((10101111)_2=(\text{AF})_{16}=(257)_8=175\).</li>
+    <li>1'e tümleyen: bitleri ters çevir. 2'ye tümleyen: 1'e tümleyen + 1. Çıkarma = 2'ye tümleyenle toplama, taşan elde atılır.</li>
+    <li>n bit işaretsiz: \(0\ldots2^n-1\); 2'ye tümleyen: \(-2^{n-1}\ldots2^{n-1}-1\) (8 bit: −128…127).</li>
+    <li>IEEE 754 tek duyarlık: 1 işaret + 8 üs (bias 127) + 23 mantis; çift: 1 + 11 (bias 1023) + 52. \(0.1+0.2\ne0.3\).</li>
+    <li>ASCII 7 bit, 128 karakter; 'A'=65, 'a'=97, fark 32. UTF-8: 1–4 bayt, ASCII uyumlu. CD ses: 44 100 Hz; RGB piksel 24 bit.</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="u2"></div>
   </div>
 </section>
@@ -2494,6 +2638,17 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
 
   <div class="card reveal" id="u3-q">
     <h3>Mini sınama · Ünite 3</h3>
+    <div class="imp">
+  <ul>
+    <li>Boole 1854, Shannon 1938. VE \(\cdot\), VEYA \(+\), DEĞİL \(\overline{A}\).</li>
+    <li>De Morgan: \(\overline{AB}=\overline A+\overline B\), \(\overline{A+B}=\overline A\,\overline B\). Yutma: \(A+AB=A\), \(A(A+B)=A\).</li>
+    <li>NAND ve NOR <b>evrensel</b>. XOR: girişler farklıysa 1; XNOR: aynıysa 1.</li>
+    <li>n değişken → \(2^n\) satırlık doğruluk tablosu.</li>
+    <li>Yarım toplayıcı: \(S=A\oplus B\), \(C=AB\). Tam toplayıcı: \(S=A\oplus B\oplus C_{in}\), \(C_{out}=AB+C_{in}(A\oplus B)\).</li>
+    <li>Kombinasyonel: hafızasız. Sıralı: hafızalı (flip-flop). D flip-flop yükselen kenarda \(Q=D\).</li>
+    <li>Von Neumann: program ve veri aynı bellekte; darboğaz = ortak yol. CISC (x86) / RISC (ARM) / RISC-V (açık ISA).</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="u3"></div>
   </div>
 </section>
@@ -2668,6 +2823,16 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
 
   <div class="card reveal" id="u4-q">
     <h3>Mini sınama · Ünite 4</h3>
+    <div class="imp">
+  <ul>
+    <li>GNU 1983 (Stallman), Linux çekirdeği 1991 (Torvalds). Dört özgürlük: çalıştır, incele/değiştir, dağıt, değiştirilmişi dağıt. Özgür ≠ bedava ≠ korsan.</li>
+    <li>/ kök, /bin komutlar, /etc yapılandırma, /home kullanıcılar, /var günlükler, /tmp geçici, /dev aygıtlar.</li>
+    <li>Mutlak yol <b>/</b> ile başlar; göreli yol bulunulan klasöre göre. <code>.</code> bu klasör, <code>..</code> üst, <code>~</code> ev.</li>
+    <li>r=4, w=2, x=1; sahip/grup/diğer. 755 = rwxr-xr-x, 644 = rw-r--r--, 600 = rw-------, 740 = rwxr-----.</li>
+    <li><code>&gt;</code> üzerine yazar, <code>&gt;&gt;</code> ekler, <code>|</code> çıktıyı diğer komuta verir. <code>rm -rf</code> geri dönüşsüz.</li>
+    <li>tar: c oluştur, x aç, t listele, f dosya, v ayrıntı, z gzip.</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="u4"></div>
   </div>
 </section>
@@ -2677,38 +2842,98 @@ table.w3 td.mono{font-family:"JetBrains Mono",monospace;white-space:nowrap}
 
 <div class="course" id="cen107">
 
-<div class="goal reveal" style="margin-top:18px"><b>Kaynak</b><br>Algoritma ve Programlama I (C, C17, GCC). Hafta 1–7 ayrıntıları Mehmet Sevri'nin ders sayfasından (<a href="https://mehmetsevri.github.io/courses/algoritmalar-programlama-1/" target="_blank" rel="noopener">mehmetsevri.github.io/courses/algoritmalar-programlama-1</a>) alınmıştır. Hafta 8–14 başlıkları aynı sayfadan; içerik bu kılavuzda hazırlanmıştır. Sayfanın Hafta 8 sonrası bölümü kaynakta yer almadığı için o haftaların ayrıntıları ders notlarıyla doğrulanmalı.</div>
+<div class="goal reveal" style="margin-top:18px"><b>Kaynak ve kullanım</b><br>Algoritma ve Programlama I (C17, GCC). Hafta 1–7 Mehmet Sevri'nin ders sayfasına (<a href="https://mehmetsevri.github.io/courses/algoritmalar-programlama-1/" target="_blank" rel="noopener">mehmetsevri.github.io/courses/algoritmalar-programlama-1</a>) dayanır; Hafta 8–14 başlıkları aynı sayfadan, içerik bu kılavuzda yazıldı. Her haftada kodları <b>kendin yaz ve çalıştır</b>: <code>gcc -std=c17 -Wall -Wextra -pedantic dosya.c -o program</code>. Uyarıları hata gibi ciddiye al.</div>
 
 <section id="cen107-w1" class="reveal">
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 1</div>
     <h2>Bilgisayar ve program</h2>
-    <p>Program, donanımın anlayacağı bitlere nasıl dönüşür? Bu haftanın sorusu budur.</p>
+    <p>Yazdığın metin nasıl olup da işlemcinin çalıştırdığı bitlere dönüşür? Programlamaya başlamadan önce makinenin nasıl düşündüğünü anlamak gerekir.</p>
   </div>
+
   <div class="card">
-    <h3>1.1 Katmanlar ve von Neumann mimarisi</h3>
-    <p>Bilgisayar katmanlar halinde çalışır: donanım, işletim sistemi, sistem yazılımı ve uygulamalar. Von Neumann modelinde program ve veri aynı bellekte tutulur; işlemci <b>getir–çöz–çalıştır</b> (fetch–decode–execute) döngüsünü tekrar eder.</p>
-    <p>Bellek hiyerarşisi (yazmaç → önbellek → RAM → disk) hız ve kapasite arasındaki dengeyi yönetir. Programcının bilmesi gereken: değişkenlerin bellekte bir adresi ve bir boyutu vardır.</p>
-    <h3>1.2 Derleme hattı</h3>
+    <h3>1.1 Program nedir?</h3>
+    <p><b>Program</b>, bilgisayarın adım adım uygulayacağı talimatların listesidir. İşlemci yalnızca çok basit işleri yapabilir: iki sayıyı topla, bir değeri bellekten oku, bir koşula göre başka bir talimata atla. Karmaşık davranışlar, milyonlarca basit talimatın arka arkaya dizilmesiyle oluşur.</p>
+    <p>Bilgisayar <b>katmanlar</b> halinde çalışır. Her katman altındakini gizler:</p>
     <div class="table-wrap"><table class="w3">
-      <thead><tr><th>Aşama</th><th>Girdi → Çıktı</th><th>Ne yapar?</th></tr></thead>
+      <thead><tr><th>Katman</th><th>Ne yapar?</th><th>Örnek</th></tr></thead>
       <tbody>
-        <tr><td>Ön işleme</td><td>.c → .i</td><td>#include ve #define açılır</td></tr>
-        <tr><td>Derleme</td><td>.i → .s</td><td>Sözdizimi denetlenir, assembly üretilir</td></tr>
-        <tr><td>Assemble</td><td>.s → .o</td><td>Makine kodu (nesne dosyası)</td></tr>
-        <tr><td>Bağlama</td><td>.o → çalıştırılabilir</td><td>Kütüphaneler ve fonksiyon adresleri bağlanır</td></tr>
+        <tr><td>Uygulama</td><td>Kullanıcının gördüğü program</td><td>Not hesaplayıcı</td></tr>
+        <tr><td>Üst düzey dil</td><td>İnsanın okuyabildiği kod</td><td>C kaynak dosyası</td></tr>
+        <tr><td>İşletim sistemi</td><td>Kaynakları yönetir, programı yükler</td><td>Linux, Windows</td></tr>
+        <tr><td>Makine dili</td><td>İşlemcinin anladığı ikili komutlar</td><td><code>10110000 01100001</code></td></tr>
+        <tr><td>Donanım</td><td>Transistörler, kapılar, devreler</td><td>CPU, RAM</td></tr>
       </tbody>
     </table></div>
-    <p>Derleyici hataları (ör. eksik noktalı virgül) kodunuzda, bağlayıcı hataları (<span class="keyterm">undefined reference</span>) ise tanımlanmamış bir fonksiyon yüzünden çıkar.</p>
-    <h3>1.3 İlk C programı</h3>
-    <pre class="code">#include &lt;stdio.h&gt;
+  </div>
 
-int main(void) {
-    printf("Merhaba, C dunyasi!\n");
-    return 0;
+  <div class="card">
+    <h3>1.2 Von Neumann mimarisi ve getir–çöz–çalıştır</h3>
+    <p>Bugünkü bilgisayarların neredeyse hepsi <b>saklanan program</b> fikrine dayanır: program ve veri <b>aynı bellekte</b> tutulur. İşlemcinin içinde üç parça vardır: <b>ALU</b> (aritmetik ve mantık işlemleri), <b>kontrol birimi</b> (sıradaki talimatı yönetir) ve <b>yazmaçlar</b> (çok hızlı küçük bellek). <b>Program sayacı (PC)</b> adlı yazmaç, sıradaki talimatın adresini tutar.</p>
+    <div class="derivation reveal" data-title="Bir talimatın yolculuğu">
+      <div class="step"><p><b>1. Getir (fetch):</b> PC'nin gösterdiği adresteki talimat bellekten okunur. PC bir sonraki talimatı gösterecek şekilde ilerler.</p></div>
+      <div class="step"><p><b>2. Çöz (decode):</b> Kontrol birimi talimatın ne olduğunu anlar: “toplama”, “bellekten oku”, “atla”…</p></div>
+      <div class="step"><p><b>3. Çalıştır (execute):</b> ALU işlemi yapar ya da veri taşınır; sonuç yazmaca veya belleğe yazılır.</p></div>
+      <div class="step"><p><b>4. Tekrar:</b> Döngü saniyede milyarlarca kez döner. 3 GHz işlemci saniyede 3 milyar saat vuruşu üretir.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+    <p><b>Bellek hiyerarşisi:</b> yazmaç (en hızlı, en küçük) → önbellek → RAM → disk (en yavaş, en büyük). Bir değişken tanımladığında RAM'de bir yer ayrılır; o yerin bir <b>adresi</b> ve bir <b>boyutu</b> vardır. Bu iki kavram, ilerideki işaretçiler konusunun temelidir.</p>
+  </div>
+
+  <div class="card">
+    <h3>1.3 Sayılar ve karakterler bellekte</h3>
+    <p>Bellek yalnızca bit tutar. Bir bayt 8 bittir ve \(0\)–\(255\) arası bir değeri gösterebilir. Programcılar ikili sayıları kısaltmak için onaltılık (hex) kullanır: 4 bit = 1 hex basamak. Örnek: \(0110\,0001_2=0\text{x}61=97\).</p>
+    <p>Harfler de sayıdır: <b>ASCII</b> tablosunda <code>'A'</code> = 65, <code>'a'</code> = 97, <code>'0'</code> = 48. Bu yüzden C'de <code>'A' + 2</code> ifadesi <code>'C'</code> verir. Türkçe karakterler (ş, ğ, ı) ASCII'de yoktur; <b>UTF-8</b> ile 2 bayt olarak saklanır.</p>
+  </div>
+
+  <div class="card">
+    <h3>1.4 Derleme hattı: kaynaktan çalıştırılabilire</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Aşama</th><th>Araç</th><th>Girdi → Çıktı</th><th>Ne olur?</th><th>Görmek için</th></tr></thead>
+      <tbody>
+        <tr><td>1. Ön işleme</td><td>Önişlemci</td><td>.c → .i</td><td><code>#include</code> dosyaları eklenir, <code>#define</code> değiştirilir, yorumlar silinir</td><td><code>gcc -E</code></td></tr>
+        <tr><td>2. Derleme</td><td>Derleyici</td><td>.i → .s</td><td>Sözdizimi ve tip denetlenir, assembly üretilir</td><td><code>gcc -S</code></td></tr>
+        <tr><td>3. Çevirme</td><td>Assembler</td><td>.s → .o</td><td>Makine koduna çevrilir (nesne dosyası)</td><td><code>gcc -c</code></td></tr>
+        <tr><td>4. Bağlama</td><td>Linker</td><td>.o → program</td><td><code>printf</code> gibi kütüphane fonksiyonları bağlanır</td><td><code>gcc</code></td></tr>
+      </tbody>
+    </table></div>
+    <div class="grid2">
+      <div class="mini"><h4>Derleyici hatası</h4><p>Kodun dil kurallarına uymuyor: <code>error: expected ';' before 'return'</code>. Satır numarasına bak, çoğu zaman hata bir üst satırdadır.</p></div>
+      <div class="mini"><h4>Bağlayıcı hatası</h4><p>Kod doğru ama bir fonksiyonun gövdesi bulunamadı: <code>undefined reference to 'kare'</code>. Adı yanlış yazılmış ya da dosya derlemeye eklenmemiş olabilir.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>1.5 İlk program: satır satır</h3>
+    <pre class="code">#include &lt;stdio.h&gt;          /* printf'in bildirimini getirir */
+
+int main(void) {            /* program buradan başlar */
+    printf("Merhaba, C!\n"); /* ekrana yaz, \n = yeni satır */
+    return 0;               /* işletim sistemine "başarılı" kodu */
 }</pre>
-    <p class="src">Derleme: <code>gcc -std=c17 -Wall -Wextra -pedantic merhaba.c -o merhaba</code></p>
-    <div class="trap"><b>Tuzak:</b> <code>main</code> bir değer döndürür (genelde 0). Bu değer işletim sistemine çıkış kodu olarak gider. Ayrıca <code>\n</code> yeni satır karakteridir; tırnak içinde iki karakter gibi görünür ama tek karakterdir.</div>
+    <ul class="ol-tight">
+      <li><code>#include &lt;stdio.h&gt;</code>: standart giriş/çıkış kütüphanesinin başlığını ekler. Bu olmadan derleyici <code>printf</code>'i tanımaz.</li>
+      <li><code>int main(void)</code>: her C programında tam bir <code>main</code> vardır. <code>int</code>, çıkış kodunun tipidir.</li>
+      <li><code>{ }</code>: fonksiyonun gövdesini sınırlar. Her deyim <code>;</code> ile biter.</li>
+      <li><code>return 0;</code>: 0 başarı, 0 dışı değerler hata anlamına gelir. Terminalde <code>echo $?</code> ile görebilirsin.</li>
+    </ul>
+    <h4>Kurulum ve çalıştırma</h4>
+    <pre class="code">gcc -std=c17 -Wall -Wextra -pedantic merhaba.c -o merhaba
+./merhaba</pre>
+    <div class="trap"><b>Tuzaklar:</b> <code>main</code> yerine <code>Main</code> yazmak (C büyük/küçük harfe duyarlıdır); noktalı virgülü unutmak; <code>"</code> yerine Türkçe klavyeden gelen eğik tırnak kullanmak; <code>-Wall</code> uyarılarını görmezden gelmek.</div>
+  </div>
+
+  <div class="card">
+    <div class="imp">
+      <ul>
+        <li>Von Neumann: program ve veri aynı bellekte; CPU = ALU + kontrol birimi + yazmaçlar; PC sıradaki talimatın adresi.</li>
+        <li>Getir → çöz → çalıştır döngüsü.</li>
+        <li>Derleme hattı: <b>ön işleme → derleme → çevirme (assemble) → bağlama</b>. Dosyalar: .c → .i → .s → .o → program.</li>
+        <li><code>expected ';'</code> derleyici hatası; <code>undefined reference</code> bağlayıcı hatası.</li>
+        <li><code>return 0</code> başarılı çıkış kodu. <code>\n</code> tek bir karakterdir (yeni satır).</li>
+        <li>'A' = 65, 'a' = 97, '0' = 48.</li>
+      </ul>
+    </div>
     <div class="quiz" data-unit="cen107-w1"></div>
   </div>
 </section>
@@ -2717,36 +2942,128 @@ int main(void) {
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 2</div>
     <h2>Algoritmik düşünme</h2>
-    <p>Kod yazmadan önce problemi adım adım çözebilmek.</p>
+    <p>Kod, bir çözümün <i>yazılmış</i> hâlidir. Önce çözümün kendisini — algoritmayı — kurmayı öğreniriz.</p>
   </div>
-  <div class="card">
-    <h3>2.1 Hesaplamalı düşünme ve Pólya</h3>
-    <p>Dört adım: <b>anlama</b> (girdi, çıktı, kısıtlar), <b>planlama</b> (benzer bir problem, bir yaklaşım), <b>uygulama</b> (adım adım), <b>kontrol</b> (örnek değerlerle sınama). Hesaplamalı düşünme dört beceriye ayrılır: ayrıştırma, örüntü tanıma, soyutlama, algoritma tasarımı.</p>
-    <h3>2.2 Algoritmanın beş özelliği</h3>
-    <div class="grid2">
-      <div class="mini"><h4>Sonluluk</h4><p>Her algoritma sonlu adımda biter.</p></div>
-      <div class="mini"><h4>Belirlilik</h4><p>Her adım tek ve açık anlamlıdır (“biraz” gibi belirsiz ifade olmaz).</p></div>
-      <div class="mini"><h4>Girdi</h4><p>Sıfır veya daha fazla giriş.</p></div>
-      <div class="mini"><h4>Çıktı</h4><p>En az bir sonuç.</p></div>
-      <div class="mini"><h4>Etkinlik</h4><p>Adımlar yapılabilir ve yeterince verimlidir.</p></div>
-    </div>
-    <h3>2.3 Üç kontrol yapısı</h3>
-    <p>Her algoritma üç yapıdan oluşur: <b>sıra</b> (adımlar ardışık), <b>seçim</b> (koşula göre dal), <b>tekrar</b> (koşul sağlandıkça döngü). Akış şemasında karar için elmas, işlem için dikdörtgen, giriş/çıkış için paralelkenar kullanılır (ISO 5807).</p>
-    <h3>2.4 Örnek algoritmalar</h3>
-    <pre class="code">/* Tek/çift: negatif sayılarda n % 2 değeri -1 olabilir, bu yüzden kalan == 0 sınanır */
-int kalan = n % 2;
-if (kalan == 0) printf("cift\n"); else printf("tek\n");
 
-/* Üç sayının en büyüğü */
+  <div class="card">
+    <h3>2.1 Hesaplamalı düşünmenin dört becerisi</h3>
+    <div class="grid2">
+      <div class="mini"><h4>Ayrıştırma</h4><p>Büyük problemi küçük parçalara böl: “not sistemi” → girdi al, ortalama hesapla, harf notu ver, yazdır.</p></div>
+      <div class="mini"><h4>Örüntü tanıma</h4><p>Benzer parçaları fark et: her öğrenci için aynı hesap yapılıyor → döngü.</p></div>
+      <div class="mini"><h4>Soyutlama</h4><p>Gereksiz ayrıntıyı at: öğrencinin adı hesap için önemli değil, notları önemli.</p></div>
+      <div class="mini"><h4>Algoritma tasarımı</h4><p>Adımları açık ve sıralı biçimde yaz.</p></div>
+    </div>
+    <h4>Pólya'nın problem çözme adımları</h4>
+    <ol class="ol-tight">
+      <li><b>Problemi anla:</b> Girdi ne? Çıktı ne? Kısıtlar ne?</li>
+      <li><b>Plan yap:</b> Daha önce benzerini çözdün mü? Küçük bir örnekle dene.</li>
+      <li><b>Planı uygula:</b> Adım adım, atlamadan.</li>
+      <li><b>Geriye bak:</b> Sonucu örnek değerlerle ve sınır değerlerle kontrol et.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>2.2 İyi bir algoritmanın beş özelliği</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Özellik</th><th>Anlamı</th><th>Kötü örnek</th></tr></thead>
+      <tbody>
+        <tr><td>Sonluluk</td><td>Sonlu adımda biter</td><td>Durma koşulu olmayan döngü</td></tr>
+        <tr><td>Belirlilik</td><td>Her adım tek anlamlı</td><td>“Biraz tuz ekle”</td></tr>
+        <tr><td>Girdi</td><td>Sıfır ya da daha fazla girdi</td><td>—</td></tr>
+        <tr><td>Çıktı</td><td>En az bir sonuç üretir</td><td>Hesaplar ama hiçbir şey vermez</td></tr>
+        <tr><td>Etkinlik</td><td>Her adım yapılabilir ve makul sürede</td><td>“Tüm asal sayıları listele”</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>2.3 Algoritmayı ifade etmenin yolları</h3>
+    <h4>a) IPO tablosu (Girdi–İşlem–Çıktı)</h4>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Girdi</th><th>İşlem</th><th>Çıktı</th></tr></thead>
+      <tbody><tr><td>vize, final (0–100)</td><td>ortalama = 0,4·vize + 0,6·final; ortalama ≥ 50 ise geçti</td><td>ortalama, “Geçti”/“Kaldı”</td></tr></tbody>
+    </table></div>
+    <h4>b) Sözde kod (Türkçe)</h4>
+    <pre class="code">BAŞLA
+  OKU vize, final
+  EĞER vize &lt; 0 VEYA vize &gt; 100 VEYA final &lt; 0 VEYA final &gt; 100 İSE
+      YAZ "Geçersiz not"
+      BİTİR
+  ortalama ← 0.4 * vize + 0.6 * final
+  EĞER ortalama &gt;= 50 İSE YAZ "Geçti" DEĞİLSE YAZ "Kaldı"
+BİTİR</pre>
+    <h4>c) Akış şeması sembolleri (ISO 5807)</h4>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Şekil</th><th>Anlamı</th></tr></thead>
+      <tbody>
+        <tr><td>Oval (yuvarlatılmış)</td><td>Başla / Bitir</td></tr>
+        <tr><td>Dikdörtgen</td><td>İşlem (atama, hesap)</td></tr>
+        <tr><td>Paralelkenar</td><td>Girdi / Çıktı</td></tr>
+        <tr><td>Eşkenar dörtgen (elmas)</td><td>Karar (Evet/Hayır)</td></tr>
+        <tr><td>Ok</td><td>Akış yönü</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>2.4 Üç kontrol yapısı yeter</h3>
+    <p>Böhm–Jacopini teoremine göre her algoritma yalnızca üç yapıyla yazılabilir: <b>sıra</b> (adımlar arka arkaya), <b>seçim</b> (koşula göre dallanma), <b>tekrar</b> (koşul sağlandıkça döngü).</p>
+    <h4>İzleme tablosu (trace table)</h4>
+    <p>Bir algoritmanın her adımda değişkenlerini satır satır yazarak elle çalıştırmaktır. Sınavlarda en çok kullanılan yöntemdir.</p>
+    <pre class="code">/* 1'den n'e toplam, n = 4 */
+int i = 1, toplam = 0;
+while (i &lt;= n) {
+    toplam += i;
+    i++;
+}</pre>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Tur</th><th>i (başta)</th><th>i ≤ 4?</th><th>toplam</th><th>i (sonda)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>1</td><td>evet</td><td>1</td><td>2</td></tr>
+        <tr><td>2</td><td>2</td><td>evet</td><td>3</td><td>3</td></tr>
+        <tr><td>3</td><td>3</td><td>evet</td><td>6</td><td>4</td></tr>
+        <tr><td>4</td><td>4</td><td>evet</td><td>10</td><td>5</td></tr>
+        <tr><td>—</td><td>5</td><td>hayır</td><td>10</td><td>döngü biter</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>2.5 Klasik algoritmalar</h3>
+    <pre class="code">/* Üç sayının en büyüğü: "şampiyon" yöntemi */
 int en_buyuk = a;
 if (b &gt; en_buyuk) en_buyuk = b;
 if (c &gt; en_buyuk) en_buyuk = c;
 
-/* 1'den N'e toplam */
-int i = 1, toplam = 0;
-while (i &lt;= n) { toplam += i; i++; }</pre>
-    <div class="trap"><b>Tuzak listesi:</b> Toplayıcının başlangıç değerini (0) unutmak; <code>&lt;</code> ile <code>&lt;=</code> karışıklığından doğan bir fazla/eksik tur; sınır değerlerde (59/60 gibi) yanlış dal.</div>
-    <div class="ex"><b>Uygulama:</b> Öklid algoritmasıyla EBOB: \(\text{EBOB}(a,b)\) için \(b=0\) olana kadar \((a,b)\leftarrow(b,\ a \bmod b)\). Örnek: \((48,18)\to(18,12)\to(12,6)\to(6,0)\), sonuç 6.</div>
+/* Faktöriyel: çarpım 1 ile başlar */
+long long f = 1;
+for (int i = 2; i &lt;= n; i++) f *= i;
+
+/* Öklid: EBOB(a, b) */
+while (b != 0) {
+    int r = a % b;
+    a = b;
+    b = r;
+}   /* sonuç a */</pre>
+    <div class="derivation reveal" data-title="EBOB(48, 18) izleme">
+      <div class="step"><p>\(a=48,\ b=18\): \(r=48\bmod 18=12\) → \(a=18,\ b=12\)</p></div>
+      <div class="step"><p>\(r=18\bmod 12=6\) → \(a=12,\ b=6\)</p></div>
+      <div class="step"><p>\(r=12\bmod 6=0\) → \(a=6,\ b=0\). Döngü biter, EBOB = 6. EKOK = \(\frac{48\cdot 18}{6}=144\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <h4>Test durumları ve sınır değerler</h4>
+    <p>Geçme eşiği 50 ise test et: <b>49</b> (hemen altı), <b>50</b> (sınırın kendisi), <b>51</b> (hemen üstü), ayrıca <b>0</b>, <b>100</b> (aralık uçları) ve <b>−1</b>, <b>101</b> (geçersizler). Hataların çoğu sınırlarda saklanır.</p>
+    <div class="trap"><b>Tuzaklar:</b> toplayıcıyı 0'la başlatmamak; çarpımı 0 ile başlatmak (her şey 0 olur); <code>&lt;</code> ile <code>&lt;=</code> karışıklığından bir tur eksik/fazla (off-by-one); negatif sayıda <code>n % 2 == 1</code> ile tek kontrolü (−3 % 2 = −1 olduğu için yanlış).</div>
+    <div class="imp">
+      <ul>
+        <li>Algoritmanın 5 özelliği: sonluluk, belirlilik, girdi, çıktı, etkinlik.</li>
+        <li>Akış şeması: oval başla/bitir, dikdörtgen işlem, paralelkenar G/Ç, elmas karar.</li>
+        <li>Üç yapı: sıra, seçim, tekrar.</li>
+        <li>İzleme tablosu: her turda değişkenleri satır satır yaz.</li>
+        <li>Toplayıcı 0'dan, çarpım 1'den başlar. Öklid: \((a,b)\to(b,\ a\bmod b)\).</li>
+        <li>Sınır testi: eşiğin altı, kendisi, üstü + aralık uçları + geçersizler.</li>
+      </ul>
+    </div>
     <div class="quiz" data-unit="cen107-w2"></div>
   </div>
 </section>
@@ -2755,42 +3072,93 @@ while (i &lt;= n) { toplam += i; i++; }</pre>
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 3</div>
     <h2>Değişkenler ve veri tipleri</h2>
-    <p>Bir değişken bir ad, tip, değer ve adres taşır. Tipi bilmeden değeri yorumlayamazsınız.</p>
+    <p>Bir değişken belleğe verilmiş bir isimdir. Dört niteliği vardır: <b>ad, tip, değer, adres</b>. Tip, kaç bayt ayrılacağını ve bitlerin nasıl yorumlanacağını belirler.</p>
   </div>
+
   <div class="card">
-    <h3>3.1 Temel tipler</h3>
+    <h3>3.1 Bildirim, ilk değer ve atama</h3>
+    <pre class="code">int yas;          /* bildirim: bellek ayrıldı, değer belirsiz (çöp) */
+int not1 = 85;    /* bildirim + ilk değer */
+yas = 19;         /* atama: var olan değişkene yeni değer */</pre>
+    <p><b>Tanımlayıcı kuralları:</b> harf ya da <code>_</code> ile başlar, harf/rakam/<code>_</code> içerir, anahtar kelime olamaz (<code>int</code>, <code>while</code>…), büyük/küçük harf duyarlıdır (<code>Not</code> ≠ <code>not</code>). Türkçe karakter kullanma.</p>
+  </div>
+
+  <div class="card">
+    <h3>3.2 Temel tipler ve aralıkları</h3>
     <div class="table-wrap"><table class="w3">
-      <thead><tr><th>Tip</th><th>Tipik boyut</th><th>Not</th></tr></thead>
+      <thead><tr><th>Tip</th><th>Tipik boyut</th><th>Tipik aralık</th><th>printf</th><th>scanf</th></tr></thead>
       <tbody>
-        <tr><td><code>char</code></td><td>1 bayt</td><td>Küçük tamsayı; karakter kodunu tutar</td></tr>
-        <tr><td><code>short</code></td><td>2 bayt</td><td>En az 16 bit</td></tr>
-        <tr><td><code>int</code></td><td>4 bayt</td><td>En yaygın tamsayı</td></tr>
-        <tr><td><code>long</code></td><td>4 veya 8 bayt</td><td>Platforma bağlı: Linux'ta 8, Windows'ta 4</td></tr>
-        <tr><td><code>long long</code></td><td>8 bayt</td><td>En az 64 bit</td></tr>
-        <tr><td><code>float</code>, <code>double</code></td><td>4, 8 bayt</td><td>IEEE 754 kayan nokta</td></tr>
+        <tr><td><code>char</code></td><td>1 B</td><td>−128 … 127</td><td><code>%c</code> / <code>%d</code></td><td><code>" %c"</code></td></tr>
+        <tr><td><code>short</code></td><td>2 B</td><td>−32 768 … 32 767</td><td><code>%hd</code></td><td><code>%hd</code></td></tr>
+        <tr><td><code>int</code></td><td>4 B</td><td>≈ −2,1 milyar … 2,1 milyar</td><td><code>%d</code></td><td><code>%d</code></td></tr>
+        <tr><td><code>unsigned int</code></td><td>4 B</td><td>0 … 4 294 967 295</td><td><code>%u</code></td><td><code>%u</code></td></tr>
+        <tr><td><code>long</code></td><td>4 ya da 8 B</td><td>platforma bağlı</td><td><code>%ld</code></td><td><code>%ld</code></td></tr>
+        <tr><td><code>long long</code></td><td>8 B</td><td>≈ ±9,2·10¹⁸</td><td><code>%lld</code></td><td><code>%lld</code></td></tr>
+        <tr><td><code>float</code></td><td>4 B</td><td>≈ 7 anlamlı basamak</td><td><code>%f</code></td><td><code>%f</code></td></tr>
+        <tr><td><code>double</code></td><td>8 B</td><td>≈ 15–16 anlamlı basamak</td><td><code>%f</code></td><td><code>%lf</code></td></tr>
       </tbody>
     </table></div>
-    <p>Boyutu <code>sizeof</code> ile, aralığı <code>&lt;limits.h&gt;</code> ve <code>&lt;float.h&gt;</code> ile öğrenirsiniz. <code>unsigned</code> tipte taşma tanımlı biçimde sarar; <code>signed</code> tipte taşma <b>tanımsız davranıştır</b>.</p>
-    <h3>3.2 Biçim belirteçleri ve giriş</h3>
-    <pre class="code">#include &lt;stdio.h&gt;
-#include &lt;limits.h&gt;
+    <p>Kesin boyut için <code>sizeof(int)</code>, sınırlar için <code>&lt;limits.h&gt;</code> (<code>INT_MAX</code>) ve <code>&lt;float.h&gt;</code> kullanılır. <code>sizeof</code> sonucu <code>%zu</code> ile yazdırılır.</p>
+  </div>
 
-int main(void) {
-    unsigned int sayac = UINT_MAX;
-    sayac = sayac + 1;               /* 0: işaretsiz taşma tanımlıdır */
-    printf("%u\n", sayac);
+  <div class="card">
+    <h3>3.3 Bellekte temsil: taşma ve kayan nokta</h3>
+    <p>Tamsayılar ikiye tümleyen ile saklanır. Sınır aşılırsa:</p>
+    <ul class="ol-tight">
+      <li><b>İşaretsiz taşma tanımlıdır:</b> değer sarar. <code>UINT_MAX + 1</code> = 0.</li>
+      <li><b>İşaretli taşma tanımsız davranıştır (UB):</b> <code>INT_MAX + 1</code> herhangi bir şey olabilir; programın doğruluğu artık garanti değildir.</li>
+    </ul>
+    <p>Kayan nokta sayıları IEEE 754 ile saklanır; 0.1 ikilide sonsuz kesirdir, bu yüzden tam saklanamaz:</p>
+    <pre class="code">double a = 0.1 + 0.2;
+if (a == 0.3) printf("esit\n");          /* yazmaz! */
+if (fabs(a - 0.3) &lt; 1e-9) printf("yakin\n"); /* doğru yol (math.h) */</pre>
+  </div>
 
-    printf("[%-6.2f]\n", 3.14159);   /* [3.14  ] */
-    char c = 'A' + 2;                /* 'C' */
-    printf("%c\n", c);
+  <div class="card">
+    <h3>3.4 printf: biçimli çıktı</h3>
+    <pre class="code">printf("[%5d]\n", 42);        /* [   42]  sağa hizalı, 5 genişlik */
+printf("[%-5d]\n", 42);       /* [42   ]  sola hizalı */
+printf("[%05d]\n", 42);       /* [00042]  sıfırla doldur */
+printf("[%.2f]\n", 3.14159);  /* [3.14]   2 ondalık */
+printf("[%8.3f]\n", 3.14159); /* [   3.142] */
+printf("%c %d\n", 'A', 'A');  /* A 65 */
+printf("%%\n");               /* % işareti */</pre>
+    <div class="trap"><b>Kural:</b> Belirteç tiple uyuşmalı. <code>printf("%d", 3.5)</code> tanımsız davranıştır; rastgele sayı basar. <code>-Wall</code> bunu uyarır.</div>
+  </div>
 
-    int yas;
-    if (scanf("%d", &amp;yas) != 1) return 1;   /* adres &amp; unutulmamalı */
-    return 0;
-}</pre>
-    <div class="trap"><b>Tuzaklar:</b> <code>scanf</code>'de <code>&amp;</code> unutulursa program çöker (segmentation fault). <code>double</code> için <code>scanf</code>'de <code>%lf</code> kullanılır. Değişkene ilk değer verilmezse çöp değer taşır. Kayan noktalı sayıları <code>==</code> ile karşılaştırmayın.</div>
-    <h3>3.3 <code>#define</code> ve <code>const</code></h3>
-    <p><code>#define</code> metin ikamesidir ve tip denetimi yapmaz; <code>const int</code> ise tipli bir sabittir. Tercih ederek <code>const</code> kullanın.</p>
+  <div class="card">
+    <h3>3.5 scanf: girdi okumak</h3>
+    <pre class="code">int numara;
+double ortalama;
+char harf;
+
+if (scanf("%d", &amp;numara) != 1) { printf("Sayi bekleniyordu\n"); return 1; }
+scanf("%lf", &amp;ortalama);   /* double için %lf */
+scanf(" %c", &amp;harf);       /* baştaki boşluk, önceki Enter'ı atlar */</pre>
+    <ul class="ol-tight">
+      <li><code>&amp;</code> adres operatörüdür. <code>scanf</code> değeri <i>nereye</i> yazacağını bilmek zorundadır. Unutulursa program çöker.</li>
+      <li><code>scanf</code> başarıyla okuduğu değer sayısını döndürür; harf girilirse 0, dosya sonunda <code>EOF</code> (−1).</li>
+      <li><code>%c</code> öncesinde boşluk koymazsan tamponda kalan <code>\n</code> karakterini okur.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>3.6 Sabitler: <code>#define</code> ve <code>const</code></h3>
+    <pre class="code">#define VIZE_AGIRLIK 0.4         /* önişlemci metin değişimi, tip yok */
+const double FINAL_AGIRLIK = 0.6;  /* tipli, derleyici denetler */</pre>
+    <p><code>const</code> tercih edilir: tip denetimi yapılır, hata ayıklayıcıda görünür. Sabit adları büyük harfle yazmak gelenektir.</p>
+    <div class="trap"><b>Tuzak listesi:</b> ilk değer verilmemiş değişken (çöp değer); <code>9 / 5</code> tamsayı bölmesi (1); <code>scanf</code>'te <code>&amp;</code> unutmak; <code>double</code> için <code>%d</code>; <code>double</code> okumada <code>%f</code>; kayan noktayı <code>==</code> ile karşılaştırmak.</div>
+    <div class="imp">
+      <ul>
+        <li>Değişken: ad, tip, değer, adres. İlk değer verilmezse çöp değer.</li>
+        <li>int 4 B (%d), double 8 B (printf %f, <b>scanf %lf</b>), char 1 B (%c), long long (%lld), sizeof (%zu).</li>
+        <li><code>long</code> platforma bağlı: Linux 8, Windows 4 bayt.</li>
+        <li>İşaretsiz taşma sarar (tanımlı); işaretli taşma <b>tanımsız davranış</b>.</li>
+        <li><code>scanf</code> <code>&amp;</code> ister, okunan değer sayısını döndürür; <code>" %c"</code> boşluk hilesi.</li>
+        <li>Kayan noktayı <code>==</code> ile değil, küçük bir eşikle karşılaştır.</li>
+        <li><code>%-6.2f</code>: sola hizalı, 6 genişlik, 2 ondalık.</li>
+      </ul>
+    </div>
     <div class="quiz" data-unit="cen107-w3"></div>
   </div>
 </section>
@@ -2799,30 +3167,123 @@ int main(void) {
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 4</div>
     <h2>Operatörler ve ifadeler</h2>
-    <p>İfadeler değer üretir. Öncelik ve birleşme yönü ifadenin <i>gruplanmasını</i> belirler.</p>
+    <p>Bir ifade, operatörler ve işlenenlerden oluşur ve bir değer üretir. Öncelik ve birleşme yönü, ifadenin nasıl <b>gruplanacağını</b> belirler.</p>
   </div>
+
   <div class="card">
-    <h3>4.1 Aritmetik ve tamsayı bölmesi</h3>
-    <p><code>/</code> iki tamsayı arasında ise sonucu sıfıra doğru keser: \(7/2=3\). <code>%</code> kalanı verir; kalanın işareti bölünenin işaretidir. Bu yüzden \(1/2\cdot g\cdot t\cdot t\) ifadesi (\(1/2\) tamsayı bölmesi, sonuç \(0\)) her zaman sıfır çıkar; \(1.0/2\) yazılmalıdır.</p>
-    <h3>4.2 Mantıksal ifadeler ve kısa devre</h3>
-    <pre class="code">/* Artık yıl */
-int artik = (yil % 4 == 0 &amp;&amp; yil % 100 != 0) || yil % 400 == 0;
+    <h3>4.1 Aritmetik operatörler</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>İfade</th><th>Sonuç</th><th>Neden?</th></tr></thead>
+      <tbody>
+        <tr><td><code>7 / 2</code></td><td>3</td><td>İki int → tamsayı bölmesi, sıfıra doğru keser</td></tr>
+        <tr><td><code>-7 / 2</code></td><td>−3</td><td>Sıfıra doğru (−3,5 → −3)</td></tr>
+        <tr><td><code>7 % 2</code></td><td>1</td><td>Kalan</td></tr>
+        <tr><td><code>-7 % 2</code></td><td>−1</td><td>Kalanın işareti bölünenin işaretidir</td></tr>
+        <tr><td><code>7.0 / 2</code></td><td>3.5</td><td>Bir işlenen double → ondalıklı bölme</td></tr>
+        <tr><td><code>(double)7 / 2</code></td><td>3.5</td><td>Cast bölmeden önce</td></tr>
+        <tr><td><code>(double)(7 / 2)</code></td><td>3.0</td><td>Önce tamsayı bölmesi, sonra cast</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap"><b>Fizik formülü tuzağı:</b> <code>1 / 2 * g * t * t</code> her zaman 0'dır (<code>1/2</code> = 0). Doğrusu <code>0.5 * g * t * t</code>.</div>
+  </div>
 
-/* Kısa devre: sol taraf yeterliyse sağ taraf çalışmaz */
-if (b != 0 &amp;&amp; a / b &gt; 2) printf("uygun\n");
+  <div class="card">
+    <h3>4.2 Atama, bileşik atama, artırma</h3>
+    <pre class="code">x += 5;   /* x = x + 5 */
+x *= 2;   /* x = x * 2 */
+int a = 5;
+int b = a++;  /* b = 5, sonra a = 6  (sonek: önce kullan, sonra artır) */
+int c = ++a;  /* a = 7, sonra c = 7  (önek: önce artır, sonra kullan) */</pre>
+    <p><code>i = i++ + ++i;</code> gibi, bir değişkeni aynı ifadede birden çok kez değiştirmek <b>tanımsız davranıştır</b>.</p>
+  </div>
 
-/* Ortalama: tamsayı yerine ondalıklı bölme */
-double ortalama = (double)toplam / adet;</pre>
-    <div class="trap"><b>Tuzak:</b> <code>0 &lt;= x &lt;= 10</code> matematiksel görünür, ama C'de <code>(0 &lt;= x)</code> önce 0 ya da 1 üretir ve bu değer 10'dan küçük olduğu için ifade her zaman doğru çıkar. Doğrusu <code>0 &lt;= x &amp;&amp; x &lt;= 10</code>'dur.</div>
-    <h3>4.3 Bit işlemleri</h3>
-    <pre class="code">unsigned int izin = 0;
-izin |= 1u &lt;&lt; 4;        /* 4. biti aç */
-izin &amp;= ~(1u &lt;&lt; 4);   /* 4. biti kapat */
-izin ^= (1u &lt;&lt; 4);      /* 4. biti tersle */
-if ((izin &amp; (1u &lt;&lt; 4)) != 0) printf("acik\n");</pre>
-    <div class="trap"><b>Öncelik tuzağı:</b> <code>x &amp; MASK == 0</code> önce <code>==</code> ile gruplanır. Parantez şart: <code>(x &amp; MASK) == 0</code>. Baştaki 0 sekizlik tabanı belirtir: <code>0755</code> = 493.</div>
-    <h3>4.4 Tip dönüşümleri ve <code>math.h</code></h3>
-    <p>Açık dönüşüm <code>(double)x</code> ile yapılır. <code>sqrt</code>, <code>pow</code> ve <code>round</code> için <code>#include &lt;math.h&gt;</code> ve Linux'ta <code>-lm</code> gerekir. <code>-1 &lt; 1u</code> ifadesi yanlıştır: işaretli −1 işaretsize dönüşür.</p>
+  <div class="card">
+    <h3>4.3 İlişkisel ve mantıksal operatörler</h3>
+    <p>C'de doğru = 1, yanlış = 0. Sıfır olmayan her değer “doğru” sayılır.</p>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Operatör</th><th>Anlam</th><th>Örnek (x=5)</th></tr></thead>
+      <tbody>
+        <tr><td><code>==</code> <code>!=</code></td><td>eşit / eşit değil</td><td><code>x == 5</code> → 1</td></tr>
+        <tr><td><code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code></td><td>karşılaştırma</td><td><code>x &gt; 7</code> → 0</td></tr>
+        <tr><td><code>&amp;&amp;</code></td><td>VE (ikisi de doğru)</td><td><code>x &gt; 0 &amp;&amp; x &lt; 10</code> → 1</td></tr>
+        <tr><td><code>||</code></td><td>VEYA (en az biri)</td><td><code>x &lt; 0 || x &gt; 3</code> → 1</td></tr>
+        <tr><td><code>!</code></td><td>DEĞİL</td><td><code>!(x == 5)</code> → 0</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Kısa devre:</b> <code>&amp;&amp;</code>'de sol taraf yanlışsa sağ taraf hiç çalışmaz; <code>||</code>'de sol doğruysa sağ çalışmaz. Bu, güvenlik koşulu olarak kullanılır:</p>
+    <pre class="code">if (b != 0 &amp;&amp; a / b &gt; 2) { ... }   /* b = 0 ise bölme hiç yapılmaz */</pre>
+    <p><b>De Morgan:</b> <code>!(A &amp;&amp; B)</code> = <code>!A || !B</code>, <code>!(A || B)</code> = <code>!A &amp;&amp; !B</code>. “Aralık dışında” koşulu: <code>!(x &gt;= 0 &amp;&amp; x &lt;= 100)</code> = <code>x &lt; 0 || x &gt; 100</code>.</p>
+    <div class="trap"><b>Tuzaklar:</b> <code>0 &lt;= x &lt;= 10</code> her zaman 1'dir (önce 0 ya da 1 üretir, o da 10'dan küçük). <code>if (x = 5)</code> atamadır, her zaman doğrudur.</div>
+  </div>
+
+  <div class="card">
+    <h3>4.4 Bit operatörleri</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Operatör</th><th>İş</th><th>Örnek (a=12=1100₂, b=10=1010₂)</th></tr></thead>
+      <tbody>
+        <tr><td><code>&amp;</code></td><td>bit bit VE</td><td>1000₂ = 8</td></tr>
+        <tr><td><code>|</code></td><td>bit bit VEYA</td><td>1110₂ = 14</td></tr>
+        <tr><td><code>^</code></td><td>bit bit XOR</td><td>0110₂ = 6</td></tr>
+        <tr><td><code>~</code></td><td>tüm bitleri ters çevir</td><td><code>~0u</code> = UINT_MAX</td></tr>
+        <tr><td><code>&lt;&lt;</code> <code>&gt;&gt;</code></td><td>sola/sağa kaydır</td><td><code>1u &lt;&lt; 4</code> = 16; <code>12 &gt;&gt; 2</code> = 3</td></tr>
+      </tbody>
+    </table></div>
+    <pre class="code">bayrak |=  (1u &lt;&lt; 4);   /* 4. biti aç */
+bayrak &amp;= ~(1u &lt;&lt; 4);   /* 4. biti kapat */
+bayrak ^=  (1u &lt;&lt; 4);   /* 4. biti tersle */
+if ((bayrak &amp; (1u &lt;&lt; 4)) != 0) { /* 4. bit açık */ }</pre>
+    <p>Linux izinleri (CEN105) tam bu mantıktır: <code>0755</code> sekizlik bir sabittir (= 493), r/w/x birer bittir.</p>
+  </div>
+
+  <div class="card">
+    <h3>4.5 Öncelik tablosu (yüksekten düşüğe, sık kullanılanlar)</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Seviye</th><th>Operatörler</th><th>Yön</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><code>()</code> <code>[]</code> <code>-&gt;</code> <code>.</code> sonek <code>++ --</code></td><td>soldan sağa</td></tr>
+        <tr><td>2</td><td>önek <code>++ --</code>, tekli <code>- ! ~</code>, <code>(tip)</code>, <code>*</code> <code>&amp;</code> <code>sizeof</code></td><td>sağdan sola</td></tr>
+        <tr><td>3</td><td><code>* / %</code></td><td>soldan sağa</td></tr>
+        <tr><td>4</td><td><code>+ -</code></td><td>soldan sağa</td></tr>
+        <tr><td>5</td><td><code>&lt;&lt; &gt;&gt;</code></td><td>soldan sağa</td></tr>
+        <tr><td>6</td><td><code>&lt; &lt;= &gt; &gt;=</code></td><td>soldan sağa</td></tr>
+        <tr><td>7</td><td><code>== !=</code></td><td>soldan sağa</td></tr>
+        <tr><td>8–10</td><td><code>&amp;</code>, <code>^</code>, <code>|</code></td><td>soldan sağa</td></tr>
+        <tr><td>11–12</td><td><code>&amp;&amp;</code>, <code>||</code></td><td>soldan sağa</td></tr>
+        <tr><td>13</td><td><code>?:</code></td><td>sağdan sola</td></tr>
+        <tr><td>14</td><td><code>= += -= …</code></td><td>sağdan sola</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap"><b>Öncelik tuzağı:</b> <code>x &amp; MASK == 0</code> → <code>x &amp; (MASK == 0)</code> olarak gruplanır, çünkü <code>==</code> daha önceliklidir. Parantez kullan: <code>(x &amp; MASK) == 0</code>.</div>
+  </div>
+
+  <div class="card">
+    <h3>4.6 Tip dönüşümleri ve math.h</h3>
+    <ul class="ol-tight">
+      <li><b>Örtük dönüşüm:</b> int ile double karışırsa int, double'a yükseltilir.</li>
+      <li><b>Daraltma:</b> <code>int x = 3.9;</code> → 3 (kesilir, yuvarlanmaz).</li>
+      <li><b>İşaretli–işaretsiz karışımı:</b> <code>-1 &lt; 1u</code> yanlıştır; −1, çok büyük bir işaretsiz sayıya dönüşür.</li>
+      <li><b>math.h:</b> <code>sqrt</code>, <code>pow</code>, <code>fabs</code>, <code>round</code>, <code>floor</code>, <code>ceil</code>. Linux'ta <code>-lm</code> ile bağla.</li>
+    </ul>
+    <pre class="code">/* Artık yıl: 4'e bölünür ve 100'e bölünmez, ya da 400'e bölünür */
+int artik = (yil % 4 == 0 &amp;&amp; yil % 100 != 0) || (yil % 400 == 0);
+/* 2024 → 1, 1900 → 0, 2000 → 1 */
+
+/* Mini-OBS v0.4: ağırlıklı ortalama ve geçme */
+const double VIZE = 0.4, FINAL = 0.6;
+double ort = VIZE * vize + FINAL * final;
+int yuvarlanmis = (int)round(ort);
+int gecti = (yuvarlanmis &gt;= 50) &amp;&amp; (final &gt;= 50);</pre>
+    <div class="imp">
+      <ul>
+        <li><code>7/2</code> = 3, <code>-7/2</code> = −3, <code>-7%2</code> = −1, <code>7.0/2</code> = 3.5, <code>(double)(7/2)</code> = 3.0.</li>
+        <li><code>a++</code> önce kullan sonra artır; <code>++a</code> önce artır sonra kullan.</li>
+        <li><code>&amp;&amp;</code> ve <code>||</code> kısa devre yapar; <code>&amp;</code> ve <code>|</code> yapmaz.</li>
+        <li><code>0 &lt;= x &lt;= 10</code> yanlış yazım → <code>0 &lt;= x &amp;&amp; x &lt;= 10</code>. <code>if (x = 5)</code> atamadır.</li>
+        <li>Bit: aç <code>|=</code>, kapat <code>&amp;= ~</code>, tersle <code>^=</code>, sına <code>(x &amp; m) != 0</code>.</li>
+        <li><code>==</code>, <code>&amp;</code>'den önceliklidir → parantez. <code>0755</code> sekizlik = 493. <code>-1 &lt; 1u</code> yanlış.</li>
+        <li>Artık yıl: <code>(y%4==0 &amp;&amp; y%100!=0) || y%400==0</code>.</li>
+      </ul>
+    </div>
     <div class="quiz" data-unit="cen107-w4"></div>
   </div>
 </section>
@@ -2831,75 +3292,220 @@ if ((izin &amp; (1u &lt;&lt; 4)) != 0) printf("acik\n");</pre>
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 5</div>
     <h2>Karar yapıları</h2>
-    <p>Program yollarını seçer. Seçim koşulları hem doğru hem de sınır değerlerde test edilmelidir.</p>
+    <p>Program, koşullara göre farklı yollardan gider. Doğru koşulu doğru sırayla yazmak ve sınırları test etmek bu haftanın özüdür.</p>
   </div>
+
   <div class="card">
-    <h3>5.1 if, else-if ve switch</h3>
-    <pre class="code">if (puan &gt;= 90)      harf = 'A';
+    <h3>5.1 if ve if-else</h3>
+    <pre class="code">if (puan &gt;= 50) {
+    printf("Gecti\n");
+} else {
+    printf("Kaldi\n");
+}</pre>
+    <p>Koşul parantez içindedir; sıfırdan farklıysa “doğru” dalı çalışır. Gövde tek satır olsa bile <b>her zaman süslü parantez</b> kullan.</p>
+  </div>
+
+  <div class="card">
+    <h3>5.2 else-if merdiveni: sıra önemlidir</h3>
+    <pre class="code">char harf;
+if      (puan &gt;= 90) harf = 'A';
 else if (puan &gt;= 80) harf = 'B';
 else if (puan &gt;= 70) harf = 'C';
-else                 harf = 'F';
+else if (puan &gt;= 60) harf = 'D';
+else                 harf = 'F';</pre>
+    <p>Koşullar <b>yukarıdan aşağı</b> denenir; <b>ilk doğru</b> olan çalışır, diğerlerine bakılmaz. Bu yüzden büyük eşikten küçüğe doğru yazılır. <code>puan &gt;= 60</code> en üste yazılsaydı 95 alan öğrenci D alırdı.</p>
+    <div class="derivation reveal" data-title="puan = 85 için merdivende ne olur?">
+      <div class="step"><p><b>1.</b> <code>85 &gt;= 90</code>? Hayır, bir sonrakine geç.</p></div>
+      <div class="step"><p><b>2.</b> <code>85 &gt;= 80</code>? Evet → <code>harf = 'B'</code>. Merdivenin geri kalanı atlanır.</p></div>
+      <div class="step"><p><b>Sınır testi:</b> 79 → C, 80 → B, 81 → B, 89 → B, 90 → A.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
 
-switch (secim) {
-    case 1: printf("Ekle\n"); break;
-    case 2: printf("Sil\n");  break;
-    default: printf("Bilinmeyen secim\n");
+  <div class="card">
+    <h3>5.3 İç içe if ve sallanan else</h3>
+    <pre class="code">/* YANLIŞ GİRİNTİ, YANILTICI */
+if (vize &gt;= 0)
+    if (vize &gt; 100)
+        printf("Hatali\n");
+else                       /* bu else ilk if'e değil, EN YAKIN if'e bağlıdır */
+    printf("Negatif\n");</pre>
+    <p>Girinti C için anlamsızdır. Yukarıdaki <code>else</code>, <code>vize &gt; 100</code> kontrolüne bağlanır; 50 girilince “Negatif” yazar. Süslü parantez bu hatayı imkânsız kılar.</p>
+    <div class="ex"><b>Gerçek dünyadan:</b> 2014'te Apple'ın SSL kodundaki “goto fail” hatası, süslü parantezsiz bir <code>if</code>'in altına yanlışlıkla ikinci kez yazılan <code>goto fail;</code> satırıyla imza doğrulamasının atlanmasıydı.</div>
+  </div>
+
+  <div class="card">
+    <h3>5.4 switch: ayrık değerlere göre dallanma</h3>
+    <pre class="code">switch (secim) {
+    case 1:
+        printf("Not gir\n");
+        break;
+    case 2:
+        printf("Istatistik\n");
+        break;
+    case 0:
+        printf("Cikis\n");
+        break;
+    default:
+        printf("Gecersiz secim\n");
 }</pre>
-    <p><b>Sıra önemlidir:</b> ilk doğru koşulun dalı çalışır. Yukarıda <code>&gt;= 50</code> önce yazılırsa <code>&gt;= 60</code> dalına hiç ulaşılamaz.</p>
-    <h3>5.2 Sallanan else ve süslü parantez</h3>
-    <div class="trap"><b>Sallanan else:</b> Süslü parantez olmadan <code>else</code>, en yakın <code>if</code>'e bağlanır. Her gövdeyi süslü parantezle yazın. Ünlü “goto fail” olayı (2014) bu tür bir yapının güvenlik açığına dönüşmesiydi: yinelenen bir <code>goto</code>, imza doğrulamasını atlattı.</div>
-    <h3>5.3 Girdi doğrulama</h3>
+    <ul class="ol-tight">
+      <li><code>case</code> etiketleri <b>tamsayı sabiti</b> olmalı (int, char). Aralık ya da double olmaz.</li>
+      <li><code>break</code> unutulursa bir sonraki <code>case</code>'e <b>düşülür</b> (fall-through).</li>
+      <li><code>default</code> her zaman yazılmalı.</li>
+    </ul>
+    <pre class="code">/* Bilinçli fall-through: ayın gün sayısı */
+switch (ay) {
+    case 4: case 6: case 9: case 11: gun = 30; break;
+    case 2: gun = artik ? 29 : 28; break;
+    default: gun = 31;
+}</pre>
+  </div>
+
+  <div class="card">
+    <h3>5.5 Koşul operatörü ?:</h3>
+    <pre class="code">int buyuk = (a &gt; b) ? a : b;
+printf("%s\n", (ort &gt;= 50) ? "Gecti" : "Kaldi");</pre>
+    <p>Bir <b>değer</b> seçer; kısa iki seçenekli durumlar için uygundur. İç içe <code>?:</code> okunmaz hale gelir; o zaman if-else kullan.</p>
+  </div>
+
+  <div class="card">
+    <h3>5.6 Girdi doğrulama ve ikinci dereceden denklem</h3>
     <pre class="code">int puan;
-if (scanf("%d", &amp;puan) != 1) {
+if (scanf("%d", &amp;puan) != 1) {           /* 1. adım: okuma başarılı mı? */
     printf("Hata: sayi bekleniyordu\n");
     return 1;
 }
-if (puan &lt; 0 || puan &gt; 100) {
+if (puan &lt; 0 || puan &gt; 100) {             /* 2. adım: aralık doğru mu? */
     printf("Hata: 0-100 arasi olmali\n");
     return 1;
 }</pre>
-    <p>Önce <code>scanf</code>'in dönüş değeri, sonra aralık denetimi. Sınır değerleri (49/50, 80/81) test edin: her sınır için bir alt, sınırın kendisi ve bir üst değeri deneyin.</p>
+    <pre class="code">/* ax^2 + bx + c = 0 */
+double d = b * b - 4 * a * c;
+if (a == 0) {
+    printf("Ikinci derece degil\n");
+} else if (d &gt; 0) {
+    printf("x1=%.3f x2=%.3f\n", (-b + sqrt(d)) / (2 * a), (-b - sqrt(d)) / (2 * a));
+} else if (d == 0) {
+    printf("Cift kok x=%.3f\n", -b / (2 * a));
+} else {
+    printf("Gercek kok yok\n");
+}</pre>
+    <div class="trap"><b>Tuzaklar:</b> <code>if (x = 5)</code>; <code>if (kosul);</code> (sondaki noktalı virgül gövdeyi boşaltır); süslü parantezsiz çok satır; sallanan else; switch'te <code>break</code> unutmak; double'ı <code>==</code> ile karşılaştırmak.</div>
+    <div class="imp">
+      <ul>
+        <li>else-if merdiveninde <b>ilk doğru</b> koşul çalışır; eşikleri büyükten küçüğe yaz.</li>
+        <li>Girinti anlamsızdır; <code>else</code> en yakın <code>if</code>'e bağlanır → her zaman süslü parantez.</li>
+        <li>switch: case = tamsayı sabiti, <code>break</code> yoksa düşme, <code>default</code> yaz.</li>
+        <li><code>?:</code> değer seçer: <code>max = a &gt; b ? a : b;</code></li>
+        <li>Doğrulama sırası: önce <code>scanf</code> dönüşü, sonra aralık.</li>
+        <li>Her sınır için altı / kendisi / üstü test et (49/50/51).</li>
+      </ul>
+    </div>
     <div class="quiz" data-unit="cen107-w5"></div>
   </div>
 </section>
-
 <section id="cen107-w6" class="reveal">
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 6</div>
     <h2>Döngüler I</h2>
-    <p>Tekrarın üç biçimi ve altı temel desen.</p>
+    <p>Aynı işi yüz kez yazmak yerine bir kez yazıp yüz kez tekrarlatırız. Her döngünün bir başlangıcı, bir koşulu ve koşulu bir gün yanlış yapacak bir güncellemesi olmalıdır.</p>
   </div>
+
   <div class="card">
-    <h3>6.1 while, do-while, for</h3>
-    <pre class="code">int i = 1;
-while (i &lt;= 10) {          /* koşul önce sınanır */
-    printf("%d ", i);
-    i++;
-}
+    <h3>6.1 Üç döngü, üç kullanım</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Döngü</th><th>Koşul ne zaman sınanır?</th><th>En az kaç tur?</th><th>Ne zaman kullanılır?</th></tr></thead>
+      <tbody>
+        <tr><td><code>while</code></td><td>Gövdeden önce</td><td>0</td><td>Kaç tur süreceği bilinmiyorsa (girdi okuma)</td></tr>
+        <tr><td><code>do-while</code></td><td>Gövdeden sonra</td><td>1</td><td>En az bir kez çalışması gerekiyorsa (menü)</td></tr>
+        <tr><td><code>for</code></td><td>Gövdeden önce</td><td>0</td><td>Tur sayısı belliyse (1'den n'e)</td></tr>
+      </tbody>
+    </table></div>
+    <pre class="code">int i = 1;                       /* while */
+while (i &lt;= 5) { printf("%d ", i); i++; }        /* 1 2 3 4 5 */
 
-for (int k = 1; k &lt;= 10; k++) {   /* başlatma, koşul, güncelleme */
-    printf("%d ", k);
-}
+for (int k = 1; k &lt;= 5; k++) printf("%d ", k);   /* 1 2 3 4 5 */
 
-int secim;
-do {                         /* gövde en az bir kez çalışır */
-    printf("Menu\n");
-} while (0);                 /* noktalı virgül zorunlu */</pre>
-    <h3>6.2 Altı döngü deseni</h3>
-    <div class="grid2">
-      <div class="mini"><h4>Toplayıcı</h4><p>Başlangıç 0; her turda ekle.</p></div>
-      <div class="mini"><h4>Sayaç</h4><p>Kaç kez olduğunu say.</p></div>
-      <div class="mini"><h4>Çarpım biriktirici</h4><p>Başlangıç 1 olmalı.</p></div>
-      <div class="mini"><h4>Bayrak</h4><p>Bir koşul bulunduğunda değer değiştir.</p></div>
-      <div class="mini"><h4>En büyük / en küçük</h4><p>İlk elemanı başlangıç yap.</p></div>
-      <div class="mini"><h4>Basamak ayrıştırma</h4><p><code>n % 10</code> ve <code>n /= 10</code>.</p></div>
-    </div>
-    <pre class="code">int n = 1234, toplam = 0;
+int secim;                       /* do-while: noktalı virgül şart */
+do {
+    printf("1) Devam 0) Cikis: ");
+    scanf("%d", &amp;secim);
+} while (secim != 0);</pre>
+    <p><b>for'un anatomisi:</b> <code>for (başlatma; koşul; güncelleme)</code>. Sıra: başlatma bir kez → koşul → gövde → güncelleme → koşul → gövde → … Koşul yanlış olunca çıkılır.</p>
+  </div>
+
+  <div class="card">
+    <h3>6.2 Sayaç ve nöbetçi kontrollü döngüler</h3>
+    <p><b>Sayaç kontrollü:</b> kaç tur olacağı önceden bilinir (10 öğrenci). <b>Nöbetçi (sentinel) kontrollü:</b> özel bir değer gelene kadar devam edilir (−1 girilince dur). Nöbetçi değer gerçek veri olamayacak bir değer olmalıdır.</p>
+    <pre class="code">/* Nöbetçi kontrollü not ortalaması */
+int not1, adet = 0, toplam = 0;
+printf("Not girin (-1 bitirir): ");
+while (scanf("%d", &amp;not1) == 1 &amp;&amp; not1 != -1) {
+    toplam += not1;
+    adet++;
+}
+if (adet &gt; 0)
+    printf("Ortalama: %.2f\n", (double)toplam / adet);
+else
+    printf("Hic not girilmedi\n");   /* sıfıra bölme koruması */</pre>
+  </div>
+
+  <div class="card">
+    <h3>6.3 Altı döngü deseni</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Desen</th><th>Başlangıç</th><th>Her turda</th><th>Örnek</th></tr></thead>
+      <tbody>
+        <tr><td>Toplayıcı</td><td><code>toplam = 0</code></td><td><code>toplam += x</code></td><td>Not toplamı</td></tr>
+        <tr><td>Sayaç</td><td><code>adet = 0</code></td><td>koşul tutunca <code>adet++</code></td><td>Geçen öğrenci sayısı</td></tr>
+        <tr><td>Çarpım</td><td><code>carpim = 1</code></td><td><code>carpim *= x</code></td><td>Faktöriyel, üs</td></tr>
+        <tr><td>Bayrak</td><td><code>bulundu = 0</code></td><td>koşul tutunca <code>bulundu = 1</code></td><td>Asal mı?</td></tr>
+        <tr><td>En büyük/küçük</td><td><b>ilk eleman</b></td><td>daha büyükse güncelle</td><td>En yüksek not</td></tr>
+        <tr><td>Basamak ayrıştırma</td><td>—</td><td><code>d = n % 10; n /= 10;</code></td><td>Basamak toplamı, ters çevirme</td></tr>
+      </tbody>
+    </table></div>
+    <pre class="code">/* Sayıyı ters çevir ve palindrom mu bak */
+int n = 1221, asil = n, ters = 0;
 while (n &gt; 0) {
-    toplam += n % 10;   /* 4, 3, 2, 1 */
+    ters = ters * 10 + n % 10;
     n /= 10;
-}                       /* toplam = 10 */</pre>
-    <div class="trap"><b>Tuzaklar:</b> Güncelleme adımı unutulursa döngü sonsuza kadar döner. <code>for (...);</code> sonundaki noktalı virgül gövdeyi boş bırakır. <code>scanf</code> harf okuduğunda 0 döner ve tampon temizlenmezse döngü takılır.</div>
+}
+printf("%d %s\n", ters, (ters == asil) ? "palindrom" : "degil");</pre>
+    <div class="derivation reveal" data-title="n = 123 için ters çevirme izleme tablosu">
+      <div class="step"><p>Başta \(n=123\), ters \(=0\). Tur 1: ters \(=0\cdot10+3=3\), \(n=12\).</p></div>
+      <div class="step"><p>Tur 2: ters \(=3\cdot10+2=32\), \(n=1\).</p></div>
+      <div class="step"><p>Tur 3: ters \(=32\cdot10+1=321\), \(n=0\). Koşul yanlış, döngü biter. Sonuç 321.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>6.4 break ve continue</h3>
+    <pre class="code">for (int i = 1; i &lt;= 10; i++) {
+    if (i % 2 == 0) continue;  /* çiftleri atla, sonraki tura geç */
+    if (i &gt; 7) break;          /* 7'den büyükse döngüden tamamen çık */
+    printf("%d ", i);          /* 1 3 5 7 */
+}</pre>
+    <p><code>break</code> içinde bulunduğu <b>en içteki</b> döngüyü bitirir. <code>continue</code> o turun geri kalanını atlar; <code>for</code>'da güncelleme yine de çalışır.</p>
+  </div>
+
+  <div class="card">
+    <h3>6.5 Rastgele sayı ve tahmin oyunu</h3>
+    <pre class="code">#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+srand((unsigned)time(NULL));     /* programın başında BİR KEZ */
+int gizli = rand() % 100 + 1;    /* 1..100 */</pre>
+    <div class="trap"><b>Tuzaklar:</b> güncellemeyi unutmak (sonsuz döngü); <code>for (...);</code> sondaki noktalı virgül; <code>do-while</code> sonundaki <code>;</code>'ü unutmak; toplayıcıyı döngü içinde sıfırlamak; <code>while (x != 0.3)</code> gibi kayan nokta eşitliği (hiç bitmeyebilir); harf girilince <code>scanf</code> 0 döndürür ve tampon temizlenmezse sonsuz döngü; <code>srand</code>'ı döngü içinde çağırmak.</div>
+    <div class="imp">
+      <ul>
+        <li>while: 0+ tur; do-while: 1+ tur (sonda <code>;</code>); for: tur sayısı belli.</li>
+        <li>for sırası: başlatma → koşul → gövde → güncelleme → koşul…</li>
+        <li>Nöbetçi değer gerçek veri olamaz; ortalamada <code>adet &gt; 0</code> kontrolü.</li>
+        <li>Toplayıcı 0, çarpım 1, en büyük için başlangıç ilk eleman.</li>
+        <li>Basamak: <code>n % 10</code> son basamak, <code>n /= 10</code> sil.</li>
+        <li><code>break</code> en içteki döngüden çıkar; <code>continue</code> turu atlar.</li>
+      </ul>
+    </div>
     <div class="quiz" data-unit="cen107-w6"></div>
   </div>
 </section>
@@ -2908,43 +3514,103 @@ while (n &gt; 0) {
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 7</div>
     <h2>Döngüler II ve ara proje</h2>
-    <p>Nöbetçi değerler, iç içe döngüler, asallık ve ε eşiğiyle biten seriler.</p>
+    <p>İç içe döngüler, desenler, asallık, seriler ve menü güdümlü programlar. Bu hafta vize öncesi döngü bilgisinin doruk noktasıdır.</p>
   </div>
+
   <div class="card">
-    <h3>7.1 Nöbetçi değer ve scanf dönüş değeri</h3>
-    <pre class="code">int x, adet = 0, toplam = 0;
-while (scanf("%d", &amp;x) == 1 &amp;&amp; x != -1) {   /* -1 nöbetçi, toplanmaz */
-    toplam += x;
-    adet++;
+    <h3>7.1 İç içe döngüler: ızgara modeli</h3>
+    <p>İç döngü, dış döngünün <b>her turunda baştan sona</b> çalışır. Toplam tur = dış tur × iç tur.</p>
+    <pre class="code">for (int i = 1; i &lt;= 3; i++) {        /* 3 satır */
+    for (int j = 1; j &lt;= 4; j++)      /* her satırda 4 sütun */
+        printf("%4d", i * j);
+    printf("\n");
 }
-printf("adet=%d toplam=%d\n", adet, toplam);</pre>
-    <p>Girdi <code>4 7 -1 9</code> ise çıktı <code>adet=2 toplam=11</code> olur. <code>scanf</code> eşleşen değer sayısını döndürür; harf girilirse 0, dosya sonunda (Ctrl+D) −1 (EOF).</p>
-    <h3>7.2 İç içe döngüler ve desenler</h3>
-    <p>İç döngü, dış döngünün her turunda baştan sona çalışır: toplam yineleme satır × sütun kadardır. İç sınır dış değişkene bağlanırsa üçgen oluşur ve toplam \(\frac{n(n+1)}{2}\) olur.</p>
-    <pre class="code">for (int i = 1; i &lt;= n; i++) {          /* piramit */
+/*    1   2   3   4
+      2   4   6   8
+      3   6   9  12   → toplam 12 tur */</pre>
+    <p>İç döngünün sınırı dış değişkene bağlıysa (<code>j &lt;= i</code>) üçgen oluşur ve toplam tur \(1+2+\cdots+n=\frac{n(n+1)}{2}\) olur.</p>
+  </div>
+
+  <div class="card">
+    <h3>7.2 Desen basma: önce tablo, sonra formül</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Satır i (n=4)</th><th>Boşluk</th><th>Yıldız</th><th>Görünüm</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>3</td><td>1</td><td class="mono">&nbsp;&nbsp;&nbsp;*</td></tr>
+        <tr><td>2</td><td>2</td><td>3</td><td class="mono">&nbsp;&nbsp;***</td></tr>
+        <tr><td>3</td><td>1</td><td>5</td><td class="mono">&nbsp;*****</td></tr>
+        <tr><td>4</td><td>0</td><td>7</td><td class="mono">*******</td></tr>
+        <tr><td>formül</td><td>n − i</td><td>2i − 1</td><td></td></tr>
+      </tbody>
+    </table></div>
+    <pre class="code">for (int i = 1; i &lt;= n; i++) {
     for (int b = 0; b &lt; n - i; b++) printf(" ");
     for (int s = 0; s &lt; 2 * i - 1; s++) printf("*");
     printf("\n");
 }</pre>
-    <h3>7.3 Asallık: \(\sqrt{n}\) sınırı</h3>
-    <pre class="code">int asal = 1;
-if (n &lt; 2) asal = 0;
-for (int d = 2; d &lt;= n / d; d++) {   /* d*d taşabilir; n/d kullanılır */
-    if (n % d == 0) { asal = 0; break; }
+  </div>
+
+  <div class="card">
+    <h3>7.3 Asallık: naif ve hızlı</h3>
+    <p><b>Neden \(\sqrt n\) yeter?</b> \(n=a\cdot b\) ise \(a\) ve \(b\)'den biri \(\sqrt n\)'den büyük değildir. Eğer \(\sqrt n\)'e kadar bölen yoksa daha büyük bölen de yoktur. \(n=97\) için 2'den 96'ya kadar 95 deneme yerine \(\sqrt{97}\approx 9{,}8\) olduğundan yalnızca 2–9 denenir.</p>
+    <pre class="code">int asal_mi(int n) {
+    if (n &lt; 2) return 0;          /* 0, 1 ve negatifler asal değil */
+    if (n == 2) return 1;
+    if (n % 2 == 0) return 0;      /* çiftler elenir */
+    for (int d = 3; d &lt;= n / d; d += 2)   /* d*d taşabilir, n/d güvenli */
+        if (n % d == 0) return 0;
+    return 1;
 }</pre>
-    <p>\(d \le \sqrt{n}\) yeterlidir: \(n\)'nin bir çarpanı \(\sqrt{n}\)'den büyükse diğeri küçüktür ve daha önce bulunmuştur.</p>
+  </div>
+
+  <div class="card">
     <h3>7.4 ε eşiğiyle biten seriler</h3>
-    <pre class="code">/* e = 1 + 1/1! + 1/2! + ... ; terim eşik altına inince dur */
-double terim = 1.0, toplam = 1.0;
-int k = 1;
-while (terim &gt; 1e-9) {
-    terim /= k;
-    toplam += terim;
-    k++;
-}</pre>
-    <div class="trap"><b>Tamsayı tuzağı:</b> Leibniz serisinde <code>1 / (2*k+1)</code> tamsayı bölmesidir; kesirli sabit (<code>1.0</code>) kullanılmazsa terimler sıfır olur.</div>
-    <h3>7.5 Menü ve ölçüm</h3>
-    <p><code>do-while</code> ve <code>switch</code> ile menü kurulur; 0 çıkış seçeneğidir. Süreyi <code>clock()</code> ve <code>CLOCKS_PER_SEC</code> ile ölçebilirsiniz; sonucu yazdırmayan hesabı derleyici silebilir. Ölçümü tekrarlayıp ortanca alın.</p>
+    <p>Sonsuz bir seri, terim yeterince küçülünce durdurulur. Terimi her seferinde sıfırdan hesaplamak yerine bir öncekinden türetmek hem hızlı hem güvenlidir.</p>
+    <pre class="code">/* e = 1 + 1/1! + 1/2! + 1/3! + ... */
+double terim = 1.0, e = 1.0;
+for (int k = 1; terim &gt; 1e-12; k++) {
+    terim /= k;       /* 1/k! = (1/(k-1)!) / k */
+    e += terim;
+}                     /* e ≈ 2.718281828 */
+
+/* pi/4 = 1 - 1/3 + 1/5 - 1/7 + ... (Leibniz) */
+double toplam = 0.0;
+for (int k = 0; k &lt; 1000000; k++)
+    toplam += ((k % 2 == 0) ? 1.0 : -1.0) / (2 * k + 1);   /* 1.0 şart */
+printf("%f\n", 4 * toplam);</pre>
+  </div>
+
+  <div class="card">
+    <h3>7.5 Menü döngüsü ve iç içe döngüden çıkış</h3>
+    <pre class="code">int secim;
+do {
+    printf("\n1) Not gir\n2) Istatistik\n0) Cikis\nSecim: ");
+    if (scanf("%d", &amp;secim) != 1) return 1;   /* EOF ya da harf */
+    switch (secim) {
+        case 1: /* not girişi */      break;
+        case 2: /* istatistik */      break;
+        case 0: printf("Gule gule\n"); break;
+        default: printf("Gecersiz\n");
+    }
+} while (secim != 0);</pre>
+    <p><code>break</code> yalnızca iç döngüden çıkar. İki döngüden birden çıkmak için bir <b>bayrak</b> kullan ya da kodu bir fonksiyona taşıyıp <code>return</code> et (Hafta 8).</p>
+    <h4>Süre ölçmek</h4>
+    <pre class="code">#include &lt;time.h&gt;
+clock_t bas = clock();
+/* ölçülecek iş */
+double sn = (double)(clock() - bas) / CLOCKS_PER_SEC;</pre>
+    <div class="ex"><b>Ara proje:</b> Mini-OBS v0.7 (menülü not sistemi) ya da ATM simülasyonu: PIN için 3 deneme hakkı (<code>for</code> + bayrak), menü için <code>do-while</code> + <code>switch</code>, tutarlar için doğrulama döngüsü. En az altı test senaryosu.</div>
+    <div class="trap"><b>Hata avcısı:</b> satır toplayıcısını dış döngüden <i>önce</i> sıfırlamak (toplamlar birikir — dış döngünün içinde sıfırla); iç ve dış döngüde aynı sayaç <code>i</code>; asallıkta 0/1/2 sınırları; <code>1 / k</code> tamsayı bölmesi; <code>d * d &lt;= n</code> taşması.</div>
+    <div class="imp">
+      <ul>
+        <li>İç içe döngü toplam tur = dış × iç; üçgen desende \(\frac{n(n+1)}{2}\).</li>
+        <li>Piramit: i. satırda <b>n − i boşluk</b>, <b>2i − 1 yıldız</b>.</li>
+        <li>Asallık: \(d\le\sqrt n\) yeter; <code>d &lt;= n / d</code> yaz; n &lt; 2 asal değil.</li>
+        <li>Seri: terimi öncekinden türet, eşik altında dur; kesirde <code>1.0</code> kullan.</li>
+        <li>Menü: <code>do-while</code> + <code>switch</code>; 0 çıkış.</li>
+        <li><code>scanf</code> dönüşü: 1 başarı, 0 harf, −1 EOF.</li>
+      </ul>
+    </div>
     <div class="quiz" data-unit="cen107-w7"></div>
   </div>
 </section>
@@ -2953,25 +3619,89 @@ while (terim &gt; 1e-9) {
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 8</div>
     <h2>Fonksiyonlar I</h2>
-    <p>Bir işi bir kez yaz, her yerde kullan. Modüler düşünce burada başlar.</p>
+    <p>Bir işi bir kez yaz, adını koy, her yerde çağır. Fonksiyonlar programı okunur, test edilebilir ve tekrar kullanılabilir parçalara böler.</p>
   </div>
+
   <div class="card">
-    <h3>8.1 Prototip, parametre, dönüş</h3>
+    <h3>8.1 Neden fonksiyon?</h3>
+    <ul class="ol-tight">
+      <li><b>Tekrarı önler:</b> ortalama hesabı beş yerde yazılmaz, bir kez yazılır.</li>
+      <li><b>Okunurluk:</b> <code>if (asal_mi(n))</code> ne yaptığını kendisi anlatır.</li>
+      <li><b>Test:</b> her fonksiyon ayrı ayrı denenebilir.</li>
+      <li><b>Soyutlama:</b> kullanan kişi içini bilmek zorunda değil (<code>printf</code>'in içini bilmeden kullanıyorsun).</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>8.2 Anatomi: prototip, tanım, çağrı</h3>
     <pre class="code">#include &lt;stdio.h&gt;
 
-int kare(int x);                 /* prototip: kullanımdan önce bildirilir */
+double ortalama(int vize, int final);   /* PROTOTİP (bildirim) */
 
 int main(void) {
-    printf("%d\n", kare(7));     /* 49 */
+    double o = ortalama(70, 80);         /* ÇAĞRI: 70 ve 80 argümandır */
+    printf("%.1f\n", o);                 /* 76.0 */
     return 0;
 }
 
-int kare(int x) {                /* tanım */
-    return x * x;
+double ortalama(int vize, int final) {  /* TANIM: vize, final parametredir */
+    return 0.4 * vize + 0.6 * final;     /* dönüş değeri */
 }</pre>
-    <h3>8.2 Değer ile geçirme</h3>
-    <p>C'de argümanlar <b>kopyalanarak</b> geçirilir. Fonksiyon içinde değiştirilen kopya, çağıran tarafın değişkenini değiştirmez. Bu yüzden içeriği değiştirecek bir fonksiyona adres geçirilir (Hafta 12).</p>
-    <div class="trap"><b>Tuzak:</b> <code>void</code> dönüşlü fonksiyondan değer beklemek; dönüş değerini kullanmadan çağırmak ise hatasız ama anlamsız olabilir.</div>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Terim</th><th>Anlamı</th></tr></thead>
+      <tbody>
+        <tr><td>Dönüş tipi</td><td>Fonksiyonun geri verdiği değerin tipi; hiçbir şey vermiyorsa <code>void</code></td></tr>
+        <tr><td>Parametre</td><td>Tanımdaki yer tutucu (<code>int vize</code>)</td></tr>
+        <tr><td>Argüman</td><td>Çağrıda verilen gerçek değer (<code>70</code>)</td></tr>
+        <tr><td>Prototip</td><td>Derleyiciye fonksiyonun imzasını önceden bildirir; tanım <code>main</code>'den sonra olabilir</td></tr>
+        <tr><td><code>return</code></td><td>Değeri döndürür ve fonksiyonu <b>hemen</b> bitirir</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>8.3 Değer ile geçirme (pass by value)</h3>
+    <p>C'de argümanlar <b>kopyalanır</b>. Fonksiyon kendi kopyası üzerinde çalışır; çağıranın değişkeni değişmez.</p>
+    <pre class="code">void artir(int x) { x = x + 1; }   /* yalnızca kopya değişir */
+
+int main(void) {
+    int a = 5;
+    artir(a);
+    printf("%d\n", a);   /* 5 — değişmedi! */
+    return 0;
+}</pre>
+    <p>Çağıranın değişkenini değiştirmek için ya yeni değeri <code>return</code> et (<code>a = artir(a);</code>) ya da adresini geçir (Hafta 12: işaretçiler).</p>
+  </div>
+
+  <div class="card">
+    <h3>8.4 İyi fonksiyon tasarımı</h3>
+    <pre class="code">/* Tek iş yapan, test edilebilir fonksiyonlar (Mini-OBS) */
+int not_gecerli_mi(int n)        { return n &gt;= 0 &amp;&amp; n &lt;= 100; }
+double agirlikli(int v, int f)   { return 0.4 * v + 0.6 * f; }
+char harf_notu(double o) {
+    if (o &gt;= 90) return 'A';
+    if (o &gt;= 80) return 'B';
+    if (o &gt;= 70) return 'C';
+    if (o &gt;= 60) return 'D';
+    return 'F';
+}</pre>
+    <ul class="ol-tight">
+      <li>Bir fonksiyon <b>bir iş</b> yapsın; adı o işi söylesin (fiil: <code>hesapla</code>, <code>yazdir</code>; soru: <code>gecerli_mi</code>).</li>
+      <li>Hesap yapan fonksiyon <code>printf</code> yapmasın; sonucu döndürsün. Yazdırmayı çağıran yapsın.</li>
+      <li>Erken <code>return</code>, iç içe if'leri azaltır (yukarıdaki <code>harf_notu</code>).</li>
+    </ul>
+    <h4>Standart kütüphane fonksiyonları</h4>
+    <p><code>&lt;math.h&gt;</code>: <code>sqrt</code>, <code>pow</code>, <code>fabs</code>; <code>&lt;stdlib.h&gt;</code>: <code>abs</code>, <code>rand</code>, <code>exit</code>; <code>&lt;ctype.h&gt;</code>: <code>isdigit</code>, <code>toupper</code>.</p>
+    <div class="trap"><b>Tuzaklar:</b> prototipsiz çağrı (derleyici uyarır); dönüş değeri olan fonksiyonda bazı yollarda <code>return</code> unutmak (çöp değer döner); <code>void</code> fonksiyondan değer beklemek; parametre tipini çağrıda yanlış vermek (<code>int</code> yerine <code>double</code>, sessizce kesilir).</div>
+    <div class="imp">
+      <ul>
+        <li>Prototip: <code>double f(int a, int b);</code> — tanım main'den sonra olabilir.</li>
+        <li>Parametre (tanımdaki) ≠ argüman (çağrıdaki).</li>
+        <li>C'de geçiş <b>değer ile</b>: kopya değişir, asıl değişmez.</li>
+        <li><code>return</code> değeri döndürür ve fonksiyonu bitirir; <code>void</code> değer döndürmez.</li>
+        <li>Bir fonksiyon = bir iş; hesap ile yazdırma ayrı.</li>
+      </ul>
+    </div>
     <div class="quiz" data-unit="cen107-w8"></div>
   </div>
 </section>
@@ -2980,18 +3710,86 @@ int kare(int x) {                /* tanım */
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 9</div>
     <h2>Kapsam, yığın ve özyineleme</h2>
-    <p>Fonksiyon çağrılırken bellekte ne olur? Özyineleme bu soruya en iyi yanıtı verir.</p>
+    <p>Bir değişken nerede yaşar ve ne zaman ölür? Fonksiyon çağrıldığında bellekte ne olur? Bir fonksiyon kendini çağırabilir mi?</p>
   </div>
+
   <div class="card">
-    <h3>9.1 Kapsam ve yığın</h3>
-    <p>Yerel değişkenler fonksiyon bitince yok olur. Her çağrı için yığında (stack) bir <b>çerçeve</b> (stack frame) ayrılır; çağrı bitince çerçeve kaldırılır. <code>static</code> yerel değişken çağrılar arasında değerini korur.</p>
-    <h3>9.2 Özyineleme</h3>
+    <h3>9.1 Kapsam (scope) ve ömür</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Tür</th><th>Nerede tanımlı?</th><th>Görünürlük</th><th>Ömür</th></tr></thead>
+      <tbody>
+        <tr><td>Yerel</td><td>Fonksiyon/blok içinde</td><td>Yalnızca o blokta</td><td>Blok bitince yok olur</td></tr>
+        <tr><td>Global</td><td>Tüm fonksiyonların dışında</td><td>Dosyanın tamamında</td><td>Program boyunca</td></tr>
+        <tr><td><code>static</code> yerel</td><td>Fonksiyon içinde, <code>static</code> ile</td><td>Yalnızca o fonksiyonda</td><td>Program boyunca; değeri çağrılar arasında korunur</td></tr>
+      </tbody>
+    </table></div>
+    <pre class="code">int sayac(void) {
+    static int n = 0;   /* yalnızca ilk çağrıda 0 olur */
+    n++;
+    return n;
+}
+/* sayac(); sayac(); sayac();  → 1, 2, 3 */</pre>
+    <p><b>Gölgeleme:</b> İç blokta aynı adla yeni bir değişken tanımlarsan dıştakini gizler. Kafa karıştırır; farklı adlar kullan. Global değişkenleri olabildiğince az kullan; her fonksiyon değiştirebildiği için hata bulmak zorlaşır.</p>
+  </div>
+
+  <div class="card">
+    <h3>9.2 Çağrı yığını (call stack)</h3>
+    <p>Her fonksiyon çağrısı için yığında bir <b>çerçeve</b> (stack frame) açılır: parametreler, yerel değişkenler ve dönüş adresi burada tutulur. Fonksiyon bitince çerçeve kaldırılır. Yığın <b>son giren ilk çıkar</b> (LIFO) çalışır.</p>
+    <div class="derivation reveal" data-title="main → ortalama → round çağrısında yığın">
+      <div class="step"><p><b>1.</b> Program başlar: yığında yalnızca <code>main</code> çerçevesi var.</p></div>
+      <div class="step"><p><b>2.</b> <code>main</code>, <code>ortalama(70, 80)</code>'i çağırır: üstüne <code>ortalama</code> çerçevesi eklenir (vize=70, final=80).</p></div>
+      <div class="step"><p><b>3.</b> <code>ortalama</code> içinden <code>round</code> çağrılırsa onun çerçevesi en üste eklenir.</p></div>
+      <div class="step"><p><b>4.</b> <code>round</code> döner → çerçevesi silinir; sonra <code>ortalama</code> döner → silinir; kontrol <code>main</code>'e geri gelir.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/4</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>9.3 Özyineleme (recursion)</h3>
+    <p>Bir fonksiyonun kendini çağırmasıdır. İki parçası şarttır: <b>taban durum</b> (artık kendini çağırmadan cevabı verir) ve <b>özyinelemeli adım</b> (problemi bir küçük kopyasına indirger).</p>
     <pre class="code">unsigned long long fakt(unsigned int n) {
-    if (n &lt;= 1) return 1;           /* taban durum */
+    if (n &lt;= 1) return 1;          /* taban durum */
     return n * fakt(n - 1);        /* küçülen alt problem */
 }</pre>
-    <div class="trap"><b>Tuzaklar:</b> Taban durum olmazsa yığın taşar (stack overflow). <code>unsigned long long</code> 20!'e kadar yeter; 21! taşar. Fibonacci'yi naif özyinelemeyle yazmak üstel zaman alır; döngüyle yazmak doğrusaldır.</div>
-    <div class="ex"><b>Kıyas:</b> \(n!\) için özyineleme ve döngü aynı sonucu verir; fakat özyineleme her çağrıda çerçeve harcar. Kuyruk özyinelemesi (tail recursion) derleyici optimizasyonuyla döngüye dönüşebilir, ama C standardı bunu garanti etmez.</div>
+    <div class="derivation reveal" data-title="fakt(4) nasıl hesaplanır?">
+      <div class="step"><p><b>İniş:</b> fakt(4) = 4 · fakt(3)</p></div>
+      <div class="step"><p>fakt(3) = 3 · fakt(2)</p></div>
+      <div class="step"><p>fakt(2) = 2 · fakt(1)</p></div>
+      <div class="step"><p>fakt(1) = 1 (taban durum; yığında 4 çerçeve var)</p></div>
+      <div class="step"><p><b>Çıkış:</b> fakt(2) = 2·1 = 2 → fakt(3) = 3·2 = 6 → fakt(4) = 4·6 = 24.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
+    </div>
+    <h4>Diğer klasik örnekler</h4>
+    <pre class="code">int ebob(int a, int b) { return b == 0 ? a : ebob(b, a % b); }
+
+int us(int taban, int n) {           /* taban^n, n &gt;= 0 */
+    if (n == 0) return 1;
+    return taban * us(taban, n - 1);
+}
+
+int fib(int n) {                     /* 0 1 1 2 3 5 8 ... */
+    if (n &lt; 2) return n;
+    return fib(n - 1) + fib(n - 2);  /* DİKKAT: üstel sayıda çağrı */
+}</pre>
+    <p><b>Fibonacci tuzağı:</b> <code>fib(5)</code>, <code>fib(3)</code>'ü iki kez, <code>fib(2)</code>'yi üç kez hesaplar. Çağrı sayısı yaklaşık \(2^n\) büyür; <code>fib(45)</code> saniyeler sürer. Döngüyle yazılırsa \(n\) adımda biter.</p>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th></th><th>Özyineleme</th><th>Döngü</th></tr></thead>
+      <tbody>
+        <tr><td>Okunurluk</td><td>Doğası özyinelemeli problemlerde (ağaç, EBOB) çok net</td><td>Basit sayımlarda daha net</td></tr>
+        <tr><td>Bellek</td><td>Her çağrı bir çerçeve; derin çağrı yığını taşırır</td><td>Sabit bellek</td></tr>
+        <tr><td>Hız</td><td>Çağrı maliyeti var</td><td>Genelde daha hızlı</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap"><b>Tuzaklar:</b> taban durumu yazmamak ya da ulaşılamaz yapmak (<code>fakt(-1)</code> işaretli tipte sonsuza iner) → <b>stack overflow</b>; 64 bit <code>unsigned long long</code> en fazla 20!'i tutar (21! taşar); yerel değişkenin adresini döndürmek.</div>
+    <div class="imp">
+      <ul>
+        <li>Yerel: blokta yaşar. Global: program boyunca. <code>static</code> yerel: değerini çağrılar arasında korur.</li>
+        <li>Her çağrı yığında bir çerçeve açar (LIFO); dönünce silinir.</li>
+        <li>Özyineleme = <b>taban durum</b> + <b>küçülen adım</b>. Taban yoksa stack overflow.</li>
+        <li>fakt(4) = 24; iniş ve çıkış aşamalarını izleyebilmelisin.</li>
+        <li>Naif fib üstel; döngü doğrusal. 20! sığar, 21! taşar.</li>
+      </ul>
+    </div>
     <div class="quiz" data-unit="cen107-w9"></div>
   </div>
 </section>
@@ -3000,21 +3798,100 @@ int kare(int x) {                /* tanım */
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 10</div>
     <h2>Diziler I</h2>
-    <p>Aynı tipten birçok değeri tek bir adla tutmak.</p>
+    <p>50 öğrencinin notunu 50 ayrı değişkende tutamayız. Dizi, aynı tipten birçok değeri tek bir ad altında, bellekte yan yana saklar.</p>
   </div>
-  <div class="card">
-    <h3>10.1 Tanım ve indeks</h3>
-    <pre class="code">int notlar[5] = {70, 85, 60, 90, 75};
-int toplam = 0;
-for (int i = 0; i &lt; 5; i++) toplam += notlar[i];   /* 380 */
-double ortalama = (double)toplam / 5;                  /* 76.0 */
 
-int n = sizeof notlar / sizeof notlar[0];             /* eleman sayısı: 5 */</pre>
-    <h3>10.2 Sınır ve sayım</h3>
-    <p>Dizinin indeksleri <code>0</code> ile <code>n-1</code> arasındadır. <code>notlar[5]</code> gibi bir erişim sınır dışıdır ve tanımsız davranıştır: program çökebilir ya da yanlış veri okuyabilir. Döngü koşulunu <code>i &lt; n</code> olarak yazın.</p>
-    <h3>10.3 Histogram</h3>
-    <p>Her notun hangi aralığa düştüğünü saymak için bir sayaç dizisi kullanılır: <code>sayac[puan / 10]++</code> (0–100 arası puanlar için). Bu desen, bir diziyi başka bir dizinin indeksi olarak kullanmanın tipik örneğidir.</p>
-    <div class="trap"><b>Tuzak:</b> Dizi boyutunu sabit yazıp sonra değiştirmek, <code>sizeof</code> ile hesaplanan boyutu bozar. Bir dizi bir fonksiyona geçirildiğinde <code>sizeof</code> artık tüm diziyi değil, bir işaretçiyi (8 bayt) verir.</div>
+  <div class="card">
+    <h3>10.1 Tanım, ilk değer ve bellek düzeni</h3>
+    <pre class="code">int notlar[5];                        /* 5 int, değerler çöp */
+int a[5] = {70, 85, 60, 90, 75};      /* hepsine ilk değer */
+int b[5] = {1, 2};                    /* kalanlar 0: {1,2,0,0,0} */
+int c[5] = {0};                       /* hepsi 0 */
+int d[]  = {3, 6, 9};                 /* boyut 3 olarak çıkarılır */</pre>
+    <p>Elemanlar bellekte <b>ardışık</b> durur. <code>int</code> 4 bayt ise <code>a[0]</code> adres 1000'deyse <code>a[1]</code> 1004'te, <code>a[i]</code> \(1000+4i\)'dedir. Bu yüzden herhangi bir elemana erişim aynı sürede yapılır.</p>
+    <div class="table-wrap"><table class="w3" style="text-align:center">
+      <thead><tr><th>İndeks</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead>
+      <tbody><tr><td>Değer</td><td>70</td><td>85</td><td>60</td><td>90</td><td>75</td></tr>
+      <tr><td>Adres</td><td>1000</td><td>1004</td><td>1008</td><td>1012</td><td>1016</td></tr></tbody>
+    </table></div>
+    <p>İndeksler <b>0'dan başlar</b>; \(n\) elemanlı dizide son indeks \(n-1\)'dir.</p>
+  </div>
+
+  <div class="card">
+    <h3>10.2 Dizi üzerinde temel işlemler</h3>
+    <pre class="code">#define N 5
+int a[N] = {70, 85, 60, 90, 75};
+
+int toplam = 0;
+for (int i = 0; i &lt; N; i++) toplam += a[i];         /* 380 */
+double ort = (double)toplam / N;                     /* 76.0 */
+
+int enb = a[0], enb_i = 0;                           /* en büyük ve yeri */
+for (int i = 1; i &lt; N; i++)
+    if (a[i] &gt; enb) { enb = a[i]; enb_i = i; }       /* 90, indeks 3 */
+
+int gecen = 0;
+for (int i = 0; i &lt; N; i++) if (a[i] &gt;= 50) gecen++;
+
+/* Doğrusal arama */
+int aranan = 60, yer = -1;
+for (int i = 0; i &lt; N; i++)
+    if (a[i] == aranan) { yer = i; break; }          /* 2 */
+
+/* Ters çevirme (yerinde) */
+for (int i = 0; i &lt; N / 2; i++) {
+    int t = a[i]; a[i] = a[N - 1 - i]; a[N - 1 - i] = t;
+}</pre>
+  </div>
+
+  <div class="card">
+    <h3>10.3 Histogram ve sayım dizisi</h3>
+    <pre class="code">int sayac[11] = {0};              /* 0-9, 10-19, ..., 90-99, 100 */
+for (int i = 0; i &lt; N; i++)
+    sayac[a[i] / 10]++;           /* 85 → sayac[8]++ */
+for (int k = 0; k &lt;= 10; k++) {
+    printf("%3d: ", k * 10);
+    for (int s = 0; s &lt; sayac[k]; s++) printf("*");
+    printf("\n");
+}</pre>
+  </div>
+
+  <div class="card">
+    <h3>10.4 Basit sıralama: kabarcık (bubble sort)</h3>
+    <p>Komşu elemanları karşılaştır, yanlış sıradaysa yer değiştir. Her geçişte en büyük eleman sona “kabarcık gibi” çıkar.</p>
+    <pre class="code">for (int g = 0; g &lt; N - 1; g++)            /* N-1 geçiş */
+    for (int i = 0; i &lt; N - 1 - g; i++)    /* sondaki g eleman zaten yerinde */
+        if (a[i] &gt; a[i + 1]) {
+            int t = a[i]; a[i] = a[i + 1]; a[i + 1] = t;
+        }</pre>
+    <div class="derivation reveal" data-title="{5, 3, 8, 1} için ilk geçiş">
+      <div class="step"><p>5 &gt; 3 → değiş: {3, 5, 8, 1}</p></div>
+      <div class="step"><p>5 &gt; 8? Hayır: {3, 5, 8, 1}</p></div>
+      <div class="step"><p>8 &gt; 1 → değiş: {3, 5, 1, 8}. En büyük (8) sona yerleşti. Yaklaşık \(n^2/2\) karşılaştırma gerekir.</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>10.5 Diziyi fonksiyona geçirmek</h3>
+    <pre class="code">double dizi_ortalama(const int a[], int n) {   /* boyut ayrıca verilir */
+    int t = 0;
+    for (int i = 0; i &lt; n; i++) t += a[i];
+    return (double)t / n;
+}
+/* çağrı: dizi_ortalama(notlar, 5); */</pre>
+    <p>Dizi fonksiyona <b>kopyalanmadan</b>, ilk elemanının adresi olarak geçer. Bu yüzden fonksiyon diziyi değiştirirse asıl dizi değişir (değiştirmeyecekse <code>const</code> yaz). Fonksiyon içinde <code>sizeof(a)</code> dizinin değil işaretçinin boyutunu (8) verir; boyut ayrı parametreyle verilmelidir.</p>
+    <div class="trap"><b>Tuzaklar:</b> <code>a[5]</code>'e erişim (5 elemanlı dizide sınır dışı, tanımsız davranış — derleyici uyarmayabilir); döngüde <code>i &lt;= N</code> yazmak; diziyi <code>a = b;</code> ile kopyalamaya çalışmak (olmaz, eleman eleman kopyala); <code>sizeof</code> ile fonksiyon içinde boyut bulmaya çalışmak.</div>
+    <div class="imp">
+      <ul>
+        <li>İndeks 0 … n−1. <code>{1,2}</code> ile kalan elemanlar 0 olur.</li>
+        <li>Adres: <code>a[i]</code> = başlangıç + i × sizeof(eleman).</li>
+        <li>Eleman sayısı: <code>sizeof a / sizeof a[0]</code> (yalnızca tanımlandığı yerde).</li>
+        <li>Toplam, en büyük (başlangıç a[0]), sayım, doğrusal arama, ters çevirme desenleri.</li>
+        <li>Kabarcık sıralama: komşuları karşılaştır-değiştir; her geçişte en büyük sona.</li>
+        <li>Fonksiyona dizi adres olarak geçer (asıl değişebilir); boyutu ayrıca ver.</li>
+      </ul>
+    </div>
     <div class="quiz" data-unit="cen107-w10"></div>
   </div>
 </section>
@@ -3022,29 +3899,93 @@ int n = sizeof notlar / sizeof notlar[0];             /* eleman sayısı: 5 */</
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 11</div>
     <h2>Diziler II: matrisler</h2>
-    <p>İki boyutlu diziler satır ve sütunlardan oluşur; matris işlemleri iç içe döngülerle yazılır.</p>
+    <p>Satırları ve sütunları olan veriler — bir sınıfın birden çok sınav notu, bir resmin pikselleri, bir oyun tahtası — iki boyutlu dizilerle tutulur.</p>
   </div>
+
   <div class="card">
-    <h3>11.1 İki boyutlu diziler</h3>
-    <pre class="code">int a[2][3] = {{1, 2, 3},
-               {4, 5, 6}};
-printf("%d\n", a[1][2]);   /* 6 */</pre>
-    <p>C'de bellekte satır satır (row-major) yerleşirler. İlk köşeli parantez satır sayısını, ikinci sütun sayısını belirtir.</p>
-    <h3>11.2 Transpoz</h3>
+    <h3>11.1 Tanım ve bellek düzeni</h3>
+    <pre class="code">int m[2][3] = {
+    {1, 2, 3},     /* satır 0 */
+    {4, 5, 6}      /* satır 1 */
+};
+printf("%d\n", m[1][2]);   /* 6: satır 1, sütun 2 */</pre>
+    <p>İlk indeks <b>satır</b>, ikinci <b>sütun</b>. Bellekte <b>satır satır</b> (row-major) yan yana durur: 1, 2, 3, 4, 5, 6. Bu yüzden <code>m[i][j]</code>'nin konumu başlangıçtan \(i\cdot\text{sütun}+j\) eleman ileridedir.</p>
+    <pre class="code">/* Satır satır yazdırma */
+for (int i = 0; i &lt; 2; i++) {
+    for (int j = 0; j &lt; 3; j++)
+        printf("%4d", m[i][j]);
+    printf("\n");
+}</pre>
+  </div>
+
+  <div class="card">
+    <h3>11.2 Satır ve sütun toplamları</h3>
+    <pre class="code">/* 3 öğrenci × 4 sınav */
+int notlar[3][4] = {{70,80,90,60},{50,55,65,70},{90,95,85,100}};
+for (int i = 0; i &lt; 3; i++) {
+    int satir = 0;                         /* HER satırda sıfırla */
+    for (int j = 0; j &lt; 4; j++) satir += notlar[i][j];
+    printf("Ogrenci %d ortalama: %.2f\n", i + 1, satir / 4.0);
+}
+for (int j = 0; j &lt; 4; j++) {             /* sütun = sınav ortalaması */
+    int sutun = 0;
+    for (int i = 0; i &lt; 3; i++) sutun += notlar[i][j];
+    printf("Sinav %d ortalama: %.2f\n", j + 1, sutun / 3.0);
+}</pre>
+    <p>Satır toplamında dış döngü satırları, sütun toplamında dış döngü sütunları gezer.</p>
+  </div>
+
+  <div class="card">
+    <h3>11.3 Transpoz ve köşegen</h3>
     <pre class="code">int t[3][2];
 for (int i = 0; i &lt; 2; i++)
     for (int j = 0; j &lt; 3; j++)
-        t[j][i] = a[i][j];</pre>
-    <h3>11.3 Matris çarpımı</h3>
-    <p>\(A\) \(m\times p\), \(B\) \(p\times n\) ise \(C=AB\) \(m\times n\)'dir ve her eleman \(c_{ij}=\sum_{k=1}^{p} a_{ik}b_{kj}\) ile hesaplanır. Üç iç içe döngü gerekir.</p>
-    <pre class="code">for (int i = 0; i &lt; 2; i++)
-    for (int j = 0; j &lt; 2; j++) {
-        c[i][j] = 0;
-        for (int k = 0; k &lt; 2; k++)
+        t[j][i] = m[i][j];       /* 2×3 → 3×2 */
+
+/* Kare matriste ana köşegen toplamı (iz) */
+int iz = 0;
+for (int i = 0; i &lt; n; i++) iz += k[i][i];</pre>
+  </div>
+
+  <div class="card">
+    <h3>11.4 Matris çarpımı</h3>
+    <p>\(A\) \(m\times p\), \(B\) \(p\times n\) ise \(C=AB\) \(m\times n\)'dir. \(A\)'nın sütun sayısı \(B\)'nin satır sayısına eşit olmalıdır.</p>
+    <div class="eq">\[ c_{ij}=\sum_{k=1}^{p}a_{ik}\,b_{kj} \]</div>
+    <div class="derivation reveal" data-title="A=[[1,2],[3,4]], B=[[5,6],[7,8]] için C=AB">
+      <div class="step"><p>\(c_{11}=1\cdot5+2\cdot7=19\) (A'nın 1. satırı · B'nin 1. sütunu)</p></div>
+      <div class="step"><p>\(c_{12}=1\cdot6+2\cdot8=22\)</p></div>
+      <div class="step"><p>\(c_{21}=3\cdot5+4\cdot7=43\), \(c_{22}=3\cdot6+4\cdot8=50\). Sonuç \(\begin{bmatrix}19&amp;22\\43&amp;50\end{bmatrix}\).</p></div>
+      <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+    </div>
+    <pre class="code">for (int i = 0; i &lt; M; i++)
+    for (int j = 0; j &lt; N; j++) {
+        c[i][j] = 0;                       /* toplamadan önce sıfırla */
+        for (int k = 0; k &lt; P; k++)
             c[i][j] += a[i][k] * b[k][j];
+    }</pre>
+    <p>Üç iç içe döngü → yaklaşık \(M\cdot N\cdot P\) çarpma. Matris çarpımı değişmeli değildir: genelde \(AB\ne BA\).</p>
+  </div>
+
+  <div class="card">
+    <h3>11.5 2B diziyi fonksiyona geçirmek</h3>
+    <pre class="code">#define SUTUN 4
+void yazdir(int a[][SUTUN], int satir) {   /* sütun sayısı ZORUNLU */
+    for (int i = 0; i &lt; satir; i++) {
+        for (int j = 0; j &lt; SUTUN; j++) printf("%4d", a[i][j]);
+        printf("\n");
     }
-/* A=[[1,2],[3,4]], B=[[5,6],[7,8]] ise C=[[19,22],[43,50]] */</pre>
-    <div class="trap"><b>Tuzak:</b> <code>c[i][j]</code> toplama yapmadan önce sıfırlanmazsa önceki değerler birikir. İç döngünün sınırı \(p\)'dir, \(m\) ya da \(n\) değil.</div>
+}</pre>
+    <p>Derleyici <code>a[i][j]</code>'nin adresini hesaplamak için sütun sayısını bilmek zorundadır; satır sayısı ayrı parametreyle verilir.</p>
+    <div class="trap"><b>Tuzaklar:</b> satır/sütun indekslerini karıştırmak; toplayıcıyı yanlış döngüde sıfırlamak; matris çarpımında <code>c</code>'yi sıfırlamamak ya da iç döngü sınırını \(p\) yerine \(m\)/\(n\) yazmak; boyutları uyumsuz matrisleri çarpmaya çalışmak.</div>
+    <div class="imp">
+      <ul>
+        <li><code>m[satır][sütun]</code>; bellekte satır satır.</li>
+        <li>Satır toplamı: dış döngü satır; sütun toplamı: dış döngü sütun. Toplayıcıyı her dış turda sıfırla.</li>
+        <li>Transpoz: <code>t[j][i] = m[i][j]</code>; 2×3 → 3×2.</li>
+        <li>Çarpım: \(c_{ij}=\sum_k a_{ik}b_{kj}\); A'nın sütun sayısı = B'nin satır sayısı; \(AB\ne BA\).</li>
+        <li>Fonksiyon parametresinde sütun sayısı yazılmak zorunda: <code>int a[][4]</code>.</li>
+      </ul>
+    </div>
     <div class="quiz" data-unit="cen107-w11"></div>
   </div>
 </section>
@@ -3053,24 +3994,92 @@ for (int i = 0; i &lt; 2; i++)
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 12</div>
     <h2>İşaretçiler ve bellek</h2>
-    <p>Bir işaretçi bir adres taşır. Bellekle doğrudan konuşmanın kapısıdır.</p>
+    <p>Bir işaretçi, bir değişkenin <b>adresini</b> tutan değişkendir. C'nin gücü de tehlikesi de buradan gelir: belleğe doğrudan dokunabilirsin.</p>
   </div>
+
   <div class="card">
-    <h3>12.1 Adres ve dereferans</h3>
+    <h3>12.1 Adres (&amp;) ve dereferans (*)</h3>
     <pre class="code">int x = 5;
-int *p = &amp;x;        /* p, x'in adresini tutar */
-*p = 10;            /* x artık 10 */
-printf("%d %p\n", x, (void *)p);</pre>
-    <h3>12.2 Dizi ve işaretçi</h3>
-    <p>Dizi adı çoğu ifadede ilk elemanın adresine dönüşür: <code>a[i]</code> ile <code>*(a + i)</code> aynı elemandır. İşaretçi aritmetiği, eleman boyutu kadar adım atar.</p>
-    <h3>12.3 Fonksiyona işaretçi geçirmek</h3>
+int *p = &amp;x;          /* p, x'in adresini tutar; "p, int'e işaretçi" */
+
+printf("%d\n", x);    /* 5   : x'in değeri */
+printf("%p\n", (void *)&amp;x); /* x'in adresi, ör. 0x7ffd...  */
+printf("%p\n", (void *)p);  /* aynı adres */
+printf("%d\n", *p);   /* 5   : p'nin gösterdiği yerdeki değer */
+
+*p = 10;              /* x'in kendisi değişti */
+printf("%d\n", x);    /* 10 */</pre>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>İfade</th><th>Anlamı</th><th>Değer (örnek)</th></tr></thead>
+      <tbody>
+        <tr><td><code>x</code></td><td>x'in değeri</td><td>10</td></tr>
+        <tr><td><code>&amp;x</code></td><td>x'in adresi</td><td>1000</td></tr>
+        <tr><td><code>p</code></td><td>p'nin içindeki adres</td><td>1000</td></tr>
+        <tr><td><code>*p</code></td><td>o adresteki değer</td><td>10</td></tr>
+        <tr><td><code>&amp;p</code></td><td>p'nin kendi adresi</td><td>2000</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>İki farklı <code>*</code>:</b> bildirimde (<code>int *p</code>) “bu bir işaretçi” demektir; ifadede (<code>*p = 10</code>) “gösterdiği yere git” demektir.</p>
+  </div>
+
+  <div class="card">
+    <h3>12.2 Adresle geçirme: takas (swap)</h3>
     <pre class="code">void takas(int *a, int *b) {
     int gecici = *a;
     *a = *b;
     *b = gecici;
 }
-/* çağrı: takas(&amp;x, &amp;y); */</pre>
-    <div class="trap"><b>Üç klasik hata:</b> (1) Başlatılmamış işaretçiyi dereference etmek. (2) Yerel bir değişkenin adresini fonksiyondan döndürmek (fonksiyon bitince yok olur). (3) Serbest bırakılmış belleği kullanmak (dangling pointer). Her işaretçiyi kullanmadan önce NULL kontrolü yapın.</div>
+
+int main(void) {
+    int x = 3, y = 7;
+    takas(&amp;x, &amp;y);           /* adresleri gönder */
+    printf("%d %d\n", x, y);  /* 7 3 */
+    return 0;
+}</pre>
+    <p>Hafta 8'deki değer ile geçirme sorununun çözümü budur: fonksiyon kopya değil, adres alır ve o adresteki asıl veriyi değiştirir. <code>scanf("%d", &amp;x)</code>'te <code>&amp;</code> kullanmamızın nedeni de aynıdır.</p>
+    <pre class="code">/* Birden çok sonuç döndürmek */
+void min_max(const int a[], int n, int *enk, int *enb) {
+    *enk = *enb = a[0];
+    for (int i = 1; i &lt; n; i++) {
+        if (a[i] &lt; *enk) *enk = a[i];
+        if (a[i] &gt; *enb) *enb = a[i];
+    }
+}</pre>
+  </div>
+
+  <div class="card">
+    <h3>12.3 İşaretçi aritmetiği ve diziler</h3>
+    <p>Dizi adı çoğu ifadede ilk elemanın adresine dönüşür: <code>a</code> ≡ <code>&amp;a[0]</code>. İşaretçiye 1 eklemek, bir bayt değil <b>bir eleman</b> ilerlemek demektir.</p>
+    <pre class="code">int a[4] = {10, 20, 30, 40};
+int *p = a;            /* p = &amp;a[0] */
+printf("%d\n", *(p + 2));  /* 30 — a[2] ile aynı */
+p++;                   /* artık a[1]'i gösteriyor (adres +4 bayt) */
+printf("%d\n", *p);    /* 20 */
+
+/* a[i]  ≡  *(a + i)  */
+for (int *q = a; q &lt; a + 4; q++) printf("%d ", *q);</pre>
+  </div>
+
+  <div class="card">
+    <h3>12.4 NULL ve dinamik bellek (giriş)</h3>
+    <pre class="code">#include &lt;stdlib.h&gt;
+int n = 50;
+int *dizi = malloc(n * sizeof *dizi);   /* yığıt (heap) bölgesinden yer al */
+if (dizi == NULL) { printf("Bellek yok\n"); return 1; }
+/* ... dizi[i] gibi kullan ... */
+free(dizi);                             /* işin bitince geri ver */
+dizi = NULL;</pre>
+    <p><code>NULL</code>, “hiçbir yeri göstermiyor” anlamına gelir. İşaretçiyi kullanmadan önce kontrol et. Yerel değişkenler <b>yığında</b> (stack), <code>malloc</code> ile alınan bellek <b>heap</b>'te durur ve sen <code>free</code> edene kadar yaşar.</p>
+    <div class="trap"><b>Dört klasik hata:</b> (1) Başlatılmamış işaretçiyi kullanmak (<code>int *p; *p = 5;</code> → rastgele adrese yazar). (2) <code>NULL</code> dereferans → çökme. (3) Yerel değişkenin adresini döndürmek (fonksiyon bitince geçersiz → sarkan işaretçi). (4) <code>free</code> edilmiş belleği kullanmak ya da hiç <code>free</code> etmemek (bellek sızıntısı).</div>
+    <div class="imp">
+      <ul>
+        <li><code>&amp;x</code> adres, <code>*p</code> o adresteki değer. <code>int *p = &amp;x; *p = 10;</code> → x = 10.</li>
+        <li>Adres geçirerek fonksiyon asıl değişkeni değiştirir: <code>takas(&amp;x, &amp;y)</code>.</li>
+        <li><code>a[i]</code> ≡ <code>*(a + i)</code>; <code>p + 1</code> bir <b>eleman</b> ilerler.</li>
+        <li><code>malloc</code> sonucu <code>NULL</code> kontrolü; işi bitince <code>free</code>.</li>
+        <li>Başlatılmamış işaretçi, NULL dereferans, sarkan işaretçi, bellek sızıntısı.</li>
+      </ul>
+    </div>
     <div class="quiz" data-unit="cen107-w12"></div>
   </div>
 </section>
@@ -3078,24 +4087,82 @@ printf("%d %p\n", x, (void *)p);</pre>
 <section id="cen107-w13" class="reveal">
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 13</div>
-    <h2>Karakter dizileri</h2>
-    <p>C'de bir metin, sonuna <code>'\0'</code> eklenmiş bir karakter dizisidir.</p>
+    <h2>Karakter dizileri (string)</h2>
+    <p>C'de “metin” diye ayrı bir tip yoktur. Bir metin, sonunda <code>'\0'</code> (sıfır karakteri) bulunan bir <code>char</code> dizisidir.</p>
   </div>
-  <div class="card">
-    <h3>13.1 Sonlandırıcı ve temel işlemler</h3>
-    <pre class="code">#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
 
-int main(void) {
-    char ad[20];
-    snprintf(ad, sizeof ad, "%s", "Ali");   /* güvenli kopyalama */
-    printf("%zu\n", strlen(ad));            /* 3 */
-    if (strcmp(ad, "Ali") == 0) printf("esit\n");
-    return 0;
-}</pre>
-    <div class="trap"><b>Tuzaklar:</b> <code>ad == "Ali"</code> adresleri karşılaştırır, içerikleri değil; <code>strcmp</code> kullanın. <code>strcpy</code> hedefin boyutunu denetlemez: taşma güvenlik açığıdır. Sonlandırıcıyı yazmayı unutursanız <code>strlen</code> sonsuza kadar okumaya devam edebilir. Türkçe karakterler UTF-8'de birden fazla bayttır; <code>strlen</code> karakter değil bayt sayar.</div>
-    <h3>13.2 Girdi</h3>
-    <p><code>scanf("%s")</code> boşlukta durur; boşluklu satır için <code>fgets</code> kullanın. <code>fgets</code> sonuna yeni satır karakterini de ekler; bunu temizlemek gerekir.</p>
+  <div class="card">
+    <h3>13.1 Sonlandırıcı karakter</h3>
+    <pre class="code">char ad[] = "Ali";      /* 4 bayt: 'A' 'l' 'i' '\0' */
+char s[10] = "Ali";     /* 10 bayt; ilk 4'ü dolu, gerisi 0 */</pre>
+    <div class="table-wrap"><table class="w3" style="text-align:center">
+      <thead><tr><th>İndeks</th><th>0</th><th>1</th><th>2</th><th>3</th></tr></thead>
+      <tbody><tr><td>Karakter</td><td>'A'</td><td>'l'</td><td>'i'</td><td>'\0'</td></tr>
+      <tr><td>ASCII</td><td>65</td><td>108</td><td>105</td><td>0</td></tr></tbody>
+    </table></div>
+    <p>Tüm string fonksiyonları, <code>'\0'</code>'ı görene kadar okur. Bu yüzden dizinin boyutu her zaman <b>karakter sayısı + 1</b> olmalıdır.</p>
+  </div>
+
+  <div class="card">
+    <h3>13.2 string.h fonksiyonları</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Fonksiyon</th><th>İş</th><th>Not</th></tr></thead>
+      <tbody>
+        <tr><td><code>strlen(s)</code></td><td>Uzunluk (<code>'\0'</code> hariç)</td><td>"Ali" → 3</td></tr>
+        <tr><td><code>strcmp(a, b)</code></td><td>Karşılaştır</td><td>Eşitse 0, a önce gelirse negatif, sonra gelirse pozitif</td></tr>
+        <tr><td><code>strcpy(h, k)</code></td><td>Kopyala</td><td>Boyut denetlemez — tehlikeli</td></tr>
+        <tr><td><code>strcat(h, k)</code></td><td>Sona ekle</td><td>Boyut denetlemez — tehlikeli</td></tr>
+        <tr><td><code>snprintf(h, boyut, "%s", k)</code></td><td>Güvenli kopyala/birleştir</td><td>Hedefin boyutunu aşmaz</td></tr>
+        <tr><td><code>strchr(s, c)</code></td><td>Karakter ara</td><td>Bulamazsa NULL</td></tr>
+      </tbody>
+    </table></div>
+    <pre class="code">#include &lt;string.h&gt;
+char a[20], b[20] = "Ayse";
+snprintf(a, sizeof a, "%s", "Ali");
+if (strcmp(a, b) == 0) printf("ayni\n");
+else if (strcmp(a, b) &lt; 0) printf("%s alfabede once\n", a);   /* Ali once */</pre>
+  </div>
+
+  <div class="card">
+    <h3>13.3 Karakter karakter işlemek</h3>
+    <pre class="code">#include &lt;ctype.h&gt;
+/* Kendi strlen'imiz */
+int uzunluk(const char s[]) {
+    int i = 0;
+    while (s[i] != '\0') i++;
+    return i;
+}
+/* Büyük harfe çevir ve sesli harf say */
+int sesli = 0;
+for (int i = 0; s[i] != '\0'; i++) {
+    s[i] = toupper((unsigned char)s[i]);
+    if (strchr("AEIOU", s[i])) sesli++;
+}
+/* Palindrom mu? */
+int n = uzunluk(s), pal = 1;
+for (int i = 0; i &lt; n / 2; i++)
+    if (s[i] != s[n - 1 - i]) { pal = 0; break; }</pre>
+  </div>
+
+  <div class="card">
+    <h3>13.4 Girdi: scanf ve fgets</h3>
+    <pre class="code">char isim[30];
+scanf("%29s", isim);            /* & YOK: dizi adı zaten adres; boşlukta durur */
+
+char satir[100];
+fgets(satir, sizeof satir, stdin);          /* boşluklu tüm satırı okur */
+satir[strcspn(satir, "\n")] = '\0';         /* sondaki yeni satırı sil */</pre>
+    <div class="trap"><b>Tuzaklar:</b> <code>a == b</code> string içeriklerini değil <b>adresleri</b> karşılaştırır → <code>strcmp</code>. <code>char s[3] = "Ali";</code> — <code>'\0'</code> için yer yok. <code>strcpy</code>/<code>gets</code> ile taşma (güvenlik açığı; <code>gets</code> standarttan kaldırıldı). <code>scanf("%s")</code> boşlukta durur. Türkçe karakterler UTF-8'de 2 bayttır; <code>strlen("ş")</code> = 2.</div>
+    <div class="imp">
+      <ul>
+        <li>String = <code>char</code> dizisi + <code>'\0'</code>. Boyut = karakter + 1.</li>
+        <li><code>strlen</code> sonlandırıcıyı saymaz. <code>strcmp</code> eşitse <b>0</b>.</li>
+        <li>İçerik karşılaştırma <code>==</code> ile değil, <code>strcmp</code> ile.</li>
+        <li>Güvenli kopya: <code>snprintf(h, sizeof h, "%s", k)</code>.</li>
+        <li><code>scanf("%s", isim)</code>'de <code>&amp;</code> yok; boşluklu satır için <code>fgets</code>.</li>
+        <li>Döngü kalıbı: <code>for (i = 0; s[i] != '\0'; i++)</code>.</li>
+      </ul>
+    </div>
     <div class="quiz" data-unit="cen107-w13"></div>
   </div>
 </section>
@@ -3104,29 +4171,88 @@ int main(void) {
   <div class="unit-head c107h">
     <div class="eyebrow">CEN 107 · Hafta 14</div>
     <h2>Yapılar, dosyalar ve final</h2>
-    <p>Birden çok alanı olan kayıtlar ve kalıcı veri: dönem sonu projesinin çatısı.</p>
+    <p>Bir öğrencinin adı, numarası ve notları birbirine aittir. Yapılar bu farklı tipteki alanları tek bir kayıtta toplar; dosyalar ise bu kayıtları program kapandıktan sonra da saklar.</p>
   </div>
+
   <div class="card">
-    <h3>14.1 Yapılar (struct)</h3>
-    <pre class="code">struct Ogrenci {
+    <h3>14.1 struct ve typedef</h3>
+    <pre class="code">typedef struct {
     char ad[30];
     int numara;
+    int vize, final;
     double ortalama;
+} Ogrenci;
+
+Ogrenci o = {"Ali", 1001, 70, 80, 0.0};
+o.ortalama = 0.4 * o.vize + 0.6 * o.final;     /* nokta ile erişim */
+printf("%s %d %.1f\n", o.ad, o.numara, o.ortalama);   /* Ali 1001 76.0 */</pre>
+    <p><code>typedef</code> sayesinde her seferinde <code>struct Ogrenci</code> yerine <code>Ogrenci</code> yazılır. Yapılar <code>=</code> ile kopyalanabilir (dizilerden farkı).</p>
+  </div>
+
+  <div class="card">
+    <h3>14.2 Yapı dizisi ve işaretçi</h3>
+    <pre class="code">Ogrenci sinif[3] = {
+    {"Ali", 1001, 70, 80, 0}, {"Ayse", 1002, 90, 85, 0}, {"Can", 1003, 40, 45, 0}
 };
+for (int i = 0; i &lt; 3; i++)
+    sinif[i].ortalama = 0.4 * sinif[i].vize + 0.6 * sinif[i].final;
 
-struct Ogrenci o = {"Ali", 1001, 78.5};
-printf("%s %d %.1f\n", o.ad, o.numara, o.ortalama);
+void yazdir(const Ogrenci *p) {
+    printf("%-10s %5d %6.1f\n", p-&gt;ad, p-&gt;numara, p-&gt;ortalama);
+}   /* p-&gt;ad  ≡  (*p).ad */</pre>
+    <p>Büyük yapıları fonksiyona işaretçiyle geçirmek kopyalama maliyetini önler; değiştirilmeyecekse <code>const</code> eklenir.</p>
+  </div>
 
-struct Ogrenci *p = &amp;o;
-printf("%d\n", p-&gt;numara);      /* işaretçiyle erişim: -&gt; */</pre>
-    <h3>14.2 Dosya işlemleri</h3>
-    <pre class="code">FILE *f = fopen("notlar.txt", "w");
-if (f == NULL) { perror("dosya"); return 1; }
-fprintf(f, "%d %s\n", 1001, "Ali");
+  <div class="card">
+    <h3>14.3 Dosya işlemleri</h3>
+    <div class="table-wrap"><table class="w3">
+      <thead><tr><th>Mod</th><th>Anlamı</th><th>Dosya yoksa</th><th>Dosya varsa</th></tr></thead>
+      <tbody>
+        <tr><td><code>"r"</code></td><td>Okuma</td><td>NULL döner</td><td>Baştan okur</td></tr>
+        <tr><td><code>"w"</code></td><td>Yazma</td><td>Oluşturur</td><td><b>İçeriği siler</b></td></tr>
+        <tr><td><code>"a"</code></td><td>Ekleme</td><td>Oluşturur</td><td>Sona ekler</td></tr>
+      </tbody>
+    </table></div>
+    <pre class="code">/* Yazma */
+FILE *f = fopen("notlar.txt", "w");
+if (f == NULL) { perror("notlar.txt"); return 1; }
+for (int i = 0; i &lt; 3; i++)
+    fprintf(f, "%s %d %d %d\n", sinif[i].ad, sinif[i].numara, sinif[i].vize, sinif[i].final);
+fclose(f);
+
+/* Okuma: fscanf okunan alan sayısını döndürür */
+Ogrenci o;
+f = fopen("notlar.txt", "r");
+if (f == NULL) { perror("notlar.txt"); return 1; }
+while (fscanf(f, "%29s %d %d %d", o.ad, &amp;o.numara, &amp;o.vize, &amp;o.final) == 4) {
+    o.ortalama = 0.4 * o.vize + 0.6 * o.final;
+    printf("%s: %.1f\n", o.ad, o.ortalama);
+}
 fclose(f);</pre>
-    <div class="trap"><b>Kural:</b> <code>fopen</code> sonucunu mutlaka kontrol edin; <code>NULL</code> ise dosya açılamamıştır. Her açılan dosya kapatılmalıdır. "r" okuma, "w" yazma (üzerine yazar), "a" ekleme modudur.</div>
-    <h3>14.3 Dönem sonu projesi: Mini-OBS</h3>
-    <p>Projede öğrenci notları haftadan haftaya büyür: Hafta 1 menü, Hafta 3 tek öğrenci, Hafta 5 doğrulama ve harf notu, Hafta 6 çoklu öğrenci, Hafta 7 menü döngüsü, Hafta 10 diziler, Hafta 14 yapılar ve dosyalar (v1.0). Son sürüm notları dosyaya yazar ve dosyadan okur.</p>
+    <div class="trap"><b>Kurallar:</b> <code>fopen</code> sonucunu her zaman kontrol et; her açılan dosyayı <code>fclose</code> ile kapat (yoksa yazılanlar diske ulaşmayabilir); okuma döngüsünü <code>feof</code> ile değil, <code>fscanf</code>'in dönüş değeriyle kur; <code>"w"</code> modunun var olan dosyayı sildiğini unutma.</div>
+  </div>
+
+  <div class="card">
+    <h3>14.4 Dönem sonu projesi: Mini-OBS v1.0 ve final hazırlığı</h3>
+    <p>Proje dönem boyunca büyür: H1 menü ekranı → H3 tek öğrenci → H4 ağırlıklı ortalama → H5 doğrulama ve harf notu → H6 N öğrenci → H7 menü döngüsü → H10 diziler → <b>H14 yapılar ve dosyalar</b>. Son sürüm öğrencileri bir <code>Ogrenci</code> dizisinde tutar, dosyaya kaydeder ve programa yeniden girildiğinde dosyadan yükler.</p>
+    <h4>Final için kontrol listesi</h4>
+    <ol class="ol-tight">
+      <li>Bir kodun çıktısını izleme tablosuyla elle bulabiliyor musun? (döngü, özyineleme, işaretçi)</li>
+      <li>Tamsayı bölmesi, öncelik ve kısa devre tuzaklarını görebiliyor musun?</li>
+      <li>Diziyi fonksiyona geçirip toplam, en büyük, arama ve sıralama yazabiliyor musun?</li>
+      <li><code>takas</code> fonksiyonunu işaretçiyle yazabiliyor musun?</li>
+      <li>String'i <code>'\0'</code>'a kadar gezen bir döngü kurabiliyor musun?</li>
+      <li><code>struct</code> dizisini dosyaya yazıp geri okuyabiliyor musun?</li>
+    </ol>
+    <div class="imp">
+      <ul>
+        <li><code>typedef struct {...} Ogrenci;</code> Erişim: değişkende <code>.</code>, işaretçide <code>-&gt;</code>. <code>p-&gt;ad</code> ≡ <code>(*p).ad</code>.</li>
+        <li>Yapılar <code>=</code> ile kopyalanır; diziler kopyalanmaz.</li>
+        <li><code>"r"</code> okuma (yoksa NULL), <code>"w"</code> yazma (varsa siler), <code>"a"</code> ekleme.</li>
+        <li><code>fopen</code> → NULL kontrolü → <code>fprintf/fscanf</code> → <code>fclose</code>.</li>
+        <li>Okuma döngüsü: <code>while (fscanf(...) == alan_sayısı)</code>.</li>
+      </ul>
+    </div>
     <div class="quiz" data-unit="cen107-w14"></div>
   </div>
 </section>
@@ -3165,6 +4291,77 @@ fclose(f);</pre>
       </tbody>
     </table></div>
     <div class="ex"><b>Bir uygulama açtığınızda ne olur?</b> Chrome'a tıklarsınız → işletim sistemi girdiyi alır → programın dosyaları depolamadan okunur → gerekli veriler RAM'e yüklenir → CPU komutları çalıştırır → uygulama ekranla konuşur → web sitesi açılıyorsa veri ağ üzerinden gelir.</div>
+    <div class="card" style="margin:14px 0">
+  <h3>1.3 Dijital bilgi: bit, bayt ve birimler</h3>
+  <p>Bilgisayardaki her şey — metin, fotoğraf, şarkı, program — sonunda <b>bit</b> dizisidir. Bir bit iki durumdan birini taşır: 0 ya da 1. 8 bit bir <b>bayt</b> eder; bir bayt 256 farklı değer (\(2^8\)) gösterebilir.</p>
+  <div class="table-wrap"><table class="w3">
+    <thead><tr><th>Birim</th><th>İkili (bellekte kullanılan)</th><th>Ondalık (disk üreticisi)</th></tr></thead>
+    <tbody>
+      <tr><td>Kilo</td><td>1 KiB = 1024 B</td><td>1 kB = 1000 B</td></tr>
+      <tr><td>Mega</td><td>1 MiB = 1024 KiB</td><td>1 MB = 1000 kB</td></tr>
+      <tr><td>Giga</td><td>1 GiB = 1024 MiB</td><td>1 GB = 1000 MB</td></tr>
+      <tr><td>Tera</td><td>1 TiB = 1024 GiB</td><td>1 TB = 1000 GB</td></tr>
+    </tbody>
+  </table></div>
+  <div class="derivation reveal" data-title="1 TB'lık disk neden işletim sisteminde 931 GB görünür?">
+    <div class="step"><p><b>Adım 1.</b> Üretici ondalık birim kullanır: \(1\ \text{TB}=10^{12}\) bayt.</p></div>
+    <div class="step"><p><b>Adım 2.</b> İşletim sistemi ikili birimle böler: \(1\ \text{GiB}=2^{30}=1\,073\,741\,824\) bayt.</p></div>
+    <div class="step"><p><b>Adım 3.</b> \(\dfrac{10^{12}}{2^{30}}\approx 931\). Disk “eksik” değil; yalnızca iki farklı birim kullanılıyor.</p></div>
+    <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+  </div>
+  <p><b>Veri aktarım hızı</b> genelde <b>bit</b> ile verilir (Mbps), dosya boyutu <b>bayt</b> ile (MB). 100 Mbps bir bağlantı en iyi durumda saniyede \(100/8=12{,}5\) MB indirir.</p>
+</div>
+
+<div class="card" style="margin:14px 0">
+  <h3>1.4 İşletim sistemi ne yapar?</h3>
+  <p>İşletim sistemi (OS), donanım ile uygulamalar arasındaki yöneticidir. Uygulama “dosya aç” dediğinde diskin hangi sektörüne gideceğini bilmez; bunu OS bilir. Dört ana görevi:</p>
+  <div class="grid2">
+    <div class="mini"><h4>Süreç yönetimi</h4><p>Çalışan her programa (süreç) CPU zamanı paylaştırır. Tek çekirdekte bile programlar çok hızlı sırayla çalıştırıldığı için aynı anda çalışıyor gibi görünür.</p></div>
+    <div class="mini"><h4>Bellek yönetimi</h4><p>Her sürece RAM'den alan ayırır, birinin diğerinin belleğine yazmasını engeller. RAM yetmezse disk üzerinde takas (swap/sayfa dosyası) kullanır.</p></div>
+    <div class="mini"><h4>Dosya sistemi</h4><p>Veriyi dosya ve klasör olarak düzenler (NTFS, ext4, APFS). İzinleri uygular.</p></div>
+    <div class="mini"><h4>Aygıt yönetimi</h4><p>Sürücüler (driver) üzerinden klavye, ekran, ağ kartı ile konuşur.</p></div>
+  </div>
+  <h4>Bilgisayar açılırken ne olur?</h4>
+  <ol class="ol-tight">
+    <li><b>Güç verilir</b>; anakarttaki ROM'daki <b>BIOS/UEFI</b> yazılımı çalışır.</li>
+    <li><b>POST</b> (açılış öz-testi): RAM, işlemci, temel aygıtlar kontrol edilir.</li>
+    <li>UEFI, önyükleme sırasına göre diskteki <b>önyükleyiciyi</b> (bootloader) bulur.</li>
+    <li>Önyükleyici <b>işletim sistemi çekirdeğini</b> (kernel) RAM'e yükler.</li>
+    <li>Çekirdek sürücüleri başlatır, ardından kullanıcı arayüzü ve servisler açılır.</li>
+  </ol>
+  <div class="ex"><b>Bağlantı:</b> Ders slaytındaki “Chrome'a tıklayınca ne olur?” akışı (OS girdiyi alır → dosyalar depolamadan okunur → RAM'e yüklenir → CPU çalıştırır) bu görevlerin günlük hayattaki karşılığıdır.</div>
+</div>
+
+<div class="card" style="margin:14px 0">
+  <h3>1.5 Bellek hiyerarşisi ve neden önemli olduğu</h3>
+  <p>CPU çok hızlıdır; RAM ondan yavaş, disk çok daha yavaştır. Bu yüzden katmanlı bir yapı kullanılır: <b>yazmaç → önbellek (L1/L2/L3) → RAM → SSD/HDD</b>. Yukarı çıktıkça hız artar, kapasite ve ucuzluk azalır.</p>
+  <p><b>Neden çalışıyor?</b> Programlar genelde aynı verilere tekrar tekrar erişir (zamansal yerellik) ve yan yana duran verileri sırayla kullanır (uzamsal yerellik). Önbellek bu sık kullanılan küçük parçayı CPU'nun yanında tutar.</p>
+  <div class="trap"><b>Sık karışıklık:</b> “Bilgisayarımda 16 GB bellek var” cümlesindeki bellek RAM'dir; “512 GB depolama” SSD'dir. RAM kapanınca silinir; SSD silinmez.</div>
+</div>
+
+<div class="card" style="margin:14px 0">
+  <h3>1.6 Siber güvenlik ve sorumlu kullanım: temel kavramlar</h3>
+  <p>Dersin konuları arasında güvenlik ve sorumlu teknoloji kullanımı var. Güvenliğin üç temel hedefi <b>CIA üçlüsü</b> olarak bilinir:</p>
+  <div class="grid2">
+    <div class="mini"><h4>Gizlilik (Confidentiality)</h4><p>Bilgiyi yalnızca yetkili kişiler görebilir. Araç: şifreleme, erişim denetimi.</p></div>
+    <div class="mini"><h4>Bütünlük (Integrity)</h4><p>Bilgi izinsiz değiştirilemez. Araç: özet (hash), imza, sürüm kontrolü.</p></div>
+    <div class="mini"><h4>Erişilebilirlik (Availability)</h4><p>Bilgi gerektiğinde ulaşılabilir. Araç: yedekleme, yedekli sunucular.</p></div>
+  </div>
+  <ul class="ol-tight">
+    <li><b>Kimlik avı (phishing):</b> Sahte e-posta ya da siteyle şifre çalma. Adres çubuğunu ve gönderen adresini kontrol et.</li>
+    <li><b>Güçlü kimlik doğrulama:</b> Uzun parola + iki aşamalı doğrulama (2FA).</li>
+    <li><b>Güncelleme:</b> Yamalar bilinen açıkları kapatır.</li>
+    <li><b>Dijital okuryazarlık:</b> Bir içeriğin kaynağını sorgulamak. Ders sonundaki soru (“Yeterince gerçekçi bir sahte, önemli mi?”) yapay zekâ ile üretilmiş sahte içerikler (deepfake) konusuna giriş yapar.</li>
+  </ul>
+</div>
+    <div class="imp">
+  <ul>
+    <li>Veri = ham gerçek; bilgi = işlenmiş, anlamlı veri.</li>
+    <li>BT: bilgiyi oluşturma, işleme, depolama, iletme, güvenceye alma, yönetme.</li>
+    <li>Bilgisayar: programlanabilir; girdi alır, işler, depolar, çıktı üretir. Biçimler: kişisel, mobil, sunucu, gömülü, süper bilgisayar.</li>
+    <li>RAM (geçici, çalışan program) ≠ depolama (kalıcı, dosyalar). CPU komutları getirir–çözer–çalıştırır.</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen109-l1"></div>
   </div>
 </section>
@@ -3198,6 +4395,13 @@ fclose(f);</pre>
       <div class="mini"><h4>Web geliştirici</h4><p>Sayfa ve betik yazar, siteyi tasarlar ve bakımını yapar.</p></div>
       <div class="mini"><h4>Güvenlik yöneticisi</h4><p>Güvenlik duvarını yönetir, politikaları belirler, saldırıları önceden tespit eder.</p></div>
     </div>
+    <div class="imp">
+  <ul>
+    <li>Yazılım türleri: sistem (OS, sürücü), uygulama (tarayıcı, Word), programlama (derleyici, yorumlayıcı, IDE).</li>
+    <li>Çeviriciler: derleyici (tümünü önceden), yorumlayıcı (satır satır/çalışırken), çevirici (assembly → makine kodu).</li>
+    <li>Roller: sistem, ağ, veritabanı, web yöneticisi; web geliştirici; güvenlik yöneticisi.</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen109-l1b"></div>
   </div>
 </section>
@@ -3307,6 +4511,61 @@ fclose(f);</pre>
         <tr><td>Doğruluk</td><td>Testler ve inceleme</td><td>İnsan üretilen işi kontrol eder</td><td>İnsan değişiklik ve kanıtı denetler</td></tr>
       </tbody>
     </table></div>
+    <div class="card" style="margin:14px 0">
+  <h3>3.10 Derleme ve yorumlama: farkları ayrıntılı</h3>
+  <div class="table-wrap"><table class="w3">
+    <thead><tr><th>Özellik</th><th>Derlenen dil (C, C++)</th><th>Yorumlanan dil (Python)</th></tr></thead>
+    <tbody>
+      <tr><td>Çeviri zamanı</td><td>Çalıştırmadan önce, bir kez</td><td>Çalışırken</td></tr>
+      <tr><td>Çıktı</td><td>Çalıştırılabilir dosya (.exe)</td><td>Bayt kodu, sanal makinede çalışır</td></tr>
+      <tr><td>Hız</td><td>Genelde daha hızlı</td><td>Genelde daha yavaş</td></tr>
+      <tr><td>Hata yakalama</td><td>Sözdizimi ve tip hataları derlemede</td><td>Birçok hata ancak o satır çalışınca</td></tr>
+      <tr><td>Taşınabilirlik</td><td>Her platform için yeniden derlenir</td><td>Yorumlayıcı olan her yerde çalışır</td></tr>
+    </tbody>
+  </table></div>
+  <div class="ex"><b>Örnek:</b> Python'da bir fonksiyonun içinde yazım hatası olan bir değişken adı, fonksiyon çağrılana kadar fark edilmez. C'de aynı hata derleme sırasında durdurur.</div>
+</div>
+
+<div class="card" style="margin:14px 0">
+  <h3>3.11 Hata ayıklama teknikleri</h3>
+  <div class="grid2">
+    <div class="mini"><h4>Kesme noktası (breakpoint)</h4><p>Programı belirli bir satırda durdurur.</p></div>
+    <div class="mini"><h4>Step over</h4><p>Satırı çalıştırır, fonksiyonun içine girmez.</p></div>
+    <div class="mini"><h4>Step into</h4><p>Çağrılan fonksiyonun içine girer.</p></div>
+    <div class="mini"><h4>Watch / değişken paneli</h4><p>Seçilen değişkenlerin değerini anlık izler.</p></div>
+    <div class="mini"><h4>Çağrı yığını</h4><p>Hangi fonksiyonun hangisini çağırdığını gösterir.</p></div>
+    <div class="mini"><h4>print ile izleme</h4><p>En basit yöntem: ara değerleri ekrana yazdırmak.</p></div>
+  </div>
+  <div class="derivation reveal" data-title="Sistemli hata ayıklama: beş adım">
+    <div class="step"><p><b>Adım 1. Yeniden üret:</b> Hatayı her seferinde ortaya çıkaran en küçük girdiyi bul (70, 80 → 74).</p></div>
+    <div class="step"><p><b>Adım 2. Beklenen değeri hesapla:</b> Gereksinimden elle hesapla (76).</p></div>
+    <div class="step"><p><b>Adım 3. Daralt:</b> Kesme noktası koy; değerlerin nerede beklenenden ayrıldığını bul (formül satırı).</p></div>
+    <div class="step"><p><b>Adım 4. Düzelt:</b> Nedeni gider (ağırlıklar), belirtiyi değil.</p></div>
+    <div class="step"><p><b>Adım 5. Regresyon testi ekle:</b> Bu hata bir daha gelmesin diye (70, 80) testini kalıcı yap.</p></div>
+    <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/5</span></div>
+  </div>
+</div>
+
+<div class="card" style="margin:14px 0">
+  <h3>3.12 LLM'lerin sınırları</h3>
+  <ul class="ol-tight">
+    <li><b>Halüsinasyon:</b> Var olmayan bir fonksiyonu, kütüphaneyi ya da kaynağı güvenle uydurabilir.</li>
+    <li><b>Bağlam sınırı:</b> Model yalnızca kendisine verilen bağlamı görür; projenin tamamını bilmez.</li>
+    <li><b>Güncellik:</b> Eğitim verisinden sonra çıkan sürümleri bilmeyebilir.</li>
+    <li><b>Ortak yanlış varsayım:</b> Aynı yanlış anlamayla hem kodu hem testi yazabilir.</li>
+    <li><b>Veri gizliliği:</b> İsteme konan kişisel veri ve parolalar onaylanmamış sistemlere gidebilir.</li>
+  </ul>
+  <div class="ex"><b>İstem şablonu:</b> Görev ne? (fonksiyon) · Girdiler ve sınırları (0–100) · Kurallar (%40/%60, ≥50) · Hata davranışı (ValueError) · Kısıtlar (harici paket yok) · Teslim (kod + testler).</div>
+</div>
+    <div class="imp">
+  <ul>
+    <li>Gereksinim → algoritma → kaynak kod → yürütme; her aşamada hata olabilir.</li>
+    <li>Hata türleri: <b>sözdizimi</b> (derleyici yakalar), <b>çalışma zamanı</b> (istisna), <b>mantık</b> (yanlış sonuç, en tehlikelisi).</li>
+    <li>Örnek: \(0{,}4\cdot70+0{,}6\cdot80=76\) Geçti; ters ağırlıkla 74. Testler: (70,80), (50,50) eşik, (−1,80) ret.</li>
+    <li>LLM çıktısı bir <b>aday</b>dır; ajanın “bitti” mesajı bir <b>iddia</b>dır. Kanıt: bağımsız testler ve diff incelemesi.</li>
+    <li>İyi istem = kabul ölçütleri (ağırlık, eşik, geçersiz girdi, test). Gizli bilgi ve kişisel veri istemlere konmaz.</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen109-l2b"></div>
   </div>
 </section>
@@ -3428,6 +4687,45 @@ def test_invalid_mark():
       <li>Sonuçları ve davranışı açıklayabildiğinizde kabul edin.</li>
     </ul>
     <p><b>Soru:</b> Bu değişikliğin birleştirilmeye hazır olduğunu neye bakarak anlarsınız?</p>
+    <div class="card" style="margin:14px 0">
+  <h3>4.7 Git'in iç yapısı: commit, HEAD ve dal</h3>
+  <p>Git her commit'te projenin <b>anlık görüntüsünü</b> saklar ve ona bir özet değer (hash) verir, ör. <code>b1c42fc…</code>. Her commit bir önceki commit'i (üst/parent) gösterir; böylece geçmiş bir zincir oluşur.</p>
+  <ul class="ol-tight">
+    <li><b>Dal (branch):</b> Bir commit'e işaret eden hareketli bir etikettir. Yeni commit atınca etiket ileri kayar.</li>
+    <li><b>HEAD:</b> Şu an üzerinde çalıştığın dalı/commit'i gösterir.</li>
+    <li><b>Birleştirme (merge):</b> İki dalın geçmişini birleştiren yeni bir commit oluşturur.</li>
+  </ul>
+  <pre class="code">git switch -c improve-validation   # yeni dal oluştur ve geç
+# grade.py düzenle
+git add grade.py
+git commit -m "Reject marks above 100"
+git switch main
+git merge improve-validation</pre>
+  <h4>Çakışma neye benzer?</h4>
+  <pre class="code">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+    status = "Pass" if overall &gt;= 50 else "Fail"
+=======
+    status = "Pass" if overall &gt; 50 else "Fail"
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; improve-validation</pre>
+  <p>İşaretlerin arasındaki iki sürümden gereksinime uyanı (<code>&gt;= 50</code>) bırak, işaret satırlarını sil, testleri çalıştır, sonra <code>git add</code> ve <code>git commit</code>.</p>
+  <h4>İyi alışkanlıklar</h4>
+  <ul class="ol-tight">
+    <li><b>.gitignore:</b> Derleme çıktıları, sanal ortamlar ve gizli anahtarlar depoya girmez.</li>
+    <li><b>Küçük ve anlamlı commit:</b> Bir commit = bir mantıksal değişiklik.</li>
+    <li><b>İyi mesaj:</b> Ne değişti ve neden? “düzeltme” değil, “Eşik koşulunu &gt;= 50 olarak geri al”.</li>
+    <li><b>Asla parola commit etme:</b> Geçmişe giren sır silinse bile geçmişte kalır; derhal döndürülmelidir.</li>
+  </ul>
+</div>
+    <div class="imp">
+  <ul>
+    <li><code>git init</code> → <code>git add</code> (hazırlık) → <code>git commit -m</code> (yerel kayıt) → <code>git push</code> (paylaşım).</li>
+    <li><code>git diff</code> hazırlanmamış, <code>git diff --staged</code> hazırlanmış farkı gösterir. − çıkarılan, + eklenen satır.</li>
+    <li>clone (kopya), fetch (al, birleştirme), pull (al + birleştir), push (gönder). Fork = başka sahibin altında bağlı kopya.</li>
+    <li>Çakışma gereksinime göre çözülür, sonra test edilir. Otomatik birleşme doğruluğu kanıtlamaz.</li>
+    <li>Birim / bütünleştirme / regresyon testi. Eşik testi (50,50) <code>&gt;=</code> → <code>&gt;</code> hatasını yakalar.</li>
+    <li>Tedarik zinciri: Action'ları commit kimliğiyle sabitle, en az yetki, sızan sırları döndür.</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen109-l3c"></div>
   </div>
 </section>
@@ -3624,6 +4922,86 @@ GRADES(student_id, course_id, mark)</pre>
         <tr><td>Oturum ele geçirme</td><td>Geçerli bir oturum kimliği çalınır ve kullanılır.</td><td>Çalınan öğretim üyesi oturum çerezi, şifre bilinmeden portala erişimi sağlar.</td><td>HTTPS, Secure ve HttpOnly çerezler, makul süre sonu, oturum yenileme, çıkışta iptal.</td></tr>
       </tbody>
     </table></div>
+    <div class="card" style="margin:14px 0">
+  <h3>5.14 Ağ katmanları: TCP/IP modeli</h3>
+  <p>İletişim, her biri tek bir işi çözen katmanlara bölünür. Her katman bir alttakinin hizmetini kullanır.</p>
+  <div class="table-wrap"><table class="w3">
+    <thead><tr><th>TCP/IP katmanı</th><th>Görevi</th><th>Örnek protokol</th><th>OSI karşılığı</th></tr></thead>
+    <tbody>
+      <tr><td>Uygulama</td><td>Programların konuştuğu dil</td><td>HTTP, DNS, SMTP</td><td>7, 6, 5</td></tr>
+      <tr><td>Taşıma</td><td>Uçtan uca iletim, port numaraları</td><td>TCP, UDP (QUIC)</td><td>4</td></tr>
+      <tr><td>İnternet</td><td>Adresleme ve yönlendirme</td><td>IP</td><td>3</td></tr>
+      <tr><td>Bağlantı</td><td>Aynı ağdaki aygıtlar arası iletim</td><td>Ethernet, Wi-Fi</td><td>2, 1</td></tr>
+    </tbody>
+  </table></div>
+  <div class="grid2">
+    <div class="mini"><h4>TCP</h4><p>Bağlantı kurar, sıralı ve güvenilir teslim eder; kaybolan paketi yeniden gönderir. Web, e-posta.</p></div>
+    <div class="mini"><h4>UDP</h4><p>Bağlantısız, hızlı, teslim garantisi yok. Canlı yayın, oyun, DNS sorguları.</p></div>
+  </div>
+  <div class="derivation reveal" data-title="TCP üçlü el sıkışma">
+    <div class="step"><p><b>1. SYN:</b> İstemci sunucuya “bağlanmak istiyorum” der.</p></div>
+    <div class="step"><p><b>2. SYN-ACK:</b> Sunucu “aldım, ben de hazırım” der.</p></div>
+    <div class="step"><p><b>3. ACK:</b> İstemci onaylar; bağlantı kuruldu, veri akabilir.</p></div>
+    <div class="step-ctrl"><button class="btn small blue" type="button">Sonraki adım</button><span>adım <span class="n">0</span>/3</span></div>
+  </div>
+</div>
+
+<div class="card" style="margin:14px 0">
+  <h3>5.15 DNS çözümlemesi adım adım</h3>
+  <ol class="ol-tight">
+    <li>Tarayıcı kendi önbelleğine bakar; yoksa işletim sistemine sorar.</li>
+    <li>OS, yapılandırılmış <b>çözümleyiciye</b> (genelde İSS ya da 8.8.8.8 gibi bir servis) sorar.</li>
+    <li>Çözümleyici <b>kök sunucuya</b> sorar: “.org nerede?”</li>
+    <li>Kök, <b>.org TLD sunucusunu</b> gösterir.</li>
+    <li>TLD, <b>example.org'un yetkili sunucusunu</b> gösterir.</li>
+    <li>Yetkili sunucu A/AAAA kaydıyla IP adresini verir; yanıt TTL süresince önbelleğe alınır.</li>
+  </ol>
+  <div class="ex"><b>Komutla dene:</b> <code>nslookup example.org</code> ya da Linux'ta <code>dig example.org</code>.</div>
+</div>
+
+<div class="card" style="margin:14px 0">
+  <h3>5.16 HTTPS ve TLS el sıkışmasının sezgisi</h3>
+  <ol class="ol-tight">
+    <li>Tarayıcı desteklediği şifreleme yöntemlerini gönderir.</li>
+    <li>Sunucu bir yöntem seçer ve <b>sertifikasını</b> gönderir.</li>
+    <li>Tarayıcı sertifikanın güvenilir bir otorite tarafından imzalandığını ve alan adıyla eşleştiğini kontrol eder.</li>
+    <li>İki taraf ortak bir <b>oturum anahtarı</b> üretir; bundan sonraki trafik bu anahtarla şifrelenir.</li>
+  </ol>
+  <div class="trap"><b>Unutma:</b> Kilit simgesi yalnızca bağlantının şifreli olduğunu ve sunucunun o alan adına sahip olduğunu gösterir; sahte ama alan adı alınmış bir site de kilit gösterebilir.</div>
+</div>
+
+<div class="card" style="margin:14px 0">
+  <h3>5.17 HTTP başlıkları, çerezler ve JSON</h3>
+  <div class="table-wrap"><table class="w3">
+    <thead><tr><th>Başlık</th><th>Yön</th><th>Anlamı</th></tr></thead>
+    <tbody>
+      <tr><td><code>Host</code></td><td>İstek</td><td>Hangi siteye gidiyor</td></tr>
+      <tr><td><code>Accept</code></td><td>İstek</td><td>Kabul edilen içerik türü</td></tr>
+      <tr><td><code>Authorization</code></td><td>İstek</td><td>Kimlik bilgisi/belirteç</td></tr>
+      <tr><td><code>Cookie</code> / <code>Set-Cookie</code></td><td>İstek / Yanıt</td><td>Oturum bilgisini taşır / ayarlar</td></tr>
+      <tr><td><code>Content-Type</code></td><td>İkisi</td><td>Gövdenin biçimi (application/json)</td></tr>
+      <tr><td><code>Location</code></td><td>Yanıt</td><td>301/302 yönlendirmede yeni adres</td></tr>
+    </tbody>
+  </table></div>
+  <pre class="code">{
+  "student_id": 42,
+  "name": "Ayse",
+  "grades": [70, 80],
+  "passed": true
+}</pre>
+  <p><b>JSON</b>: anahtar–değer çiftleri (nesne <code>{}</code>), listeler (<code>[]</code>), metin, sayı, <code>true/false</code>, <code>null</code>. HTTP her isteği bağımsız işler (durumsuz/stateless); oturum, çerezdeki kimlik ile sürdürülür.</p>
+</div>
+    <div class="imp">
+  <ul>
+    <li>İnternet = altyapı; Web = üzerinde çalışan servis (HTTP, HTML, CSS, JS).</li>
+    <li>IPv4 32 bit, IPv6 128 bit. DNS: A → IPv4, AAAA → IPv6. Port: HTTP 80, HTTPS 443.</li>
+    <li>URL: şema, ana makine:port, yol, sorgu (?), parça (#).</li>
+    <li>GET oku, POST oluştur, PUT değiştir, PATCH kısmi, DELETE sil. 200, 201, 301, 400, <b>401 kimlik</b>, <b>403 yetki</b>, 404, 500.</li>
+    <li>Sunucu her zaman doğrular; ön yüz kısıtlaması yeterli değil. Üç katman: sunum, uygulama, veri.</li>
+    <li>HTTPS: gizlilik, bütünlük, sunucu doğrulama — siteyi “dürüst” yapmaz. Çerez: Secure, HttpOnly, SameSite.</li>
+    <li>SQLi → hazırlanmış sorgu; XSS → çıktı kodlama + CSP; CSRF → belirteç + SameSite; Bozuk erişim → nesne düzeyinde yetki; Oturum çalma → HTTPS, HttpOnly, oturum yenileme.</li>
+  </ul>
+</div>
     <div class="quiz" data-unit="cen109-l4e"></div>
   </div>
 </section>
@@ -4608,6 +5986,39 @@ var NEW_QUIZ = {
     });
     window.addEventListener('hashchange', function () { route(true); });
     route(false);
+  });
+})();
+/* sınav modu: önemli kutuları öne çıkar, kenar menüsüne dizin ekle */
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('examBtn');
+    if (!btn) return;
+    var idx = document.getElementById('impIndex');
+    function buildIndex() {
+      if (!idx) return;
+      var course = document.querySelector('.course.on');
+      var list = course ? course.querySelectorAll('.imp') : [];
+      var html = '<h4>⭐ Önemli kutular</h4>';
+      Array.prototype.forEach.call(list, function (box, i) {
+        if (!box.id) box.id = (course.id + '-imp-' + (i + 1));
+        var sec = box.closest('section');
+        var h = sec ? sec.querySelector('h2') : null;
+        html += '<a href="#' + box.id + '">' + (i + 1) + '. ' + (h ? h.textContent : 'Bölüm') + '</a>';
+      });
+      idx.innerHTML = html;
+    }
+    var on = false;
+    try { on = localStorage.getItem('cen105-exam') === '1'; } catch (e) {}
+    function apply() {
+      document.body.classList.toggle('exam', on);
+      btn.classList.toggle('on', on);
+      btn.textContent = on ? '⭐ Sınav modu: açık' : '⭐ Sınav modu';
+      if (on) buildIndex();
+    }
+    btn.addEventListener('click', function () { on = !on; try { localStorage.setItem('cen105-exam', on ? '1' : '0'); } catch (e) {} apply(); });
+    window.addEventListener('hashchange', function () { if (on) setTimeout(buildIndex, 0); });
+    document.querySelectorAll('.coursechip').forEach(function (b) { b.addEventListener('click', function () { if (on) setTimeout(buildIndex, 0); }); });
+    apply();
   });
 })();
 
