@@ -12,4 +12,3 @@ Recep Tayyip Erdoğan Üniversitesi, Bilgisayar Mühendisliği derslerinin özet
 | CEN 107 · Defter notu (Hafta 1–9) | [cen107-defter](cen107-defter/cen107_tum_defter.html) | Tek sayfa, karanlık tema, mobil ve PC görünümü |
 | CEN 105 · Bilgisayar Mühendisliğine Giriş (önceki sürüm) | [cen105-bilgisayar-muhendisligine-giris](cen105-bilgisayar-muhendisligine-giris/) | Week 1–4 görsel kılavuz |
 
-Eklenmesi planlanan dersler: CEN 102, 104, 106, 108, 110; Atatürk İlkeleri, Türk Dili, Yabancı Dil, Temel İngilizce.
